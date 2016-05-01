@@ -28,19 +28,23 @@
             android:name=".db.GeomemorialDbProvider"
             android:authorities="com.github.dstaflund.geomemorial"/>
 
-        <activity android:name=".activity.MainActivity">
+        <activity
+            android:name=".activity.MainActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.FavoritesActivity">
-        </activity>
-        <activity android:name=".activity.PreferencesActivity">
-        </activity>
-        <activity android:name=".activity.AboutActivity">
-        </activity>
+        <activity
+            android:name=".activity.FavoritesActivity"
+            android:parentActivityName=".activity.MainActivity"/>
+        <activity
+            android:name=".activity.PreferencesActivity"
+            android:parentActivityName=".activity.MainActivity"/>
+        <activity
+            android:name=".activity.AboutActivity"
+            android:parentActivityName=".activity.MainActivity"/>
     </application>
 
 </manifest>
