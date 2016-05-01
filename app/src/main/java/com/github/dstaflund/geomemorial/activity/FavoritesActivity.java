@@ -17,6 +17,10 @@ public class FavoritesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_favorites);
     }
 
+    /**
+     * Starts {@link FavoritesActivity}
+     * @param context to work ith
+     */
     public static void startActivity(final Context context){
         Log.d(sLogTag, String.format("Starting %s", sLogTag));
         final Intent intent = new Intent(context, FavoritesActivity.class);
