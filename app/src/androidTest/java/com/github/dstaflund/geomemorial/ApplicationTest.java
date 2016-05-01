@@ -1,4 +1,4 @@
-package com.github.dstaflund.saskatchewangeo_memorialapplication;
+package com.github.dstaflund.geomemorial;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

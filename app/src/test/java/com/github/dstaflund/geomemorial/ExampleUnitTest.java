@@ -1,4 +1,4 @@
-package com.github.dstaflund.saskatchewangeo_memorialapplication;
+package com.github.dstaflund.geomemorial;
 
 import org.junit.Test;
 
