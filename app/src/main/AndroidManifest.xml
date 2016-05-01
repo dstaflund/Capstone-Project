@@ -25,6 +25,11 @@
             android:value="@string/google_map.api_key"
             />
 
+        <provider
+            android:name=".db.GeomemorialDbProvider"
+            android:authorities="com.github.dstaflund.geomemorial"
+            />
+
     </application>
 
 </manifest>
