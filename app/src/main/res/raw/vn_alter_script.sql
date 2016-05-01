@@ -1,0 +1,14 @@
+drop table marker_info;
+drop view provincial_count;
+drop view nts_series_counts;
+drop view nts_area_counts;
+drop view nts_sheet_counts;
+drop table resident;
+drop table geomemorial;
+drop table hometown;
+drop table rank;
+drop table obit;
+drop table letter;
+drop table nts_sheet;
+drop table nts_area;
+drop table nts_series;
