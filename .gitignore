@@ -30,3 +30,6 @@ proguard/
 
 # Android Studio captures folder
 captures/
+
+# API Keys File (NB:  We don't want to make our keys public.)
+app/src/main/res/values/keys.xml
