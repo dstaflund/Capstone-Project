@@ -30,6 +30,7 @@
 
         <activity
             android:name=".activity.MainActivity"
+            android:label="@string/activity_main_label"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -38,12 +39,15 @@
         </activity>
         <activity
             android:name=".activity.FavoritesActivity"
+            android:label="@string/activity_favorites_label"
             android:parentActivityName=".activity.MainActivity"/>
         <activity
             android:name=".activity.PreferencesActivity"
+            android:label="@string/activity_preferences_label"
             android:parentActivityName=".activity.MainActivity"/>
         <activity
             android:name=".activity.AboutActivity"
+            android:label="@string/activity_about_label"
             android:parentActivityName=".activity.MainActivity"/>
     </application>
 

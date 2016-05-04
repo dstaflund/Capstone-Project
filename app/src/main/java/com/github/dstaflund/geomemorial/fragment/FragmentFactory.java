@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
+import com.github.dstaflund.geomemorial.fragment.map.MapFragment;
+
 import java.util.HashMap;
 import java.util.Map;
 

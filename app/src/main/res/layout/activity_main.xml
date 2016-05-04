@@ -8,5 +8,20 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
-
+    <fragment
+        android:id="@+id/activity_main_map_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:name="com.github.dstaflund.geomemorial.fragment.map.MapFragment"
+        tools:context="com.github.dstaflund.geomemorial.activity.MainActivity"
+        tools:layout="@layout/fragment_map"/>
+    <fragment
+        android:id="@+id/activity_main_search_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:name="com.github.dstaflund.geomemorial.fragment.SearchFragment"
+        tools:context="com.github.dstaflund.geomemorial.activity.MainActivity"
+        tools:layout="@layout/fragment_search"/>
 </LinearLayout>
