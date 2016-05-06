@@ -1,29 +1,27 @@
 package com.github.dstaflund.geomemorial.activity;
 
-import android.content.Context;
-import android.content.Intent;
+import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.github.dstaflund.geomemorial.R;
+import com.github.dstaflund.geomemorial.fragment.PreferencesFragment;
 
-public class PreferencesActivity extends AppCompatActivity {
+public class PreferencesActivity extends Activity {
     private static final String sLogTag = PreferencesActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(sLogTag, "onCreate");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
-    }
 
-    /**
-     * Starts {@link PreferencesActivity}
-     * @param context to work ith
-     */
-    public static void startActivity(final Context context){
-        Log.d(sLogTag, String.format("Starting %s", sLogTag));
-        final Intent intent = new Intent(context, PreferencesActivity.class);
-        context.startActivity(intent);
+        Fragment preferencesFragment = new PreferencesFragment();
+        getFragmentManager()
+            .beginTransaction()
+            .add(R.id.activity_preferences_frame_layout, preferencesFragment)
+            .commit();
     }
 }

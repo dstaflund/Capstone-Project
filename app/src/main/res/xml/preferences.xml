@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="MAP PREFERENCES">
+
+        <ListPreference
+            android:key="map_type"
+            android:title="Map Type"
+            android:summary="Select the type of map tiles to display"
+            android:defaultValue="4"
+            android:entries="@array/map_types"
+            android:entryValues="@array/map_type_values" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

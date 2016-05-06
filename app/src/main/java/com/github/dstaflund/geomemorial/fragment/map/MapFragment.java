@@ -1,6 +1,7 @@
 package com.github.dstaflund.geomemorial.fragment.map;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -40,9 +41,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
 
     private BitmapDescriptor mBitmapDescriptor;
     private GoogleMap mMap;
+    private MapFragmentListener mMapFragmentListener;
 
     public MapFragment() {
         super();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        if (context == null || ! (MapFragmentListener.class.isAssignableFrom(context.getClass()))){
+            throw new IllegalArgumentException("Context hasn't implemented MapFragmentListener");
+        }
+
+        super.onAttach(context);
+        mMapFragmentListener = (MapFragmentListener) context;
     }
 
     @Nullable
@@ -54,10 +66,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
     ) {
         Log.i(sLogTag, "onCreateView");
 
+        View rootView = inflater.inflate(R.layout.fragment_map, container, false);
+
         MapsInitializer.initialize(getContext());
         mBitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.geomemorial_poppy);
 
-        return inflater.inflate(R.layout.fragment_map, container, false);
+        return rootView;
     }
 
     @Override
@@ -79,6 +93,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
         uiSettings.setZoomGesturesEnabled(true);
         uiSettings.setTiltGesturesEnabled(true);
         uiSettings.setRotateGesturesEnabled(true);
+
+        mMapFragmentListener.onMapReady(mMap);
     }
 
     @Override

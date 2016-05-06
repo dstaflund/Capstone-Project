@@ -64,6 +64,7 @@ public class GeomemorialDbHelper extends SQLiteOpenHelper {
         @Nullable final DatabaseErrorHandler errHandler
     ){
         super(context, DATABASE_NAME, factory, DATABASE_VERSION, errHandler);
+        Log.i(sLogTag, "<ctor>");
         mContext = context;
     }
 
@@ -74,6 +75,7 @@ public class GeomemorialDbHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(@NonNull final SQLiteDatabase db) {
+        Log.i(sLogTag, "onCreate");
         applyVersion1Script(db);
     }
 
@@ -86,6 +88,7 @@ public class GeomemorialDbHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onUpgrade(@NonNull final SQLiteDatabase db, int oldVersion, int newVersion) {
+        Log.i(sLogTag, "onUpgrade");
         if (newVersion > oldVersion) {
             applyVersionNScript(db);
         }

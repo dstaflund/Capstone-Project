@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.util.SparseArray;
 
 import com.github.dstaflund.geomemorial.db.GeomemorialDbContract.Geomemorial;
@@ -42,6 +43,7 @@ import static com.github.dstaflund.geomemorial.db.GeomemorialDbContract.CONTENT_
  * @author Darryl Staflund
  */
 public class GeomemorialDbProvider extends SearchRecentSuggestionsProvider {
+    private static final String sLogTag = GeomemorialDbProvider.class.getSimpleName();
     public static final String AUTHORITY = GeomemorialDbContract.CONTENT_AUTHORITY;
     public static final int MODE = DATABASE_MODE_QUERIES;
 
@@ -207,6 +209,7 @@ public class GeomemorialDbProvider extends SearchRecentSuggestionsProvider {
      */
     @Override
     public boolean onCreate() {
+        Log.i(sLogTag, "onCreate");
         super.onCreate();
         if (getContext() != null) {
             mHelper = new GeomemorialDbHelper(getContext());
@@ -223,6 +226,7 @@ public class GeomemorialDbProvider extends SearchRecentSuggestionsProvider {
     @Nullable
     @Override
     public String getType(@NonNull final Uri uri) {
+        Log.i(sLogTag, "getType");
         final int matchCode = URI_MATCHER.match(uri);
         if (RETURN_TYPES.indexOfKey(matchCode) >= 0){
             return RETURN_TYPES.get(matchCode);
@@ -240,6 +244,7 @@ public class GeomemorialDbProvider extends SearchRecentSuggestionsProvider {
         @Nullable final String[] selectionArgs,
         @Nullable final String sortOrder
     ) {
+        Log.i(sLogTag, "query");
         Cursor retCursor;
         final SQLiteDatabase db = mHelper.getReadableDatabase();
 

@@ -13,6 +13,7 @@ public class FavoritesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(sLogTag, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
     }

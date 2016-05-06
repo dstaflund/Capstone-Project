@@ -33,9 +33,11 @@
             android:label="@string/activity_main_label"
             android:launchMode="singleTop">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
         </activity>
         <activity
             android:name=".activity.FavoritesActivity"
@@ -44,7 +46,12 @@
         <activity
             android:name=".activity.PreferencesActivity"
             android:label="@string/activity_preferences_label"
-            android:parentActivityName=".activity.MainActivity"/>
+            android:parentActivityName=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activity.AboutActivity"
             android:label="@string/activity_about_label"

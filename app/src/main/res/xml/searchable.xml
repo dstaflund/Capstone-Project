@@ -5,5 +5,4 @@
     android:hint="@string/search_hint"
     android:searchSuggestAuthority="com.github.dstaflund.geomemorial"
     android:searchSuggestSelection=" suggest_text_1 LIKE ? "
-    android:searchSuggestIntentAction="android.intent.action.VIEW"
-    />
+    android:searchSuggestIntentAction="android.intent.action.VIEW" />
