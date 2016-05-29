@@ -97,6 +97,7 @@
     <string name="menu_map_type_satellite">Satellite</string>
     <string name="menu_map_type_hybrid">Hybrid</string>
     <string name="menu_favorites">Favorites</string>
+    <string name="menu_near_me">Closest Memorial</string>
     <string name="menu_clear_history">Clear Search History</string>
     <string name="menu_preferences">Settings</string>
     <string name="menu_about">Help &amp; Feedback</string>
@@ -173,5 +174,9 @@
     <string name="log.main.loader.missing_arguments">Arguments were not passed to onCreateLoader method</string>
     <string name="log.helper.script_error">An error was encountered processing the SQL script</string>
     <string name="log.provider.unsupported_uri">Provide does not support the provided uri.</string>
-
+    <string name="log.google_api_client.connected">Google Api Client connection successful.</string>
+    <string name="log.google_api_client.suspended">Google Api Client connection has been suspended.</string>
+    <string name="log.google_api_client.suspended.network_lost">Google Api Client connection has been suspended because the network was lost.</string>
+    <string name="log.google_api_client.suspended.service_disconnected">Google Api Client connection has been suspended because the service was disconnected.</string>
+    <string name="log.google_api_client.failed">Google Api Client connection failed:  </string>
 </resources>

@@ -1,11 +1,14 @@
 package com.github.dstaflund.geomemorial.ui.activity;
 
+import android.Manifest;
 import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,6 +16,7 @@ import android.provider.SearchRecentSuggestions;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -42,6 +46,9 @@ import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.Geomem
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.MarkerInfo;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbProvider;
 import com.github.dstaflund.geomemorial.ui.fragment.MapFragment;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.LatLng;
@@ -65,7 +72,9 @@ public class MainActivity
     extends AppCompatActivity
     implements
     LoaderManager.LoaderCallbacks<Cursor>,
-    NavigationView.OnNavigationItemSelectedListener{
+    NavigationView.OnNavigationItemSelectedListener,
+    GoogleApiClient.ConnectionCallbacks,
+    GoogleApiClient.OnConnectionFailedListener {
     private static final String sLogTag = MainActivity.class.getSimpleName();
 
     public static final int EMPTY_SEARCH = -1;
@@ -75,10 +84,13 @@ public class MainActivity
     public static final String SELECTION_ARG_KEY = "selectionArg";
 
 
+    private boolean mConnected;
     private CursorAdapter mSearchCursorAdapter;
+    private GoogleApiClient mGoogleApiClient;
     private SearchRecentSuggestions mSearchRecentSuggestions;
     private NavigationView mNavigationView;
     private MapFragment mMapFragment;
+    private Location mLastLocation;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -95,6 +107,15 @@ public class MainActivity
             this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+
+        // Create an instance of GoogleAPIClient.
+        if (mGoogleApiClient == null) {
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+        }
 
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         mNavigationView.setNavigationItemSelectedListener(this);
@@ -113,7 +134,7 @@ public class MainActivity
 
         LoaderManager loaderManager = getSupportLoaderManager();
         Loader<Cursor> loader = loaderManager.getLoader(EMPTY_SEARCH);
-        if (loader != null && ! loader.isReset()){
+        if (loader != null && !loader.isReset()) {
             loaderManager.restartLoader(EMPTY_SEARCH, null, this);
         } else {
             loaderManager.initLoader(EMPTY_SEARCH, null, this);
@@ -122,8 +143,20 @@ public class MainActivity
         handleIntent(getIntent());
     }
 
-    private void checkInitialMapType(){
-        switch (GeomemorialApplication.getVisibleMapType()){
+    @Override
+    protected void onStart() {
+        mGoogleApiClient.connect();
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        mGoogleApiClient.disconnect();
+        super.onStop();
+    }
+
+    private void checkInitialMapType() {
+        switch (GeomemorialApplication.getVisibleMapType()) {
             case GoogleMap.MAP_TYPE_NORMAL:
                 mNavigationView.getMenu().findItem(R.id.nav_layer_normal).setChecked(true);
                 break;
@@ -142,17 +175,22 @@ public class MainActivity
         }
     }
 
+    private boolean isLocationAware(){
+        return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+         || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+    }
+
     @Override
     protected void onNewIntent(@NonNull Intent intent) {
         handleIntent(intent);
     }
 
     private void handleIntent(@Nullable Intent intent) {
-        if (intent == null){
+        if (intent == null) {
             return;
         }
 
-        if (Intent.ACTION_VIEW.equals(intent.getAction())){
+        if (Intent.ACTION_VIEW.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             doSearch(null, null, query);
             return;
@@ -176,7 +214,7 @@ public class MainActivity
         LoaderManager loaderManager = getSupportLoaderManager();
         Loader<Cursor> loader = loaderManager.getLoader(RESIDENT_LOADER_ID);
 
-        if (loader != null && ! loader.isReset()){
+        if (loader != null && !loader.isReset()) {
             loaderManager.restartLoader(RESIDENT_LOADER_ID, args, this);
         } else {
             loaderManager.initLoader(RESIDENT_LOADER_ID, args, this);
@@ -210,7 +248,7 @@ public class MainActivity
         }
     }
 
-    public void setMapType(int mapTypeId){
+    public void setMapType(int mapTypeId) {
         mMapFragment.setMapType(mapTypeId);
     }
 
@@ -219,7 +257,7 @@ public class MainActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         boolean result;
 
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_camera:
                 FavoritesActivity.startActivity(this);
                 result = true;
@@ -301,7 +339,7 @@ public class MainActivity
             case EMPTY_SEARCH:
                 return null;
             default:
-                if (args == null){
+                if (args == null) {
                     Log.e(sLogTag, getString(R.string.log_main_loader_missing_arguments));
                     return null;
                 }
@@ -324,12 +362,12 @@ public class MainActivity
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, @Nullable Cursor data) {
-        switch (loader.getId()){
+        switch (loader.getId()) {
             case EMPTY_SEARCH:
                 mSearchCursorAdapter.changeCursor(null);
                 break;
             default:
-                if (data == null || data.getCount() == 0){
+                if (data == null || data.getCount() == 0) {
                     Log.d(sLogTag, getResources().getString(R.string.log_search_too_few));
                     newToast(
                         this,
@@ -337,8 +375,7 @@ public class MainActivity
                         getString(R.string.toast_search_results_empty),
                         Toast.LENGTH_SHORT
                     );
-                }
-                else if (data.getCount() <= getResources().getInteger(R.integer.max_visible_memorials)){
+                } else if (data.getCount() <= getResources().getInteger(R.integer.max_visible_memorials)) {
                     Log.d(sLogTag, getResources().getString(R.string.log_search_just_right));
                     newToast(
                         this,
@@ -349,8 +386,7 @@ public class MainActivity
                         ),
                         Toast.LENGTH_SHORT
                     );
-                }
-                else {
+                } else {
                     Log.d(sLogTag, getResources().getString(R.string.log_search_too_many));
                     newToast(
                         this,
@@ -369,6 +405,40 @@ public class MainActivity
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         mSearchCursorAdapter.changeCursor(null);
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        mConnected = true;
+        Log.i(sLogTag, getString(R.string.log_google_api_client_connected));
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+         || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
+            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+        }
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        mConnected = false;
+        if (GoogleApiClient.ConnectionCallbacks.CAUSE_NETWORK_LOST == i){
+            Log.i(sLogTag, getString(R.string.log_google_api_client_suspended_network_lost));
+        }
+
+        else if (GoogleApiClient.ConnectionCallbacks.CAUSE_SERVICE_DISCONNECTED == i){
+            Log.i(sLogTag, getString(R.string.log_google_api_client_suspended_service_disconnected));
+        }
+
+        else {
+            Log.i(sLogTag, getString(R.string.log_google_api_client_suspended));
+        }
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        mConnected = false;
+        Log.e(sLogTag, getString(R.string.log_google_api_client_failed) + connectionResult.getErrorMessage());
     }
 
     public class SearchCursorAdapter extends CursorAdapter {

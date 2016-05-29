@@ -1,10 +1,13 @@
 package com.github.dstaflund.geomemorial.ui.fragment;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.SpannableString;
@@ -78,6 +81,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
         map.setMapType(getMapType(getContext()));
         map.setInfoWindowAdapter(new InfoWindowAdapterImpl(getContext(), super.getLayoutInflater(null)));
         map.setOnMapLoadedCallback(this);
+        map.setMyLocationEnabled(false);
 
         UiSettings ui = map.getUiSettings();
         ui.setZoomControlsEnabled(true);
@@ -85,6 +89,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
         ui.setZoomGesturesEnabled(true);
         ui.setTiltGesturesEnabled(true);
         ui.setRotateGesturesEnabled(true);
+        ui.setMyLocationButtonEnabled(false);
+
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+            || ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
+            map.setMyLocationEnabled(true);
+            ui.setMyLocationButtonEnabled(true);
+        }
 
         mMap = googleMap;
     }
