@@ -180,6 +180,11 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">@integer/content.map.weight</item>
     </style>
+    <style name="Theme.Main.Content.SearchResult" parent="Theme.Main.Content">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">@integer/content.map.weight</item>
+    </style>
     <style name="Theme.Main.Content.Search" parent="Theme.Main.Content">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

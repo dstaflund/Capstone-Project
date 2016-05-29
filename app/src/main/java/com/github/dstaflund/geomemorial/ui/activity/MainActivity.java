@@ -27,25 +27,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CursorAdapter;
-import android.widget.GridView;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.dstaflund.geomemorial.GeomemorialApplication;
 import com.github.dstaflund.geomemorial.R;
-import com.github.dstaflund.geomemorial.common.util.DateUtil;
-import com.github.dstaflund.geomemorial.common.util.SharedIntentManager;
-import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.MarkerInfo;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbProvider;
 import com.github.dstaflund.geomemorial.ui.fragment.MapFragment;
+import com.github.dstaflund.geomemorial.ui.fragment.SearchResultFragment;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -54,13 +45,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import static com.github.dstaflund.geomemorial.GeomemorialApplication.setVisibleMapType;
-import static com.github.dstaflund.geomemorial.common.util.FavoritesManager.addFavorite;
-import static com.github.dstaflund.geomemorial.common.util.FavoritesManager.isFavorite;
-import static com.github.dstaflund.geomemorial.common.util.FavoritesManager.removeFavorite;
 import static com.github.dstaflund.geomemorial.common.util.PreferencesManager.isDefaultMapType;
-import static com.github.dstaflund.geomemorial.common.util.SharedIntentManager.shareGeomemorial;
 import static com.github.dstaflund.geomemorial.common.util.ToastManager.newToast;
-import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo.buildFor;
 import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_HYBRID;
 import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_NORMAL;
 import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_SATELLITE;
@@ -72,7 +58,9 @@ public class MainActivity
     LoaderManager.LoaderCallbacks<Cursor>,
     NavigationView.OnNavigationItemSelectedListener,
     GoogleApiClient.ConnectionCallbacks,
-    GoogleApiClient.OnConnectionFailedListener {
+    GoogleApiClient.OnConnectionFailedListener,
+    SearchResultFragment.OnPlaceButtonClickedListener,
+    SearchResultFragment.OnChangeCursorListener{
     private static final String sLogTag = MainActivity.class.getSimpleName();
 
     public static final int EMPTY_SEARCH = -1;
@@ -83,11 +71,11 @@ public class MainActivity
 
 
     private boolean mConnected;
-    private CursorAdapter mSearchCursorAdapter;
     private GoogleApiClient mGoogleApiClient;
     private SearchRecentSuggestions mSearchRecentSuggestions;
     private NavigationView mNavigationView;
     private MapFragment mMapFragment;
+    private SearchResultFragment mSearchResultFragment;
     private Location mLastLocation;
 
     @Override
@@ -96,6 +84,7 @@ public class MainActivity
         setContentView(R.layout.activity_main);
 
         mMapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_map);
+        mSearchResultFragment = (SearchResultFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_search_result);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -120,15 +109,11 @@ public class MainActivity
 
         checkInitialMapType();
 
-        mSearchCursorAdapter = new SearchCursorAdapter(this, null);
         mSearchRecentSuggestions = new SearchRecentSuggestions(
             this,
             GeomemorialDbProvider.AUTHORITY,
             GeomemorialDbProvider.MODE
         );
-
-        GridView gridView = (GridView) findViewById(R.id.activity_search_listview);
-        gridView.setAdapter(mSearchCursorAdapter);
 
         LoaderManager loaderManager = getSupportLoaderManager();
         Loader<Cursor> loader = loaderManager.getLoader(EMPTY_SEARCH);
@@ -362,7 +347,8 @@ public class MainActivity
     public void onLoadFinished(@NonNull Loader<Cursor> loader, @Nullable Cursor data) {
         switch (loader.getId()) {
             case EMPTY_SEARCH:
-                mSearchCursorAdapter.changeCursor(null);
+                mMapFragment.clearMap();
+                mSearchResultFragment.changeCursor(null);
                 break;
             default:
                 if (data == null || data.getCount() == 0) {
@@ -396,13 +382,15 @@ public class MainActivity
                         Toast.LENGTH_SHORT
                     );
                 }
-                mSearchCursorAdapter.changeCursor(data);
+                mMapFragment.clearMap();
+                mSearchResultFragment.changeCursor(data);
         }
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        mSearchCursorAdapter.changeCursor(null);
+        mMapFragment.clearMap();
+        mSearchResultFragment.changeCursor(null);
     }
 
     @Override
@@ -439,308 +427,24 @@ public class MainActivity
         Log.e(sLogTag, getString(R.string.log_google_api_client_failed) + connectionResult.getErrorMessage());
     }
 
-    public class SearchCursorAdapter extends CursorAdapter {
-        private final Integer sViewHolderKey = R.integer.view_holder_id;
-        private final Integer sGeomemorialTagKey = R.integer.geomemorial_tag_key;
-//        private final BitmapDescriptor sDescriptor = fromResource(R.mipmap.geomemorial_poppy);
-
-        /**
-         * Default constructor
-         *
-         * @param context of the adapter
-         * @param cursor being used
-         */
-        public SearchCursorAdapter(
-            @NonNull Context context,
-            @NonNull Cursor cursor
-        ) {
-            super(context, cursor, 0);
-        }
-
-        /**
-         * Creates and binds a new view for the adapter.
-         *
-         * @param context of the operator
-         * @param cursor containing the view's initial data record
-         * @param parent that will display the view
-         * @return newly created view
-         */
-        @Override
-        public @NonNull
-        View newView(
-            @NonNull Context context,
-            @NonNull Cursor cursor,
-            @NonNull ViewGroup parent
-        ) {
-            View view = LayoutInflater.from(context).inflate(R.layout.list_item_search, parent, false);
-            view.setTag(sViewHolderKey, new ViewHolder(view));
-            bindView(view, context, cursor);
-            return view;
-        }
-
-        @Override
-        public void changeCursor(@Nullable Cursor cursor) {
-            mMapFragment.clearMap();
-
-            int count = 0;
-            if (cursor != null && cursor.getCount() > 0) {
-                int position = cursor.getPosition();
-                while (cursor.moveToNext()) {
-                    count += 1;
-                    if (count > getResources().getInteger(R.integer.max_visible_memorials)){
-                        break;
-                    }
-                    DataObject dataObject = new DataObject(cursor);
-                    DataFormatter dataFormatter = new DataFormatter(getApplicationContext(), dataObject);
-
-                    MarkerOptions markerOptions = new MarkerOptions();
-                    markerOptions.position(dataFormatter.getLatLng());
-//                    markerOptions.icon(sDescriptor);
-                    markerOptions.title(dataFormatter.getGeomemorial());
-                    markerOptions.snippet(dataFormatter.getResident());
-
-                    mMapFragment.addMarker(markerOptions);
-                }
-
-                mMapFragment.updateCamera();
-                cursor.moveToPosition(position);
-            }
-
-            super.changeCursor(cursor);
-        }
-
-        /**
-         * Binds a new cursor record to the given view
-         *
-         * @param view to bind cursor record to
-         * @param context in which the binding is taking place
-         * @param cursor containing the record to be bound
-         */
-        @Override
-        public void bindView(
-            @NonNull View view,
-            @NonNull final Context context,
-            @Nullable Cursor cursor
-        ) {
-
-            if (cursor != null) {
-                DataObject dataObject = new DataObject(cursor);
-                DataFormatter formatter = new DataFormatter(context, dataObject);
-
-                ViewHolder holder = (ViewHolder) view.getTag(sViewHolderKey);
-                holder.name.setText(formatter.getResident());
-                holder.hometown.setText(formatter.getHometown());
-                holder.rank.setText(formatter.getRank());
-                holder.obit.setText(formatter.getObit());
-                holder.geomemorial.setText(formatter.getGeomemorial());
-                holder.ntsSheet.setText(formatter.getNtsSheet());
-                holder.coordinate.setText(formatter.getCoordinate());
-
-                holder.favoriteButton.setImageDrawable(
-                    isFavorite(context, formatter.getGeomemorialId())
-                        ? getApplicationContext().getResources().getDrawable(R.drawable.ic_favorite_accent_24dp)
-                        : getApplicationContext().getResources().getDrawable(R.drawable.ic_favorite_border_accent_24dp)
-                );
-                holder.favoriteButton.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(@NonNull View v) {
-                        ImageButton button = (ImageButton) v;
-                        String id = (String) button.getTag(sGeomemorialTagKey);
-                        boolean isChecked = ! isFavorite(getApplicationContext(), id);
-
-                        if (isChecked){
-                            button.setImageResource(R.drawable.ic_favorite_accent_24dp);
-                            addFavorite(getApplicationContext(), id);
-                        }
-                        else {
-                            button.setImageResource(R.drawable.ic_favorite_border_accent_24dp);
-                            removeFavorite(getApplicationContext(), id);
-                        }
-                    }
-                });
-                holder.favoriteButton.setTag(sGeomemorialTagKey, formatter.getGeomemorialId());
-                holder.shareButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(@NonNull View v) {
-                        ImageButton button = (ImageButton) v;
-                        String geomemorialId = (String) button.getTag(sGeomemorialTagKey);
-                        Cursor c = getApplicationContext().getContentResolver().query(
-                            buildFor(geomemorialId),
-                            null,
-                            null,
-                            null,
-                            null
-                        );
-
-                        if (c != null && c.getCount() > 0) {
-                            c.moveToFirst();
-                            SharedIntentManager.Payload payload = new SharedIntentManager.Payload
-                                .Builder(context)
-                                .geomemorial(c.getString(GeomemorialInfo.IDX_GEOMEMORIAL))
-                                .latitude(c.getString(GeomemorialInfo.IDX_LATITUDE))
-                                .longitude(c.getString(GeomemorialInfo.IDX_LONGITUDE))
-                                .resident(c.getString(GeomemorialInfo.IDX_RESIDENT))
-                                .hometown(c.getString(GeomemorialInfo.IDX_HOMETOWN))
-                                .rank(c.getString(GeomemorialInfo.IDX_RANK))
-                                .obit(c.getString(GeomemorialInfo.IDX_OBIT))
-                                .build();
-                            shareGeomemorial(getApplicationContext(), payload);
-                        }
-                    }
-                });
-                holder.shareButton.setTag(sGeomemorialTagKey, formatter.getGeomemorialId());
-                holder.placeButton.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(@NonNull View v) {
-                        ImageButton button = (ImageButton) v;
-                        String id = (String) button.getTag(sGeomemorialTagKey);
-
-                        Cursor c = getApplicationContext().getContentResolver().query(
-                            buildFor(id),
-                            null,
-                            null,
-                            null,
-                            null
-                        );
-
-                        if (c != null && c.getCount() > 0) {
-                            c.moveToFirst();
-                            LatLng latLng = new LatLng(
-                                Double.valueOf(c.getString(GeomemorialInfo.IDX_LATITUDE)),
-                                Double.valueOf(c.getString(GeomemorialInfo.IDX_LONGITUDE))
-                            );
-                            mMapFragment.zoomInOn(latLng);
-                        }
-                    }
-                });
-                holder.placeButton.setTag(sGeomemorialTagKey, formatter.getGeomemorialId());
-            }
-        }
+    @Override
+    public void placeButtonClicked(@NonNull LatLng position){
+        mMapFragment.zoomInOn(position);
     }
 
-    public static class ViewHolder {
-        @NonNull public TextView coordinate;
-        @NonNull public TextView geomemorial;
-        @NonNull public TextView hometown;
-        @NonNull public TextView name;
-        @NonNull public TextView ntsSheet;
-        @NonNull public TextView obit;
-        @NonNull public TextView rank;
-        @NonNull public ImageButton favoriteButton;
-        @NonNull public ImageButton shareButton;
-        @NonNull public ImageButton placeButton;
+    @Override
+    public void recordFinished(@NonNull SearchResultFragment.DataFormatter record){
+        MarkerOptions options = new MarkerOptions();
+        options.position(record.getLatLng());
+        options.title(record.getGeomemorial());
+        options.snippet(record.getResident());
 
-        public ViewHolder(@NonNull View v){
-            coordinate = (TextView) v.findViewById(R.id.list_item_common_coordinate);
-            geomemorial = (TextView) v.findViewById(R.id.list_item_common_geomemorial);
-            hometown = (TextView) v.findViewById(R.id.list_item_common_hometown);
-            name = (TextView) v.findViewById(R.id.list_item_common_name);
-            ntsSheet = (TextView) v.findViewById(R.id.list_item_common_nts_sheet);
-            obit = (TextView) v.findViewById(R.id.list_item_common_obit);
-            rank = (TextView) v.findViewById(R.id.list_item_common_rank);
-            favoriteButton = (ImageButton) v.findViewById(R.id.favorite_button);
-            shareButton = (ImageButton) v.findViewById(R.id.share_button);
-            placeButton = (ImageButton) v.findViewById(R.id.place_button);
-        }
+        mMapFragment.addMarker(options);
     }
 
-    public static class DataObject {
-        @NonNull public String geomemorial;
-        @NonNull public String geomemorialId;
-        @NonNull public String hometown;
-        @NonNull public String ntsSheet;
-        @NonNull public String ntsSheetName;
-        @NonNull public String obit;
-        @NonNull public String rank;
-        @NonNull public String resident;
-
-        public float latitude;
-        public float longitude;
-
-        public DataObject(@NonNull Cursor c){
-            geomemorial = c.getString(MarkerInfo.DEFAULT_GEOMEMORIAL_IDX);
-            geomemorialId = c.getString(MarkerInfo.DEFAULT_GEOMEMORIAL_ID_IDX);
-            hometown = c.getString(MarkerInfo.DEFAULT_HOMETOWN_IDX);
-            latitude = c.getFloat(MarkerInfo.DEFAULT_LATITUDE_IDX);
-            longitude = c.getFloat(MarkerInfo.DEFAULT_LONGITUDE_IDX);
-            ntsSheet = c.getString(MarkerInfo.DEFAULT_NTS_SHEET_IDX);
-            ntsSheetName = c.getString(MarkerInfo.DEFAULT_NTS_SHEET_NAME_IDX);
-            obit = c.getString(MarkerInfo.DEFAULT_OBIT_IDX);
-            resident = c.getString(MarkerInfo.DEFAULT_RESIDENT_IDX);
-            rank = c.getString(MarkerInfo.DEFAULT_RANK_IDX);
-        }
-    }
-
-    public static class DataFormatter {
-
-        @NonNull
-        private Context mContext;
-
-        @NonNull
-        private DataObject mDataObject;
-
-        public DataFormatter(@NonNull Context context, @NonNull DataObject dataObject){
-            super();
-            mContext = context;
-            mDataObject = dataObject;
-        }
-
-        @NonNull
-        public String getResident(){
-            return mDataObject.resident.toUpperCase();
-        }
-
-        @NonNull
-        public String getHometown(){
-            return mDataObject.hometown;
-        }
-
-        @NonNull
-        public String getRank(){
-            return mDataObject.rank;
-        }
-
-        @NonNull
-        public String getObit(){
-            return DateUtil.toDisplayString(mContext, mDataObject.obit);
-        }
-
-        @NonNull
-        public String getGeomemorial(){
-            return String.format(
-                mContext.getString(R.string.string_format_coordinate_pattern),
-                mDataObject.geomemorial.toUpperCase()
-            );
-        }
-
-        @NonNull
-        public String getNtsSheet(){
-            return String.format(
-                mContext.getString(R.string.string_format_nts_sheet_pattern),
-                mDataObject.ntsSheet,
-                mDataObject.ntsSheetName
-            );
-        }
-
-        @NonNull String getCoordinate(){
-            return String.format(
-                mContext.getString(R.string.string_format_lat_lng_pattern),
-                Float.valueOf(mDataObject.latitude).toString(),
-                Float.valueOf(mDataObject.longitude).toString()
-            );
-        }
-
-        @NonNull
-        public LatLng getLatLng(){
-            return new LatLng(mDataObject.latitude, mDataObject.longitude);
-        }
-
-        @NonNull
-        public String getGeomemorialId(){
-            return mDataObject.geomemorialId;
-        }
+    @Override
+    public void cursorFinished(){
+        mMapFragment.updateCamera();
     }
 
     public static void startActivity(Context context){

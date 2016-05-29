@@ -14,8 +14,9 @@
         class="com.github.dstaflund.geomemorial.ui.fragment.MapFragment"
         style="@style/Theme.Main.Content.Map"/>
 
-    <GridView
-        android:id="@+id/activity_search_listview"
-        style="@style/Theme.Main.Content.Search"/>
+    <fragment
+        android:id="@+id/fragment_search_result"
+        class="com.github.dstaflund.geomemorial.ui.fragment.SearchResultFragment"
+        style="@style/Theme.Main.Content.SearchResult"/>
 
 </LinearLayout>

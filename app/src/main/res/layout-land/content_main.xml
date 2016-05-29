@@ -10,7 +10,7 @@
     style="@style/Theme.Main.Content.Root">
 
     <GridView
-        android:id="@+id/activity_search_listview"
+        android:id="@+id/fragment_search_result_listview"
         style="@style/Theme.Main.Content.Search"/>
 
     <fragment
