@@ -58,10 +58,6 @@
             android:name=".ui.activity.AboutActivity"
             android:label="@string/label_activity_about"
             android:parentActivityName=".ui.activity.AboutActivity"/>
-        <activity
-            android:name=".ui.activity.SignInActivity"
-            android:label="@string/sign_in_label"
-            android:parentActivityName=".ui.activity.MainActivity" />
 
         <provider
             android:name=".integration.GeomemorialDbProvider"
