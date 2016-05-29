@@ -1,6 +1,16 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'capstonerelease'
+            keyPassword 'capstoneKeyPassword'
+            storeFile file('capstoneKeystore.jks')
+            storePassword 'capstoneStorePassword'
+        }
+    }
+
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
 
@@ -10,13 +20,17 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
+
     configurations.all {
         resolutionStrategy.force 'com.android.support:support-annotations:23.4.0'
     }
@@ -24,16 +38,16 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile 'org.jmockit:jmockit:1.23'
-    testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.github.paolorotolo:appintro:3.3.0'
     compile 'com.google.android.gms:play-services:9.0.0'
     compile 'com.google.android.gms:play-services-maps:9.0.0'
     compile 'com.google.android.gms:play-services-location:9.0.0'
     compile 'com.google.maps.android:android-maps-utils:0.4'
-    compile 'com.android.support:support-v4:23.4.0'
-    compile 'com.github.paolorotolo:appintro:3.3.0'
+    testCompile 'junit:junit:4.12'
+    androidTestCompile 'org.jmockit:jmockit:1.23'
 }
 
-apply plugin: 'com.google.gms.google-services'
