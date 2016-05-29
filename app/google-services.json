@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "992809985208",
+    "project_id": "saskatchewan-geo-memorial-app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992809985208:android:aee3994544c8efde",
+        "android_client_info": {
+          "package_name": "com.github.dstaflund.geomemorial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "992809985208-u0dn4ci30j0pl7pie02amcarqr5drbe8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.github.dstaflund.geomemorial",
+            "certificate_hash": "FE62297A5941806288CE491E586EEEE414D4C92E"
+          }
+        },
+        {
+          "client_id": "992809985208-kckvoveh1u6gccn5ckee548okvvh8k8h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpR1tJVf1sEzy2xEyIgnnBw9zCyytH2D8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

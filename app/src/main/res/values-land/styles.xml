@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Main Content -->
+    <style name="Theme.Main.Content.Root" parent="Theme.Main.Content">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">@dimen/no_padding</item>
+        <item name="android:layout_margin">@dimen/no_margin</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+</resources>

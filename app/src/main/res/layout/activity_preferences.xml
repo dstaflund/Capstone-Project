@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Theme.Preferences.Root">
+
+    <fragment
+        android:id="@+id/fragment_preferences"
+        class="com.github.dstaflund.geomemorial.ui.fragment.PreferencesFragment"
+        style="@style/Theme.Preferences.Content"/>
+
+</FrameLayout>

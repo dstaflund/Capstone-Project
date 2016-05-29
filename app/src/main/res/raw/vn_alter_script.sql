@@ -1,0 +1,15 @@
+drop view if exists geomemorial_info;
+drop table if exists marker_info;
+drop view if exists provincial_count;
+drop view if exists nts_series_counts;
+drop view if exists nts_area_counts;
+drop view if exists nts_sheet_counts;
+drop table if exists resident;
+drop table if exists geomemorial;
+drop table if exists hometown;
+drop table if exists rank;
+drop table if exists obit;
+drop table if exists letter;
+drop table if exists nts_sheet;
+drop table if exists nts_area;
+drop table if exists nts_series;

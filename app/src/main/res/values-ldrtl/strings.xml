@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Acknowledgments -->
+    <string name="acknowledgments_thanks1">Udacity \u2022</string>
+    <string name="acknowledgments_thanks2">Saskatchewan Parks, Culture, and Sport \u2022</string>
+    <string name="acknowledgments_thanks3">Mr. Doug Chisholm \u2022</string>
+
+    <!-- Further Information -->
+    <string name="info_url1" translatable="false">www.pcs.gov.sk.ca \u2022</string>
+    <string name="info_url2" translatable="false">sasksearch.com \u2022</string>
+    <string name="info_url3" translatable="false">woodlandaerialphoto.com \u2022</string>
+    <string name="info_url4" translatable="false">svwm.ca \u2022</string>
+
+    <!-- History -->
+    <string name="history_release1">Initial Release - v1.0.0</string>
+</resources>

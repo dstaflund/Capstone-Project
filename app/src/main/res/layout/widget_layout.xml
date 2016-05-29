@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Theme.Widget.Layout.Root">
+    <TextView
+        android:id="@+id/widget_title"
+        android:text="@string/widget_header"
+        style="@style/Theme.Widget.Layout.Title"/>
+    <FrameLayout
+        style="@style/Theme.Widget.Layout.Frame">
+        <ListView
+            android:id="@+id/stack_view"
+            style="@style/Theme.Widget.Layout.List" />
+        <TextView
+            android:id="@+id/empty_view"
+            android:text="@string/widget_empty_content"
+            style="@style/Theme.Widget.Layout.Empty"/>
+    </FrameLayout>
+</LinearLayout>

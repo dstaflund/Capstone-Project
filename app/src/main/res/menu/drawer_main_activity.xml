@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Map Type" >
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_layer_normal"
+                    android:icon="@drawable/ic_crop_original_black_24dp"
+                    android:title="@string/menu_map_type_normal"/>
+                <item
+                    android:id="@+id/nav_layer_terrain"
+                    android:icon="@drawable/ic_terrain_black_24dp"
+                    android:title="@string/menu_map_type_terrain" />
+                <item
+                    android:id="@+id/nav_layer_satellite"
+                    android:icon="@drawable/ic_satellite_black_24dp"
+                    android:title="@string/menu_map_type_satellite" />
+                <item
+                    android:id="@+id/nav_layer_hybrid"
+                    android:icon="@drawable/ic_menu_gallery"
+                    android:title="@string/menu_map_type_hybrid" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Additional">
+        <menu>
+            <item
+                android:id="@+id/nav_camera"
+                android:icon="@drawable/ic_menu_favorites"
+                android:title="@string/menu_favorites"/>
+            <item
+                android:id="@+id/nav_clear_search_history"
+                android:icon="@drawable/ic_cached_black_24dp"
+                android:title="@string/menu_clear_history" />
+            <item
+                android:id="@+id/nav_manage"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="@string/menu_preferences"/>
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_help_black_24dp"
+                android:title="@string/menu_about"/>
+        </menu>
+    </item>
+
+</menu>

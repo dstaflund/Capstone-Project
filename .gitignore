@@ -33,3 +33,10 @@ captures/
 
 # API Keys File (NB:  We don't want to make our keys public.)
 app/src/main/res/values/keys.xml
+app/src/debug/res/values/keys.xml
+
+# Don't commit the Android Studio files
+*.iml
+.idea
+.idea/workspace.xml
+.DS_Store

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorWidgetBackground">#E8EAF6</color>
+    <color name="colorDarkButtonNormal">#607D8B</color>
+
+    <color name="green">#4CAF50</color>
+    <color name="lightGreen">#8BC34A</color>
+    <color name="lime">#CDDC39</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="amber">#FFC107</color>
+    <color name="orange">#FF9800</color>
+    <color name="deepOrange">#FF5722</color>
+    <color name="brown">#795548</color>
+    <color name="white">@android:color/white</color>
+    <color name="black">@android:color/black</color>
+    <color name="holo_blue_dark">@android:color/holo_blue_dark</color>
+    <color name="transparent">@android:color/transparent</color>
+</resources>

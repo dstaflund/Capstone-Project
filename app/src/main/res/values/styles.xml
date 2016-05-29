@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="ThemeOverlay.MyNoTitleActivity" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="ThemeOverlay.MyDarkButton" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="colorButtonNormal">@color/colorDarkButtonNormal</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Main Activity -->
+    <style name="Theme.Main" parent="AppTheme">
+    </style>
+    <style name="Theme.Main.Drawer" parent="Theme.Main">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+    <style name="Theme.Main.AppBar" parent="Theme.Main">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="Theme.Main.Navigation" parent="Theme.Main">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <!-- Nav Bar -->
+    <style name="Theme.Navbar" parent="AppTheme">
+    </style>
+    <style name="Theme.Navbar.Coordinator" parent="Theme.Navbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+    <style name="Theme.Navbar.Appbar" parent="Theme.Navbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:theme">@style/AppTheme.AppBarOverlay</item>
+    </style>
+    <style name="Theme.Navbar.Toolbar" parent="Theme.Navbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimary</item>
+    </style>
+    <style name="Theme.Navbar.Fab" parent="Theme.Navbar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">bottom|end</item>
+        <item name="android:layout_margin">@dimen/full_margin</item>
+        <item name="android:src">@android:drawable/ic_dialog_email</item>
+    </style>
+
+    <!-- About Activity -->
+    <style name="Theme.About" parent="AppTheme">
+    </style>
+    <style name="Theme.About.Root" parent="Theme.About">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">@dimen/no_margin</item>
+        <item name="android:padding">@dimen/no_padding</item>
+    </style>
+    <style name="Theme.About.Content" parent="Theme.About">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">@dimen/no_margin</item>
+        <item name="android:padding">@dimen/no_padding</item>
+    </style>
+
+    <!-- Preferences Activity -->
+    <style name="Theme.Preferences" parent="AppTheme">
+    </style>
+    <style name="Theme.Preferences.Root" parent="Theme.Preferences">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingBottom">@dimen/full_margin</item>
+        <item name="android:paddingLeft">@dimen/full_margin</item>
+        <item name="android:paddingRight">@dimen/full_margin</item>
+        <item name="android:paddingTop">@dimen/full_margin</item>
+        <item name="android:padding">@dimen/no_padding</item>
+        <item name="android:layout_margin">@dimen/no_padding</item>
+    </style>
+    <style name="Theme.Preferences.Content" parent="Theme.Preferences">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!-- Preferences Fragment -->
+    <style name="Theme.Preferences.Fragment" parent="AppTheme">
+    </style>
+    <style name="Theme.Preferences.Fragment.ScrollView" parent="Theme.Preferences.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Theme.Preferences.Fragment.Layout" parent="Theme.Preferences.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingBottom">@dimen/full_margin</item>
+        <item name="android:paddingLeft">@dimen/full_margin</item>
+        <item name="android:paddingRight">@dimen/full_margin</item>
+        <item name="android:paddingTop">@dimen/full_margin</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="Theme.Preferences.Fragment.Title" parent="Theme.Preferences.Fragment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+    <style name="Theme.Preferences.Fragment.Radio.Group" parent="Theme.Preferences.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/full_margin</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="Theme.Preferences.Fragment.Radio.Button" parent="Theme.Preferences.Fragment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/settings.text_size</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <!-- Favorites Activity -->
+    <style name="Theme.Favorites" parent="AppTheme">
+    </style>
+    <style name="Theme.Favorites.Root" parent="Theme.Favorites">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingBottom">@dimen/full_margin</item>
+        <item name="android:paddingLeft">@dimen/full_margin</item>
+        <item name="android:paddingRight">@dimen/full_margin</item>
+        <item name="android:paddingTop">@dimen/full_margin</item>
+        <item name="android:padding">@dimen/no_padding</item>
+        <item name="android:layout_margin">@dimen/no_margin</item>
+    </style>
+    <style name="Theme.Favorites.Content" parent="Theme.Favorites">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!-- Main Content -->
+    <style name="Theme.Main.Content" parent="AppTheme">
+    </style>
+    <style name="Theme.Main.Content.Root" parent="Theme.Main.Content">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">@dimen/no_padding</item>
+        <item name="android:layout_margin">@dimen/no_margin</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="Theme.Main.Content.Map" parent="Theme.Main.Content">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">@integer/content.map.weight</item>
+    </style>
+    <style name="Theme.Main.Content.Search" parent="Theme.Main.Content">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/listview_background</item>
+        <item name="android:padding">@dimen/no_padding</item>
+        <item name="android:layout_margin">@dimen/no_margin</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+        <item name="android:layout_weight">@integer/content.search.weight</item>
+        <item name="android:numColumns">@integer/search_column_number</item>
+    </style>
+
+    <!-- Widget (Layout) -->
+    <style name="Theme.Widget.Layout" parent="AppTheme">
+    </style>
+    <style name="Theme.Widget.Layout.Root" parent="Theme.Widget.Layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/no_margin</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="Theme.Widget.Layout.Title" parent="Theme.Widget.Layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:gravity">left|start</item>
+    </style>
+    <style name="Theme.Widget.Layout.Frame" parent="Theme.Widget.Layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Theme.Widget.Layout.List" parent="Theme.Widget.Layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="Theme.Widget.Layout.Empty" parent="Theme.Widget.Layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/colorWidgetBackground</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/extra_extra_large_text_size</item>
+    </style>
+
+    <!-- Widget (List Item) -->
+    <style name="Theme.Widget.Item" parent="AppTheme">
+    </style>
+    <style name="Theme.Widget.Item.Grid_Layout" parent="Theme.Widget.Item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/colorWidgetBackground</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:padding">@dimen/default_padding</item>
+    </style>
+    <style name="Theme.Widget.Item.Label" parent="Theme.Widget.Item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/extra_large_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingRight">@dimen/default_padding</item>
+        <item name="android:paddingEnd">@dimen/default_padding</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="Theme.Widget.Item.Value.Resident" parent="Theme.Widget.Item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/extra_large_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="Theme.Widget.Item.Value.NonResident" parent="Theme.Widget.Item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- Navbar Header -->
+    <style name="Theme.Navbar.Header" parent="ThemeOverlay.AppCompat.Dark">
+    </style>
+    <style name="Theme.Navbar.Header.Layout" parent="Theme.Navbar.Header">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/nav_header_height</item>
+        <item name="android:background">@drawable/side_nav_bar</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingBottom">@dimen/full_margin</item>
+        <item name="android:paddingLeft">@dimen/full_margin</item>
+        <item name="android:paddingRight">@dimen/full_margin</item>
+        <item name="android:paddingTop">@dimen/full_margin</item>
+    </style>
+    <style name="Theme.Navbar.Header.Icon" parent="Theme.Navbar.Header">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/nav_header_vertical_spacing</item>
+        <item name="android:contentDescription">@string/navbar_icon.content_description</item>
+    </style>
+    <style name="Theme.Navbar.Header.Title" parent="Theme.Navbar.Header">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">start</item>
+        <item name="android:paddingTop">@dimen/nav_header_vertical_spacing</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+    </style>
+    <style name="Theme.Navbar.Header.Version" parent="Theme.Navbar.Header">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+    <!-- Search Result -->
+    <style name="Theme.Search.Result" parent="AppTheme">
+    </style>
+    <style name="Theme.Search.Result.Root" parent="Theme.Search.Result">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:columnCount">@integer/search_column_count</item>
+        <item name="android:rowCount">@integer/search_row_count</item>
+        <item name="android:padding">@dimen/default_padding</item>
+    </style>
+    <style name="Theme.Search.Result.Label" parent="Theme.Search.Result">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/search_result.label.text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingRight">@dimen/default_padding</item>
+        <item name="android:paddingEnd">@dimen/default_padding</item>
+    </style>
+    <style name="Theme.Search.Result.Value.Resident" parent="Theme.Search.Result">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/search_result.value.resident.text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Theme.Search.Result.Value.NonResident" parent="Theme.Search.Result">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/search_result.value.non_resident.text_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="Theme.Search.Result.Button" parent="Theme.Search.Result">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_margin">@dimen/half_margin</item>
+        <item name="android:textOn"></item>
+        <item name="android:textOff"></item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+    </style>
+    <style name="Theme.Search.Result.Button.Favorite" parent="Theme.Search.Result.Button">
+        <item name="android:background">@drawable/favorite_toggle_black</item>
+        <item name="android:contentDescription">@string/search.favorite.content_description</item>
+    </style>
+    <style name="Theme.Search.Result.Button.Share" parent="Theme.Search.Result.Button">
+        <item name="android:background">@drawable/ic_menu_share_black</item>
+        <item name="android:contentDescription">@string/search.share.content_description</item>
+    </style>
+    <style name="Theme.Search.Result.Button.Place" parent="Theme.Search.Result.Button">
+        <item name="android:background">@drawable/ic_place_black_24dp</item>
+        <item name="android:contentDescription">@string/search.place.content_description</item>
+    </style>
+    <style name="Theme.Search.Result.Button.Container" parent="Theme.Search.Result">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_columnSpan">@integer/search_button_column_span</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <!-- Favorites (List Item) -->
+    <style name="Theme.Favorites.Item" parent="AppTheme">
+    </style>
+    <style name="Theme.Favorites.Item.Root" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">@dimen/slight_padding</item>
+    </style>
+    <style name="Theme.Favorites.Item.Map" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/map_height</item>
+        <item name="android:contentDescription">@string/mapview.content_description</item>
+    </style>
+    <style name="Theme.Favorites.Item.Container" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Theme.Favorites.Item.Name" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="Theme.Favorites.Item.Button" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/half_margin</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:textOn"></item>
+        <item name="android:textOff"></item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <style name="Theme.Favorites.Item.Button.Share" parent="Theme.Favorites.Item.Button">
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:background">@drawable/ic_menu_share</item>
+        <item name="android:contentDescription">@string/favorites.share.content_description</item>
+    </style>
+    <style name="Theme.Favorites.Item.Button.Favorite" parent="Theme.Favorites.Item.Button">
+        <item name="android:layout_toLeftOf">@id/list_item_favorite_share_button</item>
+        <item name="android:layout_toStartOf">@id/list_item_favorite_share_button</item>
+        <item name="android:background">@drawable/favorite_toggle_white</item>
+        <item name="android:contentDescription">@string/favorites.favorite.content_description</item>
+    </style>
+    <style name="Theme.Favorites.Item.Scrim" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/gradient_scrim</item>
+    </style>
+
+    <!-- Info Window -->
+    <style name="Theme.InfoWindow" parent="AppTheme">
+    </style>
+    <style name="Theme.InfoWindow.Outer" parent="Theme.InfoWindow">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/custom_info_bubble</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="Theme.InfoWindow.Inner" parent="Theme.InfoWindow">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="Theme.InfoWindow.Title" parent="Theme.InfoWindow">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/extra_large_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Theme.InfoWindow.Resident" parent="Theme.InfoWindow">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+    </style>
+
+    <!-- Map Fragment -->
+    <style name="Theme.Map.Fragment" parent="AppTheme">
+    </style>
+    <style name="Theme.Map.Fragment.Root" parent="Theme.Map.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="Theme.Map.Fragment.Content" parent="Theme.Map.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">@integer/content_weight</item>
+    </style>
+
+    <!-- Favorites Fragment -->
+    <style name="Theme.Favorites.Fragment" parent="AppTheme">
+    </style>
+    <style name="Theme.Favorites.Fragment.Root" parent="Theme.Favorites.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">@dimen/no_padding</item>
+        <item name="android:layout_margin">@dimen/no_margin</item>
+    </style>
+    <style name="Theme.Favorites.Fragment.Content" parent="Theme.Favorites.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!-- About fragment -->
+    <style name="Theme.About.Fragment" parent="AppTheme">
+    </style>
+    <style name="Theme.About.Fragment.Scroll" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/no_padding</item>
+        <item name="android:layout_margin">@dimen/no_margin</item>
+        <item name="android:background">@color/holo_blue_dark</item>
+    </style>
+    <style name="Theme.About.Fragment.Linear" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">@dimen/no_margin</item>
+        <item name="android:background">@color/holo_blue_dark</item>
+        <item name="android:padding">@dimen/no_padding</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="Theme.About.Fragment.About.Grid" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/half_margin</item>
+        <item name="android:layout_marginStart">@dimen/half_margin</item>
+        <item name="android:layout_marginRight">@dimen/half_margin</item>
+        <item name="android:layout_marginEnd">@dimen/half_margin</item>
+        <item name="android:layout_marginTop">@dimen/half_margin</item>
+        <item name="android:layout_marginBottom">@dimen/quarter_margin</item>
+        <item name="android:columnCount">@integer/about_grid_column_count</item>
+        <item name="android:rowCount">@integer/about_grid_row_count</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+    </style>
+    <style name="Theme.About.Fragment.About.Header" parent="Theme.About.Fragment">
+        <item name="android:layout_columnSpan">@integer/about_header_column_span</item>
+        <item name="android:layout_gravity">left|start|top</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+    <style name="Theme.About.Fragment.About.Label" parent="Theme.About.Fragment">
+        <item name="android:layout_gravity">left|start|top</item>
+        <item name="android:text">@string/about_name_label</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingRight">@dimen/default_padding</item>
+        <item name="android:paddingEnd">@dimen/default_padding</item>
+    </style>
+    <style name="Theme.About.Fragment.About.Value" parent="Theme.About.Fragment">
+        <item name="android:layout_gravity">left|start|top</item>
+    </style>
+    <style name="Theme.About.Fragment.Acknowledgments.Layout" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_marginLeft">@dimen/half_margin</item>
+        <item name="android:layout_marginStart">@dimen/half_margin</item>
+        <item name="android:layout_marginRight">@dimen/half_margin</item>
+        <item name="android:layout_marginEnd">@dimen/half_margin</item>
+        <item name="android:layout_marginTop">@dimen/quarter_margin</item>
+        <item name="android:layout_marginBottom">@dimen/quarter_margin</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+        <item name="android:columnCount">1</item>
+    </style>
+    <style name="Theme.About.Fragment.Acknowledgments.Header" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|start|top</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+    <style name="Theme.About.Fragment.Acknowledgments.Label" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|start|top</item>
+        <item name="android:paddingBottom">@dimen/default_padding</item>
+    </style>
+    <style name="Theme.About.Fragment.Acknowledgments.Value" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|start|top</item>
+    </style>
+    <style name="Theme.About.Fragment.Contact.Layout" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_marginLeft">@dimen/half_margin</item>
+        <item name="android:layout_marginStart">@dimen/half_margin</item>
+        <item name="android:layout_marginRight">@dimen/half_margin</item>
+        <item name="android:layout_marginEnd">@dimen/half_margin</item>
+        <item name="android:layout_marginTop">@dimen/quarter_margin</item>
+        <item name="android:layout_marginBottom">@dimen/quarter_margin</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+    </style>
+    <style name="Theme.About.Fragment.Contact.Header" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+    <style name="Theme.About.Fragment.Contact.Invitation" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|start|top</item>
+        <item name="android:lines">@integer/contact_invitation_lines</item>
+        <item name="android:paddingBottom">@dimen/default_padding</item>
+    </style>
+    <style name="Theme.About.Fragment.Contact.Address" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|start|top</item>
+        <item name="android:autoLink">email</item>
+    </style>
+    <style name="Theme.About.Fragment.Info.Layout" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_marginLeft">@dimen/half_margin</item>
+        <item name="android:layout_marginStart">@dimen/half_margin</item>
+        <item name="android:layout_marginRight">@dimen/half_margin</item>
+        <item name="android:layout_marginEnd">@dimen/half_margin</item>
+        <item name="android:layout_marginTop">@dimen/quarter_margin</item>
+        <item name="android:layout_marginBottom">@dimen/quarter_margin</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+    </style>
+    <style name="Theme.About.Fragment.Info.Header" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|start|top</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+    <style name="Theme.About.Fragment.Info.Blurb" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|start|top</item>
+        <item name="android:lines">@integer/info_blurb_lines</item>
+        <item name="android:autoLink">web</item>
+        <item name="android:paddingBottom">@dimen/default_padding</item>
+    </style>
+    <style name="Theme.About.Fragment.Info.Link" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|start|top</item>
+        <item name="android:autoLink">web</item>
+    </style>
+    <style name="Theme.About.Fragment.History.Layout" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_marginLeft">@dimen/half_margin</item>
+        <item name="android:layout_marginStart">@dimen/half_margin</item>
+        <item name="android:layout_marginRight">@dimen/half_margin</item>
+        <item name="android:layout_marginEnd">@dimen/half_margin</item>
+        <item name="android:layout_marginTop">@dimen/quarter_margin</item>
+        <item name="android:layout_marginBottom">@dimen/half_margin</item>
+        <item name="android:padding">@dimen/half_margin</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+    </style>
+    <style name="Theme.About.Fragment.History.Header" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|start|top</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+    <style name="Theme.About.Fragment.History.Version" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|start|top</item>
+    </style>
+
+</resources>

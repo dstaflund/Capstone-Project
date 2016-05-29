@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Theme.InfoWindow.Outer">
+
+    <LinearLayout
+        style="@style/Theme.InfoWindow.Inner">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/Theme.InfoWindow.Title"/>
+
+        <TextView
+            android:id="@+id/resident"
+            style="@style/Theme.InfoWindow.Resident"/>
+
+    </LinearLayout>
+</LinearLayout>

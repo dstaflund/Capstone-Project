@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    style="@style/Theme.Favorites.Item.Root">
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/lite_listrow_map"
+        map:liteMode="true"
+        map:mapType="none"
+        style="@style/Theme.Favorites.Item.Map"/>
+
+    <View
+        style="@style/Theme.Favorites.Item.Scrim"/>
+
+    <RelativeLayout
+        style="@style/Theme.Favorites.Item.Container">
+
+        <TextView
+            android:id="@+id/lite_listrow_text"
+            style="@style/Theme.Favorites.Item.Name"/>
+
+        <ImageButton
+            android:id="@+id/list_item_favorite_share_button"
+            style="@style/Theme.Favorites.Item.Button.Share"/>
+
+        <ImageButton
+            android:id="@+id/list_item_favorite_favorite_button"
+            style="@style/Theme.Favorites.Item.Button.Favorite"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Introductory slideshow -->
+    <string name="intro_project_description">Saskatchewan honours residents by naming geo-memorials after them</string>
+    <string name="intro_app_description">The Geo-Memorial app lets you explore these geo-memorials</string>
+
+    <!-- Acknowledgments -->
+    <string name="acknowledgments_thanks2">\u2022 Saskatchewan Parks, Culture, and Sport</string>
+
+</resources>

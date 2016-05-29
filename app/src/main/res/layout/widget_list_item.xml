@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:columnCount="2"
+    android:rowCount="6"
+    style="@style/Theme.Widget.Item.Grid_Layout">
+
+    <TextView
+        android:id="@+id/widget_resident_label"
+        android:text="@string/widget_resident"
+        style="@style/Theme.Widget.Item.Label"/>
+
+    <TextView
+        android:id="@+id/widget_resident"
+        style="@style/Theme.Widget.Item.Value.Resident"/>
+
+    <TextView
+        android:id="@+id/widget_hometown_label"
+        android:text="@string/widget_hometown"
+        style="@style/Theme.Widget.Item.Label"/>
+
+    <TextView
+        android:id="@+id/widget_hometown"
+        style="@style/Theme.Widget.Item.Value.NonResident"/>
+
+    <TextView
+        android:id="@+id/widget_rank_label"
+        android:text="@string/widget_rank"
+        style="@style/Theme.Widget.Item.Label"/>
+
+    <TextView
+        android:id="@+id/widget_rank"
+        style="@style/Theme.Widget.Item.Value.NonResident"/>
+
+    <TextView
+        android:id="@+id/widget_obit_label"
+        android:text="@string/widget_obit"
+        style="@style/Theme.Widget.Item.Label"/>
+
+    <TextView
+        android:id="@+id/widget_obit"
+        style="@style/Theme.Widget.Item.Value.NonResident"/>
+
+    <TextView
+        android:id="@+id/widget_geomemorial_label"
+        android:text="@string/widget_geomemorial"
+        style="@style/Theme.Widget.Item.Label"/>
+
+    <TextView
+        android:id="@+id/widget_geomemorial"
+        style="@style/Theme.Widget.Item.Value.NonResident"/>
+
+</GridLayout>

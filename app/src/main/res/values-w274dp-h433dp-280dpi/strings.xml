@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Introductory slideshow -->
+    <string name="intro_project_description">Saskatchewan uses geo-memorials to honour residents</string>
+
+    <!-- Acknowledgments -->
+    <string name="acknowledgments_thanks2">\u2022 Sask. Parks, Culture, and Sport</string>
+
+</resources>

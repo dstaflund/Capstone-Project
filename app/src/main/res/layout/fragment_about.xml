@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_about_nested_scroll_view"
+    style="@style/Theme.About.Fragment.Scroll">
+
+    <LinearLayout
+        style="@style/Theme.About.Fragment.Linear">
+
+        <GridLayout
+            android:id="@+id/fragment_about_about_layout"
+            style="@style/Theme.About.Fragment.About.Grid">
+
+            <TextView
+                android:id="@+id/fragment_about_about_header"
+                android:text="@string/about_header"
+                style="@style/Theme.About.Fragment.About.Header"/>
+
+            <TextView
+                android:id="@+id/fragment_about_name_label"
+                android:text="@string/about_name_label"
+                style="@style/Theme.About.Fragment.About.Label"/>
+
+            <TextView
+                android:id="@+id/fragment_about_name_value"
+                android:text="@string/about_name_value"
+                style="@style/Theme.About.Fragment.About.Value"/>
+
+            <TextView
+                android:id="@+id/fragment_about_version_label"
+                android:text="@string/about_version_label"
+                style="@style/Theme.About.Fragment.About.Label"/>
+
+            <TextView
+                android:id="@+id/fragment_about_version_value"
+                android:text="@string/about_version_value"
+                style="@style/Theme.About.Fragment.About.Value"/>
+
+            <TextView
+                android:id="@+id/fragment_about_date_label"
+                android:text="@string/about_date_label"
+                style="@style/Theme.About.Fragment.About.Label"/>
+
+            <TextView
+                android:id="@+id/fragment_about_date_value"
+                android:text="@string/about_date_value"
+                style="@style/Theme.About.Fragment.About.Value"/>
+
+            <TextView
+                android:id="@+id/fragment_about_by_label"
+                android:text="@string/about_by_label"
+                style="@style/Theme.About.Fragment.About.Label"/>
+
+            <TextView
+                android:id="@+id/fragment_about_by_value"
+                android:text="@string/about_by_value"
+                style="@style/Theme.About.Fragment.About.Value"/>
+
+        </GridLayout>
+
+        <GridLayout
+            android:id="@+id/fragment_about_acknowledgments_layout"
+            style="@style/Theme.About.Fragment.Acknowledgments.Layout">
+
+            <TextView
+                android:id="@+id/fragment_about_acknowledgments_header"
+                android:text="@string/acknowledgments_header"
+                style="@style/Theme.About.Fragment.Acknowledgments.Header"/>
+
+            <TextView
+                android:id="@+id/fragment_about_acknowledgments_text"
+                android:text="@string/acknowledgments_thanks_to"
+                style="@style/Theme.About.Fragment.Acknowledgments.Label"/>
+
+            <TextView
+                android:id="@+id/fragment_about_acknowledgments_1"
+                android:text="@string/acknowledgments_thanks1"
+                style="@style/Theme.About.Fragment.Acknowledgments.Value"/>
+
+            <TextView
+                android:id="@+id/fragment_about_acknowledgments_2"
+                android:text="@string/acknowledgments_thanks2"
+                style="@style/Theme.About.Fragment.Acknowledgments.Value"/>
+
+            <TextView
+                android:id="@+id/fragment_about_acknowledgments_3"
+                android:text="@string/acknowledgments_thanks3"
+                style="@style/Theme.About.Fragment.Acknowledgments.Value"/>
+
+        </GridLayout>
+
+        <GridLayout
+            android:id="@+id/fragment_about_contact_layout"
+            style="@style/Theme.About.Fragment.Contact.Layout">
+
+            <TextView
+                android:id="@+id/fragment_about_contact_header"
+                android:text="@string/contact_header"
+                style="@style/Theme.About.Fragment.Contact.Header"/>
+
+            <TextView
+                android:id="@+id/fragment_about_contact_invitation"
+                android:text="@string/contact_invitation"
+                style="@style/Theme.About.Fragment.Contact.Invitation"/>
+
+            <TextView
+                android:id="@+id/fragment_about_contact_value"
+                android:text="@string/contact_address"
+                style="@style/Theme.About.Fragment.Contact.Address"/>
+
+        </GridLayout>
+
+        <GridLayout
+            android:id="@+id/fragment_about_info_layout"
+            style="@style/Theme.About.Fragment.Info.Layout">
+
+            <TextView
+                android:id="@+id/fragment_about_info_header"
+                android:text="@string/info_header"
+                style="@style/Theme.About.Fragment.Info.Header"/>
+
+            <TextView
+                android:id="@+id/fragment_about_info_text"
+                android:text="@string/info_blurb"
+                style="@style/Theme.About.Fragment.Info.Blurb"/>
+
+            <TextView
+                android:id="@+id/fragment_about_info_link_1"
+                android:text="@string/info_url1"
+                style="@style/Theme.About.Fragment.Info.Link"/>
+
+            <TextView
+                android:id="@+id/fragment_about_info_link_2"
+                android:text="@string/info_url2"
+                style="@style/Theme.About.Fragment.Info.Link"/>
+
+            <TextView
+                android:id="@+id/fragment_about_info_link_3"
+                android:text="@string/info_url3"
+                style="@style/Theme.About.Fragment.Info.Link"/>
+
+            <TextView
+                android:id="@+id/fragment_about_info_link_4"
+                android:text="@string/info_url4"
+                style="@style/Theme.About.Fragment.Info.Link"/>
+
+        </GridLayout>
+
+        <GridLayout
+            android:id="@+id/fragment_about_history_layout"
+            style="@style/Theme.About.Fragment.History.Layout">
+
+            <TextView
+                android:id="@+id/fragment_about_history_header"
+                android:text="@string/history_header"
+                style="@style/Theme.About.Fragment.History.Header"/>
+
+            <TextView
+                android:id="@+id/fragment_about_history_v1_0_0"
+                android:text="@string/history_release1"
+                style="@style/Theme.About.Fragment.History.Version"/>
+
+        </GridLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

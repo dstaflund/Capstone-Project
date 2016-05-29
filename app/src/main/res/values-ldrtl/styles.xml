@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- About fragment -->
+    <style name="Theme.About.Fragment" parent="AppTheme">
+    </style>
+    <style name="Theme.About.Fragment.Scroll" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/no_padding</item>
+        <item name="android:layout_margin">@dimen/no_margin</item>
+        <item name="android:background">@color/holo_blue_dark</item>
+    </style>
+    <style name="Theme.About.Fragment.Linear" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">@dimen/no_margin</item>
+        <item name="android:background">@color/holo_blue_dark</item>
+        <item name="android:padding">@dimen/no_padding</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <style name="Theme.About.Fragment.About.Grid" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/half_margin</item>
+        <item name="android:layout_marginStart">@dimen/half_margin</item>
+        <item name="android:layout_marginRight">@dimen/half_margin</item>
+        <item name="android:layout_marginEnd">@dimen/half_margin</item>
+        <item name="android:layout_marginTop">@dimen/half_margin</item>
+        <item name="android:layout_marginBottom">@dimen/quarter_margin</item>
+        <item name="android:columnCount">@integer/about_grid_column_count</item>
+        <item name="android:rowCount">@integer/about_grid_row_count</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+    </style>
+    <style name="Theme.About.Fragment.About.Header" parent="Theme.About.Fragment">
+        <item name="android:layout_columnSpan">@integer/about_header_column_span</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+    <style name="Theme.About.Fragment.About.Label" parent="Theme.About.Fragment">
+        <item name="android:layout_gravity">right</item>
+        <item name="android:text">@string/about_name_label</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingRight">@dimen/default_padding</item>
+        <item name="android:paddingEnd">@dimen/default_padding</item>
+    </style>
+    <style name="Theme.About.Fragment.About.Value" parent="Theme.About.Fragment">
+        <item name="android:layout_gravity">right</item>
+    </style>
+
+    <style name="Theme.About.Fragment.Acknowledgments.Layout" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_marginLeft">@dimen/half_margin</item>
+        <item name="android:layout_marginStart">@dimen/half_margin</item>
+        <item name="android:layout_marginRight">@dimen/half_margin</item>
+        <item name="android:layout_marginEnd">@dimen/half_margin</item>
+        <item name="android:layout_marginTop">@dimen/quarter_margin</item>
+        <item name="android:layout_marginBottom">@dimen/quarter_margin</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+        <item name="android:columnCount">1</item>
+    </style>
+    <style name="Theme.About.Fragment.Acknowledgments.Header" parent="Theme.About.Fragment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+    <style name="Theme.About.Fragment.Acknowledgments.Label" parent="Theme.About.Fragment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:paddingBottom">@dimen/default_padding</item>
+    </style>
+    <style name="Theme.About.Fragment.Acknowledgments.Value" parent="Theme.About.Fragment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right</item>
+    </style>
+
+    <style name="Theme.About.Fragment.Contact.Layout" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:columnCount">1</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_marginLeft">@dimen/half_margin</item>
+        <item name="android:layout_marginStart">@dimen/half_margin</item>
+        <item name="android:layout_marginRight">@dimen/half_margin</item>
+        <item name="android:layout_marginEnd">@dimen/half_margin</item>
+        <item name="android:layout_marginTop">@dimen/quarter_margin</item>
+        <item name="android:layout_marginBottom">@dimen/quarter_margin</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+    </style>
+    <style name="Theme.About.Fragment.Contact.Header" parent="Theme.About.Fragment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+    <style name="Theme.About.Fragment.Contact.Invitation" parent="Theme.About.Fragment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:lines">@integer/contact_invitation_lines</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:paddingBottom">@dimen/default_padding</item>
+    </style>
+    <style name="Theme.About.Fragment.Contact.Address" parent="Theme.About.Fragment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:autoLink">email</item>
+    </style>
+
+    <style name="Theme.About.Fragment.Info.Layout" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:columnCount">1</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_marginLeft">@dimen/half_margin</item>
+        <item name="android:layout_marginStart">@dimen/half_margin</item>
+        <item name="android:layout_marginRight">@dimen/half_margin</item>
+        <item name="android:layout_marginEnd">@dimen/half_margin</item>
+        <item name="android:layout_marginTop">@dimen/quarter_margin</item>
+        <item name="android:layout_marginBottom">@dimen/quarter_margin</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+    </style>
+    <style name="Theme.About.Fragment.Info.Header" parent="Theme.About.Fragment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+    <style name="Theme.About.Fragment.Info.Blurb" parent="Theme.About.Fragment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:lines">@integer/info_blurb_lines</item>
+        <item name="android:autoLink">web</item>
+        <item name="android:paddingBottom">@dimen/default_padding</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+    <style name="Theme.About.Fragment.Info.Link" parent="Theme.About.Fragment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:autoLink">web</item>
+    </style>
+
+    <style name="Theme.About.Fragment.History.Layout" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/half_margin</item>
+        <item name="android:layout_marginStart">@dimen/half_margin</item>
+        <item name="android:layout_marginRight">@dimen/half_margin</item>
+        <item name="android:layout_marginEnd">@dimen/half_margin</item>
+        <item name="android:layout_marginTop">@dimen/quarter_margin</item>
+        <item name="android:layout_marginBottom">@dimen/half_margin</item>
+        <item name="android:columnCount">1</item>
+        <item name="android:rowCount">2</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:padding">@dimen/half_margin</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+    </style>
+    <style name="Theme.About.Fragment.History.Header" parent="Theme.About.Fragment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+    <style name="Theme.About.Fragment.History.Version" parent="Theme.About.Fragment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right</item>
+    </style>
+
+    <!-- Favorites (List Item) -->
+    <style name="Theme.Favorites.Item" parent="AppTheme">
+    </style>
+    <style name="Theme.Favorites.Item.Root" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">@dimen/slight_padding</item>
+    </style>
+    <style name="Theme.Favorites.Item.Map" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/map_height</item>
+        <item name="android:contentDescription">@string/mapview.content_description</item>
+    </style>
+    <style name="Theme.Favorites.Item.Container" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Theme.Favorites.Item.Name" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="Theme.Favorites.Item.Button" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/half_margin</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:textOn"></item>
+        <item name="android:textOff"></item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <style name="Theme.Favorites.Item.Button.Share" parent="Theme.Favorites.Item.Button">
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:background">@drawable/ic_menu_share</item>
+        <item name="android:contentDescription">@string/favorites.share.content_description</item>
+    </style>
+    <style name="Theme.Favorites.Item.Button.Favorite" parent="Theme.Favorites.Item.Button">
+        <item name="android:layout_toLeftOf">@id/list_item_favorite_share_button</item>
+        <item name="android:layout_toStartOf">@id/list_item_favorite_share_button</item>
+        <item name="android:background">@drawable/favorite_toggle_white</item>
+        <item name="android:contentDescription">@string/favorites.favorite.content_description</item>
+    </style>
+    <style name="Theme.Favorites.Item.Scrim" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/gradient_scrim</item>
+    </style>
+
+</resources>

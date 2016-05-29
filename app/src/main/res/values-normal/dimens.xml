@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Search Result -->
+    <dimen name="search_result.label.text_size">@dimen/extra_large_text_size</dimen>
+    <dimen name="search_result.value.resident.text_size">@dimen/extra_large_text_size</dimen>
+    <dimen name="search_result.value.non_resident.text_size">@dimen/extra_large_text_size</dimen>
+
+    <!-- Settings -->
+    <dimen name="settings.text_size">16sp</dimen>
+
+</resources>

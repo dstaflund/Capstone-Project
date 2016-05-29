@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="true">Sask Geo-Memorial</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="label_activity_about">Help &amp; Feedback</string>
+    <string name="label_activity_map">Map</string>
+    <string name="label_activity_favorites">Favorites</string>
+    <string name="label_activity_preferences">Settings</string>
+
+    <string name="search_hint">Search Sask Geo-Memorial</string>
+    <string name="appbar_scrolling_view_behavior" translatable="false">
+        android.support.design.widget.AppBarLayout$ScrollingViewBehavior
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="signed_in_fmt">Signed in as: %s</string>
+    <string name="loading">Loading…</string>
+    <string name="signed_out">Signed out</string>
+
+    <!-- About -->
+    <string name="about_header">ABOUT</string>
+    <string name="about_name_label">Name</string>
+    <string name="about_name_value">Sask. Geo-Memorial</string>
+    <string name="about_version_label">Version</string>
+    <string name="about_version_value" translatable="false">v1.0.0</string>
+    <string name="about_date_label">Date</string>
+    <string name="about_date_value" translatable="false">2016-07-01</string>
+    <string name="about_by_label">By</string>
+    <string name="about_by_value">Darryl Staflund</string>
+
+    <!-- Acknowledgments -->
+    <string name="acknowledgments_header">ACKNOWLEDGMENTS</string>
+    <string name="acknowledgments_thanks_to">Thanks to:</string>
+    <string name="acknowledgments_thanks1">\u2022 Udacity</string>
+    <string name="acknowledgments_thanks2">\u2022 Saskatchewan Parks, Culture, and Sport</string>
+    <string name="acknowledgments_thanks3">\u2022 Mr. Doug Chisholm</string>
+
+    <!-- Contact Us -->
+    <string name="contact_header">CONTACT US</string>
+    <string name="contact_invitation">If you have comments or questions, you can contact the developer at the following address:</string>
+    <string name="contact_address" translatable="false">darryl.staflund@hushmail.com</string>
+
+    <!-- Further Information -->
+    <string name="info_header">FURTHER INFORMATION</string>
+    <string name="info_blurb">For more information on the Saskatchewan Geo-Memorial Project, please check out the following links:</string>
+    <string name="info_url1" translatable="false">\u2022 www.pcs.gov.sk.ca</string>
+    <string name="info_url2" translatable="false">\u2022 sasksearch.com</string>
+    <string name="info_url3" translatable="false">\u2022 woodlandaerialphoto.com</string>
+    <string name="info_url4" translatable="false">\u2022 svwm.ca</string>
+
+    <!-- History -->
+    <string name="history_header">VERSION HISTORY</string>
+    <string name="history_release1">v1.0.0 - Initial Release</string>
+
+    <!-- Map Type -->
+    <string name="map_type_label">MAP TYPE</string>
+    <string name="map_type_normal">NORMAL\n\nTypical road map.  Roads, some man-made features, and important natural features such as rivers are shown.  Road and feature labels are also visible.\n</string>
+    <string name="map_type_terrain">TERRAIN\n\nTopographical data.  The map includes colours, contour lines and labels, and perspective shading.  Some roads and labels are also visible.\n</string>
+    <string name="map_type_satellite">SATELLITE\n\nSatellite photograph data.  Road and feature labels are not visible.\n</string>
+    <string name="map_type_hybrid">HYBRID\n\nSatellite photograph data with road maps added.  Road and feature labels are also visible.\n</string>
+
+    <!-- Search Result -->
+    <string name="search_resident">RESIDENT</string>
+    <string name="search_hometown">HOMETOWN</string>
+    <string name="search_rank">RANK</string>
+    <string name="search_obit">OBIT.</string>
+    <string name="search_geomemorial">GEOMEMORIAL</string>
+    <string name="search_nts_sheet">NTS SHEET</string>
+    <string name="search_coordinate">LAT. / LNG.</string>
+    <string name="search.share.content_description">Share Button</string>
+    <string name="search.favorite.content_description">Select / Unselect Favorite Button</string>
+    <string name="search.place.content_description">Zoom Marker Button</string>
+
+    <!-- Drawer Header -->
+    <string name="drawer_header_title">Sask. Geo-Memorial</string>
+    <string name="drawer_header_version" translatable="false">v1.0.0</string>
+
+    <!-- Widget -->
+    <string name="widget_header">On This Day</string>
+    <string name="widget_empty_content">There is no one today.  Check back tomorrow.</string>
+    <string name="widget_resident">RESIDENT</string>
+    <string name="widget_hometown">HOMETOWN</string>
+    <string name="widget_rank">RANK</string>
+    <string name="widget_obit">OBIT.</string>
+    <string name="widget_geomemorial">GEOMEMORIAL</string>
+
+    <!-- Search -->
+    <string name="search_title">Search Sask Geo-Memorial</string>
+
+    <!-- Navigation Menu -->
+    <string name="menu_map_type_normal">Normal</string>
+    <string name="menu_map_type_terrain">Terrain</string>
+    <string name="menu_map_type_satellite">Satellite</string>
+    <string name="menu_map_type_hybrid">Hybrid</string>
+    <string name="menu_favorites">Favorites</string>
+    <string name="menu_clear_history">Clear Search History</string>
+    <string name="menu_preferences">Settings</string>
+    <string name="menu_about">Help &amp; Feedback</string>
+
+    <!-- Toasts -->
+    <string name="toast_map_type_normal">Default map type is now NORMAL</string>
+    <string name="toast_map_type_terrain">Default map type is now TERRAIN</string>
+    <string name="toast_map_type_satellite">Default map type is now SATELLITE</string>
+    <string name="toast_map_type_hybrid">Default map type is now HYBRID</string>
+    <string name="toast_search_history_cleared">Search history has been cleared</string>
+    <string name="toast_search_results_empty">Search did not find any memorials.</string>
+    <string name="toast_search_results_normal">Search found %s memorials.</string>
+    <string name="toast_search_results_too_many">Search found too many memorials.  Only the first %s will be shown.</string>
+
+    <!-- String Format Patterns -->
+    <string name="string_format_name_pattern" formatted="false">Named After:  %s</string>
+    <string name="string_format_coordinate_pattern" formatted="false">%s</string>
+    <string name="string_format_nts_sheet_pattern" formatted="false">%s (%s)</string>
+    <string name="string_format_lat_lng_pattern" formatted="false">%s / %s</string>
+    <string name="string_format_fab_pattern">Replace with your own action</string>
+
+    <!-- Introductory Slideshow -->
+    <string name="intro_label">Sask. Geo-Memorial</string>
+    <string name="intro_project_title">The Project</string>
+    <string name="intro_project_description">Saskatchewan honours residents who have worked or died in service of the Province by naming geographic landmarks after them</string>
+    <string name="intro_app_title">The App</string>
+    <string name="intro_app_description">The Geo-Memorial app gives detailed information on the locations of these landmarks and on the residents they were named after</string>
+    <string name="intro_map_title">The Map</string>
+    <string name="intro_map_description">See where the geo-memorials are by interacting with the map</string>
+    <string name="intro_search_title">Searching</string>
+    <string name="intro_search_description">Search geo-memorials by name, location, or resident</string>
+    <string name="intro_favorites_title">Favorites</string>
+    <string name="intro_favorites_description">Keep a list of your favorite geo-memorials for later viewing</string>
+    <string name="intro_share_title">Sharing</string>
+    <string name="intro_share_description">Share geo-memorials with colleagues, friends, and family</string>
+    <string name="intro_settings_title">Settings</string>
+    <string name="intro_settings_description">Customize your preferred map type in Settings</string>
+    <string name="intro_widget_title">Widget</string>
+    <string name="intro_widget_description">See who died on this date by looking at the Widget</string>
+
+    <!-- Exception patterns and messages -->
+    <string name="exception_illegal_argument_pattern" formatted="false">Could not parse value:  %s</string>
+    <string name="exception_io_exception_pattern" formatted="false">IO Exception:  %s</string>
+    <string name="exception_unsupported_operation_pattern" formatted="false">Unsupported Uri:  %s</string>
+
+    <!-- Share Email -->
+    <string name="email_dialog_header">"Share this Geo-Memorial!"</string>
+    <string name="email_type">text/plain</string>
+    <string name="email_subject_pattern" formatted="false">Saskatchewan Geo-Memorial (%s)</string>
+    <string name="email_body_pattern" formatted="false">%s is a Saskatchewan Geo-Memorial named after %s whose hometown was %s and who died on %s.\n\nThe geomemorial can be viewed at the following link:\n\n%s</string>
+    <string name="email_maps_url_pattern" formatted="false">http://www.google.com/maps/place/%s,%s/@%s,%s,13z</string>
+
+    <!-- Sign In -->
+    <string name="sign_in_label">Sign In</string>
+
+    <!-- Miscellaneous -->
+    <string name="misc_action">Action</string>
+    <string name="misc_space_character" translatable="false"><![CDATA[ ]]></string>
+    <string name="misc_comma_character" translatable="false">,</string>
+    <string name="coordinate_format" translatable="false">#.###</string>
+    <string name="navbar_icon.content_description">Application Icon</string>
+    <string name="mapview.content_description">Map View</string>
+
+    <!-- Favorites -->
+    <string name="favorites.share.content_description">Share Button</string>
+    <string name="favorites.favorite.content_description">Select / Unselect Favorite Button</string>
+
+    <!-- Logging statements -->
+    <string name="log.search.too_few">Search returned no memorials.</string>
+    <string name="log.search_too_many">Search returned an excessive number of memorials.  Only a subset will be shown.</string>
+    <string name="log.search.just_right">Search returned an acceptable number of memorials.</string>
+    <string name="log.date_util.bad_date">A bad date value was encountered.</string>
+    <string name="log.marker_map.marker_not_found">Marker could not be found with the given coordinates.</string>
+    <string name="log.main.loader.missing_arguments">Arguments were not passed to onCreateLoader method</string>
+    <string name="log.helper.script_error">An error was encountered processing the SQL script</string>
+    <string name="log.provider.unsupported_uri">Provide does not support the provided uri.</string>
+
+</resources>

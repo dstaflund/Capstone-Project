@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Theme.Navbar.Header.Layout">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:src="@mipmap/ic_launcher"
+        style="@style/Theme.Navbar.Header.Icon"/>
+
+    <TextView
+        android:text="@string/drawer_header_title"
+        style="@style/Theme.Navbar.Header.Title"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:text="@string/drawer_header_version"
+        style="@style/Theme.Navbar.Header.Version"/>
+
+</LinearLayout>
