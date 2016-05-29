@@ -9,13 +9,13 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">@dimen/no_padding</item>
         <item name="android:layout_margin">@dimen/no_margin</item>
-        <item name="android:background">@color/holo_blue_dark</item>
+        <item name="android:background">@color/colorPrimaryVeryLight</item>
     </style>
     <style name="Theme.About.Fragment.Linear" parent="Theme.About.Fragment">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_margin">@dimen/no_margin</item>
-        <item name="android:background">@color/holo_blue_dark</item>
+        <item name="android:background">@color/colorPrimaryVeryLight</item>
         <item name="android:padding">@dimen/no_padding</item>
         <item name="android:orientation">vertical</item>
     </style>

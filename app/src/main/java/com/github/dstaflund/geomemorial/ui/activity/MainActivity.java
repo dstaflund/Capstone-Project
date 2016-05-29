@@ -50,7 +50,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -66,7 +65,6 @@ import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_HYBRID;
 import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_NORMAL;
 import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_SATELLITE;
 import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_TERRAIN;
-import static com.google.android.gms.maps.model.BitmapDescriptorFactory.fromResource;
 
 public class MainActivity
     extends AppCompatActivity
@@ -444,7 +442,7 @@ public class MainActivity
     public class SearchCursorAdapter extends CursorAdapter {
         private final Integer sViewHolderKey = R.integer.view_holder_id;
         private final Integer sGeomemorialTagKey = R.integer.geomemorial_tag_key;
-        private final BitmapDescriptor sDescriptor = fromResource(R.mipmap.geomemorial_poppy);
+//        private final BitmapDescriptor sDescriptor = fromResource(R.mipmap.geomemorial_poppy);
 
         /**
          * Default constructor
@@ -497,7 +495,7 @@ public class MainActivity
 
                     MarkerOptions markerOptions = new MarkerOptions();
                     markerOptions.position(dataFormatter.getLatLng());
-                    markerOptions.icon(sDescriptor);
+//                    markerOptions.icon(sDescriptor);
                     markerOptions.title(dataFormatter.getGeomemorial());
                     markerOptions.snippet(dataFormatter.getResident());
 
@@ -540,8 +538,8 @@ public class MainActivity
 
                 holder.favoriteButton.setImageDrawable(
                     isFavorite(context, formatter.getGeomemorialId())
-                        ? getApplicationContext().getResources().getDrawable(R.drawable.ic_favorite_black_24dp)
-                        : getApplicationContext().getResources().getDrawable(R.drawable.ic_favorite_border_black_24dp)
+                        ? getApplicationContext().getResources().getDrawable(R.drawable.ic_favorite_accent_24dp)
+                        : getApplicationContext().getResources().getDrawable(R.drawable.ic_favorite_border_accent_24dp)
                 );
                 holder.favoriteButton.setOnClickListener(new View.OnClickListener() {
 
@@ -552,11 +550,11 @@ public class MainActivity
                         boolean isChecked = ! isFavorite(getApplicationContext(), id);
 
                         if (isChecked){
-                            button.setImageResource(R.drawable.ic_favorite_black_24dp);
+                            button.setImageResource(R.drawable.ic_favorite_accent_24dp);
                             addFavorite(getApplicationContext(), id);
                         }
                         else {
-                            button.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+                            button.setImageResource(R.drawable.ic_favorite_border_accent_24dp);
                             removeFavorite(getApplicationContext(), id);
                         }
                     }

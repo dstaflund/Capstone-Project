@@ -5,7 +5,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorAccent1</item>
     </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -107,20 +107,30 @@
     <style name="Theme.Preferences.Fragment.ScrollView" parent="Theme.Preferences.Fragment">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/colorPrimaryVeryLight</item>
     </style>
     <style name="Theme.Preferences.Fragment.Layout" parent="Theme.Preferences.Fragment">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">@dimen/half_margin</item>
+        <item name="android:layout_marginStart">@dimen/half_margin</item>
+        <item name="android:layout_marginRight">@dimen/half_margin</item>
+        <item name="android:layout_marginEnd">@dimen/half_margin</item>
+        <item name="android:layout_marginTop">@dimen/half_margin</item>
+        <item name="android:layout_marginBottom">@dimen/quarter_margin</item>
         <item name="android:paddingBottom">@dimen/full_margin</item>
         <item name="android:paddingLeft">@dimen/full_margin</item>
         <item name="android:paddingRight">@dimen/full_margin</item>
         <item name="android:paddingTop">@dimen/full_margin</item>
+        <item name="android:background">@color/white</item>
         <item name="android:orientation">vertical</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
     </style>
     <style name="Theme.Preferences.Fragment.Title" parent="Theme.Preferences.Fragment">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">start</item>
+
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
     <style name="Theme.Preferences.Fragment.Radio.Group" parent="Theme.Preferences.Fragment">
@@ -277,6 +287,7 @@
         <item name="android:gravity">start</item>
         <item name="android:paddingTop">@dimen/nav_header_vertical_spacing</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="android:textSize">@dimen/extra_extra_large_text_size</item>
     </style>
     <style name="Theme.Navbar.Header.Version" parent="Theme.Navbar.Header">
         <item name="android:layout_width">wrap_content</item>
@@ -325,15 +336,15 @@
         <item name="android:focusableInTouchMode">false</item>
     </style>
     <style name="Theme.Search.Result.Button.Favorite" parent="Theme.Search.Result.Button">
-        <item name="android:background">@drawable/favorite_toggle_black</item>
+        <item name="android:background">@drawable/favorite_toggle_accent</item>
         <item name="android:contentDescription">@string/search.favorite.content_description</item>
     </style>
     <style name="Theme.Search.Result.Button.Share" parent="Theme.Search.Result.Button">
-        <item name="android:background">@drawable/ic_menu_share_black</item>
+        <item name="android:background">@drawable/ic_menu_share_accent</item>
         <item name="android:contentDescription">@string/search.share.content_description</item>
     </style>
     <style name="Theme.Search.Result.Button.Place" parent="Theme.Search.Result.Button">
-        <item name="android:background">@drawable/ic_place_black_24dp</item>
+        <item name="android:background">@drawable/ic_place_accent_24dp_drawable</item>
         <item name="android:contentDescription">@string/search.place.content_description</item>
     </style>
     <style name="Theme.Search.Result.Button.Container" parent="Theme.Search.Result">
@@ -452,6 +463,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:padding">@dimen/no_padding</item>
         <item name="android:layout_margin">@dimen/no_margin</item>
+        <item name="android:background">@color/colorPrimaryVeryLight</item>
     </style>
     <style name="Theme.Favorites.Fragment.Content" parent="Theme.Favorites.Fragment">
         <item name="android:layout_width">match_parent</item>
@@ -466,13 +478,13 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">@dimen/no_padding</item>
         <item name="android:layout_margin">@dimen/no_margin</item>
-        <item name="android:background">@color/holo_blue_dark</item>
+        <item name="android:background">@color/colorPrimaryVeryLight</item>
     </style>
     <style name="Theme.About.Fragment.Linear" parent="Theme.About.Fragment">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_margin">@dimen/no_margin</item>
-        <item name="android:background">@color/holo_blue_dark</item>
+        <item name="android:background">@color/colorPrimaryVeryLight</item>
         <item name="android:padding">@dimen/no_padding</item>
         <item name="android:orientation">vertical</item>
     </style>

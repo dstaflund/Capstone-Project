@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#4CAF50</color>
+    <color name="colorPrimaryVeryLight">#C8E6C9</color>
+    <color name="colorPrimaryLight">#81C784</color>
+    <color name="colorPrimaryDark">#388E3C</color>
+    <color name="colorPrimaryVeryDark">#1B5E20</color>
+
+    <color name="colorAccent1">#FF5722</color>
+    <color name="colorAccent1VeryLight">#FFCCBC</color>
+    <color name="colorAccent1Light">#FF8A65</color>
+    <color name="colorAccent1Dark">#E64A19</color>
+    <color name="colorAccent1VeryDark">#BF360C</color>
+
+    <color name="colorAccent2">#673AB7</color>
+    <color name="colorAccent2VeryLight">#D1C4E9</color>
+    <color name="colorAccent2Light">#9575CD</color>
+    <color name="colorAccent2Dark">#512DA8</color>
+    <color name="colorAccent2VeryDark">#311B92</color>
+
+    <!--
+    -->
+
+
+
     <color name="colorWidgetBackground">#E8EAF6</color>
     <color name="colorDarkButtonNormal">#607D8B</color>
 

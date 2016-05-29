@@ -1,7 +1,6 @@
 package com.github.dstaflund.geomemorial.ui.activity;
 
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -29,53 +28,53 @@ public class IntroActivity extends AppIntro {
             getString(R.string.intro_project_title),
             getString(R.string.intro_project_description),
             R.drawable.intro_1_image,
-            R.color.green
+            R.color.colorAccent1VeryLight
         ));
         addSlide(AppIntroFragment.newInstance(
             getString(R.string.intro_app_title),
             getString(R.string.intro_app_description),
             R.drawable.intro_2_screenshot,
-            R.color.lightGreen
+            R.color.colorAccent1VeryLight
         ));
         addSlide(AppIntroFragment.newInstance(
             getString(R.string.intro_map_title),
             getString(R.string.intro_map_description),
             R.drawable.intro_3_screenshot,
-            R.color.lime
+            R.color.colorAccent1VeryLight
         ));
         addSlide(AppIntroFragment.newInstance(
             getString(R.string.intro_search_title),
             getString(R.string.intro_search_description),
             R.drawable.intro_4_screenshot,
-            R.color.yellow
+            R.color.colorAccent1VeryLight
         ));
         addSlide(AppIntroFragment.newInstance(
             getString(R.string.intro_favorites_title),
             getString(R.string.intro_favorites_description),
             R.drawable.intro_5_screenshot,
-            R.color.amber
+            R.color.colorAccent1VeryLight
         ));
         addSlide(AppIntroFragment.newInstance(
             getString(R.string.intro_share_title),
             getString(R.string.intro_share_description),
             R.drawable.intro_6_screenshot,
-            R.color.orange
+            R.color.colorAccent1VeryLight
         ));
         addSlide(AppIntroFragment.newInstance(
             getString(R.string.intro_settings_title),
             getString(R.string.intro_settings_description),
             R.drawable.intro_7_screenshot,
-            R.color.deepOrange
+            R.color.colorAccent1VeryLight
         ));
         addSlide(AppIntroFragment.newInstance(
             getString(R.string.intro_widget_title),
             getString(R.string.intro_widget_description),
             R.drawable.intro_8_screenshot,
-            R.color.brown
+            R.color.colorAccent1VeryLight
         ));
 
-        setBarColor(Color.parseColor("#3F51B5"));
-        setSeparatorColor(Color.parseColor("#2196F3"));
+        setBarColor(getResources().getColor(R.color.colorPrimaryDark));
+//        setNavBarColor();
 
         showSkipButton(true);
         setProgressButtonEnabled(true);

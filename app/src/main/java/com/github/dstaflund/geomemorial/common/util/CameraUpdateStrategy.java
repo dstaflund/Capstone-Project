@@ -3,7 +3,6 @@ package com.github.dstaflund.geomemorial.common.util;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.github.dstaflund.geomemorial.R;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -14,14 +13,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Map;
 
-import static com.google.android.gms.maps.model.BitmapDescriptorFactory.fromResource;
-
 public final class CameraUpdateStrategy {
 
     public static void setMapLocation(@NonNull Context context, @NonNull GoogleMap map, @NonNull FavoritesMarkerInfo data) {
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(data.getLatLng());
-        markerOptions.icon(fromResource(R.mipmap.geomemorial_poppy));
+//        markerOptions.icon(fromResource(R.mipmap.geomemorial_poppy));
 
         Marker marker = map.addMarker(markerOptions);
         MarkerMap markerMap = new MarkerMap();
