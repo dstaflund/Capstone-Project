@@ -1,89 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Theme.Search.Result.Root"
-    android:elevation="@dimen/default_elevation"
-    android:background="@color/colorPrimaryVeryLight">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/list_item_common_name_label"
-        android:text="@string/search_resident"
-        style="@style/Theme.Search.Result.Label"/>
+        android:id="@+id/record_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/list_item_common_name"
-        style="@style/Theme.Search.Result.Value.Resident"/>
+    <GridLayout
+        style="@style/Theme.Search.Result.Root"
+        android:elevation="@dimen/default_elevation"
+        android:background="@color/colorPrimaryVeryLight">
 
-    <TextView
-        android:id="@+id/list_item_common_hometown_label"
-        android:text="@string/search_hometown"
-        style="@style/Theme.Search.Result.Label"/>
+        <TextView
+            android:id="@+id/list_item_common_name_label"
+            android:text="@string/search_resident"
+            style="@style/Theme.Search.Result.Label"/>
 
-    <TextView
-        android:id="@+id/list_item_common_hometown"
-        style="@style/Theme.Search.Result.Value.NonResident"/>
+        <TextView
+            android:id="@+id/list_item_common_name"
+            style="@style/Theme.Search.Result.Value.Resident"/>
 
-    <TextView
-        android:id="@+id/list_item_common_rank_label"
-        android:text="@string/search_rank"
-        style="@style/Theme.Search.Result.Label"/>
+        <TextView
+            android:id="@+id/list_item_common_hometown_label"
+            android:text="@string/search_hometown"
+            style="@style/Theme.Search.Result.Label"/>
 
-    <TextView
-        android:id="@+id/list_item_common_rank"
-        style="@style/Theme.Search.Result.Value.NonResident"/>
+        <TextView
+            android:id="@+id/list_item_common_hometown"
+            style="@style/Theme.Search.Result.Value.NonResident"/>
 
-    <TextView
-        android:id="@+id/list_item_common_obit_label"
-        android:text="@string/search_obit"
-        style="@style/Theme.Search.Result.Label"/>
+        <TextView
+            android:id="@+id/list_item_common_rank_label"
+            android:text="@string/search_rank"
+            style="@style/Theme.Search.Result.Label"/>
 
-    <TextView
-        android:id="@+id/list_item_common_obit"
-        style="@style/Theme.Search.Result.Value.NonResident"/>
+        <TextView
+            android:id="@+id/list_item_common_rank"
+            style="@style/Theme.Search.Result.Value.NonResident"/>
 
-    <TextView
-        android:id="@+id/list_item_common_geomemorial_label"
-        android:text="@string/search_geomemorial"
-        style="@style/Theme.Search.Result.Label"/>
+        <TextView
+            android:id="@+id/list_item_common_obit_label"
+            android:text="@string/search_obit"
+            style="@style/Theme.Search.Result.Label"/>
 
-    <TextView
-        android:id="@+id/list_item_common_geomemorial"
-        style="@style/Theme.Search.Result.Value.NonResident"/>
+        <TextView
+            android:id="@+id/list_item_common_obit"
+            style="@style/Theme.Search.Result.Value.NonResident"/>
 
-    <TextView
-        android:id="@+id/list_item_common_nts_sheet_label"
-        android:text="@string/search_nts_sheet"
-        style="@style/Theme.Search.Result.Label"/>
+        <TextView
+            android:id="@+id/list_item_common_geomemorial_label"
+            android:text="@string/search_geomemorial"
+            style="@style/Theme.Search.Result.Label"/>
 
-    <TextView
-        android:id="@+id/list_item_common_nts_sheet"
-        style="@style/Theme.Search.Result.Value.NonResident"/>
+        <TextView
+            android:id="@+id/list_item_common_geomemorial"
+            style="@style/Theme.Search.Result.Value.NonResident"/>
 
-    <TextView
-        android:id="@+id/list_item_common_coordinate_label"
-        android:text="@string/search_coordinate"
-        style="@style/Theme.Search.Result.Label"/>
+        <TextView
+            android:id="@+id/list_item_common_nts_sheet_label"
+            android:text="@string/search_nts_sheet"
+            style="@style/Theme.Search.Result.Label"/>
 
-    <TextView
-        android:id="@+id/list_item_common_coordinate"
-        style="@style/Theme.Search.Result.Value.NonResident"/>
+        <TextView
+            android:id="@+id/list_item_common_nts_sheet"
+            style="@style/Theme.Search.Result.Value.NonResident"/>
 
-    <LinearLayout
-        android:id="@+id/list_item_action_layout"
-        style="@style/Theme.Search.Result.Button.Container">
+        <TextView
+            android:id="@+id/list_item_common_coordinate_label"
+            android:text="@string/search_coordinate"
+            style="@style/Theme.Search.Result.Label"/>
 
-        <ImageButton
-            android:id="@+id/favorite_button"
-            style="@style/Theme.Search.Result.Button.Favorite"/>
+        <TextView
+            android:id="@+id/list_item_common_coordinate"
+            style="@style/Theme.Search.Result.Value.NonResident"/>
 
-        <ImageButton
-            android:id="@+id/share_button"
-            style="@style/Theme.Search.Result.Button.Share"/>
+        <LinearLayout
+            android:id="@+id/list_item_action_layout"
+            style="@style/Theme.Search.Result.Button.Container">
 
-        <ImageButton
-            android:id="@+id/place_button"
-            style="@style/Theme.Search.Result.Button.Place"/>
+            <ImageButton
+                android:id="@+id/favorite_button"
+                style="@style/Theme.Search.Result.Button.Favorite"/>
 
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/share_button"
+                style="@style/Theme.Search.Result.Button.Share"/>
 
-</GridLayout>
+            <ImageButton
+                android:id="@+id/place_button"
+                style="@style/Theme.Search.Result.Button.Place"/>
+
+        </LinearLayout>
+    </GridLayout>
+</LinearLayout>

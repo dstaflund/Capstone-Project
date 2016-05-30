@@ -37,6 +37,7 @@ import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.Marker
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbProvider;
 import com.github.dstaflund.geomemorial.ui.fragment.MapFragment;
 import com.github.dstaflund.geomemorial.ui.fragment.SearchResultFragment;
+import com.github.dstaflund.geomemorial.ui.fragment.SearchResultItemFragment;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -59,7 +60,7 @@ public class MainActivity
     NavigationView.OnNavigationItemSelectedListener,
     GoogleApiClient.ConnectionCallbacks,
     GoogleApiClient.OnConnectionFailedListener,
-    SearchResultFragment.OnPlaceButtonClickedListener,
+    SearchResultItemFragment.OnPlaceButtonClickedListener,
     SearchResultFragment.OnChangeCursorListener{
     private static final String sLogTag = MainActivity.class.getSimpleName();
 
@@ -348,7 +349,7 @@ public class MainActivity
         switch (loader.getId()) {
             case EMPTY_SEARCH:
                 mMapFragment.clearMap();
-                mSearchResultFragment.changeCursor(null);
+                mSearchResultFragment.swapCursor(null);
                 break;
             default:
                 if (data == null || data.getCount() == 0) {
@@ -383,14 +384,14 @@ public class MainActivity
                     );
                 }
                 mMapFragment.clearMap();
-                mSearchResultFragment.changeCursor(data);
+                mSearchResultFragment.swapCursor(data);
         }
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         mMapFragment.clearMap();
-        mSearchResultFragment.changeCursor(null);
+        mSearchResultFragment.swapCursor(null);
     }
 
     @Override
@@ -433,7 +434,7 @@ public class MainActivity
     }
 
     @Override
-    public void recordFinished(@NonNull SearchResultFragment.DataFormatter record){
+    public void recordFinished(@NonNull SearchResultItemFragment.DataFormatter record){
         MarkerOptions options = new MarkerOptions();
         options.position(record.getLatLng());
         options.title(record.getGeomemorial());
