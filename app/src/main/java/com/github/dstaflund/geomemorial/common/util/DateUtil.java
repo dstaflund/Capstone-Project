@@ -1,11 +1,8 @@
 package com.github.dstaflund.geomemorial.common.util;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
-
-import com.github.dstaflund.geomemorial.R;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -35,13 +32,13 @@ public final class DateUtil {
      * @return date object
      */
     @Nullable
-    public static Date toDate(@NonNull Context context, @NonNull final String dateString){
+    public static Date toDate(@NonNull final String dateString){
         try {
             return DB_FORMAT.parse(dateString);
         }
 
         catch (ParseException e) {
-            Log.e(sLogTag, context.getString(R.string.log_date_util_bad_date));
+            Log.e(sLogTag, e.getLocalizedMessage());
             return null;
         }
     }
@@ -66,8 +63,8 @@ public final class DateUtil {
      * @return formatted date string
      */
     @NonNull
-    public static String toDisplayString(@NonNull Context context, @NonNull final String dateString){
-        final Date date = toDate(context, dateString);
+    public static String toDisplayString(@NonNull final String dateString){
+        final Date date = toDate(dateString);
         return toString(date).toUpperCase();
     }
 

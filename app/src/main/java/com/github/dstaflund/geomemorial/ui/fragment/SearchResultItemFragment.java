@@ -121,7 +121,7 @@ public class SearchResultItemFragment extends Fragment {
                         .rank(c.getString(GeomemorialDbContract.GeomemorialInfo.IDX_RANK))
                         .obit(c.getString(GeomemorialDbContract.GeomemorialInfo.IDX_OBIT))
                         .build();
-                    shareGeomemorial(getContext(), payload);
+                    shareGeomemorial(payload);
                 }
             }
         });
@@ -277,7 +277,7 @@ public class SearchResultItemFragment extends Fragment {
 
         @NonNull
         public String getObit(){
-            return DateUtil.toDisplayString(mContext, mDataObject.obit);
+            return DateUtil.toDisplayString(mDataObject.obit);
         }
 
         @NonNull

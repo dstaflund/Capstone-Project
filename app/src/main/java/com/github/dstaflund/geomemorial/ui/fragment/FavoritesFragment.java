@@ -186,7 +186,7 @@ public class FavoritesFragment extends Fragment{
                                         .rank(c.getString(IDX_RANK))
                                         .obit(c.getString(IDX_OBIT))
                                         .build();
-                                    shareGeomemorial(getContext(), payload);
+                                    shareGeomemorial(payload);
                                 }
                                 break;
                             default:

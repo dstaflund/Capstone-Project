@@ -1,5 +1,6 @@
 package com.github.dstaflund.geomemorial.common.util;
 
+import android.content.ClipDescription;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,8 +14,8 @@ import java.util.Date;
 public final class SharedIntentManager {
 
     @Nullable
-    private static String toTitleCase(@NonNull Context context, @NonNull String value){
-        String[] words = value.split(context.getString(R.string.misc_space_character));
+    private static String toTitleCase(@NonNull String value){
+        String[] words = value.split(" ");
         StringBuilder sb = new StringBuilder();
         if (words[0].length() > 0) {
             sb
@@ -22,7 +23,7 @@ public final class SharedIntentManager {
                 .append(words[0].subSequence(1, words[0].length()).toString().toLowerCase());
             for (int i = 1; i < words.length; i++) {
                 sb
-                    .append(context.getString(R.string.misc_space_character))
+                    .append(" ")
                     .append(Character.toUpperCase(words[i].charAt(0)))
                     .append(words[i].subSequence(1, words[i].length()).toString().toLowerCase());
             }
@@ -31,45 +32,45 @@ public final class SharedIntentManager {
     }
 
     @Nullable
-    private static String formatDate(@NonNull Context context, @NonNull String unformatted){
-        Date date = DateUtil.toDate(context, unformatted);
+    private static String formatDate(@NonNull String unformatted){
+        Date date = DateUtil.toDate(unformatted);
         return date == null ? null : DateUtil.toString(date);
     }
 
     @NonNull
-    private static String swapNames(@NonNull Context context, @NonNull String value){
-        String[] values = value.split(context.getString(R.string.misc_comma_character));
+    private static String swapNames(@NonNull String value){
+        String[] values = value.split(",");
         if (values.length != 2){
             return value;
         }
-        return values[1].trim() + context.getString(R.string.misc_space_character) + values[0];
+        return values[1].trim() + " " + values[0];
     }
 
-    public static void shareGeomemorial(@NonNull Context context, @NonNull Payload payload){
+    public static void shareGeomemorial(@NonNull Payload payload){
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
-        intent.setType(context.getString(R.string.email_type));
+        intent.setType(ClipDescription.MIMETYPE_TEXT_PLAIN);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
         intent.putExtra(
             Intent.EXTRA_SUBJECT,
             String.format(
-                context.getString(R.string.email_subject_pattern),
-                toTitleCase(context, payload.getGeomemorial())
+                payload.getContext().getString(R.string.email_subject_pattern),
+                toTitleCase(payload.getGeomemorial())
             )
         );
         intent.putExtra(
             Intent.EXTRA_TEXT,
-            String.format(context.getString(R.string.email_body_pattern),
-                toTitleCase(context, payload.getGeomemorial()),
-                toTitleCase(context, swapNames(context, payload.getResident())),
-                toTitleCase(context, payload.getHometown()),
-                formatDate(context, payload.getObit()),
+            String.format(payload.getContext().getString(R.string.email_body_pattern),
+                toTitleCase(payload.getGeomemorial()),
+                toTitleCase(swapNames(payload.getResident())),
+                toTitleCase(payload.getHometown()),
+                formatDate(payload.getObit()),
                 payload.getUri().toString()
             )
         );
 
-        if (intent.resolveActivity(context.getPackageManager()) != null) {
-            context.startActivity(Intent.createChooser(intent, context.getString(R.string.email_dialog_header)));
+        if (intent.resolveActivity(payload.getContext().getPackageManager()) != null) {
+            payload.getContext().startActivity(Intent.createChooser(intent, payload.getContext().getString(R.string.email_dialog_header)));
         }
     }
 
@@ -86,6 +87,11 @@ public final class SharedIntentManager {
         private String mHometown;
         private String mObit;
         private String mRank;
+
+        @NonNull
+        public Context getContext(){
+            return mContext;
+        }
 
         @NonNull
         public String getGeomemorial() {

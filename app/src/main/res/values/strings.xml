@@ -146,9 +146,9 @@
     <!-- Share Email -->
     <string name="email_dialog_header">"Share this Geo-Memorial!"</string>
     <string name="email_type">text/plain</string>
-    <string name="email_subject_pattern" formatted="false">Saskatchewan Geo-Memorial (%s)</string>
-    <string name="email_body_pattern" formatted="false">%s is a Saskatchewan Geo-Memorial named after %s whose hometown was %s and who died on %s.\n\nThe geomemorial can be viewed at the following link:\n\n%s</string>
-    <string name="email_maps_url_pattern" formatted="false">http://www.google.com/maps/place/%s,%s/@%s,%s,13z</string>
+    <string name="email_subject_pattern">Saskatchewan Geo-Memorial (%1$s)</string>
+    <string name="email_body_pattern">%1$s is a Saskatchewan Geo-Memorial named after %2$s whose hometown was %3$s and who died on %4$s.\n\nThe geomemorial can be viewed at the following link:\n\n%5$s</string>
+    <string name="email_maps_url_pattern">http://www.google.com/maps/place/%1$s,%2$s/@%3$s,%4$s,13z</string>
 
     <!-- Sign In -->
     <string name="sign_in_label">Sign In</string>
