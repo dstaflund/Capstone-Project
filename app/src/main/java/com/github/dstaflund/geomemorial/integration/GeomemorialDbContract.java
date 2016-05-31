@@ -15,7 +15,7 @@ public final class GeomemorialDbContract {
     public static final String CONTENT_AUTHORITY = "com.github.dstaflund.geomemorial";
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
     public static final String DATABASE_NAME = "geomemorial.db";
-    public static final int DATABASE_VERSION = 19;
+    public static final int DATABASE_VERSION = 21;
 
     // Sort Order Qualifiers
     public static final String SORT_ASC = " ASC";
@@ -682,7 +682,7 @@ public final class GeomemorialDbContract {
 
         // Selection argument constructors
         public static String[] getSelectionArgsFor(String query) {
-            final String value = query == null ? "''" : "'" + query + "'";
+            final String value = query == null ? "''" : query;
             return new String[]{value};
         }
 

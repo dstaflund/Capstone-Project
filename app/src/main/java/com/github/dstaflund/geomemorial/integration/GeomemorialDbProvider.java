@@ -252,6 +252,15 @@ public class GeomemorialDbProvider extends SearchRecentSuggestionsProvider {
             @Nullable final String[] selectionArgs,
             @Nullable final String sortOrder
     ) {
+
+        Log.d(sLogTag, "Uri = " + uri);
+        Log.d(sLogTag, "Selection = " + selection);
+        if (selectionArgs != null) {
+            for (String arg : selectionArgs) {
+                Log.d(sLogTag, "Selection Arg = " + arg);
+            }
+        }
+
         Cursor retCursor;
         final SQLiteDatabase db = mHelper.getReadableDatabase();
 

@@ -175,25 +175,32 @@ public class MainActivity
         }
 
         if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+            Log.d(sLogTag, "Intent = ACTION_VIEW");
             String query = intent.getStringExtra(SearchManager.QUERY);
+            String userQuery = intent.getStringExtra(SearchManager.USER_QUERY);
+            Log.d(sLogTag, "QUERY = " + query);
+            Log.d(sLogTag, "USER QUERY = " + userQuery);
+            Log.d(sLogTag, "<---");
             doSearch(null, null, query);
             return;
         }
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             Uri uri = intent.getData();
-            String selection = intent.getStringExtra(SearchManager.QUERY);
-            String selectionArg = intent.getStringExtra(SearchManager.EXTRA_DATA_KEY);
-            mSearchRecentSuggestions.saveRecentQuery(selectionArg, null);
-            doSearch(uri, selection, selectionArg);
+            Log.d(sLogTag, "Intent = ACTION_SEARCH");
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            String extraDataKey = intent.getStringExtra(SearchManager.EXTRA_DATA_KEY);
+            Log.d(sLogTag, "<---");
+            mSearchRecentSuggestions.saveRecentQuery(extraDataKey, null);
+            doSearch(uri, query, extraDataKey);
         }
     }
 
-    private void doSearch(@NonNull Uri uri, @Nullable String selection, @Nullable String selectionArg) {
+    private void doSearch(@NonNull Uri uri, @Nullable String query, @Nullable String extraDataKey) {
         Bundle args = new Bundle();
         args.putParcelable(URI_KEY, uri);
-        args.putString(SELECTION_KEY, selection);
-        args.putString(SELECTION_ARG_KEY, selectionArg);
+        args.putString(SELECTION_KEY, query);
+        args.putString(SELECTION_ARG_KEY, extraDataKey);
 
         LoaderManager loaderManager = getSupportLoaderManager();
         Loader<Cursor> loader = loaderManager.getLoader(RESIDENT_LOADER_ID);
@@ -329,18 +336,47 @@ public class MainActivity
                 }
 
                 Uri uri = args.getParcelable(URI_KEY);
-                String selection = args.getString(SELECTION_KEY);
-                String selectionArg = args.getString(SELECTION_ARG_KEY);
-                return new CursorLoader(
-                    getApplicationContext(),
-                    uri == null ? MarkerInfo.CONTENT_URI : uri,
-                    MarkerInfo.DEFAULT_PROJECTION,
-                    MarkerInfo.CONSTRAINT_BY_SEARCH_CRITERIA,
-                    selectionArg == null
-                        ? MarkerInfo.getSelectionArgsFor(selection)
-                        : MarkerInfo.getSelectionArgsFor(selectionArg),
-                    MarkerInfo.SORT_ORDER_RESIDENT
-                );
+                String query = args.getString(SELECTION_KEY);
+                String extraDataKey = args.getString(SELECTION_ARG_KEY);
+
+                //  Free-form search
+                if (uri == null && query != null && extraDataKey == null){
+                    return new CursorLoader(
+                        getApplicationContext(),
+                        MarkerInfo.CONTENT_URI,
+                        MarkerInfo.DEFAULT_PROJECTION,
+                        MarkerInfo.CONSTRAINT_BY_SEARCH_CRITERIA,
+                        MarkerInfo.getSelectionArgsFor(query),
+                        MarkerInfo.SORT_ORDER_RESIDENT
+                    );
+                }
+
+                //  Suggestion Search
+                else if (uri != null && query != null && extraDataKey != null){
+                    return new CursorLoader(
+                        getApplicationContext(),
+                        uri,
+                        MarkerInfo.DEFAULT_PROJECTION,
+                        query,
+                        MarkerInfo.getSelectionArgsFor(extraDataKey),
+                        MarkerInfo.SORT_ORDER_RESIDENT
+                    );
+                }
+
+                //  Previous Search
+                else if (uri == null && query == null && extraDataKey != null){
+                    return new CursorLoader(
+                        getApplicationContext(),
+                        MarkerInfo.CONTENT_URI,
+                        MarkerInfo.DEFAULT_PROJECTION,
+                        MarkerInfo.CONSTRAINT_BY_SEARCH_CRITERIA,
+                        MarkerInfo.getSelectionArgsFor(extraDataKey),
+                        MarkerInfo.SORT_ORDER_RESIDENT
+                    );
+                }
+                else {
+                    return null;
+                }
         }
     }
 

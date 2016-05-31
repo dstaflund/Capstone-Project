@@ -18,7 +18,6 @@ public final class CameraUpdateStrategy {
     public static void setMapLocation(@NonNull Context context, @NonNull GoogleMap map, @NonNull FavoritesMarkerInfo data) {
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(data.getLatLng());
-//        markerOptions.icon(fromResource(R.mipmap.geomemorial_poppy));
 
         Marker marker = map.addMarker(markerOptions);
         MarkerMap markerMap = new MarkerMap();
@@ -28,17 +27,19 @@ public final class CameraUpdateStrategy {
     }
 
     public static void updateCamera(@NonNull Context context, @NonNull GoogleMap map, @NonNull MarkerMap markers){
-        Marker firstMarker = markers.values().iterator().next();
+        if (markers.size() > 0) {
+            Marker firstMarker = markers.values().iterator().next();
 
-        LatLngBounds bounds = markers.size() == 1
-            ? getLatLngBoundsFor(firstMarker)
-            : getLatLngBoundsFor(markers);
+            LatLngBounds bounds = markers.size() == 1
+                ? getLatLngBoundsFor(firstMarker)
+                : getLatLngBoundsFor(markers);
 
-        CameraUpdate update = CameraUpdateFactory.newLatLngBounds(bounds, 0);
-        map.animateCamera(update);
+            CameraUpdate update = CameraUpdateFactory.newLatLngBounds(bounds, 0);
+            map.animateCamera(update);
 
-        if (markers.size() == 1){
-            markers.bringMarkerToFront(context, firstMarker.getPosition());
+            if (markers.size() == 1) {
+                markers.bringMarkerToFront(context, firstMarker.getPosition());
+            }
         }
     }
 
