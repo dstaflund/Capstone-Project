@@ -321,7 +321,9 @@ public class SearchResultItemFragment extends Fragment {
 
         @NonNull
         public String getRecordCount(){
-            return "Displaying " + mPosition + " of " + mCount + " residents";
+            int maxVisible = mContext.getResources().getInteger(R.integer.max_visible_memorials);
+            int countval = mCount <= maxVisible ? mCount : maxVisible;
+            return "Displaying " + (mPosition + 1) + " of " + countval + " residents";
         }
     }
 

@@ -101,13 +101,18 @@ public class SearchResultFragment extends Fragment
 
         @Override
         public int getCount() {
-            return mCursor == null ? 0 : mCursor.getCount();
+            if (mCursor == null){
+                return 0;
+            }
+
+            int maxVisible = getContext().getResources().getInteger(R.integer.max_visible_memorials);
+            return mCursor.getCount() <= maxVisible ? mCursor.getCount() : maxVisible;
         }
 
         public void swapCursor(@Nullable Cursor c) {
             if (mCursor != c) {
                 if (c != null) {
-                    while (c.moveToNext()) {
+                    while (c.moveToNext() && c.getPosition() < getContext().getResources().getInteger(R.integer.max_visible_memorials)) {
                         SearchResultItemFragment.DataObject dataObject = new SearchResultItemFragment.DataObject(c);
                         SearchResultItemFragment.DataFormatter dataFormatter = new SearchResultItemFragment.DataFormatter(
                             getActivity(),
