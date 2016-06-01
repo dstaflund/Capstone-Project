@@ -70,6 +70,7 @@ public class SearchResultFragment extends Fragment
 
     public void swapCursor(@Nullable Cursor value){
         mSearchResultPagerAdapter.swapCursor(value);
+        mViewPager.setAdapter(mSearchResultPagerAdapter);
     }
 
     @Override
