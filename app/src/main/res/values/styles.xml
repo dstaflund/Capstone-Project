@@ -130,7 +130,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">start</item>
-
+        <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
     <style name="Theme.Preferences.Fragment.Radio.Group" parent="Theme.Preferences.Fragment">
@@ -145,6 +145,7 @@
         <item name="android:textSize">@dimen/settings.text_size</item>
         <item name="android:gravity">start</item>
         <item name="android:textAlignment">viewStart</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
     </style>
 
     <!-- Favorites Activity -->

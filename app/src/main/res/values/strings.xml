@@ -58,10 +58,10 @@
 
     <!-- Map Type -->
     <string name="map_type_label">MAP TYPE</string>
-    <string name="map_type_normal">NORMAL\n\nTypical road map.  Roads, some man-made features, and important natural features such as rivers are shown.  Road and feature labels are also visible.\n</string>
-    <string name="map_type_terrain">TERRAIN\n\nTopographical data.  The map includes colours, contour lines and labels, and perspective shading.  Some roads and labels are also visible.\n</string>
-    <string name="map_type_satellite">SATELLITE\n\nSatellite photograph data.  Road and feature labels are not visible.\n</string>
-    <string name="map_type_hybrid">HYBRID\n\nSatellite photograph data with road maps added.  Road and feature labels are also visible.\n</string>
+    <string name="map_type_normal"><b>NORMAL</b>\n\nTypical road map.  Roads, some man-made features, and important natural features such as rivers are shown.  Road and feature labels are also visible.\n</string>
+    <string name="map_type_terrain"><b>TERRAIN</b>\n\nTopographical data.  The map includes colours, contour lines and labels, and perspective shading.  Some roads and labels are also visible.\n</string>
+    <string name="map_type_satellite"><b>SATELLITE</b>\n\nSatellite photograph data.  Road and feature labels are not visible.\n</string>
+    <string name="map_type_hybrid"><b>HYBRID</b>\n\nSatellite photograph data with road maps added.  Road and feature labels are also visible.\n</string>
 
     <!-- Search Result -->
     <string name="search_resident">RESIDENT</string>

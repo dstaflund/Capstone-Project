@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 import com.github.dstaflund.geomemorial.R;
 import com.github.dstaflund.geomemorial.common.util.CameraUpdateStrategy;
 import com.github.dstaflund.geomemorial.common.util.MarkerMap;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapLoadedCallback;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -29,6 +32,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
 
 import static com.github.dstaflund.geomemorial.GeomemorialApplication.isMapLoaded;
 import static com.github.dstaflund.geomemorial.GeomemorialApplication.setMapLoaded;
@@ -41,9 +46,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
     private static final LatLng sNeCorner = new LatLng(60, -101);
     private static final LatLngBounds sSaskBounds = new LatLngBounds(sSwCorner, sNeCorner);
 
+    // Bundle keys for storing state on orientation change
+    private static final String sTargetKey = "target";
+    private static final String sZoomKey = "zoom";
+    private static final String sVisibleMarkerPositionsKey = "visible_marker_positions";
+
     private GoogleMap mMap;
     private MarkerMap mVisibleMarkers = new MarkerMap();
     private View mRoot;
+
+    // Restored camera location
+    private LatLng mRestoredTarget;
+    private float mRestoredZoom;
+    private LatLng[] mRestoredVisibleMarkerLocations;
 
     public MapFragment(){
         super();
@@ -52,9 +67,18 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
     @Override
     public void onCreate(@Nullable Bundle savedState) {
         super.onCreate(savedState);
-        setRetainInstance(true);
-        setHasOptionsMenu(false);
-        setMapLoaded(savedState != null);
+
+        if (savedState == null) {
+            setRetainInstance(true);
+            setHasOptionsMenu(false);
+            setMapLoaded(false);
+        }
+        else {
+            mRestoredTarget = savedState.getParcelable(sTargetKey);
+            mRestoredZoom = savedState.getFloat(sZoomKey);
+            mRestoredVisibleMarkerLocations = (LatLng[]) savedState.getParcelableArray(sVisibleMarkerPositionsKey);
+            setMapLoaded(true);
+        }
     }
 
     @Override
@@ -107,7 +131,33 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
             mMap.animateCamera(newLatLngBounds(sSaskBounds, 0));
             setMapLoaded(true);
         }
+        else {
+            if (mRestoredVisibleMarkerLocations != null) {
+                for (LatLng position : mRestoredVisibleMarkerLocations) {
+                    mMap.addMarker(new MarkerOptions().position(position));
+                }
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mRestoredTarget, mRestoredZoom));
+            }
+        }
     }
+
+    //  Adaptation of Google's SaveStateDemoActivity
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(sTargetKey, mMap.getCameraPosition().target);
+        outState.putFloat(sZoomKey, mMap.getCameraPosition().zoom);
+
+        ArrayList<LatLng> positions = new ArrayList<>(mVisibleMarkers.size());
+        for(Marker marker : mVisibleMarkers.values()){
+            positions.add(marker.getPosition());
+        }
+        outState.putParcelableArray(
+            sVisibleMarkerPositionsKey,
+            positions.toArray(new LatLng[positions.size()])
+        );
+    }
+
 
     public void clearMap(){
         mMap.clear();
@@ -176,6 +226,44 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
         @Override
         public View getInfoContents(@Nullable Marker marker) {
             return null;
+        }
+    }
+
+    //  Adaptation of Google's SaveStateDemoActivity
+    public static class MarkerInfo implements Parcelable {
+
+        public static final Parcelable.Creator<MarkerInfo> CREATOR =
+            new Parcelable.Creator<MarkerInfo>() {
+
+                @Override
+                public MarkerInfo createFromParcel(Parcel in) {
+                    return new MarkerInfo(in);
+                }
+
+                @Override
+                public MarkerInfo[] newArray(int size) {
+                    return new MarkerInfo[size];
+                }
+            };
+
+        float mHue;
+
+        public MarkerInfo(float color) {
+            mHue = color;
+        }
+
+        private MarkerInfo(Parcel in) {
+            mHue = in.readFloat();
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeFloat(mHue);
         }
     }
 }
