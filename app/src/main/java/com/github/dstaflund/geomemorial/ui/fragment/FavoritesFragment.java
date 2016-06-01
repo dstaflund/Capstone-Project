@@ -203,6 +203,8 @@ public class FavoritesFragment extends Fragment{
 
             else {
                 holder = (FavoritesViewHolder) row.getTag();
+                holder.favoritesButton.setTag(sGeomemorialTagKey, getItem(position).geomemorialId);
+                holder.shareButton.setTag(sGeomemorialTagKey, getItem(position).geomemorialId);
                 holder.refreshMapView();
             }
 
