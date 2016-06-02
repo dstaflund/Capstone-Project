@@ -8,12 +8,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView.RecyclerListener;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.github.dstaflund.geomemorial.GeomemorialApplication;
@@ -53,12 +55,14 @@ public class FavoritesFragment extends Fragment{
     private ListFragment mList;
     private ArrayAdapter<FavoritesMarkerInfo> mAdapter;
 
+    private int mFirstVisiblePosition;
+    private int mTop;
     private View mRoot;
 
     @Override
     public void onCreate(@Nullable Bundle savedState) {
         super.onCreate(savedState);
-        setRetainInstance(true);
+        setRetainInstance(false);
         setHasOptionsMenu(false);
     }
 
@@ -70,11 +74,19 @@ public class FavoritesFragment extends Fragment{
         @Nullable Bundle savedState
     ) {
         mRoot = inflater.inflate(R.layout.fragment_favorites, container, false);
+
+        mFirstVisiblePosition = savedState == null ? -1 : savedState.getInt("first_visible_position");
+        mTop = savedState == null ? -1 : savedState.getInt("top");
+
+        Log.d("FavoritesFragment", "First Visible Position = " + mFirstVisiblePosition);
+        Log.d("FavoritesFragment", "Top = " + mTop);
+
         new AsyncTask<Void, Void, List<FavoritesMarkerInfo>>() {
 
             @Override
             @NonNull
             protected List<FavoritesMarkerInfo> doInBackground(@Nullable Void... params) {
+                Log.i("FavoritesFragment", "doInBackground");
                 Set<String> ids = getFavorites(getContext());
                 if (ids.isEmpty()) {
                     return Collections.emptyList();
@@ -91,27 +103,58 @@ public class FavoritesFragment extends Fragment{
 
             @Override
             protected void onPostExecute(@Nullable List<FavoritesMarkerInfo> data) {
+                Log.i("FavoritesFragment", "onPostExecute");
+                Log.d("FavoritesFragment", "Data Size = " + (data == null ? 0 : data.size()));
                 mAdapter = new FavoritesMapAdapter(getContext(), data);
 
                 if (mList == null) {
                     mList = (ListFragment) getChildFragmentManager().findFragmentById(R.id.list);
                     mList.setListAdapter(mAdapter);
+                    mList.getListView().setRecyclerListener(new AbsListView.RecyclerListener() {
+
+                        @Override
+                        public void onMovedToScrapHeap(@NonNull View view) {
+                            Log.i("FavoritesFragment", "onMovedToScrapHeap");
+                            FavoritesMapAdapter.FavoritesViewHolder holder = (FavoritesMapAdapter.FavoritesViewHolder) view.getTag();
+                            if (holder != null && holder.map != null) {
+                                holder.map.clear();
+                                holder.map.setMapType(MAP_TYPE_NONE);
+                            }
+                        }
+                    });
+                }
+                else {
+                    mList.setListAdapter(null);
+                    mList.setListAdapter(mAdapter);
                 }
 
-                mList.getListView().setRecyclerListener(new RecyclerListener() {
-
-                    @Override
-                    public void onMovedToScrapHeap(@NonNull View view) {
-                        FavoritesMapAdapter.FavoritesViewHolder holder = (FavoritesMapAdapter.FavoritesViewHolder) view.getTag();
-                        if (holder != null && holder.map != null) {
-                            holder.map.clear();
-                            holder.map.setMapType(MAP_TYPE_NONE);
-                        }
-                    }
-                });
+                if (mFirstVisiblePosition != -1 && mTop != -1){
+                    mList.getListView().setSelectionFromTop(mFirstVisiblePosition, mTop);
+                }
             }
         }.execute();
         return mRoot;
+    }
+
+    @Override
+    public void onPause() {
+        Log.i("FavoritesFragment", "onPause");
+        super.onPause();
+//        mList = null;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        Log.i("FavoritesFragment", "onSaveInstanceState");
+        super.onSaveInstanceState(outState);
+
+        if (outState != null) {
+            ListView listView = mList.getListView();
+            outState.putInt("first_visible_position", listView.getFirstVisiblePosition());
+
+            View v = listView.getChildAt(0);
+            outState.putInt("top", (v == null ? 0 : v.getTop() - listView.getPaddingTop()));
+        }
     }
 
     public class FavoritesMapAdapter extends ArrayAdapter<FavoritesMarkerInfo> {
@@ -123,11 +166,14 @@ public class FavoritesFragment extends Fragment{
             @NonNull List<FavoritesMarkerInfo> locations
         ) {
             super(context, R.layout.list_item_favorites, R.id.lite_listrow_text, locations);
+            Log.i("FavoritesMapAdapter", "Created");
+            Log.i("FavoritesMapAdapter", "Locations size = " + (locations == null ? 0 : locations.size()));
         }
 
         @Override
         @NonNull
         public View getView(int position, @Nullable View convertView, @Nullable ViewGroup parent) {
+            Log.d("FavoritesMapAdapter", "getView");
             View row = convertView;
             FavoritesViewHolder holder;
 
@@ -203,8 +249,6 @@ public class FavoritesFragment extends Fragment{
 
             else {
                 holder = (FavoritesViewHolder) row.getTag();
-                holder.favoritesButton.setTag(sGeomemorialTagKey, getItem(position).geomemorialId);
-                holder.shareButton.setTag(sGeomemorialTagKey, getItem(position).geomemorialId);
                 holder.refreshMapView();
             }
 
@@ -261,6 +305,7 @@ public class FavoritesFragment extends Fragment{
              * skip the create step in order to avoid flickering.
              */
             public void refreshMapView(){
+                mapView.onCreate(null);
                 mapView.getMapAsync(this);
             }
 
