@@ -21,6 +21,7 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -69,6 +70,7 @@ public class MainActivity
     public static final String URI_KEY = "uri";
     public static final String SELECTION_KEY = "selection";
     public static final String SELECTION_ARG_KEY = "selectionArg";
+    public static final String SAVED_SEARCH_KEY = "savedSearch";
 
 
     private boolean mConnected;
@@ -78,6 +80,8 @@ public class MainActivity
     private MapFragment mMapFragment;
     private SearchResultFragment mSearchResultFragment;
     private Location mLastLocation;
+    private String mSavedSearchString;
+    private SearchView mSearchView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -124,6 +128,10 @@ public class MainActivity
             loaderManager.initLoader(EMPTY_SEARCH, null, this);
         }
 
+        if (savedInstanceState != null) {
+            mSavedSearchString = savedInstanceState.getString(SAVED_SEARCH_KEY);
+        }
+
         handleIntent(getIntent());
     }
 
@@ -137,6 +145,15 @@ public class MainActivity
     protected void onStop() {
         mGoogleApiClient.disconnect();
         super.onStop();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        if (mSearchView != null) {
+            outState.putString(SAVED_SEARCH_KEY, mSearchView.getQuery().toString());
+        }
     }
 
     private void checkInitialMapType() {
@@ -212,11 +229,18 @@ public class MainActivity
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-            SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+            MenuItem searchMenu = menu.findItem(R.id.search);
+            mSearchView = (SearchView) MenuItemCompat.getActionView(searchMenu);
             ComponentName componentName = getComponentName();
             SearchableInfo searchableInfo = searchManager.getSearchableInfo(componentName);
-            searchView.setSearchableInfo(searchableInfo);
-            searchView.setIconifiedByDefault(false);
+            mSearchView.setSearchableInfo(searchableInfo);
+            mSearchView.setIconifiedByDefault(false);
+
+            if (mSavedSearchString != null && ! mSavedSearchString.isEmpty()) {
+                searchMenu.expandActionView();
+                mSearchView.setQuery(mSavedSearchString, true);
+                mSearchView.clearFocus();
+            }
             return true;
         }
 
