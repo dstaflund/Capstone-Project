@@ -175,22 +175,16 @@ public class MainActivity
         }
 
         if (Intent.ACTION_VIEW.equals(intent.getAction())) {
-            Log.d(sLogTag, "Intent = ACTION_VIEW");
             String query = intent.getStringExtra(SearchManager.QUERY);
             String userQuery = intent.getStringExtra(SearchManager.USER_QUERY);
-            Log.d(sLogTag, "QUERY = " + query);
-            Log.d(sLogTag, "USER QUERY = " + userQuery);
-            Log.d(sLogTag, "<---");
             doSearch(null, null, query);
             return;
         }
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             Uri uri = intent.getData();
-            Log.d(sLogTag, "Intent = ACTION_SEARCH");
-            String query = intent.getStringExtra(SearchManager.QUERY);
+            String query = intent.getStringExtra(SearchManager.QUERY) == null ? null : intent.getStringExtra(SearchManager.QUERY);
             String extraDataKey = intent.getStringExtra(SearchManager.EXTRA_DATA_KEY);
-            Log.d(sLogTag, "<---");
             mSearchRecentSuggestions.saveRecentQuery(extraDataKey, null);
             doSearch(uri, query, extraDataKey);
         }

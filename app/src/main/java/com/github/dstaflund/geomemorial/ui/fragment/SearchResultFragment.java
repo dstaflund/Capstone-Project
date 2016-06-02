@@ -48,7 +48,7 @@ public class SearchResultFragment extends Fragment
     @Override
     public void onCreate(@Nullable Bundle savedState) {
         super.onCreate(savedState);
-        setRetainInstance(true);
+        setRetainInstance(false);
         setHasOptionsMenu(false);
     }
 

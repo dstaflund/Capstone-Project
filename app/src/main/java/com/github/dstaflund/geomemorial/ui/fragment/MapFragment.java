@@ -34,6 +34,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import static com.github.dstaflund.geomemorial.GeomemorialApplication.isMapLoaded;
 import static com.github.dstaflund.geomemorial.GeomemorialApplication.setMapLoaded;
@@ -58,7 +59,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
     // Restored camera location
     private LatLng mRestoredTarget;
     private float mRestoredZoom;
-    private LatLng[] mRestoredVisibleMarkerLocations;
+    private ArrayList<RestorableMarker> mRestoredMarkers;
 
     public MapFragment(){
         super();
@@ -69,14 +70,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
         super.onCreate(savedState);
 
         if (savedState == null) {
-            setRetainInstance(true);
+            setRetainInstance(false);
             setHasOptionsMenu(false);
             setMapLoaded(false);
         }
         else {
             mRestoredTarget = savedState.getParcelable(sTargetKey);
             mRestoredZoom = savedState.getFloat(sZoomKey);
-            mRestoredVisibleMarkerLocations = (LatLng[]) savedState.getParcelableArray(sVisibleMarkerPositionsKey);
+            mRestoredMarkers = savedState.getParcelableArrayList(sVisibleMarkerPositionsKey);
             setMapLoaded(true);
         }
     }
@@ -132,10 +133,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
             setMapLoaded(true);
         }
         else {
-            if (mRestoredVisibleMarkerLocations != null) {
-                for (LatLng position : mRestoredVisibleMarkerLocations) {
-                    mMap.addMarker(new MarkerOptions().position(position));
+            if (mRestoredMarkers != null) {
+                for(RestorableMarker restorableMarker : mRestoredMarkers) {
+                    MarkerOptions options = new MarkerOptions()
+                        .position(restorableMarker.getCoordinate())
+                        .title(restorableMarker.getTitle())
+                        .snippet(restorableMarker.getSnippet());
+                    Marker restoredMarker = mMap.addMarker(options);
+                    mVisibleMarkers.put(restorableMarker.getGeomemoralId(), restoredMarker);
                 }
+
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mRestoredTarget, mRestoredZoom));
             }
         }
@@ -148,14 +155,18 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
         outState.putParcelable(sTargetKey, mMap.getCameraPosition().target);
         outState.putFloat(sZoomKey, mMap.getCameraPosition().zoom);
 
-        ArrayList<LatLng> positions = new ArrayList<>(mVisibleMarkers.size());
-        for(Marker marker : mVisibleMarkers.values()){
-            positions.add(marker.getPosition());
+        ArrayList<RestorableMarker> markers = new ArrayList<>();
+        for (Map.Entry<String, Marker> entry : mVisibleMarkers.entrySet()) {
+            RestorableMarker restorableMarker = new RestorableMarker(
+                entry.getKey(),
+                entry.getValue().getPosition(),
+                entry.getValue().getTitle(),
+                entry.getValue().getSnippet()
+            );
+            markers.add(restorableMarker);
         }
-        outState.putParcelableArray(
-            sVisibleMarkerPositionsKey,
-            positions.toArray(new LatLng[positions.size()])
-        );
+
+        outState.putParcelableArrayList(sVisibleMarkerPositionsKey, markers);
     }
 
 
@@ -228,32 +239,59 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
             return null;
         }
     }
-
     //  Adaptation of Google's SaveStateDemoActivity
-    public static class MarkerInfo implements Parcelable {
+    public static class RestorableMarker implements Parcelable {
 
-        public static final Parcelable.Creator<MarkerInfo> CREATOR =
-            new Parcelable.Creator<MarkerInfo>() {
+        public static final Parcelable.Creator<RestorableMarker> CREATOR =
+            new Parcelable.Creator<RestorableMarker>() {
 
                 @Override
-                public MarkerInfo createFromParcel(Parcel in) {
-                    return new MarkerInfo(in);
+                public RestorableMarker createFromParcel(Parcel in) {
+                    return new RestorableMarker(in);
                 }
 
                 @Override
-                public MarkerInfo[] newArray(int size) {
-                    return new MarkerInfo[size];
+                public RestorableMarker[] newArray(int size) {
+                    return new RestorableMarker[size];
                 }
             };
 
-        float mHue;
+        private String mGeomemorialId;
+        private double mLatitude;
+        private double mLongitude;
+        private String mTitle;
+        private String mSnippet;
 
-        public MarkerInfo(float color) {
-            mHue = color;
+        public String getGeomemoralId(){
+            return mGeomemorialId;
         }
 
-        private MarkerInfo(Parcel in) {
-            mHue = in.readFloat();
+        public LatLng getCoordinate(){
+            return new LatLng(mLatitude, mLongitude);
+        }
+
+        public String getTitle(){
+            return mTitle;
+        }
+
+        public String getSnippet(){
+            return mSnippet;
+        }
+
+        public RestorableMarker(String geomemorialId, LatLng coordinate, String title, String snippet) {
+            mGeomemorialId = geomemorialId;
+            mLatitude = coordinate.latitude;
+            mLongitude = coordinate.longitude;
+            mTitle = title;
+            mSnippet = snippet;
+        }
+
+        private RestorableMarker(Parcel in) {
+            mGeomemorialId = in.readString();
+            mLatitude = in.readDouble();
+            mLongitude = in.readDouble();
+            mTitle = in.readString();
+            mSnippet = in.readString();
         }
 
         @Override
@@ -263,7 +301,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
 
         @Override
         public void writeToParcel(Parcel dest, int flags) {
-            dest.writeFloat(mHue);
+            dest.writeString(mGeomemorialId);
+            dest.writeDouble(mLatitude);
+            dest.writeDouble(mLongitude);
+            dest.writeString(mTitle);
+            dest.writeString(mSnippet);
         }
     }
 }
