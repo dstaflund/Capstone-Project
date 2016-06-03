@@ -204,7 +204,6 @@ public class FavoritesFragment extends Fragment{
                         }
                     }
                 });
-                holder.favoritesButton.setTag(sGeomemorialTagKey, getItem(position).geomemorialId);
                 holder.shareButton.setOnClickListener(new View.OnClickListener() {
 
                     @Override
@@ -239,7 +238,6 @@ public class FavoritesFragment extends Fragment{
                         }
                     }
                 });
-                holder.shareButton.setTag(sGeomemorialTagKey, getItem(position).geomemorialId);
                 row.setTag(holder);
 
                 holder.initializeMapView();
@@ -251,6 +249,9 @@ public class FavoritesFragment extends Fragment{
                 holder = (FavoritesViewHolder) row.getTag();
                 holder.refreshMapView();
             }
+
+            holder.favoritesButton.setTag(sGeomemorialTagKey, getItem(position).geomemorialId);
+            holder.shareButton.setTag(sGeomemorialTagKey, getItem(position).geomemorialId);
 
             FavoritesMarkerInfo item = getItem(position);
             holder.mapView.setTag(item);
