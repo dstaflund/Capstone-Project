@@ -311,6 +311,31 @@
         <item name="android:rowCount">@integer/search_row_count</item>
         <item name="android:padding">@dimen/default_padding</item>
     </style>
+    <style name="Theme.Search.Result.CountAndDistance" parent="Theme.Search.Result">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/colorAccent1Light</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="Theme.Search.Result.RecordCount" parent="Theme.Search.Result">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/search_result.label.text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">left|start</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textAlignment">textStart</item>
+    </style>
+    <style name="Theme.Search.Result.Distance" parent="Theme.Search.Result">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/search_result.label.text_size</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:layout_weight">1</item>
+    </style>
     <style name="Theme.Search.Result.Label" parent="Theme.Search.Result">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

@@ -2,6 +2,7 @@ package com.github.dstaflund.geomemorial.ui.fragment;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,12 +13,15 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.github.dstaflund.geomemorial.GeomemorialApplication;
 import com.github.dstaflund.geomemorial.R;
 import com.github.dstaflund.geomemorial.common.util.DateUtil;
 import com.github.dstaflund.geomemorial.common.util.SharedIntentManager;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.MarkerInfo;
 import com.google.android.gms.maps.model.LatLng;
+
+import java.text.DecimalFormat;
 
 import static com.github.dstaflund.geomemorial.common.util.FavoritesManager.addFavorite;
 import static com.github.dstaflund.geomemorial.common.util.FavoritesManager.isFavorite;
@@ -28,6 +32,8 @@ import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract
 public class SearchResultItemFragment extends Fragment {
     private static final String POSITION_KEY = "position_key";
     private static final String COUNT_KEY = "count_key";
+    private static final DecimalFormat sDecimalFormat = new DecimalFormat("#.##");
+
 
     private OnPlaceButtonClickedListener mOnPlaceButtonClickedListener;
 
@@ -66,6 +72,7 @@ public class SearchResultItemFragment extends Fragment {
 
         ViewHolder holder = new ViewHolder(rootView);
         holder.recordCount.setText(formatter.getRecordCount());
+        holder.distance.setText(formatter.getDistance());
         holder.name.setText(formatter.getResident());
         holder.hometown.setText(formatter.getHometown());
         holder.rank.setText(formatter.getRank());
@@ -176,6 +183,7 @@ public class SearchResultItemFragment extends Fragment {
 
     public static class ViewHolder {
         @NonNull public TextView recordCount;
+        @NonNull public TextView distance;
         @NonNull public TextView coordinate;
         @NonNull public TextView geomemorial;
         @NonNull public TextView hometown;
@@ -189,6 +197,7 @@ public class SearchResultItemFragment extends Fragment {
 
         public ViewHolder(@NonNull View v){
             recordCount = (TextView) v.findViewById(R.id.record_count);
+            distance = (TextView) v.findViewById(R.id.distance);
             coordinate = (TextView) v.findViewById(R.id.list_item_common_coordinate);
             geomemorial = (TextView) v.findViewById(R.id.list_item_common_geomemorial);
             hometown = (TextView) v.findViewById(R.id.list_item_common_hometown);
@@ -239,6 +248,13 @@ public class SearchResultItemFragment extends Fragment {
             obit = c.getString(MarkerInfo.DEFAULT_OBIT_IDX);
             resident = c.getString(MarkerInfo.DEFAULT_RESIDENT_IDX);
             rank = c.getString(MarkerInfo.DEFAULT_RANK_IDX);
+        }
+
+        public Location getLocation(){
+            Location l = new Location("");
+            l.setLatitude(Double.parseDouble(latitude));
+            l.setLongitude(Double.parseDouble(longitude));
+            return l;
         }
     }
 
@@ -323,7 +339,21 @@ public class SearchResultItemFragment extends Fragment {
         public String getRecordCount(){
             int maxVisible = mContext.getResources().getInteger(R.integer.max_visible_memorials);
             int countval = mCount <= maxVisible ? mCount : maxVisible;
-            return "Displaying " + (mPosition + 1) + " of " + countval + " residents";
+            return (mPosition + 1) + " of " + countval + " memorials";
+        }
+
+        @Nullable
+        public String getDistance(){
+            Location currentLocation = GeomemorialApplication.getLastLocation();
+            if (currentLocation == null){
+                return null;
+            }
+
+            Location memorialLocation = mDataObject.getLocation();
+            float distanceInMeters = currentLocation.distanceTo(memorialLocation);
+            float distanceInKilometers = distanceInMeters / 1000;
+            String distanceString = sDecimalFormat.format(distanceInKilometers);
+            return distanceString + " km away";
         }
     }
 

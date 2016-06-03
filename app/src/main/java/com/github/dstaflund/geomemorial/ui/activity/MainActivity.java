@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -79,7 +78,6 @@ public class MainActivity
     private NavigationView mNavigationView;
     private MapFragment mMapFragment;
     private SearchResultFragment mSearchResultFragment;
-    private Location mLastLocation;
     private String mSavedSearchString;
     private SearchView mSearchView;
 
@@ -456,7 +454,9 @@ public class MainActivity
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
          || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
-            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+            GeomemorialApplication.setLastLocation(
+                LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient)
+            );
         }
     }
 
