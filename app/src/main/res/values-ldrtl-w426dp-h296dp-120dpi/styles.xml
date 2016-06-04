@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Search Instructions -->
+    <style name="Theme.Search_Instructions.Ldrtl" parent="Theme.Search_Instructions">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">right|end</item>
+        <item name="android:textAlignment">textEnd</item>
+    </style>
+    <style name="Theme.Search_Instructions.Header" parent="Theme.Search_Instructions.Ldrtl">
+        <item name="android:background">@color/colorPrimaryLight</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/search_result.label.text_size</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="Theme.Search_Instructions.Intro" parent="Theme.Search_Instructions.Ldrtl">
+        <item name="android:textSize">@dimen/search_instructions.intro.text_size</item>
+        <item name="android:layout_marginTop">@dimen/half_margin</item>
+        <item name="android:layout_marginLeft">@dimen/half_margin</item>
+        <item name="android:layout_marginRight">@dimen/half_margin</item>
+        <item name="android:layout_marginStart">@dimen/half_margin</item>
+        <item name="android:layout_marginEnd">@dimen/half_margin</item>
+    </style>
+    <style name="Theme.Search_Instructions.Grid" parent="Theme.Search_Instructions.Ldrtl">
+        <item name="android:columnCount">@integer/search_instructions.header.column_count</item>
+        <item name="android:rowCount">@integer/search_instructions.header.row_count</item>
+    </style>
+    <style name="Theme.Search_Instructions.Argument_Type" parent="Theme.Search_Instructions.Ldrtl">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_columnWeight">@integer/search_instructions.column_weight</item>
+        <item name="android:textSize">@dimen/search_instructions.argument.text_size</item>
+        <item name="android:layout_marginLeft">@dimen/half_margin</item>
+        <item name="android:layout_marginRight">@dimen/half_margin</item>
+        <item name="android:layout_marginStart">@dimen/half_margin</item>
+        <item name="android:layout_marginEnd">@dimen/half_margin</item>
+    </style>
+
+    <!-- Search Results -->
+    <style name="Theme.Search.Result.Ldrtl" parent="Theme.Search.Result">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">right|end</item>
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/search_result.label.text_size</item>
+    </style>
+    <style name="Theme.Search.Result.RecordCount" parent="Theme.Search.Result.Ldrtl">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_weight">@integer/record_count_weight</item>
+    </style>
+    <style name="Theme.Search.Result.Distance" parent="Theme.Search.Result.Ldrtl">
+        <item name="android:textStyle">italic</item>
+        <item name="android:layout_weight">@integer/distance_weight</item>
+    </style>
+
+
+</resources>
