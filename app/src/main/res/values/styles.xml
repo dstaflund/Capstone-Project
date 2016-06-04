@@ -369,14 +369,17 @@
     <style name="Theme.Search.Result.Button.Favorite" parent="Theme.Search.Result.Button">
         <item name="android:background">@drawable/favorite_toggle_accent</item>
         <item name="android:contentDescription">@string/search.favorite.content_description</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
     </style>
     <style name="Theme.Search.Result.Button.Share" parent="Theme.Search.Result.Button">
         <item name="android:background">@drawable/ic_menu_share_accent</item>
         <item name="android:contentDescription">@string/search.share.content_description</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
     </style>
     <style name="Theme.Search.Result.Button.Place" parent="Theme.Search.Result.Button">
         <item name="android:background">@drawable/ic_place_accent_24dp_drawable</item>
         <item name="android:contentDescription">@string/search.place.content_description</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
     </style>
     <style name="Theme.Search.Result.Button.Container" parent="Theme.Search.Result">
         <item name="android:layout_width">wrap_content</item>
@@ -429,12 +432,16 @@
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:background">@drawable/ic_menu_share</item>
         <item name="android:contentDescription">@string/favorites.share.content_description</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+
     </style>
     <style name="Theme.Favorites.Item.Button.Favorite" parent="Theme.Favorites.Item.Button">
         <item name="android:layout_toLeftOf">@id/list_item_favorite_share_button</item>
         <item name="android:layout_toStartOf">@id/list_item_favorite_share_button</item>
         <item name="android:background">@drawable/favorite_toggle_white</item>
         <item name="android:contentDescription">@string/favorites.favorite.content_description</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+
     </style>
     <style name="Theme.Favorites.Item.Scrim" parent="Theme.Favorites.Item">
         <item name="android:layout_width">match_parent</item>
