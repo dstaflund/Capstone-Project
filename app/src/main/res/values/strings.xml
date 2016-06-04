@@ -124,7 +124,7 @@
     <string name="intro_project_title">The Project</string>
     <string name="intro_project_description">Saskatchewan honours residents who have worked or died in service of the Province by naming geographic landmarks after them</string>
     <string name="intro_app_title">The App</string>
-    <string name="intro_app_description">The Geo-Memorial app gives detailed information on the locations of these landmarks and on the residents they were named after</string>
+    <string name="intro_app_description">This app gives detailed information on the locations of these landmarks and on the residents they were named after</string>
     <string name="intro_map_title">The Map</string>
     <string name="intro_map_description">See where the geo-memorials are by interacting with the map</string>
     <string name="intro_search_title">Searching</string>
@@ -136,7 +136,7 @@
     <string name="intro_settings_title">Settings</string>
     <string name="intro_settings_description">Customize your preferred map type in Settings</string>
     <string name="intro_widget_title">Widget</string>
-    <string name="intro_widget_description">See who died on this date by looking at the Widget</string>
+    <string name="intro_widget_description">See who died on a given date by looking at the Widget</string>
 
     <!-- Exception patterns and messages -->
     <string name="exception_illegal_argument_pattern" formatted="false">Could not parse value:  %s</string>

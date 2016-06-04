@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
+    <!-- Search instructions -->
+    <dimen name="search_instructions.intro.text_size">30dp</dimen>
+    <dimen name="search_instructions.argument.text_size">30dp</dimen>
+
     <!-- Search Result -->
-    <dimen name="search_result.label.text_size">14sp</dimen>
-    <dimen name="search_result.value.resident.text_size">14sp</dimen>
-    <dimen name="search_result.value.non_resident.text_size">14sp</dimen>
+    <dimen name="search_result.label.text_size">28sp</dimen>
+    <dimen name="search_result.value.resident.text_size">28sp</dimen>
+    <dimen name="search_result.value.non_resident.text_size">28sp</dimen>
 
 </resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Search Instructions -->
+    <string name="search_instructions.intro">Use the top search bar to find memorials by:\n</string>
+
+</resources>

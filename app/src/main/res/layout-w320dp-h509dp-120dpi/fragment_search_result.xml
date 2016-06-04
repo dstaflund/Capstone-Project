@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Theme.Search_Instructions.Fragment">
+
+    <LinearLayout
+        style="@style/Theme.Search_Instructions.Outer_Layout">
+
+        <TextView
+            android:text="@string/search_instructions.header"
+            style="@style/Theme.Search_Instructions.Header"/>
+
+        <TextView
+            android:text="@string/search_instructions.intro"
+            style="@style/Theme.Search_Instructions.Intro"/>
+
+        <GridLayout
+            style="@style/Theme.Search_Instructions.Grid">
+
+            <TextView
+                android:text="@string/search_instructions.resident"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
+
+            <TextView
+                android:text="@string/search_instructions.hometown"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
+
+            <TextView
+                android:text="@string/search_instructions.obit_date"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
+
+            <TextView
+                android:text="@string/search_instructions.rank"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
+
+            <TextView
+                android:text="@string/search_instructions.latitude"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
+
+            <TextView
+                android:text="@string/search_instructions.longitude"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
+
+            <TextView
+                android:text="@string/search_instructions.geomemorial_name"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
+
+            <TextView
+                android:text="@string/search_instructions.nts_series"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
+
+            <TextView
+                android:text="@string/search_instructions.nts_area"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
+
+            <TextView
+                android:text="@string/search_instructions.nts_sheet"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
+        </GridLayout>
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</FrameLayout>

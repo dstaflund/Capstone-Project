@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <!-- Introductory slideshow -->
     <string name="intro_project_description">Saskatchewan honours residents by naming geo-memorials after them</string>
     <string name="intro_app_description">This app lets you explore these geo-memorials</string>
+
+    <!-- Search Instructions -->
+    <string name="search_instructions.intro">Use the search bar to find memorials by:\n</string>
+    <string name="search_instructions.geomemorial_name">\u2022 Geomemorial</string>
+
 
 </resources>
