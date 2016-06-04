@@ -14,4 +14,16 @@
 
     <!-- History -->
     <string name="history_release1">Initial Release - v1.0.0</string>
+
+    <!-- Search Instructions -->
+    <string name="search_instructions.resident">Resident \u2022</string>
+    <string name="search_instructions.hometown">Hometown \u2022</string>
+    <string name="search_instructions.obit_date">Obit. Date \u2022</string>
+    <string name="search_instructions.rank">Rank \u2022</string>
+    <string name="search_instructions.latitude">Latitude \u2022</string>
+    <string name="search_instructions.longitude">Longitude \u2022</string>
+    <string name="search_instructions.geomemorial_name">Geomemorial Name \u2022</string>
+    <string name="search_instructions.nts_series">NTS Series \u2022</string>
+    <string name="search_instructions.nts_area">NTS Area \u2022</string>
+    <string name="search_instructions.nts_sheet">NTS Sheet \u2022</string>
 </resources>

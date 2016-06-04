@@ -10,6 +10,8 @@
     <integer name="map_weight">1</integer>
     <integer name="search_weight">1</integer>
     <integer name="content_weight">1</integer>
+    <integer name="record_count_weight">1</integer>
+    <integer name="distance_weight">1</integer>
 
     <!-- Column Number -->
     <integer name="search_column_number">1</integer>
@@ -17,10 +19,15 @@
     <!-- Column Count -->
     <integer name="search_column_count">2</integer>
     <integer name="about_grid_column_count">2</integer>
+    <integer name="search_instructions.header.column_count">2</integer>
+
+    <!-- Column Weight -->
+    <integer name="search_instructions.column_weight">1</integer>
 
     <!-- Row Count -->
     <integer name="search_row_count">6</integer>
     <integer name="about_grid_row_count">5</integer>
+    <integer name="search_instructions.header.row_count">5</integer>
 
     <!-- Column Span -->
     <integer name="search_button_column_span">2</integer>

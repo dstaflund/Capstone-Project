@@ -1,152 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Theme.Search_Instructions.Fragment">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        style="@style/Theme.Search_Instructions.Outer_Layout">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent1Light"
-            android:padding="@dimen/default_padding"
-            android:elevation="@dimen/default_elevation"
-            android:text="No memorials shown"
-            android:textStyle="bold"
-            android:textSize="@dimen/search_result.label.text_size"
-            android:gravity="left|start"
-            android:textAlignment="textStart" />
+            android:text="@string/search_instructions.header"
+            style="@style/Theme.Search_Instructions.Header"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Use the top search bar to find memorials by:\n"
-            android:textSize="16dp"
-            android:layout_marginTop="@dimen/half_margin"
-            android:layout_marginLeft="@dimen/half_margin"
-            android:layout_marginRight="@dimen/half_margin"
-            android:layout_marginStart="@dimen/half_margin"
-            android:layout_marginEnd="@dimen/half_margin"/>
+            android:text="@string/search_instructions.intro"
+            style="@style/Theme.Search_Instructions.Intro"/>
 
         <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:rowCount="5">
+            style="@style/Theme.Search_Instructions.Grid">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="\u2022 Resident"
-                android:textSize="16dp"
-                android:layout_marginLeft="@dimen/half_margin"
-                android:layout_marginRight="@dimen/half_margin"
-                android:layout_marginStart="@dimen/half_margin"
-                android:layout_marginEnd="@dimen/half_margin"/>
+                android:text="@string/search_instructions.resident"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="\u2022 Hometown"
-                android:textSize="16dp"
-                android:layout_marginLeft="@dimen/half_margin"
-                android:layout_marginRight="@dimen/half_margin"
-                android:layout_marginStart="@dimen/half_margin"
-                android:layout_marginEnd="@dimen/half_margin"/>
+                android:text="@string/search_instructions.hometown"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="\u2022 Obit. Date"
-                android:textSize="16dp"
-                android:layout_marginLeft="@dimen/half_margin"
-                android:layout_marginRight="@dimen/half_margin"
-                android:layout_marginStart="@dimen/half_margin"
-                android:layout_marginEnd="@dimen/half_margin"/>
+                android:text="@string/search_instructions.obit_date"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="\u2022 Rank"
-                android:textSize="16dp"
-                android:layout_marginLeft="@dimen/half_margin"
-                android:layout_marginRight="@dimen/half_margin"
-                android:layout_marginStart="@dimen/half_margin"
-                android:layout_marginEnd="@dimen/half_margin"/>
+                android:text="@string/search_instructions.rank"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="\u2022 Latitude"
-                android:textSize="16dp"
-                android:layout_marginLeft="@dimen/half_margin"
-                android:layout_marginRight="@dimen/half_margin"
-                android:layout_marginStart="@dimen/half_margin"
-                android:layout_marginEnd="@dimen/half_margin"/>
+                android:text="@string/search_instructions.latitude"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="\u2022 Longitude"
-                android:textSize="16dp"
-                android:layout_marginLeft="@dimen/half_margin"
-                android:layout_marginRight="@dimen/half_margin"
-                android:layout_marginStart="@dimen/half_margin"
-                android:layout_marginEnd="@dimen/half_margin"/>
+                android:text="@string/search_instructions.longitude"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="\u2022 Geomemorial Name"
-                android:textSize="16dp"
-                android:layout_marginLeft="@dimen/half_margin"
-                android:layout_marginRight="@dimen/half_margin"
-                android:layout_marginStart="@dimen/half_margin"
-                android:layout_marginEnd="@dimen/half_margin"/>
+                android:text="@string/search_instructions.geomemorial_name"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="\u2022 NTS Series"
-                android:textSize="16dp"
-                android:layout_marginLeft="@dimen/half_margin"
-                android:layout_marginRight="@dimen/half_margin"
-                android:layout_marginStart="@dimen/half_margin"
-                android:layout_marginEnd="@dimen/half_margin"/>
+                android:text="@string/search_instructions.nts_series"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="\u2022 NTS Area"
-                android:textSize="16dp"
-                android:layout_marginLeft="@dimen/half_margin"
-                android:layout_marginRight="@dimen/half_margin"
-                android:layout_marginStart="@dimen/half_margin"
-                android:layout_marginEnd="@dimen/half_margin"/>
+                android:text="@string/search_instructions.nts_area"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="\u2022 NTS Sheet"
-                android:textSize="16dp"
-                android:layout_marginLeft="@dimen/half_margin"
-                android:layout_marginRight="@dimen/half_margin"
-                android:layout_marginStart="@dimen/half_margin"
-                android:layout_marginEnd="@dimen/half_margin"/>
+                android:text="@string/search_instructions.nts_sheet"
+                style="@style/Theme.Search_Instructions.Argument_Type"/>
         </GridLayout>
 
     </LinearLayout>

@@ -180,4 +180,18 @@
     <string name="log.google_api_client.suspended.service_disconnected">Google Api Client connection has been suspended because the service was disconnected.</string>
     <string name="log.google_api_client.failed">Google Api Client connection failed:  </string>
     <string name="log.search_result.bad_activity">Activity must implement OnChangeCursorListener and OnPlaceButtonClickedListener</string>
+
+    <!-- Search Instructions -->
+    <string name="search_instructions.header">No memorials shown</string>
+    <string name="search_instructions.intro">Use the top search bar to find memorials by:\n</string>
+    <string name="search_instructions.resident">\u2022 Resident</string>
+    <string name="search_instructions.hometown">\u2022 Hometown</string>
+    <string name="search_instructions.obit_date">\u2022 Obit. Date</string>
+    <string name="search_instructions.rank">\u2022 Rank</string>
+    <string name="search_instructions.latitude">\u2022 Latitude</string>
+    <string name="search_instructions.longitude">\u2022 Longitude</string>
+    <string name="search_instructions.geomemorial_name">\u2022 Geomemorial Name</string>
+    <string name="search_instructions.nts_series">\u2022 NTS Series</string>
+    <string name="search_instructions.nts_area">\u2022 NTS Area</string>
+    <string name="search_instructions.nts_sheet">\u2022 NTS Sheet</string>
 </resources>
