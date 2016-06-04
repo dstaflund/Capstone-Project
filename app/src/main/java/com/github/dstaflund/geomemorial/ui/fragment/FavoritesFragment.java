@@ -2,18 +2,24 @@ package com.github.dstaflund.geomemorial.ui.fragment;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
+import android.text.Spannable;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -107,9 +113,17 @@ public class FavoritesFragment extends Fragment{
                 Log.d("FavoritesFragment", "Data Size = " + (data == null ? 0 : data.size()));
                 mAdapter = new FavoritesMapAdapter(getContext(), data);
 
+                EditText ev = new EditText(getContext());
+                ev.setText("There are no favorites\nat the present time\n\n");
+                Spannable empty = ev.getText();
+                empty.setSpan(new StyleSpan(Typeface.BOLD_ITALIC), 0, empty.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                empty.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorAccent1)), 0, empty.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                empty.setSpan(new RelativeSizeSpan(1.5f), 0, empty.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
                 if (mList == null) {
-                    mList = (ListFragment) getChildFragmentManager().findFragmentById(R.id.list);
+                    mList = (ListFragment) getChildFragmentManager().findFragmentById(android.R.id.list);
                     mList.setListAdapter(mAdapter);
+                    mList.setEmptyText(empty);
                     mList.getListView().setRecyclerListener(new AbsListView.RecyclerListener() {
 
                         @Override

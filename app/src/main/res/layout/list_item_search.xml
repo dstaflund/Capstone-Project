@@ -18,7 +18,7 @@
 
     <GridLayout
         style="@style/Theme.Search.Result.Root"
-        android:elevation="@dimen/default_elevation"
+        android:elevation="8dp"
         android:background="@color/white">
 
         <TextView

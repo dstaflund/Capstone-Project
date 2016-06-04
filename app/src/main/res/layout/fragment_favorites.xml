@@ -5,7 +5,7 @@
     style="@style/Theme.Favorites.Fragment.Root">
 
     <fragment
-        android:id="@+id/list"
+        android:id="@android:id/list"
         class="android.support.v4.app.ListFragment"
         style="@style/Theme.Favorites.Fragment.Content"/>
 
