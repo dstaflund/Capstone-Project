@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Search instructions -->
+    <string name="search_instructions.geomemorial_name">Geomemorial \u2022</string>
+</resources>
