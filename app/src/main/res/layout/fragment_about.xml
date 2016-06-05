@@ -15,11 +15,6 @@
                 style="@style/Theme.About.Fragment.About.Grid">
 
                 <TextView
-                    android:id="@+id/fragment_about_about_header"
-                    android:text="@string/about_header"
-                    style="@style/Theme.About.Fragment.About.Header"/>
-
-                <TextView
                     android:id="@+id/fragment_about_name_label"
                     android:text="@string/about_name_label"
                     style="@style/Theme.About.Fragment.About.Label"/>
@@ -74,19 +69,19 @@
         <LinearLayout
             style="@style/Theme.ABout.Fragment.Acknowledgments.Container">
 
+            <TextView
+                android:id="@+id/fragment_about_acknowledgments_header"
+                android:text="@string/acknowledgments_header"
+                style="@style/Theme.About.Fragment.Acknowledgments.Header"/>
+
+            <TextView
+                android:id="@+id/fragment_about_acknowledgments_text"
+                android:text="@string/acknowledgments_thanks_to"
+                style="@style/Theme.About.Fragment.Acknowledgments.Label"/>
+
             <GridLayout
                 android:id="@+id/fragment_about_acknowledgments_layout"
                 style="@style/Theme.About.Fragment.Acknowledgments.Layout">
-
-                <TextView
-                    android:id="@+id/fragment_about_acknowledgments_header"
-                    android:text="@string/acknowledgments_header"
-                    style="@style/Theme.About.Fragment.Acknowledgments.Header"/>
-
-                <TextView
-                    android:id="@+id/fragment_about_acknowledgments_text"
-                    android:text="@string/acknowledgments_thanks_to"
-                    style="@style/Theme.About.Fragment.Acknowledgments.Label"/>
 
                 <TextView
                     android:id="@+id/fragment_about_acknowledgments_1"
@@ -103,38 +98,29 @@
                     android:text="@string/acknowledgments_thanks3"
                     style="@style/Theme.About.Fragment.Acknowledgments.Value"/>
 
-            </GridLayout>
-            <GridLayout
-                style="@style/Theme.About.Fragment.Acknowledgments.Testers.Grid">
-
-                <TextView
-                    android:layout_marginTop="@dimen/full_margin"
-                    android:text="@string/acknowledgments_test_team"
-                    style="@style/Theme.About.Fragment.Acknowledgments.Testers.Label"/>
-
                 <TextView
                     android:text="@string/acknowledgments_tester_1"
-                    style="@style/Theme.About.Fragment.Acknowledgments.Testers.Value"/>
+                    style="@style/Theme.About.Fragment.Acknowledgments.Value"/>
 
                 <TextView
                     android:text="@string/acknowledgments_tester_2"
-                    style="@style/Theme.About.Fragment.Acknowledgments.Testers.Value" />
+                    style="@style/Theme.About.Fragment.Acknowledgments.Value" />
 
                 <TextView
                     android:text="@string/acknowledgments_tester_3"
-                    style="@style/Theme.About.Fragment.Acknowledgments.Testers.Value" />
+                    style="@style/Theme.About.Fragment.Acknowledgments.Value" />
 
                 <TextView
                     android:text="@string/acknowledgments_tester_4"
-                    style="@style/Theme.About.Fragment.Acknowledgments.Testers.Value" />
+                    style="@style/Theme.About.Fragment.Acknowledgments.Value" />
 
                 <TextView
                     android:text="@string/acknowledgments_tester_5"
-                    style="@style/Theme.About.Fragment.Acknowledgments.Testers.Value" />
+                    style="@style/Theme.About.Fragment.Acknowledgments.Value" />
 
                 <TextView
                     android:text="@string/acknowledgments_tester_6"
-                    style="@style/Theme.About.Fragment.Acknowledgments.Testers.Value" />
+                    style="@style/Theme.About.Fragment.Acknowledgments.Value" />
 
             </GridLayout>
         </LinearLayout>

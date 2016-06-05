@@ -3,8 +3,8 @@
 
     <!-- Acknowledgments -->
     <string name="acknowledgments_thanks1">Udacity \u2022</string>
-    <string name="acknowledgments_thanks2">Saskatchewan Parks, Culture, and Sport \u2022</string>
-    <string name="acknowledgments_thanks3">Mr. Doug Chisholm \u2022</string>
+    <string name="acknowledgments_thanks2">Sask. Parks, Culture, and Sport \u2022</string>
+    <string name="acknowledgments_thanks3">Doug Chisholm \u2022</string>
 
     <!-- Further Information -->
     <string name="info_url1" translatable="false">www.pcs.gov.sk.ca \u2022</string>

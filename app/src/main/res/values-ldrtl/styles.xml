@@ -91,18 +91,18 @@
     <style name="Theme.About.Fragment.Acknowledgments.Header" parent="Theme.About.Fragment">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">right|end|top</item>
-        <item name="android:gravity">right|end</item>
-        <item name="android:textAlignment">textEnd</item>
+        <item name="android:layout_gravity">left|start|top</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentStart">true</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
     <style name="Theme.About.Fragment.Acknowledgments.Label" parent="Theme.About.Fragment">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">right|end|top</item>
-        <item name="android:gravity">right|end</item>
-        <item name="android:textAlignment">textEnd</item>
+        <item name="android:layout_gravity">left|start|top</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentStart">true</item>
         <item name="android:paddingBottom">@dimen/default_padding</item>
     </style>
     <style name="Theme.About.Fragment.Acknowledgments.Value" parent="Theme.About.Fragment">

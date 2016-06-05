@@ -38,9 +38,8 @@
     <string name="acknowledgments_header">ACKNOWLEDGMENTS</string>
     <string name="acknowledgments_thanks_to">Thanks to:</string>
     <string name="acknowledgments_thanks1">\u2022 Udacity</string>
-    <string name="acknowledgments_thanks2">\u2022 Saskatchewan Parks, Culture, and Sport</string>
-    <string name="acknowledgments_thanks3">\u2022 Mr. Doug Chisholm</string>
-    <string name="acknowledgments_test_team">A special thanks to the following testers:</string>
+    <string name="acknowledgments_thanks2">\u2022 Sask. Parks, Culture, and Sport</string>
+    <string name="acknowledgments_thanks3">\u2022 Doug Chisholm</string>
     <string name="acknowledgments_tester_1">\u2022 Maria-Lynn Callaghan</string>
     <string name="acknowledgments_tester_2">\u2022 Tracy Creighton</string>
     <string name="acknowledgments_tester_3">\u2022 Catriona Graham</string>
