@@ -31,6 +31,8 @@
     <string name="about_date_value" translatable="false">2016-07-01</string>
     <string name="about_by_label">By</string>
     <string name="about_by_value">Darryl Staflund</string>
+    <string name="about_description_1">The Saskatchewan Geo-Memorial Project is a Government of Saskatchewan initiative that names landmarks after residents who have died in service of Saskatchewan or Canada.  Although the program originally concerned itself with casualties from World War II (1938 - 1945), it has been extended to include casualties from World War I (1914 - 1918), Merchant Conflicts, The Korean War (1950 - 1953), Sanctioned United Nations Missions, The War in Afghanistan (2001-2014), and Incidents involving Police Officers and Emergency Responders.  Geo-memorials are also used to honour those who have made important contributions to the Province of Saskatchewan.  The initiative honours almost 4000 residents at the present time.</string>
+    <string name="about_description_2">Sask. Geo-Memorial is an Android application that people can use to learn more about the Saskatchewan Geo-Memorial Project and about its residents and geo-memorials in particular.  Users can search for residents by name, hometown, birth date, rank, and obit. date and will be shown on a map where their geo-memorials are located.</string>
 
     <!-- Acknowledgments -->
     <string name="acknowledgments_header">ACKNOWLEDGMENTS</string>
@@ -38,11 +40,20 @@
     <string name="acknowledgments_thanks1">\u2022 Udacity</string>
     <string name="acknowledgments_thanks2">\u2022 Saskatchewan Parks, Culture, and Sport</string>
     <string name="acknowledgments_thanks3">\u2022 Mr. Doug Chisholm</string>
+    <string name="acknowledgments_test_team">A special thanks to the following testers:</string>
+    <string name="acknowledgments_tester_1">\u2022 Maria-Lynn Callaghan</string>
+    <string name="acknowledgments_tester_2">\u2022 Tracy Creighton</string>
+    <string name="acknowledgments_tester_3">\u2022 Catriona Graham</string>
+    <string name="acknowledgments_tester_4">\u2022 Tim Schneider</string>
+    <string name="acknowledgments_tester_5">\u2022 Doris Staflund</string>
+    <string name="acknowledgments_tester_6">\u2022 Greg Wawryk</string>
 
     <!-- Contact Us -->
     <string name="contact_header">CONTACT US</string>
     <string name="contact_invitation">If you have comments or questions, you can contact the developer at the following address:</string>
     <string name="contact_address" translatable="false">darryl.staflund@hushmail.com</string>
+    <string name="contact_codebase">To view the source code or any known issues, visit the following link:</string>
+    <string name="contact_codebase_url" translatable="false">github.com/dstaflund/Capstone-Project</string>
 
     <!-- Further Information -->
     <string name="info_header">FURTHER INFORMATION</string>
@@ -51,6 +62,9 @@
     <string name="info_url2" translatable="false">\u2022 sasksearch.com</string>
     <string name="info_url3" translatable="false">\u2022 woodlandaerialphoto.com</string>
     <string name="info_url4" translatable="false">\u2022 svwm.ca</string>
+    <string name="info_url5" translatable="false">\u2022 legionmagazine.com</string>
+    <string name="info_url6" translatable="false">\u2022 esask.uregina.ca/entry/place_names.html</string>
+    <string name="info_url7" translatable="false">\u2022 www.reginalibrary.ca/blogs/index.php?blog=7</string>
 
     <!-- History -->
     <string name="history_header">VERSION HISTORY</string>

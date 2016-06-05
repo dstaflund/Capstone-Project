@@ -7,108 +7,173 @@
     <LinearLayout
         style="@style/Theme.About.Fragment.Linear">
 
-        <GridLayout
-            android:id="@+id/fragment_about_about_layout"
-            style="@style/Theme.About.Fragment.About.Grid">
+        <LinearLayout
+            style="@style/Theme.About.Fragment.About.Container">
+
+            <GridLayout
+                android:id="@+id/fragment_about_about_layout"
+                style="@style/Theme.About.Fragment.About.Grid">
+
+                <TextView
+                    android:id="@+id/fragment_about_about_header"
+                    android:text="@string/about_header"
+                    style="@style/Theme.About.Fragment.About.Header"/>
+
+                <TextView
+                    android:id="@+id/fragment_about_name_label"
+                    android:text="@string/about_name_label"
+                    style="@style/Theme.About.Fragment.About.Label"/>
+
+                <TextView
+                    android:id="@+id/fragment_about_name_value"
+                    android:text="@string/about_name_value"
+                    style="@style/Theme.About.Fragment.About.Value"/>
+
+                <TextView
+                    android:id="@+id/fragment_about_version_label"
+                    android:text="@string/about_version_label"
+                    style="@style/Theme.About.Fragment.About.Label"/>
+
+                <TextView
+                    android:id="@+id/fragment_about_version_value"
+                    android:text="@string/about_version_value"
+                    style="@style/Theme.About.Fragment.About.Value"/>
+
+                <TextView
+                    android:id="@+id/fragment_about_date_label"
+                    android:text="@string/about_date_label"
+                    style="@style/Theme.About.Fragment.About.Label"/>
+
+                <TextView
+                    android:id="@+id/fragment_about_date_value"
+                    android:text="@string/about_date_value"
+                    style="@style/Theme.About.Fragment.About.Value"/>
+
+                <TextView
+                    android:id="@+id/fragment_about_by_label"
+                    android:text="@string/about_by_label"
+                    style="@style/Theme.About.Fragment.About.Label"/>
+
+                <TextView
+                    android:id="@+id/fragment_about_by_value"
+                    android:text="@string/about_by_value"
+                    style="@style/Theme.About.Fragment.About.Value"/>
+
+            </GridLayout>
 
             <TextView
-                android:id="@+id/fragment_about_about_header"
-                android:text="@string/about_header"
-                style="@style/Theme.About.Fragment.About.Header"/>
+                android:text="@string/about_description_1"
+                style="@style/Theme.About.Fragment.About.Description"/>
 
             <TextView
-                android:id="@+id/fragment_about_name_label"
-                android:text="@string/about_name_label"
-                style="@style/Theme.About.Fragment.About.Label"/>
+                android:text="@string/about_description_2"
+                style="@style/Theme.About.Fragment.About.Description" />
 
-            <TextView
-                android:id="@+id/fragment_about_name_value"
-                android:text="@string/about_name_value"
-                style="@style/Theme.About.Fragment.About.Value"/>
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/fragment_about_version_label"
-                android:text="@string/about_version_label"
-                style="@style/Theme.About.Fragment.About.Label"/>
+        <LinearLayout
+            style="@style/Theme.ABout.Fragment.Acknowledgments.Container">
 
-            <TextView
-                android:id="@+id/fragment_about_version_value"
-                android:text="@string/about_version_value"
-                style="@style/Theme.About.Fragment.About.Value"/>
+            <GridLayout
+                android:id="@+id/fragment_about_acknowledgments_layout"
+                style="@style/Theme.About.Fragment.Acknowledgments.Layout">
 
-            <TextView
-                android:id="@+id/fragment_about_date_label"
-                android:text="@string/about_date_label"
-                style="@style/Theme.About.Fragment.About.Label"/>
+                <TextView
+                    android:id="@+id/fragment_about_acknowledgments_header"
+                    android:text="@string/acknowledgments_header"
+                    style="@style/Theme.About.Fragment.Acknowledgments.Header"/>
 
-            <TextView
-                android:id="@+id/fragment_about_date_value"
-                android:text="@string/about_date_value"
-                style="@style/Theme.About.Fragment.About.Value"/>
+                <TextView
+                    android:id="@+id/fragment_about_acknowledgments_text"
+                    android:text="@string/acknowledgments_thanks_to"
+                    style="@style/Theme.About.Fragment.Acknowledgments.Label"/>
 
-            <TextView
-                android:id="@+id/fragment_about_by_label"
-                android:text="@string/about_by_label"
-                style="@style/Theme.About.Fragment.About.Label"/>
+                <TextView
+                    android:id="@+id/fragment_about_acknowledgments_1"
+                    android:text="@string/acknowledgments_thanks1"
+                    style="@style/Theme.About.Fragment.Acknowledgments.Value"/>
 
-            <TextView
-                android:id="@+id/fragment_about_by_value"
-                android:text="@string/about_by_value"
-                style="@style/Theme.About.Fragment.About.Value"/>
+                <TextView
+                    android:id="@+id/fragment_about_acknowledgments_2"
+                    android:text="@string/acknowledgments_thanks2"
+                    style="@style/Theme.About.Fragment.Acknowledgments.Value"/>
 
-        </GridLayout>
+                <TextView
+                    android:id="@+id/fragment_about_acknowledgments_3"
+                    android:text="@string/acknowledgments_thanks3"
+                    style="@style/Theme.About.Fragment.Acknowledgments.Value"/>
 
-        <GridLayout
-            android:id="@+id/fragment_about_acknowledgments_layout"
-            style="@style/Theme.About.Fragment.Acknowledgments.Layout">
+            </GridLayout>
+            <GridLayout
+                style="@style/Theme.About.Fragment.Acknowledgments.Testers.Grid">
 
-            <TextView
-                android:id="@+id/fragment_about_acknowledgments_header"
-                android:text="@string/acknowledgments_header"
-                style="@style/Theme.About.Fragment.Acknowledgments.Header"/>
+                <TextView
+                    android:layout_marginTop="@dimen/full_margin"
+                    android:text="@string/acknowledgments_test_team"
+                    style="@style/Theme.About.Fragment.Acknowledgments.Testers.Label"/>
 
-            <TextView
-                android:id="@+id/fragment_about_acknowledgments_text"
-                android:text="@string/acknowledgments_thanks_to"
-                style="@style/Theme.About.Fragment.Acknowledgments.Label"/>
+                <TextView
+                    android:text="@string/acknowledgments_tester_1"
+                    style="@style/Theme.About.Fragment.Acknowledgments.Testers.Value"/>
 
-            <TextView
-                android:id="@+id/fragment_about_acknowledgments_1"
-                android:text="@string/acknowledgments_thanks1"
-                style="@style/Theme.About.Fragment.Acknowledgments.Value"/>
+                <TextView
+                    android:text="@string/acknowledgments_tester_2"
+                    style="@style/Theme.About.Fragment.Acknowledgments.Testers.Value" />
 
-            <TextView
-                android:id="@+id/fragment_about_acknowledgments_2"
-                android:text="@string/acknowledgments_thanks2"
-                style="@style/Theme.About.Fragment.Acknowledgments.Value"/>
+                <TextView
+                    android:text="@string/acknowledgments_tester_3"
+                    style="@style/Theme.About.Fragment.Acknowledgments.Testers.Value" />
 
-            <TextView
-                android:id="@+id/fragment_about_acknowledgments_3"
-                android:text="@string/acknowledgments_thanks3"
-                style="@style/Theme.About.Fragment.Acknowledgments.Value"/>
+                <TextView
+                    android:text="@string/acknowledgments_tester_4"
+                    style="@style/Theme.About.Fragment.Acknowledgments.Testers.Value" />
 
-        </GridLayout>
+                <TextView
+                    android:text="@string/acknowledgments_tester_5"
+                    style="@style/Theme.About.Fragment.Acknowledgments.Testers.Value" />
 
-        <GridLayout
-            android:id="@+id/fragment_about_contact_layout"
-            style="@style/Theme.About.Fragment.Contact.Layout">
+                <TextView
+                    android:text="@string/acknowledgments_tester_6"
+                    style="@style/Theme.About.Fragment.Acknowledgments.Testers.Value" />
 
-            <TextView
-                android:id="@+id/fragment_about_contact_header"
-                android:text="@string/contact_header"
-                style="@style/Theme.About.Fragment.Contact.Header"/>
+            </GridLayout>
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/fragment_about_contact_invitation"
-                android:text="@string/contact_invitation"
-                style="@style/Theme.About.Fragment.Contact.Invitation"/>
+        <LinearLayout
+            style="@style/Theme.About.Fragment.Contact.Container">
 
-            <TextView
-                android:id="@+id/fragment_about_contact_value"
-                android:text="@string/contact_address"
-                style="@style/Theme.About.Fragment.Contact.Address"/>
+            <GridLayout
+                android:id="@+id/fragment_about_contact_layout"
+                style="@style/Theme.About.Fragment.Contact.Layout">
 
-        </GridLayout>
+                <TextView
+                    android:id="@+id/fragment_about_contact_header"
+                    android:text="@string/contact_header"
+                    style="@style/Theme.About.Fragment.Contact.Header"/>
+
+                <TextView
+                    android:id="@+id/fragment_about_contact_invitation"
+                    android:text="@string/contact_invitation"
+                    style="@style/Theme.About.Fragment.Contact.Invitation"/>
+
+                <TextView
+                    android:id="@+id/fragment_about_contact_value"
+                    android:text="@string/contact_address"
+                    style="@style/Theme.About.Fragment.Contact.Address"/>
+
+            </GridLayout>
+            <GridLayout
+                style="@style/Theme.About.Fragment.Contact.Layout">
+
+                <TextView
+                    android:text="@string/contact_codebase"
+                    style="@style/Theme.About.Fragment.Contact.SiteInfo" />
+
+                <TextView
+                    android:text="@string/contact_codebase_url"
+                    style="@style/Theme.About.Fragment.Contact.Url"/>
+            </GridLayout>
+        </LinearLayout>
 
         <GridLayout
             android:id="@+id/fragment_about_info_layout"
@@ -142,6 +207,21 @@
             <TextView
                 android:id="@+id/fragment_about_info_link_4"
                 android:text="@string/info_url4"
+                style="@style/Theme.About.Fragment.Info.Link"/>
+
+            <TextView
+                android:id="@+id/fragment_about_info_link_5"
+                android:text="@string/info_url5"
+                style="@style/Theme.About.Fragment.Info.Link"/>
+
+            <TextView
+                android:id="@+id/fragment_about_info_link_6"
+                android:text="@string/info_url6"
+                style="@style/Theme.About.Fragment.Info.Link"/>
+
+            <TextView
+                android:id="@+id/fragment_about_info_link_7"
+                android:text="@string/info_url7"
                 style="@style/Theme.About.Fragment.Info.Link"/>
 
         </GridLayout>

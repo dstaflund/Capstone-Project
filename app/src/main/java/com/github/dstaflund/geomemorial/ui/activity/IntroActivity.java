@@ -19,9 +19,9 @@ public class IntroActivity extends AppIntro {
         Log.d("Screen Height", Integer.toString(config.screenHeightDp));
         Log.d("Screen Width", Integer.toString(config.screenWidthDp));
 
-//        if (! PreferencesManager.isFirstTime(this)){
-//            endActivity();
-//        }
+        if (! PreferencesManager.isFirstTime(this)){
+            endActivity();
+        }
 
         // CC0, https://commons.wikimedia.org/w/index.php?curid=435678
         addSlide(AppIntroFragment.newInstance(
@@ -74,7 +74,6 @@ public class IntroActivity extends AppIntro {
         ));
 
         setBarColor(getResources().getColor(R.color.colorPrimaryDark));
-//        setNavBarColor();
 
         showSkipButton(true);
         setProgressButtonEnabled(true);

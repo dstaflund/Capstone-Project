@@ -26,4 +26,13 @@
     <string name="search_instructions.nts_series">NTS Series \u2022</string>
     <string name="search_instructions.nts_area">NTS Area \u2022</string>
     <string name="search_instructions.nts_sheet">NTS Sheet \u2022</string>
+
+    <!-- Acknowledgments -->
+    <string name="acknowledgments_tester_1">Maria-Lynn Callaghan \u2022</string>
+    <string name="acknowledgments_tester_2">Tracy Creighton \u2022</string>
+    <string name="acknowledgments_tester_3">Catriona Graham \u2022</string>
+    <string name="acknowledgments_tester_4">Tim Schneider \u2022</string>
+    <string name="acknowledgments_tester_5">Doris Staflund \u2022</string>
+    <string name="acknowledgments_tester_6">Greg Wawryk \u2022</string>
+
 </resources>

@@ -528,20 +528,25 @@
         <item name="android:padding">@dimen/no_padding</item>
         <item name="android:orientation">vertical</item>
     </style>
-    <style name="Theme.About.Fragment.About.Grid" parent="Theme.About.Fragment">
+    <style name="Theme.About.Fragment.About.Container" parent="Theme.About.Fragment">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
         <item name="android:layout_marginLeft">@dimen/half_margin</item>
         <item name="android:layout_marginStart">@dimen/half_margin</item>
         <item name="android:layout_marginRight">@dimen/half_margin</item>
         <item name="android:layout_marginEnd">@dimen/half_margin</item>
         <item name="android:layout_marginTop">@dimen/half_margin</item>
         <item name="android:layout_marginBottom">@dimen/quarter_margin</item>
-        <item name="android:columnCount">@integer/about_grid_column_count</item>
-        <item name="android:rowCount">@integer/about_grid_row_count</item>
         <item name="android:background">@color/white</item>
         <item name="android:padding">@dimen/default_padding</item>
         <item name="android:elevation">@dimen/default_elevation</item>
+    </style>
+    <style name="Theme.About.Fragment.About.Grid" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:columnCount">@integer/about_grid_column_count</item>
+        <item name="android:rowCount">@integer/about_grid_row_count</item>
     </style>
     <style name="Theme.About.Fragment.About.Header" parent="Theme.About.Fragment">
         <item name="android:layout_columnSpan">@integer/about_header_column_span</item>
@@ -559,18 +564,29 @@
     <style name="Theme.About.Fragment.About.Value" parent="Theme.About.Fragment">
         <item name="android:layout_gravity">left|start|top</item>
     </style>
-    <style name="Theme.About.Fragment.Acknowledgments.Layout" parent="Theme.About.Fragment">
+    <style name="Theme.About.Fragment.About.Description" parent="Theme.About.Fragment">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/white</item>
+        <item name="android:layout_marginTop">@dimen/full_margin</item>
+        <item name="android:maxLines">20</item>
+    </style>
+    <style name="Theme.ABout.Fragment.Acknowledgments.Container" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
         <item name="android:layout_marginLeft">@dimen/half_margin</item>
         <item name="android:layout_marginStart">@dimen/half_margin</item>
         <item name="android:layout_marginRight">@dimen/half_margin</item>
         <item name="android:layout_marginEnd">@dimen/half_margin</item>
-        <item name="android:layout_marginTop">@dimen/quarter_margin</item>
+        <item name="android:layout_marginTop">@dimen/half_margin</item>
         <item name="android:layout_marginBottom">@dimen/quarter_margin</item>
+        <item name="android:background">@color/white</item>
         <item name="android:padding">@dimen/default_padding</item>
         <item name="android:elevation">@dimen/default_elevation</item>
+    </style>
+    <style name="Theme.About.Fragment.Acknowledgments.Layout" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:columnCount">1</item>
     </style>
     <style name="Theme.About.Fragment.Acknowledgments.Header" parent="Theme.About.Fragment">
@@ -591,19 +607,41 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">left|start|top</item>
     </style>
-    <style name="Theme.About.Fragment.Contact.Layout" parent="Theme.About.Fragment">
+    <style name="Theme.About.Fragment.Acknowledgments.Testers.Grid" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:columnCount">1</item>
+    </style>
+    <style name="Theme.About.Fragment.Acknowledgments.Testers.Label" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|start|top</item>
+        <item name="android:paddingBottom">@dimen/default_padding</item>
+    </style>
+    <style name="Theme.About.Fragment.Acknowledgments.Testers.Value" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|start|top</item>
+    </style>
+
+    <style name="Theme.About.Fragment.Contact.Container" parent="Theme.About.Fragment">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:background">@color/white</item>
         <item name="android:layout_marginLeft">@dimen/half_margin</item>
         <item name="android:layout_marginStart">@dimen/half_margin</item>
         <item name="android:layout_marginRight">@dimen/half_margin</item>
         <item name="android:layout_marginEnd">@dimen/half_margin</item>
-        <item name="android:layout_marginTop">@dimen/quarter_margin</item>
+        <item name="android:layout_marginTop">@dimen/half_margin</item>
         <item name="android:layout_marginBottom">@dimen/quarter_margin</item>
+        <item name="android:background">@color/white</item>
         <item name="android:padding">@dimen/default_padding</item>
         <item name="android:elevation">@dimen/default_elevation</item>
+    </style>
+    <style name="Theme.About.Fragment.Contact.Layout" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:columnCount">1</item>
     </style>
     <style name="Theme.About.Fragment.Contact.Header" parent="Theme.About.Fragment">
         <item name="android:layout_width">match_parent</item>
@@ -623,6 +661,20 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">left|start|top</item>
         <item name="android:autoLink">email</item>
+    </style>
+    <style name="Theme.About.Fragment.Contact.SiteInfo" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|start|top</item>
+        <item name="android:layout_marginTop">@dimen/full_margin</item>
+        <item name="android:lines">@integer/contact_invitation_lines</item>
+        <item name="android:paddingBottom">@dimen/default_padding</item>
+    </style>
+    <style name="Theme.About.Fragment.Contact.Url" parent="Theme.About.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|start|top</item>
+        <item name="android:autoLink">web</item>
     </style>
     <style name="Theme.About.Fragment.Info.Layout" parent="Theme.About.Fragment">
         <item name="android:layout_width">match_parent</item>
