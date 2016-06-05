@@ -26,6 +26,7 @@
     <dimen name="extra_small_text_size">6sp</dimen>
     <dimen name="search_instructions.intro.text_size">16dp</dimen>
     <dimen name="search_instructions.argument.text_size">16dp</dimen>
+    <dimen name="favorites.empty.text_size">20sp</dimen>
 
     <!-- Width -->
     <dimen name="min_widget_width">250dp</dimen>

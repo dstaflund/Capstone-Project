@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -58,7 +59,7 @@ import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_NONE;
 import static com.google.android.gms.maps.MapsInitializer.initialize;
 
 public class FavoritesFragment extends Fragment{
-    private ListFragment mList;
+    private GridView mList;
     private ArrayAdapter<FavoritesMarkerInfo> mAdapter;
 
     private int mFirstVisiblePosition;
@@ -113,18 +114,11 @@ public class FavoritesFragment extends Fragment{
                 Log.d("FavoritesFragment", "Data Size = " + (data == null ? 0 : data.size()));
                 mAdapter = new FavoritesMapAdapter(getContext(), data);
 
-                EditText ev = new EditText(getContext());
-                ev.setText("There are no favorites\nat the present time\n\n");
-                Spannable empty = ev.getText();
-                empty.setSpan(new StyleSpan(Typeface.BOLD_ITALIC), 0, empty.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                empty.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorAccent1)), 0, empty.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                empty.setSpan(new RelativeSizeSpan(1.5f), 0, empty.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
                 if (mList == null) {
-                    mList = (ListFragment) getChildFragmentManager().findFragmentById(android.R.id.list);
-                    mList.setListAdapter(mAdapter);
-                    mList.setEmptyText(empty);
-                    mList.getListView().setRecyclerListener(new AbsListView.RecyclerListener() {
+                    mList = (GridView) mRoot.findViewById(android.R.id.list);
+                    mList.setAdapter(mAdapter);
+                    mList.setEmptyView(mRoot.findViewById(R.id.empty_favorites));
+                    mList.setRecyclerListener(new AbsListView.RecyclerListener() {
 
                         @Override
                         public void onMovedToScrapHeap(@NonNull View view) {
@@ -138,12 +132,12 @@ public class FavoritesFragment extends Fragment{
                     });
                 }
                 else {
-                    mList.setListAdapter(null);
-                    mList.setListAdapter(mAdapter);
+                    mList.setAdapter(null);
+                    mList.setAdapter(mAdapter);
                 }
 
                 if (mFirstVisiblePosition != -1 && mTop != -1){
-                    mList.getListView().setSelectionFromTop(mFirstVisiblePosition, mTop);
+                    mList.setSelectionFromTop(mFirstVisiblePosition, mTop);
                 }
             }
         }.execute();
@@ -163,11 +157,10 @@ public class FavoritesFragment extends Fragment{
         super.onSaveInstanceState(outState);
 
         if (outState != null) {
-            ListView listView = mList.getListView();
-            outState.putInt("first_visible_position", listView.getFirstVisiblePosition());
+            outState.putInt("first_visible_position", mList.getFirstVisiblePosition());
 
-            View v = listView.getChildAt(0);
-            outState.putInt("top", (v == null ? 0 : v.getTop() - listView.getPaddingTop()));
+            View v = mList.getChildAt(0);
+            outState.putInt("top", (v == null ? 0 : v.getTop() - mList.getPaddingTop()));
         }
     }
 

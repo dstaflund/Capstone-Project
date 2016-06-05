@@ -177,6 +177,7 @@
     <!-- Favorites -->
     <string name="favorites.share.content_description">Share Button</string>
     <string name="favorites.favorite.content_description">Select / Unselect Favorite Button</string>
+    <string name="favorites.empty">There are no favorites\nat the present time\n\n</string>
 
     <!-- Logging statements -->
     <string name="log.search.too_few">Search returned no memorials.</string>
