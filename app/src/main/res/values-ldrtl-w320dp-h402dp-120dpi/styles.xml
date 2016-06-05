@@ -56,5 +56,4 @@
         <item name="android:layout_weight">@integer/distance_weight</item>
     </style>
 
-
 </resources>

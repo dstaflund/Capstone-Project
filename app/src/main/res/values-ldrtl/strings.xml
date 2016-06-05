@@ -11,6 +11,9 @@
     <string name="info_url2" translatable="false">sasksearch.com \u2022</string>
     <string name="info_url3" translatable="false">woodlandaerialphoto.com \u2022</string>
     <string name="info_url4" translatable="false">svwm.ca \u2022</string>
+    <string name="info_url5" translatable="false">legionmagazine.com \u2022</string>
+    <string name="info_url6" translatable="false">esask.uregina.ca/entry/place_names.html \u2022</string>
+    <string name="info_url7" translatable="false">www.reginalibrary.ca/blogs/index.php?blog=7 \u2022</string>
 
     <!-- History -->
     <string name="history_release1">Initial Release - v1.0.0</string>
