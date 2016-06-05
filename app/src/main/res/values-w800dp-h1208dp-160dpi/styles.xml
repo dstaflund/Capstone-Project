@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Acknowledgments -->
+    <style name="Theme.About.Fragment.Acknowledgments.Layout" parent="Theme.About.Fragment">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:columnCount">5</item>
+    </style>
+
+</resources>
