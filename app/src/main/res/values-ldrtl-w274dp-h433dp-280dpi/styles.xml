@@ -70,14 +70,4 @@
         <item name="android:layout_weight">@integer/distance_weight</item>
     </style>
 
-    <!-- About -->
-    <style name="Theme.About.Fragment.Acknowledgments.Value" parent="Theme.About.Fragment">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">right|end|top</item>
-        <item name="android:textAlignment">viewStart</item>
-    </style>
-
-
-
 </resources>

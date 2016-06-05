@@ -607,23 +607,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">left|start|top</item>
     </style>
-    <style name="Theme.About.Fragment.Acknowledgments.Testers.Grid" parent="Theme.About.Fragment">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:columnCount">1</item>
-    </style>
-    <style name="Theme.About.Fragment.Acknowledgments.Testers.Label" parent="Theme.About.Fragment">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">left|start|top</item>
-        <item name="android:paddingBottom">@dimen/default_padding</item>
-    </style>
-    <style name="Theme.About.Fragment.Acknowledgments.Testers.Value" parent="Theme.About.Fragment">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">left|start|top</item>
-    </style>
 
+    <!-- Contact Us -->
     <style name="Theme.About.Fragment.Contact.Container" parent="Theme.About.Fragment">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -639,31 +624,31 @@
         <item name="android:elevation">@dimen/default_elevation</item>
     </style>
     <style name="Theme.About.Fragment.Contact.Layout" parent="Theme.About.Fragment">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:columnCount">1</item>
     </style>
     <style name="Theme.About.Fragment.Contact.Header" parent="Theme.About.Fragment">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
     <style name="Theme.About.Fragment.Contact.Invitation" parent="Theme.About.Fragment">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">left|start|top</item>
         <item name="android:lines">@integer/contact_invitation_lines</item>
         <item name="android:paddingBottom">@dimen/default_padding</item>
     </style>
     <style name="Theme.About.Fragment.Contact.Address" parent="Theme.About.Fragment">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">left|start|top</item>
         <item name="android:autoLink">email</item>
     </style>
     <style name="Theme.About.Fragment.Contact.SiteInfo" parent="Theme.About.Fragment">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">left|start|top</item>
         <item name="android:layout_marginTop">@dimen/full_margin</item>
@@ -671,15 +656,17 @@
         <item name="android:paddingBottom">@dimen/default_padding</item>
     </style>
     <style name="Theme.About.Fragment.Contact.Url" parent="Theme.About.Fragment">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">left|start|top</item>
         <item name="android:autoLink">web</item>
     </style>
+
+    <!-- Further Information -->
     <style name="Theme.About.Fragment.Info.Layout" parent="Theme.About.Fragment">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:orientation">vertical</item>
+        <item name="android:columnCount">1</item>
         <item name="android:background">@color/white</item>
         <item name="android:layout_marginLeft">@dimen/half_margin</item>
         <item name="android:layout_marginStart">@dimen/half_margin</item>
@@ -691,14 +678,14 @@
         <item name="android:elevation">@dimen/default_elevation</item>
     </style>
     <style name="Theme.About.Fragment.Info.Header" parent="Theme.About.Fragment">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">left|start|top</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
     </style>
     <style name="Theme.About.Fragment.Info.Blurb" parent="Theme.About.Fragment">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">left|start|top</item>
         <item name="android:lines">@integer/info_blurb_lines</item>
@@ -706,11 +693,13 @@
         <item name="android:paddingBottom">@dimen/default_padding</item>
     </style>
     <style name="Theme.About.Fragment.Info.Link" parent="Theme.About.Fragment">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">left|start|top</item>
         <item name="android:autoLink">web</item>
     </style>
+
+    <!-- History -->
     <style name="Theme.About.Fragment.History.Layout" parent="Theme.About.Fragment">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
