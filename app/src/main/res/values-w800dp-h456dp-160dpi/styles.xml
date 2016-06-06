@@ -49,4 +49,82 @@
         <item name="android:paddingLeft">@dimen/default_padding</item>
     </style>
 
+    <!-- Favorites (Fragment) -->
+    <style name="Theme.Favorites.Fragment.Content" parent="Theme.Favorites.Fragment">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingTop">@dimen/default_padding</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:paddingLeft">@dimen/slight_padding</item>
+        <item name="android:paddingStart">@dimen/slight_padding</item>
+        <item name="android:paddingRight">@dimen/slight_padding</item>
+        <item name="android:paddingEnd">@dimen/slight_padding</item>
+        <item name="android:numColumns">2</item>
+    </style>
+
+    <!-- Favorites (List Item) -->
+    <style name="Theme.Favorites.Item" parent="AppTheme">
+    </style>
+    <style name="Theme.Favorites.Item.Root" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="Theme.Favorites.Item.Map" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/map_height</item>
+        <item name="android:contentDescription">@string/mapview.content_description</item>
+        <item name="android:paddingLeft">@dimen/slight_padding</item>
+        <item name="android:paddingStart">@dimen/slight_padding</item>
+        <item name="android:paddingRight">@dimen/slight_padding</item>
+        <item name="android:paddingEnd">@dimen/slight_padding</item>
+        <item name="android:paddingBottom">@dimen/default_padding</item>
+    </style>
+    <style name="Theme.Favorites.Item.Container" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Theme.Favorites.Item.Name" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="Theme.Favorites.Item.Button" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/half_margin</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:textOn"></item>
+        <item name="android:textOff"></item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <style name="Theme.Favorites.Item.Button.Share" parent="Theme.Favorites.Item.Button">
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:background">@drawable/ic_menu_share</item>
+        <item name="android:contentDescription">@string/favorites.share.content_description</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+
+    </style>
+    <style name="Theme.Favorites.Item.Button.Favorite" parent="Theme.Favorites.Item.Button">
+        <item name="android:layout_toLeftOf">@id/list_item_favorite_share_button</item>
+        <item name="android:layout_toStartOf">@id/list_item_favorite_share_button</item>
+        <item name="android:background">@drawable/favorite_toggle_white</item>
+        <item name="android:contentDescription">@string/favorites.favorite.content_description</item>
+        <item name="android:elevation">@dimen/default_elevation</item>
+
+    </style>
+    <style name="Theme.Favorites.Item.Scrim" parent="Theme.Favorites.Item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/gradient_scrim</item>
+    </style>
+
+
 </resources>

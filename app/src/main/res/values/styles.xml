@@ -508,6 +508,7 @@
     <style name="Theme.Favorites.Fragment.Content" parent="Theme.Favorites.Fragment">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:numColumns">1</item>
     </style>
     <style name="Theme.Favorites.Fragment.Empty" parent="Theme.Favorites.Fragment">
         <item name="android:layout_width">match_parent</item>

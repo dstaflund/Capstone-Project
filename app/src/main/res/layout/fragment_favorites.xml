@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/Theme.Favorites.Fragment.Root">
 
     <GridView
         android:id="@android:id/list"
         style="@style/Theme.Favorites.Fragment.Content"/>
+
     <TextView
         android:id="@+id/empty_favorites"
         android:text="@string/favorites.empty"
         style="@style/Theme.Favorites.Fragment.Empty"/>
 
-</FrameLayout>
+</LinearLayout>
