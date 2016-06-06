@@ -33,10 +33,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8478ac7f-24f8-44db-b69f-a6f3eca81ede" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_favorites.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_favorites.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-ldrtl-w800dp-h456dp-160dpi/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-ldrtl-w800dp-h456dp-160dpi/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-w800dp-h456dp-160dpi/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-w800dp-h456dp-160dpi/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-ldrtl-w598dp-h336dp-360dpi/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-ldrtl-w598dp-h336dp-360dpi/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-ldrtl-w640dp-h336dp-320dpi/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-ldrtl-w640dp-h336dp-320dpi/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-w598dp-h336dp-320dpi/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-w598dp-h336dp-320dpi/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values-w640dp-h336dp-320dpi/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values-w640dp-h336dp-320dpi/styles.xml" />
     </list>
     <ignored path="Capstone-Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -144,74 +144,48 @@
       <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w800dp-h456dp-160dpi/styles.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.3883495">
+            <state vertical-scroll-proportion="-18.126213">
               <caret line="127" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values-ldrtl-w800dp-h456dp-160dpi/styles.xml">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.0">
+              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="126" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values-ldrtl-w598dp-h336dp-360dpi/styles.xml">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.907173">
-              <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dimens.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.967742">
-              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FavoritesFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/FavoritesFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="7.891892">
-              <caret line="117" column="37" selection-start-line="117" selection-start-column="29" selection-end-line="117" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_item_favorites.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_favorites.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.333333">
-              <caret line="28" column="59" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fragment_favorites.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_favorites.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6666667">
-              <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+              <caret line="119" column="12" selection-start-line="119" selection-start-column="12" selection-end-line="119" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w640dp-h336dp-320dpi/styles.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.090909">
-              <caret line="511" column="0" selection-start-line="510" selection-start-column="0" selection-end-line="511" selection-end-column="0" />
+            <state vertical-scroll-proportion="-9.272727">
+              <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w598dp-h336dp-320dpi/styles.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.5151515">
+              <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -2582,10 +2556,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values-w569dp-h296dp-240dpi/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-w480dp-830dp-160dpi/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-ldrtl-w480dp-h830dp-160dpi/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-w640dp-h336dp-320dpi/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-ldrtl-w640dp-h336dp-320dpi/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-w598dp-h336dp-320dpi/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-ldrtl-w598dp-h336dp-360dpi/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-w600dp-h952dp-160dpi/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-w1024dp-h528dp-160dpi/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-ldrtl-w600dp-h952dp-160dpi/styles.xml" />
@@ -2611,6 +2581,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-w800dp-h456dp-160dpi/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-ldrtl-w800dp-h456dp-160dpi/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-ldrtl-w640dp-h336dp-320dpi/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-w640dp-h336dp-320dpi/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-w598dp-h336dp-320dpi/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values-ldrtl-w598dp-h336dp-360dpi/styles.xml" />
       </list>
     </option>
   </component>
@@ -3702,14 +3676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-ldrtl-w640dp-h336dp-320dpi/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39662448">
-          <caret line="33" column="30" selection-start-line="0" selection-start-column="0" selection-end-line="43" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w274dp-h433dp-280dpi/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3738,14 +3704,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46413502">
           <caret line="10" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-ldrtl-w598dp-h336dp-360dpi/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.278481">
-          <caret line="27" column="61" selection-start-line="27" selection-start-column="61" selection-end-line="27" selection-end-column="61" />
           <folding />
         </state>
       </provider>
@@ -3826,14 +3784,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.74261606">
           <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w598dp-h336dp-320dpi/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.949367">
-          <caret line="42" column="12" selection-start-line="2" selection-start-column="0" selection-end-line="42" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -3922,14 +3872,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.939394">
           <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w640dp-h336dp-320dpi/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.949367">
-          <caret line="42" column="12" selection-start-line="0" selection-start-column="0" selection-end-line="43" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -4058,18 +4000,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-ldrtl-w640dp-h336dp-320dpi/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.5232067">
+          <caret line="119" column="12" selection-start-line="119" selection-start-column="12" selection-end-line="119" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w800dp-h456dp-160dpi/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3883495">
+        <state vertical-scroll-proportion="-18.126213">
           <caret line="127" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w640dp-h336dp-320dpi/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.272727">
+          <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w598dp-h336dp-320dpi/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.5151515">
+          <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-ldrtl-w800dp-h456dp-160dpi/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="126" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-ldrtl-w598dp-h336dp-360dpi/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.907173">
-          <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+          <caret line="119" column="12" selection-start-line="119" selection-start-column="12" selection-end-line="119" selection-end-column="12" />
           <folding />
         </state>
       </provider>
