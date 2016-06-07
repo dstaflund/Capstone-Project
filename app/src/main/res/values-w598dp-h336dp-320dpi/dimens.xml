@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Search instructions -->
+    <dimen name="search_instructions.intro.text_size">20dp</dimen>
+    <dimen name="search_instructions.argument.text_size">20dp</dimen>
+
+    <!-- Search Results -->
+    <dimen name="search_result.label.text_size">16sp</dimen>
+    <dimen name="search_result.value.resident.text_size">16sp</dimen>
+    <dimen name="search_result.value.non_resident.text_size">16sp</dimen>
+
+</resources>
