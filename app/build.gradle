@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
 
 android {
     signingConfigs {
@@ -16,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId "com.github.dstaflund.geomemorial"
-        minSdkVersion 18
+        minSdkVersion 23
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -44,11 +43,13 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support:support-v4:23.4.0'
     compile 'com.github.paolorotolo:appintro:3.3.0'
-    compile 'com.google.android.gms:play-services:9.0.0'
-    compile 'com.google.android.gms:play-services-maps:9.0.0'
-    compile 'com.google.android.gms:play-services-location:9.0.0'
+    compile 'com.google.android.gms:play-services:9.0.2'
+    compile 'com.google.android.gms:play-services-maps:9.0.2'
+    compile 'com.google.android.gms:play-services-location:9.0.2'
     compile 'com.google.maps.android:android-maps-utils:0.4'
     testCompile 'junit:junit:4.12'
     androidTestCompile 'org.jmockit:jmockit:1.23'
 }
+
+apply plugin: 'com.google.gms.google-services'
 
