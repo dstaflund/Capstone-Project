@@ -9,13 +9,27 @@
     tools:showIn="@layout/app_bar_main"
     style="@style/Theme.Main.Content.Root">
 
-    <fragment
-        android:id="@+id/fragment_search_result"
-        class="com.github.dstaflund.geomemorial.ui.fragment.SearchResultFragment"
-        style="@style/Theme.Main.Content.SearchResult"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:orientation="vertical">
+        <fragment
+            android:id="@+id/fragment_search_result"
+            android:layout_weight="4"
+            class="com.github.dstaflund.geomemorial.ui.fragment.SearchResultFragment"
+            style="@style/Theme.Main.Content.SearchResult"/>
+        <fragment
+            android:id="@+id/fragment_search_examples"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            class="com.github.dstaflund.geomemorial.ui.fragment.SearchExamplesFragment"/>
+    </LinearLayout>
 
     <fragment
         android:id="@+id/fragment_map"
+        android:layout_weight="4"
         class="com.github.dstaflund.geomemorial.ui.fragment.MapFragment"
         style="@style/Theme.Main.Content.Map"/>
 

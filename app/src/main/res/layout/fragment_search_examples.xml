@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Theme.Search_Instructions.Outer_Layout">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/search_examples.header"
+        style="@style/Theme.Search_Instructions.Header"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/full_margin"
+        style="@style/Theme.Search_Instructions.Grid">
+
+        <TextView
+            android:text="@string/search_examples.1"
+            style="@style/Theme.Search_Instructions.Argument_Type"/>
+
+        <TextView
+            android:text="@string/search_examples.2"
+            style="@style/Theme.Search_Instructions.Argument_Type"/>
+
+        <TextView
+            android:text="@string/search_examples.3"
+            style="@style/Theme.Search_Instructions.Argument_Type"/>
+
+        <TextView
+            android:text="@string/search_examples.4"
+            style="@style/Theme.Search_Instructions.Argument_Type"/>
+
+        <TextView
+            android:text="\u2022 NTS Sheet Search = '74A1' or 'Maribelli Lake'"
+            style="@style/Theme.Search_Instructions.Argument_Type"/>
+
+    </LinearLayout>
+
+</LinearLayout>

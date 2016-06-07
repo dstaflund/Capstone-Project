@@ -38,4 +38,12 @@
     <string name="acknowledgments_tester_5">Doris Staflund \u2022</string>
     <string name="acknowledgments_tester_6">Greg Wawryk \u2022</string>
 
+    <!-- Search Examples -->
+    <string name="search_examples.header">Search Examples</string>
+    <string name="search_examples.1">Text Search = \'Alfred\', \'Lanigan\' \u2022</string>
+    <string name="search_examples.2">Date Search = \'1944-06-06\' \u2022</string>
+    <string name="search_examples.3">NTS Series Search = \'74\' or \'74 Series\' \u2022</string>
+    <string name="search_examples.4">NTS Area Search = \'74A\' or \'Upper Foster Lake\' \u2022</string>
+    <string name="search_examples.5">NTS Sheet Search = \'74A1\' or \'Maribelli Lake\' \u2022</string>
+
 </resources>
