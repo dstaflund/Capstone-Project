@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/count_and_distance"
+        style="@style/Theme.Search.Result.CountAndDistance">
+        <TextView
+            android:id="@+id/record_count"
+            style="@style/Theme.Search.Result.RecordCount"/>
+        <TextView
+            android:id="@+id/distance"
+            style="@style/Theme.Search.Result.Distance"/>
+    </LinearLayout>
+
+    <GridLayout
+        style="@style/Theme.Search.Result.Root"
+        android:columnCount="4"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/list_item_common_name_label"
+            android:text="@string/search_resident"
+            android:paddingEnd="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            style="@style/Theme.Search.Result.Label"/>
+
+        <TextView
+            android:id="@+id/list_item_common_name"
+            android:paddingEnd="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            style="@style/Theme.Search.Result.Value.Resident"/>
+
+        <TextView
+            android:id="@+id/list_item_common_hometown_label"
+            android:text="@string/search_hometown"
+            android:paddingEnd="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            style="@style/Theme.Search.Result.Label"/>
+
+        <TextView
+            android:id="@+id/list_item_common_hometown"
+            android:paddingEnd="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            style="@style/Theme.Search.Result.Value.NonResident"/>
+
+        <TextView
+            android:id="@+id/list_item_common_rank_label"
+            android:text="@string/search_rank"
+            android:paddingEnd="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            style="@style/Theme.Search.Result.Label"/>
+
+        <TextView
+            android:id="@+id/list_item_common_rank"
+            android:paddingEnd="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            style="@style/Theme.Search.Result.Value.NonResident"/>
+
+        <TextView
+            android:id="@+id/list_item_common_obit_label"
+            android:text="@string/search_obit"
+            android:paddingEnd="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            style="@style/Theme.Search.Result.Label"/>
+
+        <TextView
+            android:id="@+id/list_item_common_obit"
+            android:paddingEnd="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            style="@style/Theme.Search.Result.Value.NonResident"/>
+
+        <TextView
+            android:id="@+id/list_item_common_geomemorial_label"
+            android:text="@string/search_geomemorial"
+            android:paddingEnd="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            style="@style/Theme.Search.Result.Label"/>
+
+        <TextView
+            android:id="@+id/list_item_common_geomemorial"
+            android:paddingEnd="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            style="@style/Theme.Search.Result.Value.NonResident"/>
+
+        <TextView
+            android:id="@+id/list_item_common_nts_sheet_label"
+            android:text="@string/search_nts_sheet"
+            android:paddingEnd="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            style="@style/Theme.Search.Result.Label"/>
+
+        <TextView
+            android:paddingEnd="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            android:id="@+id/list_item_common_nts_sheet"
+            style="@style/Theme.Search.Result.Value.NonResident"/>
+
+        <TextView
+            android:id="@+id/list_item_common_coordinate_label"
+            android:paddingEnd="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            android:text="@string/search_coordinate"
+            style="@style/Theme.Search.Result.Label"/>
+
+        <TextView
+            android:paddingEnd="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            android:id="@+id/list_item_common_coordinate"
+            style="@style/Theme.Search.Result.Value.NonResident"/>
+
+        <LinearLayout
+            android:id="@+id/list_item_action_layout"
+            android:layout_columnSpan="4"
+            style="@style/Theme.Search.Result.Button.Container">
+
+            <ImageButton
+                android:id="@+id/favorite_button"
+                style="@style/Theme.Search.Result.Button.Favorite"/>
+
+            <ImageButton
+                android:id="@+id/share_button"
+                style="@style/Theme.Search.Result.Button.Share"/>
+
+            <ImageButton
+                android:id="@+id/place_button"
+                style="@style/Theme.Search.Result.Button.Place"/>
+
+        </LinearLayout>
+    </GridLayout>
+</LinearLayout>
