@@ -11,6 +11,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.provider.SearchRecentSuggestions;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -66,9 +68,7 @@ public class MainActivity
 
     public static final int EMPTY_SEARCH = -1;
     public static final int RESIDENT_LOADER_ID = 0;
-    public static final String URI_KEY = "uri";
-    public static final String SELECTION_KEY = "selection";
-    public static final String SELECTION_ARG_KEY = "selectionArg";
+    public static final String LAST_SEARCH_REQUEST_KEY = "lastSearchRequest";
     public static final String SAVED_SEARCH_KEY = "savedSearch";
 
 
@@ -78,8 +78,9 @@ public class MainActivity
     private NavigationView mNavigationView;
     private MapFragment mMapFragment;
     private SearchResultFragment mSearchResultFragment;
-    private String mSavedSearchString;
     private SearchView mSearchView;
+    private SearchRequest mLastSearchRequest;
+    private String mSavedSearchString;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -128,6 +129,11 @@ public class MainActivity
 
         if (savedInstanceState != null) {
             mSavedSearchString = savedInstanceState.getString(SAVED_SEARCH_KEY);
+            mLastSearchRequest = savedInstanceState.getParcelable(LAST_SEARCH_REQUEST_KEY);
+            if (mLastSearchRequest != null){
+                handleIntent(mLastSearchRequest.toIntent());
+                return;
+            }
         }
 
         handleIntent(getIntent());
@@ -150,6 +156,7 @@ public class MainActivity
         super.onSaveInstanceState(outState);
 
         if (mSearchView != null) {
+            outState.putParcelable(LAST_SEARCH_REQUEST_KEY, mLastSearchRequest);
             outState.putString(SAVED_SEARCH_KEY, mSearchView.getQuery().toString());
         }
     }
@@ -189,27 +196,27 @@ public class MainActivity
             return;
         }
 
+        SearchRequest searchRequest = new SearchRequest(intent);
+
         if (Intent.ACTION_VIEW.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            String userQuery = intent.getStringExtra(SearchManager.USER_QUERY);
-            doSearch(null, null, query);
+            doSearch(searchRequest);
             return;
         }
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            Uri uri = intent.getData();
-            String query = intent.getStringExtra(SearchManager.QUERY) == null ? null : intent.getStringExtra(SearchManager.QUERY);
-            String extraDataKey = intent.getStringExtra(SearchManager.EXTRA_DATA_KEY);
-            mSearchRecentSuggestions.saveRecentQuery(extraDataKey, null);
-            doSearch(uri, query, extraDataKey);
+            mSearchRecentSuggestions.saveRecentQuery(searchRequest.getExtraDataKey(), null);
+            doSearch(searchRequest);
         }
     }
 
-    private void doSearch(@NonNull Uri uri, @Nullable String query, @Nullable String extraDataKey) {
-        Bundle args = new Bundle();
-        args.putParcelable(URI_KEY, uri);
-        args.putString(SELECTION_KEY, query);
-        args.putString(SELECTION_ARG_KEY, extraDataKey);
+    private void doSearch(
+        @NonNull SearchRequest currentSearchRequest
+    ) {
+        Bundle args = currentSearchRequest.toBundle();
+
+//        if (Intent.ACTION_SEARCH.equals(action)) {
+            mLastSearchRequest = currentSearchRequest;
+//        }
 
         LoaderManager loaderManager = getSupportLoaderManager();
         Loader<Cursor> loader = loaderManager.getLoader(RESIDENT_LOADER_ID);
@@ -351,9 +358,10 @@ public class MainActivity
                     return null;
                 }
 
-                Uri uri = args.getParcelable(URI_KEY);
-                String query = args.getString(SELECTION_KEY);
-                String extraDataKey = args.getString(SELECTION_ARG_KEY);
+                SearchRequest searchRequest = new SearchRequest(args);
+                Uri uri = searchRequest.getUri();
+                String query = searchRequest.getQuery();
+                String extraDataKey = searchRequest.getExtraDataKey();
 
                 //  Free-form search
                 if (uri == null && query != null && extraDataKey == null){
@@ -505,5 +513,119 @@ public class MainActivity
     public static void startActivity(Context context){
         Intent i = new Intent(context, MainActivity.class);
         context.startActivity(i);
+    }
+
+    public static class SearchRequest implements Parcelable {
+        public static final String ACTION = "action";
+        public static final String URI = "uri";
+        public static final String QUERY = SearchManager.QUERY;
+        public static final String USER_QUERY = SearchManager.USER_QUERY;
+        public static final String EXTRA_DATA_KEY = SearchManager.EXTRA_DATA_KEY;
+
+        public static final Parcelable.Creator<SearchRequest> CREATOR =
+            new Parcelable.Creator<SearchRequest>() {
+
+                @Override
+                public SearchRequest createFromParcel(Parcel in) {
+                    return new SearchRequest(in);
+                }
+
+                @Override
+                public SearchRequest[] newArray(int size) {
+                    return new SearchRequest[size];
+                }
+            };
+
+        private String mAction;
+        private Uri mUri;
+        private String mQuery;
+        private String mUserQuery;
+        private String mExtraDataKey;
+
+        public String getAction(){
+            return mAction;
+        }
+
+        public Uri getUri(){
+            return mUri;
+        }
+
+        public String getQuery(){
+            return mQuery;
+        }
+
+        public String getUserQuery(){
+            return mUserQuery;
+        }
+
+        public String getExtraDataKey(){
+            return mExtraDataKey;
+        }
+
+        public Bundle toBundle(){
+            Bundle b = new Bundle();
+            b.putString(ACTION, mAction);
+            b.putParcelable(URI, mUri);
+            b.putString(QUERY, mQuery);
+            b.putString(USER_QUERY, mUserQuery);
+            b.putString(EXTRA_DATA_KEY, mExtraDataKey);
+            return b;
+        }
+
+        public Intent toIntent(){
+            Intent i = new Intent(mAction);
+            i.setData(mUri);
+            i.putExtra(SearchManager.QUERY, mQuery);
+            i.putExtra(SearchManager.USER_QUERY, mUserQuery);
+            i.putExtra(SearchManager.EXTRA_DATA_KEY, mExtraDataKey);
+            return i;
+        }
+
+        public SearchRequest(Parcel in){
+            super();
+            mAction = in.readString();
+            mUri = Uri.parse(in.readString());
+            mQuery = in.readString();
+            mUserQuery = in.readString();
+            mExtraDataKey = in.readString();
+        }
+
+        public SearchRequest(Bundle in){
+            mAction = in.getString(ACTION);
+            mUri = in.getParcelable(URI);
+            mQuery = in.getString(QUERY);
+            mUserQuery = in.getString(USER_QUERY);
+            mExtraDataKey = in.getString(EXTRA_DATA_KEY);
+        }
+
+        public SearchRequest(Intent i){
+            mAction = i.getAction();
+            mUri = i.getData();
+            mQuery = i.getStringExtra(QUERY);
+            mUserQuery = i.getStringExtra(USER_QUERY);
+            mExtraDataKey = i.getStringExtra(EXTRA_DATA_KEY);
+        }
+
+        public SearchRequest(String action, Uri uri, String query, String userQuery, String extraDataKey){
+            mAction = action;
+            mUri = uri;
+            mQuery = query;
+            mUserQuery = userQuery;
+            mExtraDataKey = extraDataKey;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(mAction);
+            dest.writeString(mUri == null ? null : mUri.toString());
+            dest.writeString(mQuery);
+            dest.writeString(mUserQuery);
+            dest.writeString(mExtraDataKey);
+        }
     }
 }
