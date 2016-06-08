@@ -26,6 +26,7 @@ public class SearchResultFragment extends Fragment
     private SearchResultItemFragment.OnPlaceButtonClickedListener mOnPlaceButtonClickedListener;
     private View mRoot;
     private ViewPager mViewPager;
+    private boolean mReturnToLastPage;
 
     public SearchResultFragment(){
         super();
@@ -66,6 +67,10 @@ public class SearchResultFragment extends Fragment
         mViewPager.setAdapter(mSearchResultPagerAdapter);
 
         return mRoot;
+    }
+
+    public void returnToLastPage(boolean value){
+        mReturnToLastPage = value;
     }
 
     public void swapCursor(@Nullable Cursor value){

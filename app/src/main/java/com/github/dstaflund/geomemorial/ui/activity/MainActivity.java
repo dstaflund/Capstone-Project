@@ -131,11 +131,15 @@ public class MainActivity
             mSavedSearchString = savedInstanceState.getString(SAVED_SEARCH_KEY);
             mLastSearchRequest = savedInstanceState.getParcelable(LAST_SEARCH_REQUEST_KEY);
             if (mLastSearchRequest != null){
+                mMapFragment.ignoreCameraZoom(true);
+                mSearchResultFragment.returnToLastPage(true);
                 handleIntent(mLastSearchRequest.toIntent());
                 return;
             }
         }
 
+        mMapFragment.ignoreCameraZoom(false);
+        mSearchResultFragment.returnToLastPage(false);
         handleIntent(getIntent());
     }
 
@@ -214,9 +218,7 @@ public class MainActivity
     ) {
         Bundle args = currentSearchRequest.toBundle();
 
-//        if (Intent.ACTION_SEARCH.equals(action)) {
-            mLastSearchRequest = currentSearchRequest;
-//        }
+        mLastSearchRequest = currentSearchRequest;
 
         LoaderManager loaderManager = getSupportLoaderManager();
         Loader<Cursor> loader = loaderManager.getLoader(RESIDENT_LOADER_ID);
@@ -604,14 +606,6 @@ public class MainActivity
             mQuery = i.getStringExtra(QUERY);
             mUserQuery = i.getStringExtra(USER_QUERY);
             mExtraDataKey = i.getStringExtra(EXTRA_DATA_KEY);
-        }
-
-        public SearchRequest(String action, Uri uri, String query, String userQuery, String extraDataKey){
-            mAction = action;
-            mUri = uri;
-            mQuery = query;
-            mUserQuery = userQuery;
-            mExtraDataKey = extraDataKey;
         }
 
         @Override

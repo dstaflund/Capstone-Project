@@ -34,7 +34,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import static com.github.dstaflund.geomemorial.GeomemorialApplication.isMapLoaded;
 import static com.github.dstaflund.geomemorial.GeomemorialApplication.setMapLoaded;
@@ -60,6 +59,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
     private LatLng mRestoredTarget;
     private float mRestoredZoom;
     private ArrayList<RestorableMarker> mRestoredMarkers;
+    private boolean mIgnoreCameraZoom;
 
     public MapFragment(){
         super();
@@ -77,7 +77,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
         else {
             mRestoredTarget = savedState.getParcelable(sTargetKey);
             mRestoredZoom = savedState.getFloat(sZoomKey);
-            mRestoredMarkers = savedState.getParcelableArrayList(sVisibleMarkerPositionsKey);
+//            mRestoredMarkers = savedState.getParcelableArrayList(sVisibleMarkerPositionsKey);
             setMapLoaded(true);
         }
     }
@@ -128,7 +128,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
 
     @Override
     public void onMapLoaded() {
-        if (! isMapLoaded()) {
+        if (! isMapLoaded() && ! mIgnoreCameraZoom) {
             mMap.animateCamera(newLatLngBounds(sSaskBounds, 0));
             setMapLoaded(true);
         }
@@ -155,20 +155,23 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
         outState.putParcelable(sTargetKey, mMap.getCameraPosition().target);
         outState.putFloat(sZoomKey, mMap.getCameraPosition().zoom);
 
-        ArrayList<RestorableMarker> markers = new ArrayList<>();
-        for (Map.Entry<String, Marker> entry : mVisibleMarkers.entrySet()) {
-            RestorableMarker restorableMarker = new RestorableMarker(
-                entry.getKey(),
-                entry.getValue().getPosition(),
-                entry.getValue().getTitle(),
-                entry.getValue().getSnippet()
-            );
-            markers.add(restorableMarker);
-        }
-
-        outState.putParcelableArrayList(sVisibleMarkerPositionsKey, markers);
+//        ArrayList<RestorableMarker> markers = new ArrayList<>();
+//        for (Map.Entry<String, Marker> entry : mVisibleMarkers.entrySet()) {
+//            RestorableMarker restorableMarker = new RestorableMarker(
+//                entry.getKey(),
+//                entry.getValue().getPosition(),
+//                entry.getValue().getTitle(),
+//                entry.getValue().getSnippet()
+//            );
+//            markers.add(restorableMarker);
+//        }
+//
+//        outState.putParcelableArrayList(sVisibleMarkerPositionsKey, markers);
     }
 
+    public void ignoreCameraZoom(boolean value){
+        mIgnoreCameraZoom = value;
+    }
 
     public void clearMap(){
         mMap.clear();
@@ -181,7 +184,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
     }
 
     public void updateCamera(){
-        CameraUpdateStrategy.updateCamera(getContext(), mMap, mVisibleMarkers);
+        if (! mIgnoreCameraZoom) {
+            CameraUpdateStrategy.updateCamera(getContext(), mMap, mVisibleMarkers);
+        } else {
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mRestoredTarget, mRestoredZoom));
+        }
     }
 
     public void zoomInOn(@NonNull LatLng latLng){
