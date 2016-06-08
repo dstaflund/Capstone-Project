@@ -212,6 +212,7 @@
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:padding">@dimen/default_padding</item>
         <item name="android:gravity">left|start</item>
     </style>
     <style name="Theme.Widget.Layout.Frame" parent="Theme.Widget.Layout">
