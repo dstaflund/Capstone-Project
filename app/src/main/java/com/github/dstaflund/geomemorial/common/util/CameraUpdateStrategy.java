@@ -59,18 +59,6 @@ public final class CameraUpdateStrategy {
         }
     }
 
-    public static void moveTo(
-        @NonNull Context context,
-        @NonNull GoogleMap map,
-        @NonNull MarkerMap markers,
-        @NonNull LatLng latLng
-    ){
-        LatLngBounds bounds = getLatLngBoundsFor(latLng);
-        CameraUpdate update = CameraUpdateFactory.newLatLngBounds(bounds, 0);
-        map.moveCamera(update);
-        markers.bringMarkerToFront(context, latLng);
-    }
-
     public static void zoomTo(
         @NonNull Context context,
         @NonNull GoogleMap map,

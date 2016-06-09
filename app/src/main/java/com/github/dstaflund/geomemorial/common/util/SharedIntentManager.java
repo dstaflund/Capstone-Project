@@ -11,6 +11,8 @@ import com.github.dstaflund.geomemorial.R;
 
 import java.util.Date;
 
+import static android.content.Intent.createChooser;
+
 public final class SharedIntentManager {
 
     @Nullable
@@ -70,7 +72,12 @@ public final class SharedIntentManager {
         );
 
         if (intent.resolveActivity(payload.getContext().getPackageManager()) != null) {
-            payload.getContext().startActivity(Intent.createChooser(intent, payload.getContext().getString(R.string.email_dialog_header)));
+            payload.getContext().startActivity(
+                createChooser(
+                    intent,
+                    payload.getContext().getString(R.string.email_dialog_header)
+                )
+            );
         }
     }
 

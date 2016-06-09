@@ -27,9 +27,14 @@ public final class GeomemorialDbContract {
         public static final String TABLE_NAME = "geomemorial";
 
         // Uris
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(TABLE_NAME).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+            .buildUpon()
+            .appendPath(TABLE_NAME)
+            .build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
 
         // Builders
         public static final Uri buildFor(@NonNull String id){
@@ -82,9 +87,14 @@ public final class GeomemorialDbContract {
         public static final String VIEW_NAME = "geomemorial_info";
 
         // Uris
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(VIEW_NAME).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+            .buildUpon()
+            .appendPath(VIEW_NAME)
+            .build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
 
         //  Columns
         public static final String COL_GEOMEMORIAL = "geomemorial";
@@ -138,9 +148,14 @@ public final class GeomemorialDbContract {
         public static final String TABLE_NAME = "hometown";
 
         // Uris
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(TABLE_NAME).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+            .buildUpon()
+            .appendPath(TABLE_NAME)
+            .build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
 
         // Columns
         public static final String COL_HOMETOWN = "hometown";
@@ -163,9 +178,14 @@ public final class GeomemorialDbContract {
         public static final String TABLE_NAME = "letter";
 
         // Uris
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(TABLE_NAME).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+            .buildUpon()
+            .appendPath(TABLE_NAME)
+            .build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
 
         // Columns
         public static final String COL_LETTER = "letter";
@@ -188,9 +208,14 @@ public final class GeomemorialDbContract {
         public static final String TABLE_NAME = "obit";
 
         // Uris
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(TABLE_NAME).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+            .buildUpon()
+            .appendPath(TABLE_NAME)
+            .build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
 
         // Columns
         public static final String COL_OBIT = "obit";
@@ -213,9 +238,14 @@ public final class GeomemorialDbContract {
         public static final String TABLE_NAME = "rank";
 
         // Uris
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(TABLE_NAME).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+            .buildUpon()
+            .appendPath(TABLE_NAME)
+            .build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
 
         // Columns
         public static final String COL_RANK = "rank";
@@ -238,9 +268,14 @@ public final class GeomemorialDbContract {
         public static final String TABLE_NAME = "resident";
 
         // Uris
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(TABLE_NAME).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+            .buildUpon()
+            .appendPath(TABLE_NAME)
+            .build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
 
         // Columns
         public static final String COL_RESIDENT = "resident";
@@ -278,9 +313,14 @@ public final class GeomemorialDbContract {
         public static final String TABLE_NAME = "nts_series";
 
         // Uris
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(TABLE_NAME).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+            .buildUpon()
+            .appendPath(TABLE_NAME)
+            .build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
 
         // Columns
         public static final String COL_NTS_SERIES_NUMBER = "nts_series_number";
@@ -324,9 +364,14 @@ public final class GeomemorialDbContract {
         public static final String TABLE_NAME = "nts_area";
 
         // Uris
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(TABLE_NAME).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+            .buildUpon()
+            .appendPath(TABLE_NAME)
+            .build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
 
         // Columns
         public static final String COL_NTS_AREA_LETTER = "nts_area_letter";
@@ -373,9 +418,14 @@ public final class GeomemorialDbContract {
         public static final String TABLE_NAME = "nts_sheet";
 
         // Uris
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(TABLE_NAME).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+            .buildUpon()
+            .appendPath(TABLE_NAME)
+            .build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
 
         // Columns
         public static final String COL_NTS_SHEET_NUMBER = "nts_sheet_number";
@@ -422,9 +472,14 @@ public final class GeomemorialDbContract {
         public static final String VIEW_NAME = "provincial_count";
 
         // Uris
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(VIEW_NAME).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+            .buildUpon()
+            .appendPath(VIEW_NAME)
+            .build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
 
         // Columns
         public static final String COL_MARKER_LAT = "marker_lat";
@@ -432,7 +487,8 @@ public final class GeomemorialDbContract {
         public static final String COL_GEOMEMORIAL_COUNT = "geomemorial_count";
 
         // Constraints
-        public static final String CONSTRAIN_BY_VISIBLE_BOUNDARY = VIEW_NAME + "." + COL_MARKER_LAT + " <= ?"
+        public static final String CONSTRAIN_BY_VISIBLE_BOUNDARY =
+            VIEW_NAME + "." + COL_MARKER_LAT + " <= ?"
                 + " AND " + VIEW_NAME + "." + COL_MARKER_LAT + " >= ?"
                 + " AND " + VIEW_NAME + "." + COL_MARKER_LNG + " >= ?"
                 + " AND " + VIEW_NAME + "." + COL_MARKER_LNG + " <= ?";
@@ -456,9 +512,14 @@ public final class GeomemorialDbContract {
         public static final String VIEW_NAME = "nts_series_counts";
 
         // Uris
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(VIEW_NAME).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+            .buildUpon()
+            .appendPath(VIEW_NAME)
+            .build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
 
         // Columns
         public static final String COL_NTS_SERIES_ID = "nts_series_id";
@@ -474,7 +535,8 @@ public final class GeomemorialDbContract {
 
         // Constraints
         public static final String CONSTRAIN_BY_ID = VIEW_NAME + "." + _ID + " = ?";
-        public static final String CONSTRAIN_BY_VISIBLE_BOUNDARY = VIEW_NAME + "." + COL_MARKER_LAT + " <= ?"
+        public static final String CONSTRAIN_BY_VISIBLE_BOUNDARY =
+            VIEW_NAME + "." + COL_MARKER_LAT + " <= ?"
                 + " AND " + VIEW_NAME + "." + COL_MARKER_LAT + " >= ?"
                 + " AND " + VIEW_NAME + "." + COL_MARKER_LNG + " >= ?"
                 + " AND " + VIEW_NAME + "." + COL_MARKER_LNG + " <= ?";
@@ -512,9 +574,14 @@ public final class GeomemorialDbContract {
         public static final String VIEW_NAME = "nts_area_counts";
 
         // Uris
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(VIEW_NAME).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+            .buildUpon()
+            .appendPath(VIEW_NAME)
+            .build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
 
         // Columns
         public static final String COL_NTS_AREA_ID = "nts_area_id";
@@ -532,7 +599,8 @@ public final class GeomemorialDbContract {
 
         // Constraints
         public static final String CONSTRAIN_BY_ID = VIEW_NAME + "." + _ID + " = ?";
-        public static final String CONSTRAIN_BY_VISIBLE_BOUNDARY = VIEW_NAME + "." + COL_MARKER_LAT + " <= ?"
+        public static final String CONSTRAIN_BY_VISIBLE_BOUNDARY =
+            VIEW_NAME + "." + COL_MARKER_LAT + " <= ?"
                 + " AND " + VIEW_NAME + "." + COL_MARKER_LAT + " >= ?"
                 + " AND " + VIEW_NAME + "." + COL_MARKER_LNG + " >= ?"
                 + " AND " + VIEW_NAME + "." + COL_MARKER_LNG + " <= ?";
@@ -574,9 +642,14 @@ public final class GeomemorialDbContract {
         public static final String VIEW_NAME = "nts_sheet_counts";
 
         // Uris
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(VIEW_NAME).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+            .buildUpon()
+            .appendPath(VIEW_NAME)
+            .build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + VIEW_NAME;
 
         // Columns
         public static final String COL_NTS_SHEET_ID = "nts_sheet_id";
@@ -596,7 +669,8 @@ public final class GeomemorialDbContract {
 
         // Constraints
         public static final String CONSTRAIN_BY_ID = VIEW_NAME + "." + _ID + " = ?";
-        public static final String CONSTRAIN_BY_VISIBLE_BOUNDARY = VIEW_NAME + "." + COL_MARKER_LAT + " <= ?"
+        public static final String CONSTRAIN_BY_VISIBLE_BOUNDARY =
+            VIEW_NAME + "." + COL_MARKER_LAT + " <= ?"
                 + " AND " + VIEW_NAME + "." + COL_MARKER_LAT + " >= ?"
                 + " AND " + VIEW_NAME + "." + COL_MARKER_LNG + " >= ?"
                 + " AND " + VIEW_NAME + "." + COL_MARKER_LNG + " <= ?";
@@ -642,9 +716,14 @@ public final class GeomemorialDbContract {
         public static final String VIRTUAL_TABLE_NAME = "marker_info";
 
         // Uris
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(VIRTUAL_TABLE_NAME).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + VIRTUAL_TABLE_NAME;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + VIRTUAL_TABLE_NAME;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+            .buildUpon()
+            .appendPath(VIRTUAL_TABLE_NAME)
+            .build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + VIRTUAL_TABLE_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + VIRTUAL_TABLE_NAME;
 
         // Columns
         public static final String COL_RESIDENT_ID = "resident_id";
@@ -669,12 +748,18 @@ public final class GeomemorialDbContract {
         public static final String COL_NTS_SHEET_NAME = NtsSheetCounts.COL_NTS_SHEET_NAME;
 
         // Constraints
-        public static final String CONSTRAIN_BY_ID = VIRTUAL_TABLE_NAME + "." + _ID + " = ?";
-        public static final String CONSTRAIN_BY_RANK_ID = VIRTUAL_TABLE_NAME + "." + COL_RANK_ID + " = ?";
-        public static final String CONSTRAIN_BY_HOMETOWN_ID = VIRTUAL_TABLE_NAME + "." + COL_HOMETOWN_ID + " = ?";
-        public static final String CONSTRAIN_BY_OBIT_ID = VIRTUAL_TABLE_NAME + "." + COL_OBIT_ID + " = ?";
-        public static final String CONSTRAIN_BY_LETTER_ID = VIRTUAL_TABLE_NAME + "." + COL_LETTER_ID + " = ?";
-        public static final String CONSTRAIN_BY_VISIBLE_BOUNDARY = VIRTUAL_TABLE_NAME + "." + COL_LATITUDE + " <= ?"
+        public static final String CONSTRAIN_BY_ID
+            = VIRTUAL_TABLE_NAME + "." + _ID + " = ?";
+        public static final String CONSTRAIN_BY_RANK_ID
+            = VIRTUAL_TABLE_NAME + "." + COL_RANK_ID + " = ?";
+        public static final String CONSTRAIN_BY_HOMETOWN_ID
+            = VIRTUAL_TABLE_NAME + "." + COL_HOMETOWN_ID + " = ?";
+        public static final String CONSTRAIN_BY_OBIT_ID
+            = VIRTUAL_TABLE_NAME + "." + COL_OBIT_ID + " = ?";
+        public static final String CONSTRAIN_BY_LETTER_ID
+            = VIRTUAL_TABLE_NAME + "." + COL_LETTER_ID + " = ?";
+        public static final String CONSTRAIN_BY_VISIBLE_BOUNDARY
+            = VIRTUAL_TABLE_NAME + "." + COL_LATITUDE + " <= ?"
                 + " AND " + VIRTUAL_TABLE_NAME + "." + COL_LATITUDE + " >= ?"
                 + " AND " + VIRTUAL_TABLE_NAME + "." + COL_LONGITUDE + " >= ?"
                 + " AND " + VIRTUAL_TABLE_NAME + "." + COL_LONGITUDE + " <= ?";
@@ -736,25 +821,35 @@ public final class GeomemorialDbContract {
         public static final int DEFAULT_NTS_SHEET_NAME_IDX = 20;
 
         // Sort orders
-        public static final String SORT_ORDER_RESIDENT = COL_RESIDENT + SORT_ASC + ", " + COL_HOMETOWN_ID + SORT_ASC;
+        public static final String SORT_ORDER_RESIDENT
+            = COL_RESIDENT + SORT_ASC + ", " + COL_HOMETOWN_ID + SORT_ASC;
     }
 
     public static final class SearchSuggestions implements BaseColumns {
         public static final String TABLE_NAME = "search_suggestions";
 
         // Uris
-        public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(TABLE_NAME).build();
-        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
-        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final Uri CONTENT_URI = BASE_CONTENT_URI
+            .buildUpon()
+            .appendPath(TABLE_NAME)
+            .build();
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
+            + "/" + CONTENT_AUTHORITY + "/" + TABLE_NAME;
 
         // Columns
         public static final String COL_SUGGEST_COLUMN_TEXT_1 = SearchManager.SUGGEST_COLUMN_TEXT_1;
         public static final String COL_SUGGEST_COLUMN_TEXT_2 = SearchManager.SUGGEST_COLUMN_TEXT_2;
-        public static final String COL_SUGGEST_COLUMN_INTENT_ACTION = SearchManager.SUGGEST_COLUMN_INTENT_ACTION;
-        public static final String COL_SUGGEST_COLUMN_INTENT_DATA = SearchManager.SUGGEST_COLUMN_INTENT_DATA;
-        public static final String COL_SUGGEST_COLUMN_INTENT_DATA_ID = SearchManager.SUGGEST_COLUMN_INTENT_DATA_ID;
+        public static final String COL_SUGGEST_COLUMN_INTENT_ACTION
+            = SearchManager.SUGGEST_COLUMN_INTENT_ACTION;
+        public static final String COL_SUGGEST_COLUMN_INTENT_DATA
+            = SearchManager.SUGGEST_COLUMN_INTENT_DATA;
+        public static final String COL_SUGGEST_COLUMN_INTENT_DATA_ID
+            = SearchManager.SUGGEST_COLUMN_INTENT_DATA_ID;
         public static final String COL_SUGGEST_COLUMN_QUERY = SearchManager.SUGGEST_COLUMN_QUERY;
-        public static final String COL_SUGGEST_COLUMN_INTENT_EXTRA_DATA = SearchManager.SUGGEST_COLUMN_INTENT_EXTRA_DATA;
+        public static final String COL_SUGGEST_COLUMN_INTENT_EXTRA_DATA
+            = SearchManager.SUGGEST_COLUMN_INTENT_EXTRA_DATA;
         public static final String COL_RESIDENT_ID = "resident_id";
         public static final String COL_HOMETOWN_ID = "hometown_id";
         public static final String COL_OBIT_ID = "obit_id";
@@ -792,6 +887,7 @@ public final class GeomemorialDbContract {
         public static final int DEFAULT_SUGGEST_COLUMN_INTENT_EXTRA_DATA_IDX = 6;
 
         // Sort orders
-        public static final String SORT_ORDER_SUGGEST_COLUMN_TEXT_1 = COL_SUGGEST_COLUMN_TEXT_1 + SORT_ASC + ", " + COL_SUGGEST_COLUMN_TEXT_2 + SORT_ASC;
+        public static final String SORT_ORDER_SUGGEST_COLUMN_TEXT_1
+            = COL_SUGGEST_COLUMN_TEXT_1 + SORT_ASC + ", " + COL_SUGGEST_COLUMN_TEXT_2 + SORT_ASC;
     }
 }

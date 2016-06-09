@@ -25,7 +25,6 @@ public class SearchResultFragment extends Fragment
     private SearchResultPagerAdapter mSearchResultPagerAdapter;
     private SearchResultFragment.OnChangeCursorListener mOnChangeCursorListener;
     private SearchResultItemFragment.OnPlaceButtonClickedListener mOnPlaceButtonClickedListener;
-    private View mRoot;
     private ViewPager mViewPager;
     private boolean mReturnToLastPage;
     private int mLastCurrentItem;
@@ -67,7 +66,7 @@ public class SearchResultFragment extends Fragment
         @Nullable ViewGroup container,
         @Nullable Bundle savedState
     ) {
-        mRoot = inflater.inflate(R.layout.fragment_search_result, container, false);
+        View mRoot = inflater.inflate(R.layout.fragment_search_result, container, false);
         mSearchResultPagerAdapter = new SearchResultPagerAdapter(getChildFragmentManager(), null);
 
         mViewPager = (ViewPager) mRoot.findViewById(R.id.pager);
@@ -94,7 +93,6 @@ public class SearchResultFragment extends Fragment
 
     public void swapCursor(@Nullable Cursor value){
         mSearchResultPagerAdapter.swapCursor(value);
-//        mViewPager.setAdapter(null);
         mViewPager.setAdapter(mSearchResultPagerAdapter);
         mViewPager.setCurrentItem(mLastCurrentItem);
         mReturnToLastPage = false;

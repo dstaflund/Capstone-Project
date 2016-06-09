@@ -590,7 +590,10 @@ public class GeomemorialDbProvider extends SearchRecentSuggestionsProvider {
                 break;
 
             case MatchCodes.SEARCH_SUGGESTIONS:
-                if (selectionArgs == null || selectionArgs.length == 0 || selectionArgs[0] == null || selectionArgs[0].trim().length() == 0){
+                if (selectionArgs == null
+                    || selectionArgs.length == 0
+                    || selectionArgs[0] == null
+                    || selectionArgs[0].trim().length() == 0){
                     retCursor = super.query(uri, projection, selection, selectionArgs, sortOrder);
                 } else {
                     retCursor = db.query(

@@ -7,6 +7,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -71,8 +72,6 @@ public class MainActivity
     public static final String LAST_SEARCH_REQUEST_KEY = "lastSearchRequest";
     public static final String SAVED_SEARCH_KEY = "savedSearch";
 
-
-    private boolean mConnected;
     private GoogleApiClient mGoogleApiClient;
     private SearchRecentSuggestions mSearchRecentSuggestions;
     private NavigationView mNavigationView;
@@ -97,7 +96,10 @@ public class MainActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
             this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        if (drawer != null) {
+            //noinspection deprecation
+            drawer.setDrawerListener(toggle);
+        }
         toggle.syncState();
 
         // Create an instance of GoogleAPIClient.
@@ -110,7 +112,9 @@ public class MainActivity
         }
 
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
-        mNavigationView.setNavigationItemSelectedListener(this);
+        if (mNavigationView != null) {
+            mNavigationView.setNavigationItemSelectedListener(this);
+        }
 
         checkInitialMapType();
 
@@ -188,11 +192,6 @@ public class MainActivity
         }
     }
 
-    private boolean isLocationAware(){
-        return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-         || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
-    }
-
     @Override
     protected void onNewIntent(@NonNull Intent intent) {
         handleIntent(intent);
@@ -261,7 +260,7 @@ public class MainActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer != null && drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
@@ -418,8 +417,9 @@ public class MainActivity
                 mSearchResultFragment.swapCursor(null);
                 break;
             default:
+                Resources r = getResources();
                 if (data == null || data.getCount() == 0) {
-                    Log.d(sLogTag, getResources().getString(R.string.log_search_too_few));
+                    Log.d(sLogTag, r.getString(R.string.log_search_too_few));
                     if (mDisplayToast) {
                         newToast(
                             this,
@@ -428,8 +428,8 @@ public class MainActivity
                             Toast.LENGTH_SHORT
                         );
                     }
-                } else if (data.getCount() <= getResources().getInteger(R.integer.max_visible_memorials)) {
-                    Log.d(sLogTag, getResources().getString(R.string.log_search_just_right));
+                } else if (data.getCount() <= r.getInteger(R.integer.max_visible_memorials)) {
+                    Log.d(sLogTag, r.getString(R.string.log_search_just_right));
                     if (mDisplayToast) {
                         newToast(
                             this,
@@ -442,14 +442,14 @@ public class MainActivity
                         );
                     }
                 } else {
-                    Log.d(sLogTag, getResources().getString(R.string.log_search_too_many));
+                    Log.d(sLogTag, r.getString(R.string.log_search_too_many));
                     if (mDisplayToast) {
                         newToast(
                             this,
                             null,
                             getString(
                                 R.string.toast_search_results_too_many,
-                                getResources().getInteger(R.integer.max_visible_memorials)
+                                r.getInteger(R.integer.max_visible_memorials)
                             ),
                             Toast.LENGTH_SHORT
                         );
@@ -470,11 +470,12 @@ public class MainActivity
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        mConnected = true;
         Log.i(sLogTag, getString(R.string.log_google_api_client_connected));
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-         || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+            == PackageManager.PERMISSION_GRANTED
+         || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+            == PackageManager.PERMISSION_GRANTED) {
 
             GeomemorialApplication.setLastLocation(
                 LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient)
@@ -484,7 +485,6 @@ public class MainActivity
 
     @Override
     public void onConnectionSuspended(int i) {
-        mConnected = false;
         if (GoogleApiClient.ConnectionCallbacks.CAUSE_NETWORK_LOST == i){
             Log.i(sLogTag, getString(R.string.log_google_api_client_suspended_network_lost));
         }
@@ -500,8 +500,10 @@ public class MainActivity
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        mConnected = false;
-        Log.e(sLogTag, getString(R.string.log_google_api_client_failed) + connectionResult.getErrorMessage());
+        Log.e(
+            sLogTag,
+            getString(R.string.log_google_api_client_failed) + connectionResult.getErrorMessage()
+        );
     }
 
     @Override
@@ -566,10 +568,6 @@ public class MainActivity
 
         public String getQuery(){
             return mQuery;
-        }
-
-        public String getUserQuery(){
-            return mUserQuery;
         }
 
         public String getExtraDataKey(){

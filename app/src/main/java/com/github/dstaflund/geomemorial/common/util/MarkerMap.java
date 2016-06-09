@@ -14,6 +14,8 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Double.parseDouble;
+
 /**
  * Map of markers visible with the map bounds
  *
@@ -36,24 +38,24 @@ public class MarkerMap extends HashMap<String, Marker> {
     /**
      * Returns the marker id for a given latlng
      *
-     * @param latLng to get id for
+     * @param coord to get id for
      * @return marker id or null if there isn't one
      */
     @Nullable
-    public String getMarkerIdFor(@NonNull Context context, @NonNull LatLng latLng){
-        for(final Map.Entry<String, Marker> markerEntry : entrySet()){
+    public String getMarkerIdFor(@NonNull Context context, @NonNull LatLng coord){
+        for(final Map.Entry<String, Marker> entry : entrySet()){
             sDecimalFormat.setRoundingMode(RoundingMode.UP);
-            String roundedLat = sDecimalFormat.format(markerEntry.getValue().getPosition().latitude);
-            String roundedLng = sDecimalFormat.format(markerEntry.getValue().getPosition().longitude);
-            LatLng markerLatLng = new LatLng(
-                Double.parseDouble(roundedLat),
-                Double.parseDouble(roundedLng)
+            String roundedLat = sDecimalFormat.format(entry.getValue().getPosition().latitude);
+            String roundedLng = sDecimalFormat.format(entry.getValue().getPosition().longitude);
+            LatLng latLng = new LatLng(
+                parseDouble(roundedLat),
+                parseDouble(roundedLng)
             );
-            if (markerLatLng.latitude <= Double.parseDouble(sDecimalFormat.format(latLng.latitude + .001)) &&
-                markerLatLng.latitude >= Double.parseDouble(sDecimalFormat.format(latLng.latitude - .001)) &&
-                markerLatLng.longitude <= Double.parseDouble(sDecimalFormat.format(latLng.longitude + .001)) &&
-                markerLatLng.longitude >= Double.parseDouble(sDecimalFormat.format(latLng.longitude - .001))){
-                return markerEntry.getKey();
+            if (latLng.latitude <= parseDouble(sDecimalFormat.format(coord.latitude + .001)) &&
+                latLng.latitude >= parseDouble(sDecimalFormat.format(coord.latitude - .001)) &&
+                latLng.longitude <= parseDouble(sDecimalFormat.format(coord.longitude + .001)) &&
+                latLng.longitude >= parseDouble(sDecimalFormat.format(coord.longitude - .001))){
+                return entry.getKey();
             }
         }
 

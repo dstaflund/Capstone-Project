@@ -76,7 +76,10 @@ class GeomemorialRemoteViewsFactory implements RemoteViewsService.RemoteViewsFac
         }
 
         RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.widget_list_item);
-        rv.setTextViewText(R.id.widget_geomemorial, cursor.getString(GeomemorialInfo.IDX_GEOMEMORIAL));
+        rv.setTextViewText(
+            R.id.widget_geomemorial,
+            cursor.getString(GeomemorialInfo.IDX_GEOMEMORIAL)
+        );
         rv.setTextViewText(R.id.widget_hometown, cursor.getString(GeomemorialInfo.IDX_HOMETOWN));
         rv.setTextViewText(R.id.widget_obit, cursor.getString(GeomemorialInfo.IDX_OBIT));
         rv.setTextViewText(R.id.widget_rank, cursor.getString(GeomemorialInfo.IDX_RANK));

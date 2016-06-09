@@ -20,7 +20,6 @@ public final class DateUtil {
     private static final Locale sLocale = Locale.getDefault();
     public static final String DB_TMPL = "yyyy-MM-dd";
     public static final String DISPLAY_TMPL = "MMMM d, yyyy";
-    public static final String WIDGET_TMPL = "MMM d";
     public static final DateFormat DB_FORMAT = new SimpleDateFormat(DB_TMPL, sLocale);
     public static final DateFormat DISPLAY_FORMAT = new SimpleDateFormat(DISPLAY_TMPL, sLocale);
 
@@ -62,10 +61,10 @@ public final class DateUtil {
      * @param dateString the date string to be formatted
      * @return formatted date string
      */
-    @NonNull
+    @Nullable
     public static String toDisplayString(@NonNull final String dateString){
         final Date date = toDate(dateString);
-        return toString(date).toUpperCase();
+        return date == null ? null : toString(date).toUpperCase();
     }
 
     /**

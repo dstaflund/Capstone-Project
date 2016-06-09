@@ -73,7 +73,9 @@ public class FavoritesFragment extends Fragment{
     ) {
         mRoot = inflater.inflate(R.layout.fragment_favorites, container, false);
 
-        mFirstVisiblePosition = savedState == null ? -1 : savedState.getInt("first_visible_position");
+        mFirstVisiblePosition = savedState == null
+            ? -1
+            : savedState.getInt("first_visible_position");
 
         new AsyncTask<Void, Void, List<FavoritesMarkerInfo>>() {
 
@@ -110,7 +112,8 @@ public class FavoritesFragment extends Fragment{
                         @Override
                         public void onMovedToScrapHeap(@NonNull View view) {
                             Log.i("FavoritesFragment", "onMovedToScrapHeap");
-                            FavoritesMapAdapter.FavoritesViewHolder holder = (FavoritesMapAdapter.FavoritesViewHolder) view.getTag();
+                            FavoritesMapAdapter.FavoritesViewHolder holder
+                                = (FavoritesMapAdapter.FavoritesViewHolder) view.getTag();
                             if (holder != null && holder.map != null) {
                                 holder.map.clear();
                                 holder.map.setMapType(MAP_TYPE_NONE);
@@ -158,7 +161,7 @@ public class FavoritesFragment extends Fragment{
         ) {
             super(context, R.layout.list_item_favorites, R.id.lite_listrow_text, locations);
             Log.i("FavoritesMapAdapter", "Created");
-            Log.i("FavoritesMapAdapter", "Locations size = " + (locations == null ? 0 : locations.size()));
+            Log.i("FavoritesMapAdapter", "Locations size = " + locations.size());
         }
 
         @Override
@@ -180,14 +183,17 @@ public class FavoritesFragment extends Fragment{
                             case R.id.list_item_favorite_favorite_button:
                                 ImageButton button = (ImageButton) v;
                                 Long geomemorialId = (Long) button.getTag(sGeomemorialTagKey);
-                                boolean isChecked = ! isFavorite(getContext(), geomemorialId.toString());
+                                boolean isChecked
+                                    = ! isFavorite(getContext(), geomemorialId.toString());
 
                                 if (isChecked){
                                     button.setImageResource(R.drawable.ic_favorite_white_24dp);
                                     addFavorite(getContext(), geomemorialId.toString());
                                 }
                                 else {
-                                    button.setImageResource(R.drawable.ic_favorite_border_white_24dp);
+                                    button.setImageResource(
+                                        R.drawable.ic_favorite_border_white_24dp
+                                    );
                                     removeFavorite(getContext(), geomemorialId.toString());
                                 }
                                 break;
@@ -213,7 +219,8 @@ public class FavoritesFragment extends Fragment{
 
                                 if (c != null && c.getCount() > 0) {
                                     c.moveToFirst();
-                                    SharedIntentManager.Payload payload = new SharedIntentManager.Payload.Builder(getContext())
+                                    SharedIntentManager.Payload payload
+                                        = new SharedIntentManager.Payload.Builder(getContext())
                                         .geomemorial(c.getString(IDX_GEOMEMORIAL))
                                         .latitude(c.getString(IDX_LATITUDE))
                                         .longitude(c.getString(IDX_LONGITUDE))
@@ -280,8 +287,10 @@ public class FavoritesFragment extends Fragment{
                 super();
                 mapView = (MapView) view.findViewById(R.id.lite_listrow_map);
                 title = (TextView) view.findViewById(R.id.lite_listrow_text);
-                favoritesButton = (ImageButton) view.findViewById(R.id.list_item_favorite_favorite_button);
-                shareButton = (ImageButton) view.findViewById(R.id.list_item_favorite_share_button);
+                favoritesButton
+                    = (ImageButton) view.findViewById(R.id.list_item_favorite_favorite_button);
+                shareButton
+                    = (ImageButton) view.findViewById(R.id.list_item_favorite_share_button);
             }
 
             public void initializeMapView() {

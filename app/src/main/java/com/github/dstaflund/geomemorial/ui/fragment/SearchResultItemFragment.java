@@ -17,7 +17,7 @@ import com.github.dstaflund.geomemorial.GeomemorialApplication;
 import com.github.dstaflund.geomemorial.R;
 import com.github.dstaflund.geomemorial.common.util.DateUtil;
 import com.github.dstaflund.geomemorial.common.util.SharedIntentManager;
-import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract;
+import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.MarkerInfo;
 import com.google.android.gms.maps.model.LatLng;
 
@@ -120,13 +120,13 @@ public class SearchResultItemFragment extends Fragment {
                     c.moveToFirst();
                     SharedIntentManager.Payload payload = new SharedIntentManager.Payload
                         .Builder(getContext())
-                        .geomemorial(c.getString(GeomemorialDbContract.GeomemorialInfo.IDX_GEOMEMORIAL))
-                        .latitude(c.getString(GeomemorialDbContract.GeomemorialInfo.IDX_LATITUDE))
-                        .longitude(c.getString(GeomemorialDbContract.GeomemorialInfo.IDX_LONGITUDE))
-                        .resident(c.getString(GeomemorialDbContract.GeomemorialInfo.IDX_RESIDENT))
-                        .hometown(c.getString(GeomemorialDbContract.GeomemorialInfo.IDX_HOMETOWN))
-                        .rank(c.getString(GeomemorialDbContract.GeomemorialInfo.IDX_RANK))
-                        .obit(c.getString(GeomemorialDbContract.GeomemorialInfo.IDX_OBIT))
+                        .geomemorial(c.getString(GeomemorialInfo.IDX_GEOMEMORIAL))
+                        .latitude(c.getString(GeomemorialInfo.IDX_LATITUDE))
+                        .longitude(c.getString(GeomemorialInfo.IDX_LONGITUDE))
+                        .resident(c.getString(GeomemorialInfo.IDX_RESIDENT))
+                        .hometown(c.getString(GeomemorialInfo.IDX_HOMETOWN))
+                        .rank(c.getString(GeomemorialInfo.IDX_RANK))
+                        .obit(c.getString(GeomemorialInfo.IDX_OBIT))
                         .build();
                     shareGeomemorial(payload);
                 }
@@ -149,8 +149,8 @@ public class SearchResultItemFragment extends Fragment {
                 if (c != null && c.getCount() > 0) {
                     c.moveToFirst();
                     LatLng latLng = new LatLng(
-                        Double.valueOf(c.getString(GeomemorialDbContract.GeomemorialInfo.IDX_LATITUDE)),
-                        Double.valueOf(c.getString(GeomemorialDbContract.GeomemorialInfo.IDX_LONGITUDE))
+                        Double.valueOf(c.getString(GeomemorialInfo.IDX_LATITUDE)),
+                        Double.valueOf(c.getString(GeomemorialInfo.IDX_LONGITUDE))
                     );
                     mOnPlaceButtonClickedListener.placeButtonClicked(latLng);
                 }
@@ -172,7 +172,10 @@ public class SearchResultItemFragment extends Fragment {
         b.putString(MarkerInfo.COL_OBIT, c.getString(MarkerInfo.DEFAULT_OBIT_IDX));
         b.putString(MarkerInfo.COL_LETTER, c.getString(MarkerInfo.DEFAULT_LETTER_ID_IDX));
         b.putString(MarkerInfo.COL_NTS_SHEET, c.getString(MarkerInfo.DEFAULT_NTS_SHEET_IDX));
-        b.putString(MarkerInfo.COL_NTS_SHEET_NAME, c.getString(MarkerInfo.DEFAULT_NTS_SHEET_NAME_IDX));
+        b.putString(
+            MarkerInfo.COL_NTS_SHEET_NAME,
+            c.getString(MarkerInfo.DEFAULT_NTS_SHEET_NAME_IDX)
+        );
         b.putInt(POSITION_KEY, position);
         b.putInt(COUNT_KEY, count);
 
@@ -268,7 +271,12 @@ public class SearchResultItemFragment extends Fragment {
         @NonNull
         private DataObject mDataObject;
 
-        public DataFormatter(@NonNull Context context, @NonNull DataObject dataObject, int position, int count){
+        public DataFormatter(
+            @NonNull Context context,
+            @NonNull DataObject dataObject,
+            int position,
+            int count
+        ){
             super();
             mContext = context;
             mDataObject = dataObject;

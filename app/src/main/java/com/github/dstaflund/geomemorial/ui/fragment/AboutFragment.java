@@ -16,7 +16,6 @@ public class AboutFragment extends Fragment {
     private static final String Y_POS_KEY = "Y_POST";
 
     private NestedScrollView mScrollView;
-    private View mRoot;
 
     public AboutFragment(){
         super();
@@ -36,7 +35,7 @@ public class AboutFragment extends Fragment {
         @Nullable ViewGroup container,
         @Nullable Bundle savedState
     ) {
-        mRoot = inflater.inflate(R.layout.fragment_about, container, false);
+        View mRoot = inflater.inflate(R.layout.fragment_about, container, false);
         mScrollView = (NestedScrollView) mRoot.findViewById(R.id.fragment_about_nested_scroll_view);
         return mRoot;
     }

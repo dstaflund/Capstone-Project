@@ -28,9 +28,7 @@ public class PreferencesFragment extends Fragment implements RadioGroup.OnChecke
     private static final String Y_POS_KEY = "Y_POST";
 
     private NestedScrollView mScrollView;
-    private PreferencesViewHolder mHolder;
     private Toast mToast;
-    private View mRoot;
 
     @Override
     public void onCreate(@Nullable Bundle savedState) {
@@ -46,10 +44,10 @@ public class PreferencesFragment extends Fragment implements RadioGroup.OnChecke
         @Nullable ViewGroup container,
         @Nullable Bundle savedState
     ) {
-        mRoot = inflater.inflate(R.layout.fragment_preferences, container, false);
+        View mRoot = inflater.inflate(R.layout.fragment_preferences, container, false);
         mScrollView = (NestedScrollView) mRoot.findViewById(R.id.fragment_preferences_scroll_view);
 
-        mHolder = new PreferencesViewHolder(mRoot);
+        PreferencesViewHolder mHolder = new PreferencesViewHolder(mRoot);
         mHolder.normalButton.setChecked(isDefaultMapType(getContext(), MAP_TYPE_NORMAL));
         mHolder.terrainButton.setChecked(isDefaultMapType(getContext(), MAP_TYPE_TERRAIN));
         mHolder.satelliteButton.setChecked(isDefaultMapType(getContext(), MAP_TYPE_SATELLITE));

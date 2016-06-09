@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -47,11 +45,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
     // Bundle keys for storing state on orientation change
     private static final String sTargetKey = "target";
     private static final String sZoomKey = "zoom";
-    private static final String sVisibleMarkerPositionsKey = "visible_marker_positions";
 
     private GoogleMap mMap;
     private MarkerMap mVisibleMarkers = new MarkerMap();
-    private View mRoot;
 
     // Restored camera location
     private LatLng mRestoredTarget;
@@ -85,7 +81,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
         @Nullable ViewGroup container,
         @Nullable Bundle savedState
     ) {
-        mRoot = inflater.inflate(R.layout.fragment_map, container, false);
+        View mRoot = inflater.inflate(R.layout.fragment_map, container, false);
 
         initialize(getContext());
 
@@ -98,13 +94,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-        GoogleMap map = googleMap;
-        map.setMapType(getMapType(getContext()));
-        map.setInfoWindowAdapter(new InfoWindowAdapterImpl(getContext(), super.getLayoutInflater(null)));
-        map.setOnMapLoadedCallback(this);
-        map.setMyLocationEnabled(false);
+        googleMap.setMapType(getMapType(getContext()));
+        googleMap.setInfoWindowAdapter(
+            new InfoWindowAdapterImpl(getContext(), super.getLayoutInflater(null))
+        );
+        googleMap.setOnMapLoadedCallback(this);
+        googleMap.setMyLocationEnabled(false);
 
-        UiSettings ui = map.getUiSettings();
+        UiSettings ui = googleMap.getUiSettings();
         ui.setZoomControlsEnabled(true);
         ui.setScrollGesturesEnabled(true);
         ui.setZoomGesturesEnabled(true);
@@ -112,10 +109,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
         ui.setRotateGesturesEnabled(true);
         ui.setMyLocationButtonEnabled(false);
 
-        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-            || ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(
+            getContext(),
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+            || ActivityCompat.checkSelfPermission(
+            getContext(),
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED) {
 
-            map.setMyLocationEnabled(true);
+            googleMap.setMyLocationEnabled(true);
             ui.setMyLocationButtonEnabled(true);
         }
 
@@ -171,7 +174,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
 
     public void updateCamera(){
         if (! mIgnoreCameraZoom) {
-            CameraUpdateStrategy.updateCamera(getContext(), mMap, mVisibleMarkers, mIgnoreCameraZoom);
+            CameraUpdateStrategy.updateCamera(
+                getContext(),
+                mMap,
+                mVisibleMarkers,
+                mIgnoreCameraZoom
+            );
         }
     }
 
@@ -233,75 +241,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
         @Override
         public View getInfoContents(@Nullable Marker marker) {
             return null;
-        }
-    }
-    //  Adaptation of Google's SaveStateDemoActivity
-    public static class RestorableMarker implements Parcelable {
-
-        public static final Parcelable.Creator<RestorableMarker> CREATOR =
-            new Parcelable.Creator<RestorableMarker>() {
-
-                @Override
-                public RestorableMarker createFromParcel(Parcel in) {
-                    return new RestorableMarker(in);
-                }
-
-                @Override
-                public RestorableMarker[] newArray(int size) {
-                    return new RestorableMarker[size];
-                }
-            };
-
-        private String mGeomemorialId;
-        private double mLatitude;
-        private double mLongitude;
-        private String mTitle;
-        private String mSnippet;
-
-        public String getGeomemoralId(){
-            return mGeomemorialId;
-        }
-
-        public LatLng getCoordinate(){
-            return new LatLng(mLatitude, mLongitude);
-        }
-
-        public String getTitle(){
-            return mTitle;
-        }
-
-        public String getSnippet(){
-            return mSnippet;
-        }
-
-        public RestorableMarker(String geomemorialId, LatLng coordinate, String title, String snippet) {
-            mGeomemorialId = geomemorialId;
-            mLatitude = coordinate.latitude;
-            mLongitude = coordinate.longitude;
-            mTitle = title;
-            mSnippet = snippet;
-        }
-
-        private RestorableMarker(Parcel in) {
-            mGeomemorialId = in.readString();
-            mLatitude = in.readDouble();
-            mLongitude = in.readDouble();
-            mTitle = in.readString();
-            mSnippet = in.readString();
-        }
-
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeString(mGeomemorialId);
-            dest.writeDouble(mLatitude);
-            dest.writeDouble(mLongitude);
-            dest.writeString(mTitle);
-            dest.writeString(mSnippet);
         }
     }
 }
