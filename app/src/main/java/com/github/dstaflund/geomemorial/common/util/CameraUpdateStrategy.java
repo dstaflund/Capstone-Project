@@ -15,7 +15,12 @@ import java.util.Map;
 
 public final class CameraUpdateStrategy {
 
-    public static void setMapLocation(@NonNull Context context, @NonNull GoogleMap map, @NonNull FavoritesMarkerInfo data) {
+    public static void setMapLocation(
+        @NonNull Context context,
+        @NonNull GoogleMap map,
+        @NonNull FavoritesMarkerInfo data,
+        boolean ignoreZoom
+    ) {
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(data.getLatLng());
 
@@ -23,10 +28,15 @@ public final class CameraUpdateStrategy {
         MarkerMap markerMap = new MarkerMap();
         markerMap.put(Long.valueOf(data.geomemorialId).toString(), marker);
 
-        CameraUpdateStrategy.updateCamera(context, map, markerMap);
+        CameraUpdateStrategy.updateCamera(context, map, markerMap, ignoreZoom);
     }
 
-    public static void updateCamera(@NonNull Context context, @NonNull GoogleMap map, @NonNull MarkerMap markers){
+    public static void updateCamera(
+        @NonNull Context context,
+        @NonNull GoogleMap map,
+        @NonNull MarkerMap markers,
+        boolean ignoreZoom
+    ){
         if (markers.size() > 0) {
             Marker firstMarker = markers.values().iterator().next();
 
@@ -35,7 +45,13 @@ public final class CameraUpdateStrategy {
                 : getLatLngBoundsFor(markers);
 
             CameraUpdate update = CameraUpdateFactory.newLatLngBounds(bounds, 0);
-            map.animateCamera(update);
+
+            if (ignoreZoom) {
+                map.moveCamera(update);
+            }
+            else {
+                map.animateCamera(update);
+            }
 
             if (markers.size() == 1) {
                 markers.bringMarkerToFront(context, firstMarker.getPosition());
@@ -43,7 +59,24 @@ public final class CameraUpdateStrategy {
         }
     }
 
-    public static void zoomTo(@NonNull Context context, @NonNull GoogleMap map, @NonNull MarkerMap markers, @NonNull LatLng latLng){
+    public static void moveTo(
+        @NonNull Context context,
+        @NonNull GoogleMap map,
+        @NonNull MarkerMap markers,
+        @NonNull LatLng latLng
+    ){
+        LatLngBounds bounds = getLatLngBoundsFor(latLng);
+        CameraUpdate update = CameraUpdateFactory.newLatLngBounds(bounds, 0);
+        map.moveCamera(update);
+        markers.bringMarkerToFront(context, latLng);
+    }
+
+    public static void zoomTo(
+        @NonNull Context context,
+        @NonNull GoogleMap map,
+        @NonNull MarkerMap markers,
+        @NonNull LatLng latLng
+    ){
         LatLngBounds bounds = getLatLngBoundsFor(latLng);
         CameraUpdate update = CameraUpdateFactory.newLatLngBounds(bounds, 0);
         map.animateCamera(update);

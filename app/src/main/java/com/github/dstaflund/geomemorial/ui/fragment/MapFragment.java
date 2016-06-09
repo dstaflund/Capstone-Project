@@ -14,6 +14,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,8 +34,6 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.ArrayList;
-
 import static com.github.dstaflund.geomemorial.GeomemorialApplication.isMapLoaded;
 import static com.github.dstaflund.geomemorial.GeomemorialApplication.setMapLoaded;
 import static com.github.dstaflund.geomemorial.common.util.PreferencesManager.getMapType;
@@ -42,6 +41,7 @@ import static com.google.android.gms.maps.CameraUpdateFactory.newLatLngBounds;
 import static com.google.android.gms.maps.MapsInitializer.initialize;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLoadedCallback{
+    private static final String sLogTag = "===> " + MapFragment.class.getSimpleName();
     private static final LatLng sSwCorner = new LatLng(49, -110);
     private static final LatLng sNeCorner = new LatLng(60, -101);
     private static final LatLngBounds sSaskBounds = new LatLngBounds(sSwCorner, sNeCorner);
@@ -58,7 +58,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
     // Restored camera location
     private LatLng mRestoredTarget;
     private float mRestoredZoom;
-    private ArrayList<RestorableMarker> mRestoredMarkers;
     private boolean mIgnoreCameraZoom;
 
     public MapFragment(){
@@ -67,6 +66,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
 
     @Override
     public void onCreate(@Nullable Bundle savedState) {
+        Log.d(sLogTag, "onCreate");
         super.onCreate(savedState);
 
         if (savedState == null) {
@@ -77,7 +77,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
         else {
             mRestoredTarget = savedState.getParcelable(sTargetKey);
             mRestoredZoom = savedState.getFloat(sZoomKey);
-//            mRestoredMarkers = savedState.getParcelableArrayList(sVisibleMarkerPositionsKey);
             setMapLoaded(true);
         }
     }
@@ -89,6 +88,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
         @Nullable ViewGroup container,
         @Nullable Bundle savedState
     ) {
+        Log.d(sLogTag, "onCreateView");
         mRoot = inflater.inflate(R.layout.fragment_map, container, false);
 
         initialize(getContext());
@@ -102,6 +102,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
+        Log.d(sLogTag, "onMapReady");
         GoogleMap map = googleMap;
         map.setMapType(getMapType(getContext()));
         map.setInfoWindowAdapter(new InfoWindowAdapterImpl(getContext(), super.getLayoutInflater(null)));
@@ -126,76 +127,81 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
         mMap = googleMap;
     }
 
+
+    /**
+     * IGNORE ZOOM CANDIDATE
+     */
     @Override
     public void onMapLoaded() {
-        if (! isMapLoaded() && ! mIgnoreCameraZoom) {
+        Log.d(sLogTag, "onMapLoaded");
+        if (! isMapLoaded()) {
             mMap.animateCamera(newLatLngBounds(sSaskBounds, 0));
             setMapLoaded(true);
         }
         else {
-            if (mRestoredMarkers != null) {
-                for(RestorableMarker restorableMarker : mRestoredMarkers) {
-                    MarkerOptions options = new MarkerOptions()
-                        .position(restorableMarker.getCoordinate())
-                        .title(restorableMarker.getTitle())
-                        .snippet(restorableMarker.getSnippet());
-                    Marker restoredMarker = mMap.addMarker(options);
-                    mVisibleMarkers.put(restorableMarker.getGeomemoralId(), restoredMarker);
-                }
-
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mRestoredTarget, mRestoredZoom));
-            }
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mRestoredTarget, mRestoredZoom));
+            mIgnoreCameraZoom = false;
         }
     }
 
     //  Adaptation of Google's SaveStateDemoActivity
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putParcelable(sTargetKey, mMap.getCameraPosition().target);
-        outState.putFloat(sZoomKey, mMap.getCameraPosition().zoom);
+        Log.d(sLogTag, "onSaveInstanceState");
 
-//        ArrayList<RestorableMarker> markers = new ArrayList<>();
-//        for (Map.Entry<String, Marker> entry : mVisibleMarkers.entrySet()) {
-//            RestorableMarker restorableMarker = new RestorableMarker(
-//                entry.getKey(),
-//                entry.getValue().getPosition(),
-//                entry.getValue().getTitle(),
-//                entry.getValue().getSnippet()
-//            );
-//            markers.add(restorableMarker);
-//        }
-//
-//        outState.putParcelableArrayList(sVisibleMarkerPositionsKey, markers);
+        super.onSaveInstanceState(outState);
+
+        if (mMap != null) {
+            outState.putParcelable(sTargetKey, mMap.getCameraPosition().target);
+            outState.putFloat(sZoomKey, mMap.getCameraPosition().zoom);
+        }
     }
 
     public void ignoreCameraZoom(boolean value){
+        Log.d(sLogTag, "ignoreCameraZoom");
         mIgnoreCameraZoom = value;
     }
 
     public void clearMap(){
+        Log.d(sLogTag, "clearMap");
         mMap.clear();
         mVisibleMarkers.clear();
     }
 
     public void addMarker(@NonNull MarkerOptions options){
+        Log.d(sLogTag, "addMarker");
+
         Marker marker = mMap.addMarker(options);
         mVisibleMarkers.put(marker.getId(), marker);
     }
 
+    /**
+     * IGNORE ZOOM CANDIDATE
+     */
+
     public void updateCamera(){
+        Log.d(sLogTag, "updateCamera");
+        Log.d(sLogTag, "Ignore Camera Zoom = " + mIgnoreCameraZoom);
         if (! mIgnoreCameraZoom) {
-            CameraUpdateStrategy.updateCamera(getContext(), mMap, mVisibleMarkers);
-        } else {
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mRestoredTarget, mRestoredZoom));
+            CameraUpdateStrategy.updateCamera(getContext(), mMap, mVisibleMarkers, mIgnoreCameraZoom);
         }
     }
 
+    /**
+     * IGNORE ZOOM CANDIDATE
+     */
     public void zoomInOn(@NonNull LatLng latLng){
-        CameraUpdateStrategy.zoomTo(getContext(), mMap, mVisibleMarkers, latLng);
+        Log.d(sLogTag, "zoomInOn");
+
+        if (! mIgnoreCameraZoom){
+            Log.d(sLogTag, "    ignore = false");
+            CameraUpdateStrategy.zoomTo(getContext(), mMap, mVisibleMarkers, latLng);
+        }
     }
 
     public void setMapType(int mapTypeId) {
+        Log.d(sLogTag, "setMapType");
+
         mMap.setMapType(mapTypeId);
     }
 

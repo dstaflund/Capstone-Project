@@ -2,27 +2,19 @@ package com.github.dstaflund.geomemorial.ui.fragment;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
-import android.text.Spannable;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.RelativeSizeSpan;
-import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.github.dstaflund.geomemorial.GeomemorialApplication;
@@ -264,7 +256,7 @@ public class FavoritesFragment extends Fragment{
             holder.mapView.setTag(item);
 
             if (holder.map != null) {
-                setMapLocation(getContext(), holder.map, item);
+                setMapLocation(getContext(), holder.map, item, true);
             }
 
             holder.title.setText(item.geomemorial);
@@ -336,7 +328,7 @@ public class FavoritesFragment extends Fragment{
 
                 FavoritesMarkerInfo data = (FavoritesMarkerInfo) mapView.getTag();
                 if (data != null) {
-                    CameraUpdateStrategy.setMapLocation(getContext(), map, data);
+                    CameraUpdateStrategy.setMapLocation(getContext(), map, data, true);
                 }
             }
         }

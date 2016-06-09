@@ -20,6 +20,7 @@ import com.google.android.gms.maps.model.LatLng;
 public class SearchResultFragment extends Fragment
     implements SearchResultItemFragment.OnPlaceButtonClickedListener{
     private static final String sLogTag = SearchResultFragment.class.getSimpleName();
+    private static final String sCurrentItemKey = "currentItem";
 
     private SearchResultPagerAdapter mSearchResultPagerAdapter;
     private SearchResultFragment.OnChangeCursorListener mOnChangeCursorListener;
@@ -27,6 +28,7 @@ public class SearchResultFragment extends Fragment
     private View mRoot;
     private ViewPager mViewPager;
     private boolean mReturnToLastPage;
+    private int mLastCurrentItem;
 
     public SearchResultFragment(){
         super();
@@ -66,7 +68,18 @@ public class SearchResultFragment extends Fragment
         mViewPager = (ViewPager) mRoot.findViewById(R.id.pager);
         mViewPager.setAdapter(mSearchResultPagerAdapter);
 
+        if (savedState != null){
+            mLastCurrentItem = savedState.getInt(sCurrentItemKey);
+        }
+
         return mRoot;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt(sCurrentItemKey, mViewPager.getCurrentItem());
     }
 
     public void returnToLastPage(boolean value){
@@ -133,6 +146,11 @@ public class SearchResultFragment extends Fragment
                 }
                 mCursor = c;
                 notifyDataSetChanged();
+
+                if (mReturnToLastPage){
+                    mViewPager.setCurrentItem(mLastCurrentItem);
+                    mReturnToLastPage = false;
+                }
             }
 
             mOnChangeCursorListener.cursorFinished();
