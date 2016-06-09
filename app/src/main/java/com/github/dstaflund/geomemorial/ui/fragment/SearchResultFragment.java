@@ -19,7 +19,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class SearchResultFragment extends Fragment
     implements SearchResultItemFragment.OnPlaceButtonClickedListener{
-    private static final String sLogTag = "****" + SearchResultFragment.class.getSimpleName();
+    private static final String sLogTag = SearchResultFragment.class.getSimpleName();
     private static final String sCurrentItemKey = "currentItem";
 
     private SearchResultPagerAdapter mSearchResultPagerAdapter;
@@ -36,7 +36,6 @@ public class SearchResultFragment extends Fragment
 
     @Override
     public void onAttach(@NonNull Context context){
-        Log.d(sLogTag, "onAttach");
         super.onAttach(context);
 
         try {
@@ -51,7 +50,6 @@ public class SearchResultFragment extends Fragment
 
     @Override
     public void onCreate(@Nullable Bundle savedState) {
-        Log.d(sLogTag, "onCreate");
         super.onCreate(savedState);
         setRetainInstance(false);
         setHasOptionsMenu(false);
@@ -69,8 +67,6 @@ public class SearchResultFragment extends Fragment
         @Nullable ViewGroup container,
         @Nullable Bundle savedState
     ) {
-        Log.d(sLogTag, "onCreateView");
-
         mRoot = inflater.inflate(R.layout.fragment_search_result, container, false);
         mSearchResultPagerAdapter = new SearchResultPagerAdapter(getChildFragmentManager(), null);
 
@@ -86,8 +82,6 @@ public class SearchResultFragment extends Fragment
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        Log.d(sLogTag, "onSaveInstanceState");
-
         super.onSaveInstanceState(outState);
         outState.putInt(sCurrentItemKey, mViewPager.getCurrentItem());
         mViewPager.setAdapter(null);
@@ -95,37 +89,31 @@ public class SearchResultFragment extends Fragment
     }
 
     public void returnToLastPage(boolean value){
-        Log.d(sLogTag, "returnToLastPage = " + value);
-
         mReturnToLastPage = value;
     }
 
     public void swapCursor(@Nullable Cursor value){
-        Log.d(sLogTag, "swapCursor");
-
         mSearchResultPagerAdapter.swapCursor(value);
-        mViewPager.setAdapter(null);
+//        mViewPager.setAdapter(null);
         mViewPager.setAdapter(mSearchResultPagerAdapter);
+        mViewPager.setCurrentItem(mLastCurrentItem);
+        mReturnToLastPage = false;
     }
 
     public void restoreLastVisiblePage(){
         if (mReturnToLastPage){
-            mViewPager.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mViewPager.setCurrentItem(mLastCurrentItem, false);
-                    mReturnToLastPage = false;
-                }
-            }, 10);
+//            mViewPager.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    mViewPager.setCurrentItem(mLastCurrentItem);
+//            mReturnToLastPage = false;
+//                }
+//            }, 10);
         }
-
-
     }
 
     @Override
     public void placeButtonClicked(@NonNull LatLng position) {
-        Log.d(sLogTag, "placeButtonClicked");
-
         mOnPlaceButtonClickedListener.placeButtonClicked(position);
     }
 
@@ -153,8 +141,6 @@ public class SearchResultFragment extends Fragment
 
         @Override
         public int getCount() {
-            Log.d(sLogTag, "getCount");
-
             if (mCursor == null){
                 return 0;
             }
@@ -164,8 +150,6 @@ public class SearchResultFragment extends Fragment
         }
 
         public void swapCursor(@Nullable Cursor c) {
-            Log.d(sLogTag, "swapCursor");
-
             if (mCursor != c) {
                 if (c != null) {
                     while (c.moveToNext() && c.getPosition() < getContext().getResources().getInteger(R.integer.max_visible_memorials)) {

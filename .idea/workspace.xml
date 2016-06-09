@@ -34,7 +34,7 @@
     <list default="true" id="8478ac7f-24f8-44db-b69f-a6f3eca81ede" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/MapFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/MapFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/FavoritesFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/FavoritesFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultFragment.java" />
     </list>
     <ignored path="Capstone-Project.iws" />
@@ -143,18 +143,68 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.7027025">
-              <caret line="450" column="63" selection-start-line="450" selection-start-column="63" selection-end-line="450" selection-end-column="63" />
+            <state vertical-scroll-proportion="-4.027027">
+              <caret line="414" column="0" selection-start-line="414" selection-start-column="0" selection-end-line="414" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchResultFragment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SearchResultFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37759337">
-              <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="96" column="2" selection-start-line="96" selection-start-column="2" selection-end-line="96" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FavoritesFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/FavoritesFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.22821577">
+              <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbsListView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../src/android.com/android-sdk/sources/android-23/android/widget/AbsListView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2147" column="0" selection-start-line="2147" selection-start-column="0" selection-end-line="2147" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="View.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../src/android.com/android-sdk/sources/android-23/android/view/View.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16635" column="0" selection-start-line="16635" selection-start-column="0" selection-end-line="16635" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ViewGroup.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../src/android.com/android-sdk/sources/android-23/android/view/ViewGroup.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5876" column="16" selection-start-line="5876" selection-start-column="16" selection-end-line="5876" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GridView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../src/android.com/android-sdk/sources/android-23/android/widget/GridView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="1290" column="0" selection-start-line="1290" selection-start-column="0" selection-end-line="1290" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -2487,11 +2537,11 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout-w768dp-h952dp-320dpi/fragment_search_result.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/FavoritesFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/common/util/CameraUpdateStrategy.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/MapFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/FavoritesFragment.java" />
       </list>
     </option>
   </component>
@@ -3369,24 +3419,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/FavoritesFragment.java</url>
-          <line>174</line>
+          <line>243</line>
           <properties />
-          <option name="timeStamp" value="19" />
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultFragment.java</url>
-          <line>168</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/FavoritesFragment.java</url>
+          <line>166</line>
           <properties />
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultFragment.java</url>
-          <line>180</line>
-          <properties />
-          <option name="timeStamp" value="31" />
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="32" />
+      <option name="time" value="36" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="app">
@@ -3395,20 +3439,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w961dp-h528dp-213dpi/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43222004">
-          <caret line="10" column="63" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w640dp-h336dp-320dpi/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25933203">
-          <caret line="6" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-ldrtl/fragment_search_examples.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -3694,22 +3724,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../src/android.com/android-sdk/sources/android-23/android/widget/AbsListView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31213874">
-          <caret line="2345" column="0" selection-start-line="2345" selection-start-column="0" selection-end-line="2345" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../src/android.com/android-sdk/sources/android-23/android/widget/GridView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31213874">
-          <caret line="365" column="0" selection-start-line="365" selection-start-column="0" selection-end-line="365" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../src/android.com/android-sdk/sources/android-23/android/os/Bundle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33293268">
@@ -3746,14 +3760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.6226416">
           <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/FavoritesFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.974271">
-          <caret line="330" column="85" selection-start-line="330" selection-start-column="85" selection-end-line="330" selection-end-column="85" />
           <folding />
         </state>
       </provider>
@@ -3798,14 +3804,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.7027025">
-          <caret line="450" column="63" selection-start-line="450" selection-start-column="63" selection-end-line="450" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/../../../src/android.com/android-sdk/extras/android/m2repository/com/android/support/support-v4/23.4.0/support-v4-23.4.0-sources.jar!/android/support/v4/app/FragmentStatePagerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33293268">
@@ -3822,10 +3820,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.027027">
+          <caret line="414" column="0" selection-start-line="414" selection-start-column="0" selection-end-line="414" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37759337">
-          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="96" column="2" selection-start-line="96" selection-start-column="2" selection-end-line="96" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../src/android.com/android-sdk/sources/android-23/android/widget/GridView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1290" column="0" selection-start-line="1290" selection-start-column="0" selection-end-line="1290" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../src/android.com/android-sdk/sources/android-23/android/widget/AbsListView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2147" column="0" selection-start-line="2147" selection-start-column="0" selection-end-line="2147" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../src/android.com/android-sdk/sources/android-23/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16635" column="0" selection-start-line="16635" selection-start-column="0" selection-end-line="16635" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../src/android.com/android-sdk/sources/android-23/android/view/ViewGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5876" column="16" selection-start-line="5876" selection-start-column="16" selection-end-line="5876" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/FavoritesFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22821577">
+          <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
           <folding />
         </state>
       </provider>

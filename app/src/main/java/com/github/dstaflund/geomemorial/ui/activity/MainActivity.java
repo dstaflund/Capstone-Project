@@ -81,6 +81,7 @@ public class MainActivity
     private SearchView mSearchView;
     private SearchRequest mLastSearchRequest;
     private String mSavedSearchString;
+    private boolean mDisplayToast;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -131,6 +132,7 @@ public class MainActivity
             mSavedSearchString = savedInstanceState.getString(SAVED_SEARCH_KEY);
             mLastSearchRequest = savedInstanceState.getParcelable(LAST_SEARCH_REQUEST_KEY);
             if (mLastSearchRequest != null){
+                mDisplayToast = false;
                 mMapFragment.ignoreCameraZoom(true);
                 mSearchResultFragment.returnToLastPage(true);
                 handleIntent(mLastSearchRequest.toIntent());
@@ -138,6 +140,7 @@ public class MainActivity
             }
         }
 
+        mDisplayToast = true;
         mMapFragment.ignoreCameraZoom(false);
         mSearchResultFragment.returnToLastPage(false);
         handleIntent(getIntent());
@@ -417,38 +420,45 @@ public class MainActivity
             default:
                 if (data == null || data.getCount() == 0) {
                     Log.d(sLogTag, getResources().getString(R.string.log_search_too_few));
-                    newToast(
-                        this,
-                        null,
-                        getString(R.string.toast_search_results_empty),
-                        Toast.LENGTH_SHORT
-                    );
+                    if (mDisplayToast) {
+                        newToast(
+                            this,
+                            null,
+                            getString(R.string.toast_search_results_empty),
+                            Toast.LENGTH_SHORT
+                        );
+                    }
                 } else if (data.getCount() <= getResources().getInteger(R.integer.max_visible_memorials)) {
                     Log.d(sLogTag, getResources().getString(R.string.log_search_just_right));
-                    newToast(
-                        this,
-                        null,
-                        getString(
-                            R.string.toast_search_results_normal,
-                            data.getCount()
-                        ),
-                        Toast.LENGTH_SHORT
-                    );
+                    if (mDisplayToast) {
+                        newToast(
+                            this,
+                            null,
+                            getString(
+                                R.string.toast_search_results_normal,
+                                data.getCount()
+                            ),
+                            Toast.LENGTH_SHORT
+                        );
+                    }
                 } else {
                     Log.d(sLogTag, getResources().getString(R.string.log_search_too_many));
-                    newToast(
-                        this,
-                        null,
-                        getString(
-                            R.string.toast_search_results_too_many,
-                            getResources().getInteger(R.integer.max_visible_memorials)
-                        ),
-                        Toast.LENGTH_SHORT
-                    );
+                    if (mDisplayToast) {
+                        newToast(
+                            this,
+                            null,
+                            getString(
+                                R.string.toast_search_results_too_many,
+                                getResources().getInteger(R.integer.max_visible_memorials)
+                            ),
+                            Toast.LENGTH_SHORT
+                        );
+                    }
                 }
                 mMapFragment.clearMap();
                 mSearchResultFragment.swapCursor(data);
                 mSearchResultFragment.restoreLastVisiblePage();
+                mDisplayToast= true;
         }
     }
 

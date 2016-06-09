@@ -55,7 +55,6 @@ public class FavoritesFragment extends Fragment{
     private ArrayAdapter<FavoritesMarkerInfo> mAdapter;
 
     private int mFirstVisiblePosition;
-    private int mTop;
     private View mRoot;
 
     @Override
@@ -75,10 +74,6 @@ public class FavoritesFragment extends Fragment{
         mRoot = inflater.inflate(R.layout.fragment_favorites, container, false);
 
         mFirstVisiblePosition = savedState == null ? -1 : savedState.getInt("first_visible_position");
-        mTop = savedState == null ? -1 : savedState.getInt("top");
-
-        Log.d("FavoritesFragment", "First Visible Position = " + mFirstVisiblePosition);
-        Log.d("FavoritesFragment", "Top = " + mTop);
 
         new AsyncTask<Void, Void, List<FavoritesMarkerInfo>>() {
 
@@ -128,8 +123,8 @@ public class FavoritesFragment extends Fragment{
                     mList.setAdapter(mAdapter);
                 }
 
-                if (mFirstVisiblePosition != -1 && mTop != -1){
-                    mList.setSelectionFromTop(mFirstVisiblePosition, mTop);
+                if (mFirstVisiblePosition != -1){
+                    mList.setSelection(mFirstVisiblePosition);
                 }
             }
         }.execute();
@@ -150,9 +145,6 @@ public class FavoritesFragment extends Fragment{
 
         if (outState != null) {
             outState.putInt("first_visible_position", mList.getFirstVisiblePosition());
-
-            View v = mList.getChildAt(0);
-            outState.putInt("top", (v == null ? 0 : v.getTop() - mList.getPaddingTop()));
         }
     }
 
