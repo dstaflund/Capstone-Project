@@ -64,7 +64,7 @@ public class MainActivity
     GoogleApiClient.OnConnectionFailedListener,
     SearchResultItemFragment.OnPlaceButtonClickedListener,
     SearchResultFragment.OnChangeCursorListener{
-    private static final String sLogTag = "<=== " + MainActivity.class.getSimpleName();
+    private static final String sLogTag = MainActivity.class.getSimpleName();
 
     public static final int EMPTY_SEARCH = -1;
     public static final int RESIDENT_LOADER_ID = 0;
@@ -84,8 +84,6 @@ public class MainActivity
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.d(sLogTag, "onCreate");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -133,7 +131,6 @@ public class MainActivity
             mSavedSearchString = savedInstanceState.getString(SAVED_SEARCH_KEY);
             mLastSearchRequest = savedInstanceState.getParcelable(LAST_SEARCH_REQUEST_KEY);
             if (mLastSearchRequest != null){
-                Log.d(sLogTag, "Ignore Zoom = true");
                 mMapFragment.ignoreCameraZoom(true);
                 mSearchResultFragment.returnToLastPage(true);
                 handleIntent(mLastSearchRequest.toIntent());
@@ -141,7 +138,6 @@ public class MainActivity
             }
         }
 
-        Log.d(sLogTag, "Ignore Zoom = false");
         mMapFragment.ignoreCameraZoom(false);
         mSearchResultFragment.returnToLastPage(false);
         handleIntent(getIntent());
@@ -149,21 +145,18 @@ public class MainActivity
 
     @Override
     protected void onStart() {
-        Log.d(sLogTag, "onStart");
         mGoogleApiClient.connect();
         super.onStart();
     }
 
     @Override
     protected void onStop() {
-        Log.d(sLogTag, "onStop");
         mGoogleApiClient.disconnect();
         super.onStop();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        Log.d(sLogTag, "onSaveInstanceState");
         super.onSaveInstanceState(outState);
 
         if (mSearchView != null) {
@@ -173,7 +166,6 @@ public class MainActivity
     }
 
     private void checkInitialMapType() {
-        Log.d(sLogTag, "checkInitialMapType");
         switch (GeomemorialApplication.getVisibleMapType()) {
             case GoogleMap.MAP_TYPE_NORMAL:
                 mNavigationView.getMenu().findItem(R.id.nav_layer_normal).setChecked(true);
@@ -194,22 +186,16 @@ public class MainActivity
     }
 
     private boolean isLocationAware(){
-        Log.d(sLogTag, "isLocationAware");
-
         return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
          || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
     }
 
     @Override
     protected void onNewIntent(@NonNull Intent intent) {
-        Log.d(sLogTag, "onNewIntent");
-
         handleIntent(intent);
     }
 
     private void handleIntent(@Nullable Intent intent) {
-        Log.d(sLogTag, "handleIntent");
-
         if (intent == null) {
             return;
         }
@@ -231,8 +217,6 @@ public class MainActivity
 
         @NonNull SearchRequest currentSearchRequest
     ) {
-        Log.d(sLogTag, "doSearch");
-
         Bundle args = currentSearchRequest.toBundle();
 
         mLastSearchRequest = currentSearchRequest;
@@ -249,8 +233,6 @@ public class MainActivity
 
     @Override
     public boolean onCreateOptionsMenu(@NonNull Menu menu) {
-        Log.d(sLogTag, "onCreateOptionsMenu");
-
         getMenuInflater().inflate(R.menu.menu_activity_main, menu);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -275,8 +257,6 @@ public class MainActivity
 
     @Override
     public void onBackPressed() {
-        Log.d(sLogTag, "onBackPressed");
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -286,16 +266,12 @@ public class MainActivity
     }
 
     public void setMapType(int mapTypeId) {
-        Log.d(sLogTag, "setMapType");
-
         mMapFragment.setMapType(mapTypeId);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Log.d(sLogTag, "onNavigationWithEmptyBody");
-
         boolean result;
 
         switch (item.getItemId()) {
@@ -376,8 +352,6 @@ public class MainActivity
     @Override
     @Nullable
     public Loader<Cursor> onCreateLoader(int loaderId, @Nullable Bundle args) {
-        Log.d(sLogTag, "onCreateLoader");
-
         switch (loaderId) {
             case EMPTY_SEARCH:
                 return null;
@@ -435,8 +409,6 @@ public class MainActivity
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, @Nullable Cursor data) {
-        Log.d(sLogTag, "onLoadFinished");
-
         switch (loader.getId()) {
             case EMPTY_SEARCH:
                 mMapFragment.clearMap();
@@ -476,21 +448,18 @@ public class MainActivity
                 }
                 mMapFragment.clearMap();
                 mSearchResultFragment.swapCursor(data);
+                mSearchResultFragment.restoreLastVisiblePage();
         }
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        Log.d(sLogTag, "onLoaderReset");
-
         mMapFragment.clearMap();
         mSearchResultFragment.swapCursor(null);
     }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        Log.d(sLogTag, "onConnected");
-
         mConnected = true;
         Log.i(sLogTag, getString(R.string.log_google_api_client_connected));
 
@@ -505,8 +474,6 @@ public class MainActivity
 
     @Override
     public void onConnectionSuspended(int i) {
-        Log.d(sLogTag, "onConectionSuspended");
-
         mConnected = false;
         if (GoogleApiClient.ConnectionCallbacks.CAUSE_NETWORK_LOST == i){
             Log.i(sLogTag, getString(R.string.log_google_api_client_suspended_network_lost));
@@ -523,22 +490,17 @@ public class MainActivity
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.d(sLogTag, "onConnectionFailed");
         mConnected = false;
         Log.e(sLogTag, getString(R.string.log_google_api_client_failed) + connectionResult.getErrorMessage());
     }
 
     @Override
     public void placeButtonClicked(@NonNull LatLng position){
-        Log.d(sLogTag, "placeButtonClicked");
-
         mMapFragment.zoomInOn(position);
     }
 
     @Override
     public void recordFinished(@NonNull SearchResultItemFragment.DataFormatter record){
-        Log.d(sLogTag, "recordFinished");
-
         MarkerOptions options = new MarkerOptions();
         options.position(record.getLatLng());
         options.title(record.getGeomemorial());
@@ -549,14 +511,10 @@ public class MainActivity
 
     @Override
     public void cursorFinished(){
-        Log.d(sLogTag, "cursorFinished");
-
         mMapFragment.updateCamera();
     }
 
     public static void startActivity(Context context){
-        Log.d(sLogTag, "startActivity");
-
         Intent i = new Intent(context, MainActivity.class);
         context.startActivity(i);
     }
