@@ -16,7 +16,7 @@
     <string name="info_url7" translatable="false">www.reginalibrary.ca/blogs/index.php?blog=7 \u2022</string>
 
     <!-- History -->
-    <string name="history_release1">Initial Release - v1.0.0</string>
+    <string name="history_release1">Initial Release - v1.0.1</string>
 
     <!-- Search Instructions -->
     <string name="search_instructions.resident">Resident \u2022</string>
