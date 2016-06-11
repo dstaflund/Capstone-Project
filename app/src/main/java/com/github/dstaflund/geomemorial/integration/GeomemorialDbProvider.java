@@ -5,13 +5,12 @@ import android.content.SearchRecentSuggestionsProvider;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.util.SparseArray;
 
-import com.github.dstaflund.geomemorial.R;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.Geomemorial;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.Hometown;
@@ -201,7 +200,7 @@ public class GeomemorialDbProvider extends SearchRecentSuggestionsProvider {
     /**
      * Reference to the database helper class
      */
-    private GeomemorialDbHelper mHelper;
+    private SQLiteOpenHelper mHelper;
 
     /**
      * Default constructor
@@ -221,7 +220,7 @@ public class GeomemorialDbProvider extends SearchRecentSuggestionsProvider {
     public boolean onCreate() {
         super.onCreate();
         if (getContext() != null) {
-            mHelper = new GeomemorialDbHelper(getContext());
+            mHelper = GeomemorialDbHelper.getInstance(getContext());
         }
         return true;
     }
@@ -252,15 +251,6 @@ public class GeomemorialDbProvider extends SearchRecentSuggestionsProvider {
             @Nullable final String[] selectionArgs,
             @Nullable final String sortOrder
     ) {
-
-        Log.d(sLogTag, "Uri = " + uri);
-        Log.d(sLogTag, "Selection = " + selection);
-        if (selectionArgs != null) {
-            for (String arg : selectionArgs) {
-                Log.d(sLogTag, "Selection Arg = " + arg);
-            }
-        }
-
         Cursor retCursor;
         final SQLiteDatabase db = mHelper.getReadableDatabase();
 
@@ -635,9 +625,6 @@ public class GeomemorialDbProvider extends SearchRecentSuggestionsProvider {
             default:
                 db.close();
                 retCursor = null;
-                if (getContext() != null) {
-                    Log.e(sLogTag, getContext().getString(R.string.log_provider_unsupported_uri));
-                }
         }
 
         if (retCursor != null && getContext() != null) {

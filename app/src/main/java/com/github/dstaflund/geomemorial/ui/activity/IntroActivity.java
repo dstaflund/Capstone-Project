@@ -3,7 +3,6 @@ package com.github.dstaflund.geomemorial.ui.activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.github.dstaflund.geomemorial.R;
 import com.github.dstaflund.geomemorial.common.util.PreferencesManager;
@@ -15,9 +14,6 @@ public class IntroActivity extends AppIntro {
     @Override
     public void init(@Nullable Bundle savedInstanceState) {
         Configuration config = getResources().getConfiguration();
-        Log.d("DPI ", Integer.toString(config.densityDpi));
-        Log.d("Screen Height", Integer.toString(config.screenHeightDp));
-        Log.d("Screen Width", Integer.toString(config.screenWidthDp));
 
         if (! PreferencesManager.isFirstTime(this)){
             endActivity();

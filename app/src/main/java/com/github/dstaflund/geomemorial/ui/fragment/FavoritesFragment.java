@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,7 +81,6 @@ public class FavoritesFragment extends Fragment{
             @Override
             @NonNull
             protected List<FavoritesMarkerInfo> doInBackground(@Nullable Void... params) {
-                Log.i("FavoritesFragment", "doInBackground");
                 Set<String> ids = getFavorites(getContext());
                 if (ids.isEmpty()) {
                     return Collections.emptyList();
@@ -99,8 +97,6 @@ public class FavoritesFragment extends Fragment{
 
             @Override
             protected void onPostExecute(@Nullable List<FavoritesMarkerInfo> data) {
-                Log.i("FavoritesFragment", "onPostExecute");
-                Log.d("FavoritesFragment", "Data Size = " + (data == null ? 0 : data.size()));
                 mAdapter = new FavoritesMapAdapter(getContext(), data);
 
                 if (mList == null) {
@@ -111,7 +107,6 @@ public class FavoritesFragment extends Fragment{
 
                         @Override
                         public void onMovedToScrapHeap(@NonNull View view) {
-                            Log.i("FavoritesFragment", "onMovedToScrapHeap");
                             FavoritesMapAdapter.FavoritesViewHolder holder
                                 = (FavoritesMapAdapter.FavoritesViewHolder) view.getTag();
                             if (holder != null && holder.map != null) {
@@ -136,14 +131,12 @@ public class FavoritesFragment extends Fragment{
 
     @Override
     public void onPause() {
-        Log.i("FavoritesFragment", "onPause");
         super.onPause();
 //        mList = null;
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        Log.i("FavoritesFragment", "onSaveInstanceState");
         super.onSaveInstanceState(outState);
 
         if (outState != null) {
@@ -160,14 +153,11 @@ public class FavoritesFragment extends Fragment{
             @NonNull List<FavoritesMarkerInfo> locations
         ) {
             super(context, R.layout.list_item_favorites, R.id.lite_listrow_text, locations);
-            Log.i("FavoritesMapAdapter", "Created");
-            Log.i("FavoritesMapAdapter", "Locations size = " + locations.size());
         }
 
         @Override
         @NonNull
         public View getView(int position, @Nullable View convertView, @Nullable ViewGroup parent) {
-            Log.d("FavoritesMapAdapter", "getView");
             View row = convertView;
             FavoritesViewHolder holder;
 

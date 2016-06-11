@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.github.dstaflund.geomemorial.R;
 
@@ -27,6 +26,7 @@ import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract
 public class GeomemorialDbHelper extends SQLiteOpenHelper {
     private static final String sLogTag = GeomemorialDbHelper.class.getSimpleName();
     private static final String sStatementDelimiter = ";";
+    private static SQLiteOpenHelper mInstance;
     private Context mContext;
 
     /**
@@ -34,7 +34,7 @@ public class GeomemorialDbHelper extends SQLiteOpenHelper {
      *
      * @param context to work with
      */
-    public GeomemorialDbHelper(@NonNull final Context context){
+    private GeomemorialDbHelper(@NonNull final Context context){
         this(context, null);
     }
 
@@ -44,7 +44,7 @@ public class GeomemorialDbHelper extends SQLiteOpenHelper {
      * @param context to work with
      * @param factory to work with
      */
-    public GeomemorialDbHelper(
+    private GeomemorialDbHelper(
         @NonNull Context context,
         @Nullable SQLiteDatabase.CursorFactory factory
     ){
@@ -135,12 +135,19 @@ public class GeomemorialDbHelper extends SQLiteOpenHelper {
         }
 
         catch (IOException e) {
-            Log.e(sLogTag, mContext.getString(R.string.log_helper_script_error));
             return;
         }
 
         for (String query : queries.toString().split(sStatementDelimiter)) {
             db.execSQL(query);
         }
+    }
+
+    @NonNull
+    public static SQLiteOpenHelper getInstance(@NonNull Context context){
+        if (mInstance == null){
+            mInstance = new GeomemorialDbHelper(context);
+        }
+        return mInstance;
     }
 }

@@ -29,7 +29,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -359,7 +358,6 @@ public class MainActivity
                 return null;
             default:
                 if (args == null) {
-                    Log.e(sLogTag, getString(R.string.log_main_loader_missing_arguments));
                     return null;
                 }
 
@@ -419,7 +417,6 @@ public class MainActivity
             default:
                 Resources r = getResources();
                 if (data == null || data.getCount() == 0) {
-                    Log.d(sLogTag, r.getString(R.string.log_search_too_few));
                     if (mDisplayToast) {
                         newToast(
                             this,
@@ -429,7 +426,6 @@ public class MainActivity
                         );
                     }
                 } else if (data.getCount() <= r.getInteger(R.integer.max_visible_memorials)) {
-                    Log.d(sLogTag, r.getString(R.string.log_search_just_right));
                     if (mDisplayToast) {
                         newToast(
                             this,
@@ -442,7 +438,6 @@ public class MainActivity
                         );
                     }
                 } else {
-                    Log.d(sLogTag, r.getString(R.string.log_search_too_many));
                     if (mDisplayToast) {
                         newToast(
                             this,
@@ -470,8 +465,6 @@ public class MainActivity
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        Log.i(sLogTag, getString(R.string.log_google_api_client_connected));
-
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED
          || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -485,25 +478,10 @@ public class MainActivity
 
     @Override
     public void onConnectionSuspended(int i) {
-        if (GoogleApiClient.ConnectionCallbacks.CAUSE_NETWORK_LOST == i){
-            Log.i(sLogTag, getString(R.string.log_google_api_client_suspended_network_lost));
-        }
-
-        else if (GoogleApiClient.ConnectionCallbacks.CAUSE_SERVICE_DISCONNECTED == i){
-            Log.i(sLogTag, getString(R.string.log_google_api_client_suspended_service_disconnected));
-        }
-
-        else {
-            Log.i(sLogTag, getString(R.string.log_google_api_client_suspended));
-        }
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.e(
-            sLogTag,
-            getString(R.string.log_google_api_client_failed) + connectionResult.getErrorMessage()
-        );
     }
 
     @Override

@@ -3,9 +3,7 @@ package com.github.dstaflund.geomemorial.common.util;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
-import com.github.dstaflund.geomemorial.R;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
@@ -59,7 +57,6 @@ public class MarkerMap extends HashMap<String, Marker> {
             }
         }
 
-        Log.w(sLogTag, context.getString(R.string.log_marker_map_marker_not_found));
         return null;
     }
 

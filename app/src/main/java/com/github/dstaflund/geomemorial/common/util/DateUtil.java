@@ -2,7 +2,6 @@ package com.github.dstaflund.geomemorial.common.util;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -37,7 +36,6 @@ public final class DateUtil {
         }
 
         catch (ParseException e) {
-            Log.e(sLogTag, e.getLocalizedMessage());
             return null;
         }
     }

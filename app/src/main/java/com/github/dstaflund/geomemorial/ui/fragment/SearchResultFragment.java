@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +42,6 @@ public class SearchResultFragment extends Fragment
         }
 
         catch(Exception e){
-            Log.e(sLogTag, context.getString(R.string.log_search_result_bad_activity));
         }
     }
 

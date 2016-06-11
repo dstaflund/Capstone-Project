@@ -15,10 +15,10 @@ android {
 
     defaultConfig {
         applicationId "com.github.dstaflund.geomemorial"
-        minSdkVersion 23
+        minSdkVersion 22
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0.0"
         multiDexEnabled true
     }
 
@@ -27,7 +27,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
-            debuggable true
+            debuggable false
         }
     }
 
