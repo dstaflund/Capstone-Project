@@ -18,14 +18,12 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class SearchResultFragment extends Fragment
     implements SearchResultItemFragment.OnPlaceButtonClickedListener{
-    private static final String sLogTag = SearchResultFragment.class.getSimpleName();
     private static final String sCurrentItemKey = "currentItem";
 
     private SearchResultPagerAdapter mSearchResultPagerAdapter;
     private SearchResultFragment.OnChangeCursorListener mOnChangeCursorListener;
     private SearchResultItemFragment.OnPlaceButtonClickedListener mOnPlaceButtonClickedListener;
     private ViewPager mViewPager;
-    private boolean mReturnToLastPage;
     private int mLastCurrentItem;
 
     public SearchResultFragment(){
@@ -36,13 +34,8 @@ public class SearchResultFragment extends Fragment
     public void onAttach(@NonNull Context context){
         super.onAttach(context);
 
-        try {
-            mOnChangeCursorListener = (SearchResultFragment.OnChangeCursorListener) context;
-            mOnPlaceButtonClickedListener = (SearchResultItemFragment.OnPlaceButtonClickedListener) context;
-        }
-
-        catch(Exception e){
-        }
+        mOnChangeCursorListener = (SearchResultFragment.OnChangeCursorListener) context;
+        mOnPlaceButtonClickedListener = (SearchResultItemFragment.OnPlaceButtonClickedListener) context;
     }
 
     @Override
@@ -85,27 +78,10 @@ public class SearchResultFragment extends Fragment
         mViewPager.removeAllViews();
     }
 
-    public void returnToLastPage(boolean value){
-        mReturnToLastPage = value;
-    }
-
     public void swapCursor(@Nullable Cursor value){
         mSearchResultPagerAdapter.swapCursor(value);
         mViewPager.setAdapter(mSearchResultPagerAdapter);
         mViewPager.setCurrentItem(mLastCurrentItem);
-        mReturnToLastPage = false;
-    }
-
-    public void restoreLastVisiblePage(){
-        if (mReturnToLastPage){
-//            mViewPager.postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    mViewPager.setCurrentItem(mLastCurrentItem);
-//            mReturnToLastPage = false;
-//                }
-//            }, 10);
-        }
     }
 
     @Override

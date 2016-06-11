@@ -83,8 +83,8 @@ public class SearchResultItemFragment extends Fragment {
 
         holder.favoriteButton.setImageDrawable(
             isFavorite(getContext(), formatter.getGeomemorialId())
-                ? getContext().getResources().getDrawable(R.drawable.ic_favorite_accent_24dp)
-                : getContext().getResources().getDrawable(R.drawable.ic_favorite_border_accent_24dp)
+                ? getContext().getDrawable(R.drawable.ic_favorite_accent_24dp)
+                : getContext().getDrawable(R.drawable.ic_favorite_border_accent_24dp)
         );
         holder.favoriteButton.setOnClickListener(new View.OnClickListener() {
 
@@ -129,6 +129,7 @@ public class SearchResultItemFragment extends Fragment {
                         .obit(c.getString(GeomemorialInfo.IDX_OBIT))
                         .build();
                     shareGeomemorial(payload);
+                    c.close();
                 }
             }
         });
@@ -153,6 +154,7 @@ public class SearchResultItemFragment extends Fragment {
                         Double.valueOf(c.getString(GeomemorialInfo.IDX_LONGITUDE))
                     );
                     mOnPlaceButtonClickedListener.placeButtonClicked(latLng);
+                    c.close();
                 }
             }
         });
@@ -299,7 +301,7 @@ public class SearchResultItemFragment extends Fragment {
             return mDataObject.rank;
         }
 
-        @NonNull
+        @Nullable
         public String getObit(){
             return DateUtil.toDisplayString(mDataObject.obit);
         }

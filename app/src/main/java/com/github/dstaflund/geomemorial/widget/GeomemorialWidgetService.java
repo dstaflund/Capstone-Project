@@ -69,7 +69,7 @@ class GeomemorialRemoteViewsFactory implements RemoteViewsService.RemoteViewsFac
         return cursor == null ? 0 : cursor.getCount();
     }
 
-    @NonNull
+    @Nullable
     public RemoteViews getViewAt(int position) {
         if (cursor == null || !cursor.moveToPosition(position)) {
             return null;

@@ -1,6 +1,5 @@
 package com.github.dstaflund.geomemorial.common.util;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -23,7 +22,6 @@ import static java.lang.Double.parseDouble;
  * marker.
  */
 public class MarkerMap extends HashMap<String, Marker> {
-    private static final String sLogTag = MarkerMap.class.getSimpleName();
     private static final DecimalFormat sDecimalFormat = new DecimalFormat("#.###");
 
     /**
@@ -40,7 +38,7 @@ public class MarkerMap extends HashMap<String, Marker> {
      * @return marker id or null if there isn't one
      */
     @Nullable
-    public String getMarkerIdFor(@NonNull Context context, @NonNull LatLng coord){
+    public String getMarkerIdFor(@NonNull LatLng coord){
         for(final Map.Entry<String, Marker> entry : entrySet()){
             sDecimalFormat.setRoundingMode(RoundingMode.UP);
             String roundedLat = sDecimalFormat.format(entry.getValue().getPosition().latitude);
@@ -65,8 +63,8 @@ public class MarkerMap extends HashMap<String, Marker> {
      *
      * @param latLng of markers in question
      */
-    public void bringMarkerToFront(@NonNull Context context, @NonNull LatLng latLng){
-        String markerId = getMarkerIdFor(context, latLng);
+    public void bringMarkerToFront(@NonNull LatLng latLng){
+        String markerId = getMarkerIdFor(latLng);
         if (markerId != null) {
             bringMarkerToFront(markerId);
         }

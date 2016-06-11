@@ -64,7 +64,6 @@ public class MainActivity
     GoogleApiClient.OnConnectionFailedListener,
     SearchResultItemFragment.OnPlaceButtonClickedListener,
     SearchResultFragment.OnChangeCursorListener{
-    private static final String sLogTag = MainActivity.class.getSimpleName();
 
     public static final int EMPTY_SEARCH = -1;
     public static final int RESIDENT_LOADER_ID = 0;
@@ -137,7 +136,6 @@ public class MainActivity
             if (mLastSearchRequest != null){
                 mDisplayToast = false;
                 mMapFragment.ignoreCameraZoom(true);
-                mSearchResultFragment.returnToLastPage(true);
                 handleIntent(mLastSearchRequest.toIntent());
                 return;
             }
@@ -145,7 +143,6 @@ public class MainActivity
 
         mDisplayToast = true;
         mMapFragment.ignoreCameraZoom(false);
-        mSearchResultFragment.returnToLastPage(false);
         handleIntent(getIntent());
     }
 
@@ -452,7 +449,6 @@ public class MainActivity
                 }
                 mMapFragment.clearMap();
                 mSearchResultFragment.swapCursor(data);
-                mSearchResultFragment.restoreLastVisiblePage();
                 mDisplayToast= true;
         }
     }
@@ -535,10 +531,6 @@ public class MainActivity
         private String mQuery;
         private String mUserQuery;
         private String mExtraDataKey;
-
-        public String getAction(){
-            return mAction;
-        }
 
         public Uri getUri(){
             return mUri;

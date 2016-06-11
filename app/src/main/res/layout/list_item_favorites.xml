@@ -22,10 +22,12 @@
 
         <ImageButton
             android:id="@+id/list_item_favorite_share_button"
+            android:contentDescription="@string/favorites.share.content_description"
             style="@style/Theme.Favorites.Item.Button.Share"/>
 
         <ImageButton
             android:id="@+id/list_item_favorite_favorite_button"
+            android:contentDescription="@string/favorites.favorite.content_description"
             style="@style/Theme.Favorites.Item.Button.Favorite"/>
 
     </RelativeLayout>

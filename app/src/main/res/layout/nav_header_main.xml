@@ -6,6 +6,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:src="@mipmap/ic_launcher"
+        android:contentDescription="@string/navbar_icon.content_description"
         style="@style/Theme.Navbar.Header.Icon"/>
 
     <TextView

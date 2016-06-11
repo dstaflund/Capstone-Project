@@ -32,7 +32,7 @@
             style="@style/Theme.Search_Instructions.Argument_Type"/>
 
         <TextView
-            android:text="\u2022 NTS Sheet Search = '74A1' or 'Maribelli Lake'"
+            android:text="@string/search_examples.5"
             style="@style/Theme.Search_Instructions.Argument_Type"/>
 
     </LinearLayout>

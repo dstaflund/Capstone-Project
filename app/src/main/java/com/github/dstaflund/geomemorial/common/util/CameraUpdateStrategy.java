@@ -1,6 +1,5 @@
 package com.github.dstaflund.geomemorial.common.util;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -16,7 +15,6 @@ import java.util.Map;
 public final class CameraUpdateStrategy {
 
     public static void setMapLocation(
-        @NonNull Context context,
         @NonNull GoogleMap map,
         @NonNull FavoritesMarkerInfo data,
         boolean ignoreZoom
@@ -28,11 +26,10 @@ public final class CameraUpdateStrategy {
         MarkerMap markerMap = new MarkerMap();
         markerMap.put(Long.valueOf(data.geomemorialId).toString(), marker);
 
-        CameraUpdateStrategy.updateCamera(context, map, markerMap, ignoreZoom);
+        CameraUpdateStrategy.updateCamera(map, markerMap, ignoreZoom);
     }
 
     public static void updateCamera(
-        @NonNull Context context,
         @NonNull GoogleMap map,
         @NonNull MarkerMap markers,
         boolean ignoreZoom
@@ -54,13 +51,12 @@ public final class CameraUpdateStrategy {
             }
 
             if (markers.size() == 1) {
-                markers.bringMarkerToFront(context, firstMarker.getPosition());
+                markers.bringMarkerToFront(firstMarker.getPosition());
             }
         }
     }
 
     public static void zoomTo(
-        @NonNull Context context,
         @NonNull GoogleMap map,
         @NonNull MarkerMap markers,
         @NonNull LatLng latLng
@@ -68,7 +64,7 @@ public final class CameraUpdateStrategy {
         LatLngBounds bounds = getLatLngBoundsFor(latLng);
         CameraUpdate update = CameraUpdateFactory.newLatLngBounds(bounds, 0);
         map.animateCamera(update);
-        markers.bringMarkerToFront(context, latLng);
+        markers.bringMarkerToFront(latLng);
     }
 
     @NonNull

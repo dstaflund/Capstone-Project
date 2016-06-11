@@ -175,10 +175,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
     public void updateCamera(){
         if (! mIgnoreCameraZoom) {
             CameraUpdateStrategy.updateCamera(
-                getContext(),
                 mMap,
                 mVisibleMarkers,
-                mIgnoreCameraZoom
+                false
             );
         }
     }
@@ -188,7 +187,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
      */
     public void zoomInOn(@NonNull LatLng latLng){
         if (! mIgnoreCameraZoom){
-            CameraUpdateStrategy.zoomTo(getContext(), mMap, mVisibleMarkers, latLng);
+            CameraUpdateStrategy.zoomTo( mMap, mVisibleMarkers, latLng);
         }
     }
 

@@ -2,6 +2,7 @@ package com.github.dstaflund.geomemorial.common.util;
 
 import android.database.Cursor;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.Geomemorial;
 import com.google.android.gms.maps.model.LatLng;
@@ -28,11 +29,13 @@ public class FavoritesMarkerInfo {
     }
 
     @NonNull
-    public static List<FavoritesMarkerInfo> getDataFormatters(@NonNull Cursor cursor){
+    public static List<FavoritesMarkerInfo> getDataFormatters(@Nullable Cursor cursor){
         final List<FavoritesMarkerInfo> formatters = new ArrayList<>();
-        if (cursor.getCount() > 0) {
-            while (cursor.moveToNext()) {
-                formatters.add(new FavoritesMarkerInfo(cursor));
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    formatters.add(new FavoritesMarkerInfo(cursor));
+                }
             }
         }
         return formatters;

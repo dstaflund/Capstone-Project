@@ -44,7 +44,6 @@ import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract
  * @author Darryl Staflund
  */
 public class GeomemorialDbProvider extends SearchRecentSuggestionsProvider {
-    private static final String sLogTag = GeomemorialDbProvider.class.getSimpleName();
     public static final String AUTHORITY = GeomemorialDbContract.CONTENT_AUTHORITY;
     public static final int MODE = DATABASE_MODE_QUERIES;
 

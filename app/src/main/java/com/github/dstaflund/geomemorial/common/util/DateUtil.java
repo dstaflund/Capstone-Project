@@ -15,7 +15,6 @@ import java.util.Locale;
  * @author Darryl Staflund
  */
 public final class DateUtil {
-    private static final String sLogTag = DateUtil.class.getSimpleName();
     private static final Locale sLocale = Locale.getDefault();
     public static final String DB_TMPL = "yyyy-MM-dd";
     public static final String DISPLAY_TMPL = "MMMM d, yyyy";

@@ -150,9 +150,14 @@ public class FavoritesFragment extends Fragment{
 
         public FavoritesMapAdapter(
             @NonNull Context context,
-            @NonNull List<FavoritesMarkerInfo> locations
+            @Nullable List<FavoritesMarkerInfo> locations
         ) {
-            super(context, R.layout.list_item_favorites, R.id.lite_listrow_text, locations);
+            super(
+                context,
+                R.layout.list_item_favorites,
+                R.id.lite_listrow_text,
+                locations == null ? Collections.<FavoritesMarkerInfo>emptyList() : locations
+            );
         }
 
         @Override
@@ -220,6 +225,7 @@ public class FavoritesFragment extends Fragment{
                                         .obit(c.getString(IDX_OBIT))
                                         .build();
                                     shareGeomemorial(payload);
+                                    c.close();
                                 }
                                 break;
                             default:
@@ -245,7 +251,7 @@ public class FavoritesFragment extends Fragment{
             holder.mapView.setTag(item);
 
             if (holder.map != null) {
-                setMapLocation(getContext(), holder.map, item, true);
+                setMapLocation(holder.map, item, true);
             }
 
             holder.title.setText(item.geomemorial);
@@ -319,7 +325,7 @@ public class FavoritesFragment extends Fragment{
 
                 FavoritesMarkerInfo data = (FavoritesMarkerInfo) mapView.getTag();
                 if (data != null) {
-                    CameraUpdateStrategy.setMapLocation(getContext(), map, data, true);
+                    CameraUpdateStrategy.setMapLocation(map, data, true);
                 }
             }
         }

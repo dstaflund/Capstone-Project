@@ -24,7 +24,6 @@ import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract
  * @author Darryl Staflund
  */
 public class GeomemorialDbHelper extends SQLiteOpenHelper {
-    private static final String sLogTag = GeomemorialDbHelper.class.getSimpleName();
     private static final String sStatementDelimiter = ";";
     private static SQLiteOpenHelper mInstance;
     private Context mContext;

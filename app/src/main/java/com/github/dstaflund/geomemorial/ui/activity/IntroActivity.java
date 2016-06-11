@@ -1,6 +1,6 @@
 package com.github.dstaflund.geomemorial.ui.activity;
 
-import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -13,7 +13,7 @@ public class IntroActivity extends AppIntro {
 
     @Override
     public void init(@Nullable Bundle savedInstanceState) {
-        Configuration config = getResources().getConfiguration();
+        getResources().getConfiguration();
 
         if (! PreferencesManager.isFirstTime(this)){
             endActivity();
@@ -69,7 +69,12 @@ public class IntroActivity extends AppIntro {
             R.color.colorAccent1VeryLight
         ));
 
-        setBarColor(getResources().getColor(R.color.colorPrimaryDark));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            setBarColor(getColor(R.color.colorPrimaryDark));
+        } else {
+            //noinspection deprecation
+            setBarColor(getResources().getColor(R.color.colorPrimaryDark));
+        }
 
         showSkipButton(true);
         setProgressButtonEnabled(true);

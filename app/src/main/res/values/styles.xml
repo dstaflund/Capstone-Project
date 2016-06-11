@@ -434,7 +434,6 @@
         <item name="android:layout_alignParentEnd">true</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:background">@drawable/ic_menu_share</item>
-        <item name="android:contentDescription">@string/favorites.share.content_description</item>
         <item name="android:elevation">@dimen/default_elevation</item>
 
     </style>
@@ -465,6 +464,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/custom_info_bubble</item>
     </style>
     <style name="Theme.InfoWindow.Title" parent="Theme.InfoWindow">
         <item name="android:layout_width">wrap_content</item>
