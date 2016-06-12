@@ -3,10 +3,10 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         config {
-            keyAlias 'capstonerelease'
-            keyPassword 'capstoneKeyPassword'
-            storeFile file('capstoneKeystore.jks')
-            storePassword 'capstoneStorePassword'
+            storeFile file("$geomemorial_store_file")
+            storePassword "$geomemorial_keystore_password"
+            keyAlias "$geomemorial_key_alias"
+            keyPassword "$geomemorial_key_password"
         }
     }
 

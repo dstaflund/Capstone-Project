@@ -92,6 +92,7 @@ public class SearchResultFragment extends Fragment
         Log.d("* SearchResultFrag *", "swapCursor (lastItem = " + mLastCurrentItem + ")");
         mSearchResultPagerAdapter = new SearchResultPagerAdapter(getChildFragmentManager(), value);
         mViewPager.setAdapter(mSearchResultPagerAdapter);
+        mSearchResultPagerAdapter.refreshUi();
         mViewPager.setCurrentItem(mLastCurrentItem);
     }
 
@@ -144,29 +145,25 @@ public class SearchResultFragment extends Fragment
             super.finishUpdate(container);
         }
 
-        public void swapCursor(@Nullable Cursor c) {
+        public void refreshUi() {
             Log.d("** SearchAdapter **", "swapCursor");
 
-            if (mCursor != c) {
-                if (c != null) {
-                    while (c.moveToNext() && c.getPosition() < getContext().getResources().getInteger(R.integer.max_visible_memorials)) {
-                        SearchResultItemFragment.DataObject dataObject = new SearchResultItemFragment.DataObject(c);
-                        SearchResultItemFragment.DataFormatter dataFormatter = new SearchResultItemFragment.DataFormatter(
-                            getActivity(),
-                            dataObject,
-                            c.getPosition(),
-                            c.getCount()
-                        );
-                        mOnChangeCursorListener.recordFinished(dataFormatter);
-                    }
-                    c.moveToFirst();
-                    c.moveToPrevious();
+            if (mCursor != null) {
+                while (mCursor.moveToNext() && mCursor.getPosition() < getContext().getResources().getInteger(R.integer.max_visible_memorials)) {
+                    SearchResultItemFragment.DataObject dataObject = new SearchResultItemFragment.DataObject(mCursor);
+                    SearchResultItemFragment.DataFormatter dataFormatter = new SearchResultItemFragment.DataFormatter(
+                        getActivity(),
+                        dataObject,
+                        mCursor.getPosition(),
+                        mCursor.getCount()
+                    );
+                    mOnChangeCursorListener.recordFinished(dataFormatter);
                 }
-                mCursor = c;
-                notifyDataSetChanged();
+                mCursor.moveToFirst();
+                mCursor.moveToPrevious();
             }
-
             mOnChangeCursorListener.cursorFinished();
+            notifyDataSetChanged();
         }
     }
 
