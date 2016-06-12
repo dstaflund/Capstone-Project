@@ -35,8 +35,12 @@ import android.widget.Toast;
 
 import com.github.dstaflund.geomemorial.GeomemorialApplication;
 import com.github.dstaflund.geomemorial.R;
+import com.github.dstaflund.geomemorial.common.util.IntentManager;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.MarkerInfo;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbProvider;
+import com.github.dstaflund.geomemorial.ui.activity.about.AboutActivity;
+import com.github.dstaflund.geomemorial.ui.activity.favorites.FavoritesActivity;
+import com.github.dstaflund.geomemorial.ui.activity.preferences.PreferencesActivity;
 import com.github.dstaflund.geomemorial.ui.fragment.MapFragment;
 import com.github.dstaflund.geomemorial.ui.fragment.SearchResultFragment;
 import com.github.dstaflund.geomemorial.ui.fragment.SearchResultItemFragment;
@@ -274,7 +278,7 @@ public class MainActivity
 
         switch (item.getItemId()) {
             case R.id.nav_camera:
-                FavoritesActivity.startActivity(this);
+                IntentManager.startActivity(this, FavoritesActivity.class);
                 result = true;
                 break;
 
@@ -326,12 +330,12 @@ public class MainActivity
 
 
             case R.id.nav_manage:
-                PreferencesActivity.startActivity(this);
+                IntentManager.startActivity(this, PreferencesActivity.class);
                 result = true;
                 break;
 
             case R.id.nav_send:
-                AboutActivity.startActivity(this);
+                IntentManager.startActivity(this, AboutActivity.class);
                 result = true;
                 break;
 
@@ -498,11 +502,6 @@ public class MainActivity
     @Override
     public void cursorFinished(){
         mMapFragment.updateCamera();
-    }
-
-    public static void startActivity(Context context){
-        Intent i = new Intent(context, MainActivity.class);
-        context.startActivity(i);
     }
 
     public static class SearchRequest implements Parcelable {

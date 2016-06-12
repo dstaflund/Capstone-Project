@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/fragment_about"
-        class="com.github.dstaflund.geomemorial.ui.fragment.AboutFragment"
+        class="com.github.dstaflund.geomemorial.ui.fragment.about.AboutFragment"
         style="@style/Theme.About.Content"/>
 
 </FrameLayout>

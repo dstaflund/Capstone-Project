@@ -27,7 +27,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="TO_BE_SUPPLIED"/>
         <activity
-            android:name=".ui.activity.IntroActivity"
+            android:name=".ui.activity.intro.IntroActivity"
             android:label="@string/intro_label"
             android:launchMode="singleTop">
             <intent-filter>
@@ -48,17 +48,17 @@
                 android:resource="@xml/searchable"/>
         </activity>
         <activity
-            android:name=".ui.activity.FavoritesActivity"
+            android:name=".ui.activity.favorites.FavoritesActivity"
             android:label="@string/label_activity_favorites"
             android:parentActivityName=".ui.activity.MainActivity" />
         <activity
-            android:name=".ui.activity.PreferencesActivity"
+            android:name=".ui.activity.preferences.PreferencesActivity"
             android:label="@string/label_activity_preferences"
-            android:parentActivityName=".ui.activity.PreferencesActivity"/>
+            android:parentActivityName=".ui.activity.preferences.PreferencesActivity"/>
         <activity
-            android:name=".ui.activity.AboutActivity"
+            android:name=".ui.activity.about.AboutActivity"
             android:label="@string/label_activity_about"
-            android:parentActivityName=".ui.activity.AboutActivity"/>
+            android:parentActivityName=".ui.activity.about.AboutActivity"/>
 
         <provider
             android:name=".integration.GeomemorialDbProvider"
