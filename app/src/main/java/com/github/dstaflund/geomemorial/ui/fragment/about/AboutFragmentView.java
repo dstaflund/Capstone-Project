@@ -8,6 +8,7 @@ public interface AboutFragmentView {
     void setNestedScrollView(@NonNull NestedScrollView v);
     void setRetainInstance(boolean b);
 
+    @NonNull
     NestedScrollView getNestedScrollView();
 
 }

@@ -1,4 +1,4 @@
-package com.github.dstaflund.geomemorial.ui.fragment.about;
+package com.github.dstaflund.geomemorial.ui.fragment.searchexamples;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,10 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public interface AboutFragmentPresenter {
+public interface SearchExamplesFragmentPresenter {
     void onCreate(@Nullable Bundle savedState);
-    void onSaveInstanceState(@NonNull Bundle outState);
-    void onViewStateRestored(@Nullable Bundle savedState);
 
     @Nullable
     View onCreateView(@NonNull LayoutInflater i, @Nullable ViewGroup c, @Nullable Bundle b);

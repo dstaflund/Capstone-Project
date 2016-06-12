@@ -12,6 +12,7 @@ public interface IntroActivityView {
     void setTitle(int app_name);
     void showSkipButton(boolean b);
 
+    @NonNull
     Context getContext();
 
 }
