@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,11 +47,6 @@ public class SearchResultFragment extends Fragment
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    @Override
     @NonNull
     public View onCreateView(
         @NonNull LayoutInflater inflater,
@@ -74,12 +70,27 @@ public class SearchResultFragment extends Fragment
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(sCurrentItemKey, mViewPager.getCurrentItem());
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+    }
+
+    public void clearPager(){
+        Log.d("* SearchResultFrag *", "clearPager");
         mViewPager.setAdapter(null);
         mViewPager.removeAllViews();
     }
 
     public void swapCursor(@Nullable Cursor value){
-        mSearchResultPagerAdapter.swapCursor(value);
+        Log.d("* SearchResultFrag *", "swapCursor (lastItem = " + mLastCurrentItem + ")");
+        mSearchResultPagerAdapter = new SearchResultPagerAdapter(getChildFragmentManager(), value);
         mViewPager.setAdapter(mSearchResultPagerAdapter);
         mViewPager.setCurrentItem(mLastCurrentItem);
     }
@@ -103,6 +114,7 @@ public class SearchResultFragment extends Fragment
 
         @Override
         public SearchResultItemFragment getItem(int position) {
+            Log.d("** SearchAdapter **", "getItem(position = " + position + ")");
             if (mCursor == null){
                 return null;
             }
@@ -113,6 +125,7 @@ public class SearchResultFragment extends Fragment
 
         @Override
         public int getCount() {
+            Log.d("** SearchAdapter **", "getCount(count = " + (mCursor == null ? 0 : mCursor.getCount()) + ")");
             if (mCursor == null){
                 return 0;
             }
@@ -121,7 +134,19 @@ public class SearchResultFragment extends Fragment
             return mCursor.getCount() <= maxVisible ? mCursor.getCount() : maxVisible;
         }
 
+        @Override
+        public void startUpdate(ViewGroup container) {
+            super.startUpdate(container);
+        }
+
+        @Override
+        public void finishUpdate(ViewGroup container) {
+            super.finishUpdate(container);
+        }
+
         public void swapCursor(@Nullable Cursor c) {
+            Log.d("** SearchAdapter **", "swapCursor");
+
             if (mCursor != c) {
                 if (c != null) {
                     while (c.moveToNext() && c.getPosition() < getContext().getResources().getInteger(R.integer.max_visible_memorials)) {

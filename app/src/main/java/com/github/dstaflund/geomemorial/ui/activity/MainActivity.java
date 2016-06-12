@@ -83,6 +83,7 @@ public class MainActivity
     private SearchRequest mLastSearchRequest;
     private String mSavedSearchString;
     private boolean mDisplayToast;
+    private Bundle mSavedInstanceState;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -134,32 +135,38 @@ public class MainActivity
             loaderManager.initLoader(EMPTY_SEARCH, null, this);
         }
 
+        // Restore the last search if present
         if (savedInstanceState != null) {
             mSavedSearchString = savedInstanceState.getString(SAVED_SEARCH_KEY);
             mLastSearchRequest = savedInstanceState.getParcelable(LAST_SEARCH_REQUEST_KEY);
-            if (mLastSearchRequest != null){
-                mDisplayToast = false;
-                mMapFragment.ignoreCameraZoom(true);
-                handleIntent(mLastSearchRequest.toIntent());
-                return;
-            }
         }
 
-        mDisplayToast = true;
-        mMapFragment.ignoreCameraZoom(false);
-        handleIntent(getIntent());
+        // If there was a previous search, then don't display toast otherwise do so
+        mDisplayToast = mLastSearchRequest == null;
+
+        // If there was a previous search, then don't zoom camera, otherwise do so
+        mMapFragment.ignoreCameraZoom(mLastSearchRequest != null);
+
+        mSavedInstanceState = savedInstanceState;
     }
 
     @Override
     protected void onStart() {
-        mGoogleApiClient.connect();
         super.onStart();
+        mGoogleApiClient.connect();
+
+        if (mSavedInstanceState != null && mLastSearchRequest != null){
+            mSearchResultFragment.clearPager();
+            handleIntent(mLastSearchRequest.toIntent());
+        }
+        else {
+            handleIntent(getIntent());
+        }
     }
 
     @Override
-    protected void onStop() {
-        mGoogleApiClient.disconnect();
-        super.onStop();
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override
@@ -170,6 +177,17 @@ public class MainActivity
             outState.putParcelable(LAST_SEARCH_REQUEST_KEY, mLastSearchRequest);
             outState.putString(SAVED_SEARCH_KEY, mSearchView.getQuery().toString());
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mGoogleApiClient.disconnect();
     }
 
     private void checkInitialMapType() {
