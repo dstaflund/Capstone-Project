@@ -163,7 +163,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
     }
 
     public void addMarker(@NonNull MarkerOptions options){
-
         Marker marker = mMap.addMarker(options);
         mVisibleMarkers.put(marker.getId(), marker);
     }

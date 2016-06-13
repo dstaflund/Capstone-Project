@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,17 +82,16 @@ public class SearchResultFragment extends Fragment
     }
 
     public void clearPager(){
-        Log.d("* SearchResultFrag *", "clearPager");
         mViewPager.setAdapter(null);
         mViewPager.removeAllViews();
     }
 
     public void swapCursor(@Nullable Cursor value){
-        Log.d("* SearchResultFrag *", "swapCursor (lastItem = " + mLastCurrentItem + ")");
         mSearchResultPagerAdapter = new SearchResultPagerAdapter(getChildFragmentManager(), value);
         mViewPager.setAdapter(mSearchResultPagerAdapter);
         mSearchResultPagerAdapter.refreshUi();
         mViewPager.setCurrentItem(mLastCurrentItem);
+        mLastCurrentItem = 0;
     }
 
     @Override
@@ -115,7 +113,6 @@ public class SearchResultFragment extends Fragment
 
         @Override
         public SearchResultItemFragment getItem(int position) {
-            Log.d("** SearchAdapter **", "getItem(position = " + position + ")");
             if (mCursor == null){
                 return null;
             }
@@ -126,7 +123,6 @@ public class SearchResultFragment extends Fragment
 
         @Override
         public int getCount() {
-            Log.d("** SearchAdapter **", "getCount(count = " + (mCursor == null ? 0 : mCursor.getCount()) + ")");
             if (mCursor == null){
                 return 0;
             }
@@ -146,9 +142,9 @@ public class SearchResultFragment extends Fragment
         }
 
         public void refreshUi() {
-            Log.d("** SearchAdapter **", "swapCursor");
-
             if (mCursor != null) {
+                mCursor.moveToFirst();
+                mCursor.moveToPrevious();
                 while (mCursor.moveToNext() && mCursor.getPosition() < getContext().getResources().getInteger(R.integer.max_visible_memorials)) {
                     SearchResultItemFragment.DataObject dataObject = new SearchResultItemFragment.DataObject(mCursor);
                     SearchResultItemFragment.DataFormatter dataFormatter = new SearchResultItemFragment.DataFormatter(
