@@ -2,6 +2,7 @@ package com.github.dstaflund.geomemorial.common.util;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -15,19 +16,13 @@ import java.util.Locale;
  * @author Darryl Staflund
  */
 public final class DateUtil {
+    private static final String sLogTag = DateUtil.class.getSimpleName();
     private static final Locale sLocale = Locale.getDefault();
-    public static final String DB_TMPL = "yyyy-MM-dd";
-    public static final String DISPLAY_TMPL = "MMMM d, yyyy";
-    public static final DateFormat DB_FORMAT = new SimpleDateFormat(DB_TMPL, sLocale);
-    public static final DateFormat DISPLAY_FORMAT = new SimpleDateFormat(DISPLAY_TMPL, sLocale);
+    private static final String sDbTmpl = "yyyy-MM-dd";
+    private static final String sDisplayTmpl = "MMMM d, yyyy";
+    private static final DateFormat sDisplayFormat = new SimpleDateFormat(sDisplayTmpl, sLocale);
+    public static final DateFormat DB_FORMAT = new SimpleDateFormat(sDbTmpl, sLocale);
 
-    /**
-      Given a string representing a date in {@link #DB_TMPL} format, returns the
-     * corresponding Date object.
-     *
-     * @param dateString to convert
-     * @return date object
-     */
     @Nullable
     public static Date toDate(@NonNull final String dateString){
         try {
@@ -35,38 +30,22 @@ public final class DateUtil {
         }
 
         catch (ParseException e) {
+            Log.e(sLogTag, e.toString());
             return null;
         }
     }
 
-    /**
-     * Given a Date object, returns its string value in {@link #DISPLAY_FORMAT}
-     * format.
-     *
-     * @param date to get standardized string representation for
-     * @return standardized string representation
-     */
     @NonNull
     public static String toString(@NonNull final Date date){
-        return DISPLAY_FORMAT.format(date);
+        return sDisplayFormat.format(date);
     }
 
-    /**
-     * Given a date in {@link #DB_FORMAT} format, returns the date in
-     * {@link #DISPLAY_FORMAT} format.
-     *
-     * @param dateString the date string to be formatted
-     * @return formatted date string
-     */
     @Nullable
     public static String toDisplayString(@NonNull final String dateString){
         final Date date = toDate(dateString);
         return date == null ? null : toString(date).toUpperCase();
     }
 
-    /**
-     * Default constructor.
-     */
     private DateUtil(){
         super();
     }

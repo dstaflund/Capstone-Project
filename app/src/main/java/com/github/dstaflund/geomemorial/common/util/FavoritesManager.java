@@ -1,6 +1,7 @@
 package com.github.dstaflund.geomemorial.common.util;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 
 import java.util.Collections;
@@ -14,9 +15,9 @@ public final class FavoritesManager {
 
     @NonNull
     public static Set<String> getFavorites(@NonNull Context context){
-        final Set<String> favorites = getSharedPreferences(context)
-            .getStringSet(sFavoriteKey, Collections.<String>emptySet());
-        final Set<String> scrubbed = new HashSet<>(favorites);
+        SharedPreferences prefs = getSharedPreferences(context);
+        Set<String> favorites = prefs.getStringSet(sFavoriteKey, Collections.<String>emptySet());
+        Set<String> scrubbed = new HashSet<>(favorites);
         scrubbed.remove(null);
         return scrubbed;
     }
@@ -27,7 +28,7 @@ public final class FavoritesManager {
 
     public static boolean addFavorite(@NonNull Context context, @NonNull String geomemorialId){
         if (! isFavorite(context, geomemorialId)) {
-            final Set<String> favorites = getFavorites(context);
+            Set<String> favorites = getFavorites(context);
             favorites.add(geomemorialId);
 
             return getSharedPreferences(context)
@@ -40,7 +41,7 @@ public final class FavoritesManager {
 
     public static boolean removeFavorite(@NonNull Context context, @NonNull String geomemorialId){
         if (isFavorite(context, geomemorialId)){
-            final Set<String> favorites = getFavorites(context);
+            Set<String> favorites = getFavorites(context);
             favorites.remove(geomemorialId);
 
             return getSharedPreferences(context)

@@ -34,7 +34,6 @@ public class SearchResultItemFragment extends Fragment {
     private static final String COUNT_KEY = "count_key";
     private static final DecimalFormat sDecimalFormat = new DecimalFormat("#.##");
 
-
     private OnPlaceButtonClickedListener mOnPlaceButtonClickedListener;
 
     public SearchResultItemFragment(){

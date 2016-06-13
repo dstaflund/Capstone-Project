@@ -3,7 +3,6 @@ package com.github.dstaflund.geomemorial.common.util;
 import android.support.annotation.NonNull;
 
 import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
@@ -12,6 +11,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Map;
 
+import static com.google.android.gms.maps.CameraUpdateFactory.newLatLngBounds;
+
 public final class CameraUpdateStrategy {
 
     public static void setMapLocation(
@@ -19,14 +20,14 @@ public final class CameraUpdateStrategy {
         @NonNull FavoritesMarkerInfo data,
         boolean ignoreZoom
     ) {
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(data.getLatLng());
+        MarkerOptions options = new MarkerOptions();
+        options.position(data.getLatLng());
 
-        Marker marker = map.addMarker(markerOptions);
+        Marker marker = map.addMarker(options);
         MarkerMap markerMap = new MarkerMap();
         markerMap.put(Long.valueOf(data.geomemorialId).toString(), marker);
 
-        CameraUpdateStrategy.updateCamera(map, markerMap, ignoreZoom);
+        updateCamera(map, markerMap, ignoreZoom);
     }
 
     public static void updateCamera(
@@ -35,13 +36,13 @@ public final class CameraUpdateStrategy {
         boolean ignoreZoom
     ){
         if (markers.size() > 0) {
-            Marker firstMarker = markers.values().iterator().next();
+            Marker marker = markers.values().iterator().next();
 
             LatLngBounds bounds = markers.size() == 1
-                ? getLatLngBoundsFor(firstMarker)
+                ? getLatLngBoundsFor(marker)
                 : getLatLngBoundsFor(markers);
 
-            CameraUpdate update = CameraUpdateFactory.newLatLngBounds(bounds, 0);
+            CameraUpdate update = newLatLngBounds(bounds, 0);
 
             if (ignoreZoom) {
                 map.moveCamera(update);
@@ -51,7 +52,7 @@ public final class CameraUpdateStrategy {
             }
 
             if (markers.size() == 1) {
-                markers.bringMarkerToFront(firstMarker.getPosition());
+                markers.bringMarkerToFront(marker.getPosition());
             }
         }
     }
@@ -62,7 +63,7 @@ public final class CameraUpdateStrategy {
         @NonNull LatLng latLng
     ){
         LatLngBounds bounds = getLatLngBoundsFor(latLng);
-        CameraUpdate update = CameraUpdateFactory.newLatLngBounds(bounds, 0);
+        CameraUpdate update = newLatLngBounds(bounds, 0);
         map.animateCamera(update);
         markers.bringMarkerToFront(latLng);
     }
@@ -82,8 +83,8 @@ public final class CameraUpdateStrategy {
     @NonNull
     public static LatLngBounds getLatLngBoundsFor(@NonNull final MarkerMap markers){
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
-        for(Map.Entry<String, Marker> markerEntry : markers.entrySet()){
-            builder.include(markerEntry.getValue().getPosition());
+        for(Map.Entry<String, Marker> entry : markers.entrySet()){
+            builder.include(entry.getValue().getPosition());
         }
         return builder.build();
     }
