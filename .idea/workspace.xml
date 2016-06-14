@@ -33,11 +33,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8478ac7f-24f8-44db-b69f-a6f3eca81ede" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/FavoritesFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/favorites/FavoritesFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/MapFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/map/MapFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/searchresult/SearchResultFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultItemFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/searchresultitem/SearchResultItemFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/receiver/CursorFinishedReceiver.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/receiver/CursorFinishedReceiver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/receiver/PlaceButtonClickedReceiver.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/receiver/PlaceButtonClickedReceiver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/receiver/RecordFinishedReceiver.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/receiver/RecordFinishedReceiver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/MapFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/MapFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultItemFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultItemFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-w1024dp-h528dp-160dpi/content_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-w1024dp-h528dp-160dpi/content_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-w426dp-h296dp-120dpi/content_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-w426dp-h296dp-120dpi/content_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-w457dp-h250dp-280dpi/content_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-w457dp-h250dp-280dpi/content_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-w480dp-h775dp-160dpi/content_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-w480dp-h775dp-160dpi/content_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-w768dp-h952dp-320dpi/content_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-w768dp-h952dp-320dpi/content_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-w800dp-h1208dp-160dpi/content_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-w800dp-h1208dp-160dpi/content_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-w800dp-h456dp-160dpi/content_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-w800dp-h456dp-160dpi/content_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_favorites.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_favorites.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" />
     </list>
     <ignored path="Capstone-Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -141,7 +155,18 @@
     <favorites_list name="Capstone-Project" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
+    <leaf>
+      <file leaf-file-name="SearchResultItemFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/searchresultitem/SearchResultItemFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="2.0338347">
+              <caret line="175" column="5" selection-start-line="175" selection-start-column="5" selection-end-line="175" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -2017,16 +2042,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/about/AboutModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/about/AboutActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/about/AboutPresenterImpl.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/about/AboutPresenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/preferences/PreferencesPresenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/preferences/PreferencesPresenterImpl.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/about/AboutView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/preferences/PreferencesView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/preferences/PreferencesActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/favorites/FavoritesPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/favorites/FavoritesPresenterImpl.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/favorites/FavoritesView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/activity/favorites/FavoritesActivity.java" />
@@ -2068,6 +2083,16 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/MapFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultItemFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/searchresultitem/DataFormatter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/searchresultitem/SearchResultItemFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/map/InfoWindowAdapterImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/FavoritesFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/map/MapFragmentInfoWindow.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/map/MapFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/searchresultitem/SearchResultItemFragmentViewHolder.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/searchresultitem/DataObject.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/favorites/FavoritesFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/searchresult/SearchResultFragment.java" />
       </list>
     </option>
   </component>
@@ -2154,6 +2179,52 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="Problems">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/main/java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="com/github/dstaflund/geomemorial/integration">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2233,30 +2304,8 @@
               <option name="myItemId" value="fragment" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Capstone-Project" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geomemorial" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity" />
+              <option name="myItemId" value="searchresultitem" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2282,11 +2331,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="activity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="preferences" />
+              <option name="myItemId" value="fragment" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2313,92 +2358,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="activity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="intro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Capstone-Project" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geomemorial" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="favorites" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Capstone-Project" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geomemorial" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="about" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Capstone-Project" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geomemorial" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="receiver" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2414,51 +2373,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="manifests" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Problems">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src/main/java">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="com/github/dstaflund/geomemorial/integration">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -2563,7 +2477,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2582,11 +2495,11 @@
       <recent name="com.github.dstaflund.geomemorial.common.util.IntentManager" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.github.dstaflund.geomemorial.ui.fragment.searchresult" />
+      <recent name="com.github.dstaflund.geomemorial.ui.fragment.favorites" />
+      <recent name="com.github.dstaflund.geomemorial.ui.fragment.map" />
+      <recent name="com.github.dstaflund.geomemorial.ui.fragment.searchresultitem" />
       <recent name="com.github.dstaflund.geomemorial.ui.fragment.preferences" />
-      <recent name="com.github.dstaflund.geomemorial.ui.fragment.searchexamples" />
-      <recent name="com.github.dstaflund.geomemorial.ui.fragment.about" />
-      <recent name="com.github.dstaflund.geomemorial.ui.activity.intro" />
-      <recent name="com.github.dstaflund.geomemorial.ui.activity.favorites" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\usr\repo\udacity.com\Capstone-Project\app\src\main\res\layout-w800dp-h1208dp-160dpi" />
@@ -3006,7 +2919,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290993" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -3022,8 +2935,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22990353" sideWeight="0.48267898" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290993" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22990353" sideWeight="0.48267898" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24866024" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -3036,6 +2948,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290993" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -3088,14 +3001,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/FavoritesFragment.java</url>
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/favorites/FavoritesFragment.java</url>
           <line>246</line>
           <properties />
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultItemFragment.java</url>
-          <line>135</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/searchresultitem/SearchResultItemFragment.java</url>
+          <line>128</line>
           <properties />
           <option name="timeStamp" value="45" />
         </line-breakpoint>
@@ -3110,41 +3023,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/local.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../../src/android.com/android-sdk/extras/android/m2repository/com/android/support/support-v4/23.4.0/support-v4-23.4.0-sources.jar!/android/support/v4/view/ViewPager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26688632">
-          <caret line="573" column="0" selection-start-line="573" selection-start-column="0" selection-end-line="573" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.gradle/gradle.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.857143">
-          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build/generated/source/buildConfig/release/com/github/dstaflund/geomemorial/BuildConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.4571428">
@@ -3289,7 +3167,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24843162">
           <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3297,7 +3174,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30363864">
           <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3305,7 +3181,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33293268">
           <caret line="390" column="11" selection-start-line="390" selection-start-column="11" selection-end-line="390" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3313,7 +3188,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33272395">
           <caret line="227" column="24" selection-start-line="227" selection-start-column="24" selection-end-line="227" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3361,7 +3235,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3369,7 +3242,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3377,7 +3249,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3385,7 +3256,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3393,7 +3263,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3401,7 +3270,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3409,7 +3277,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3417,7 +3284,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.124060154">
           <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3425,7 +3291,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33082706">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3433,7 +3298,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20676692">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3441,7 +3305,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24812031">
           <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3449,23 +3312,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33270678">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/FavoritesFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.041353382">
-          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/MapFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.041353382">
-          <caret line="128" column="66" selection-start-line="128" selection-start-column="66" selection-end-line="128" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3477,18 +3323,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultItemFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/searchresultitem/DataFormatter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5864662">
+          <caret line="118" column="32" selection-start-line="118" selection-start-column="32" selection-end-line="118" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/SearchResultFragment.java">
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/9.0.2/jars/classes.jar!/com/google/android/gms/maps/GoogleMap.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33272395">
-          <caret line="96" column="4" selection-start-line="96" selection-start-column="4" selection-end-line="96" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.35613683">
+          <caret line="709" column="21" selection-start-line="709" selection-start-column="21" selection-end-line="709" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/map/MapFragmentInfoWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.0676692">
+          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/map/MapFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="9.345864">
+          <caret line="226" column="5" selection-start-line="226" selection-start-column="5" selection-end-line="226" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/searchresultitem/SearchResultItemFragmentViewHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37218046">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/searchresultitem/DataObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.90225565">
+          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/favorites/FavoritesFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/searchresult/SearchResultFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33270678">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/github/dstaflund/geomemorial/ui/fragment/searchresultitem/SearchResultItemFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.0338347">
+          <caret line="175" column="5" selection-start-line="175" selection-start-column="5" selection-end-line="175" selection-end-column="5" />
           <folding />
         </state>
       </provider>

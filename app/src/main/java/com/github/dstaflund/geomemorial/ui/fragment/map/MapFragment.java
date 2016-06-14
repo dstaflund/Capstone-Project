@@ -1,24 +1,19 @@
-package com.github.dstaflund.geomemorial.ui.fragment;
+package com.github.dstaflund.geomemorial.ui.fragment.map;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.github.dstaflund.geomemorial.R;
 import com.github.dstaflund.geomemorial.common.util.CameraUpdateStrategy;
@@ -133,7 +128,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
     public void onMapReady(@NonNull GoogleMap googleMap) {
         googleMap.setMapType(getMapType(getContext()));
         googleMap.setInfoWindowAdapter(
-            new InfoWindowAdapterImpl(getContext(), super.getLayoutInflater(null))
+            new MapFragmentInfoWindow(getContext(), super.getLayoutInflater(null))
         );
         googleMap.setOnMapLoadedCallback(this);
         googleMap.setMyLocationEnabled(false);
@@ -229,53 +224,5 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
 
     public void setMapType(int mapTypeId) {
         mMap.setMapType(mapTypeId);
-    }
-
-    public static class InfoWindowAdapterImpl implements GoogleMap.InfoWindowAdapter  {
-        @NonNull private final Context mContext;
-        @NonNull private final ForegroundColorSpan mColorSpan;
-        @NonNull private final TextView mTitle;
-        @NonNull private final TextView mResident;
-        @NonNull private final View mWindow;
-
-        public InfoWindowAdapterImpl(@NonNull Context context, @NonNull LayoutInflater li) {
-            super();
-
-            mContext = context;
-            mWindow = li.inflate(R.layout.custom_info_window, null);
-            mTitle = (TextView) mWindow.findViewById(R.id.title);
-            mResident = (TextView) mWindow.findViewById(R.id.resident);
-            mColorSpan = new ForegroundColorSpan(Color.RED);
-        }
-
-        @Override
-        @NonNull
-        public View getInfoWindow(@NonNull Marker marker) {
-            mTitle.setText("");
-            mResident.setText("");
-
-            final String title = marker.getTitle();
-            if (title != null) {
-                final SpannableString titleText = new SpannableString(title);
-                titleText.setSpan(mColorSpan, 0, title.length(), 0);
-                mTitle.setText(titleText);
-            }
-
-            final String resident = marker.getSnippet();
-            if (resident != null) {
-                mResident.setText(String.format(
-                    mContext.getString(R.string.string_format_name_pattern),
-                    resident
-                ));
-            }
-
-            return mWindow;
-        }
-
-        @Nullable
-        @Override
-        public View getInfoContents(@Nullable Marker marker) {
-            return null;
-        }
     }
 }

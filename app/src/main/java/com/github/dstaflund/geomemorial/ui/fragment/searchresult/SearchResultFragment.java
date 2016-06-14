@@ -1,4 +1,4 @@
-package com.github.dstaflund.geomemorial.ui.fragment;
+package com.github.dstaflund.geomemorial.ui.fragment.searchresult;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -16,6 +16,9 @@ import android.view.ViewGroup;
 import com.github.dstaflund.geomemorial.R;
 import com.github.dstaflund.geomemorial.receiver.CursorFinishedReceiver;
 import com.github.dstaflund.geomemorial.receiver.RecordFinishedReceiver;
+import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.DataFormatter;
+import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.DataObject;
+import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.SearchResultItemFragment;
 
 public class SearchResultFragment extends Fragment{
     private static final String sCurrentItemKey = "currentItem";
@@ -136,8 +139,8 @@ public class SearchResultFragment extends Fragment{
                 mCursor.moveToFirst();
                 mCursor.moveToPrevious();
                 while (mCursor.moveToNext() && mCursor.getPosition() < getContext().getResources().getInteger(R.integer.max_visible_memorials)) {
-                    SearchResultItemFragment.DataObject dataObject = new SearchResultItemFragment.DataObject(mCursor);
-                    SearchResultItemFragment.DataFormatter dataFormatter = new SearchResultItemFragment.DataFormatter(
+                    DataObject dataObject = new DataObject(mCursor);
+                    DataFormatter dataFormatter = new DataFormatter(
                         getActivity(),
                         dataObject,
                         mCursor.getPosition(),

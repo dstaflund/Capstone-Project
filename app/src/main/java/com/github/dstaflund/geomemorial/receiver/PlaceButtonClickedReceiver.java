@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.annotation.NonNull;
 
-import com.github.dstaflund.geomemorial.ui.fragment.MapFragment;
+import com.github.dstaflund.geomemorial.ui.fragment.map.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
 public class PlaceButtonClickedReceiver extends BroadcastReceiver {

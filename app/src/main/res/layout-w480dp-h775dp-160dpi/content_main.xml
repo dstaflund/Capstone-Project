@@ -11,12 +11,12 @@
 
     <fragment
         android:id="@+id/fragment_map"
-        class="com.github.dstaflund.geomemorial.ui.fragment.MapFragment"
+        class="com.github.dstaflund.geomemorial.ui.fragment.map.MapFragment"
         style="@style/Theme.Main.Content.Map"/>
 
     <fragment
         android:id="@+id/fragment_search_result"
-        class="com.github.dstaflund.geomemorial.ui.fragment.SearchResultFragment"
+        class="com.github.dstaflund.geomemorial.ui.fragment.searchresult.SearchResultFragment"
         style="@style/Theme.Main.Content.SearchResult"/>
 
 </LinearLayout>

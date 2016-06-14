@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/fragment_favorites"
-        class="com.github.dstaflund.geomemorial.ui.fragment.FavoritesFragment"
+        class="com.github.dstaflund.geomemorial.ui.fragment.favorites.FavoritesFragment"
         style="@style/Theme.Favorites.Content"/>
 
 </FrameLayout>

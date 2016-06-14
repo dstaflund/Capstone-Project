@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.annotation.NonNull;
 
-import com.github.dstaflund.geomemorial.ui.fragment.MapFragment;
+import com.github.dstaflund.geomemorial.ui.fragment.map.MapFragment;
 
 public class CursorFinishedReceiver extends BroadcastReceiver {
     public static final String ACTION

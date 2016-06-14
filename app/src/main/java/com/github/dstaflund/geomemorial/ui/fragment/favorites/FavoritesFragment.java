@@ -1,4 +1,4 @@
-package com.github.dstaflund.geomemorial.ui.fragment;
+package com.github.dstaflund.geomemorial.ui.fragment.favorites;
 
 import android.content.Context;
 import android.database.Cursor;
