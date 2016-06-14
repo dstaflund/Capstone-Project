@@ -472,8 +472,14 @@ public class MainActivity
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        mMapFragment.clearMap();
-        mSearchResultFragment.swapCursor(null);
+        try {
+            mMapFragment.clearMap();
+            mSearchResultFragment.swapCursor(null);
+        }
+
+        catch(IllegalStateException e){
+            // Eat it for now
+        }
     }
 
     @Override
