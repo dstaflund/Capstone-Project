@@ -1,7 +1,9 @@
 package com.github.dstaflund.geomemorial.ui.fragment;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,9 @@ import android.widget.TextView;
 import com.github.dstaflund.geomemorial.R;
 import com.github.dstaflund.geomemorial.common.util.CameraUpdateStrategy;
 import com.github.dstaflund.geomemorial.common.util.MarkerMap;
+import com.github.dstaflund.geomemorial.receiver.CursorFinishedReceiver;
+import com.github.dstaflund.geomemorial.receiver.PlaceButtonClickedReceiver;
+import com.github.dstaflund.geomemorial.receiver.RecordFinishedReceiver;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapLoadedCallback;
@@ -53,6 +59,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
     private LatLng mRestoredTarget;
     private float mRestoredZoom;
     private boolean mIgnoreCameraZoom;
+    private BroadcastReceiver mCursorFinishedReceiver;
+    private BroadcastReceiver mPlaceButtonClickedReceiver;
+    private BroadcastReceiver mRecordFinishedReceiver;
+    private IntentFilter mCursorFinishedIntentFilter;
+    private IntentFilter mPlaceButtonClickedIntentFilter;
+    private IntentFilter mRecordFinishedIntentFilter;
 
     public MapFragment(){
         super();
@@ -61,6 +73,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
     @Override
     public void onCreate(@Nullable Bundle savedState) {
         super.onCreate(savedState);
+
+        mCursorFinishedReceiver = new CursorFinishedReceiver().setMapFragment(this);
+        mPlaceButtonClickedReceiver = new PlaceButtonClickedReceiver().setMapFragment(this);
+        mRecordFinishedReceiver = new RecordFinishedReceiver().setMapFragment(this);
+        mCursorFinishedIntentFilter = CursorFinishedReceiver.getIntentFilter();
+        mPlaceButtonClickedIntentFilter = PlaceButtonClickedReceiver.getIntentFilter();
+        mRecordFinishedIntentFilter = RecordFinishedReceiver.getIntentFilter();
 
         if (savedState == null) {
             setRetainInstance(false);
@@ -90,6 +109,24 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
         mapFragment.getMapAsync(this);
 
         return mRoot;
+    }
+
+    @Override
+    public void onResume() {
+        Log.d("MapFragment", "onResume");
+        super.onResume();
+        getActivity().registerReceiver(mCursorFinishedReceiver, mCursorFinishedIntentFilter);
+        getActivity().registerReceiver(mPlaceButtonClickedReceiver, mPlaceButtonClickedIntentFilter);
+        getActivity().registerReceiver(mRecordFinishedReceiver, mRecordFinishedIntentFilter);
+    }
+
+    @Override
+    public void onPause() {
+        Log.d("MapFragment", "onPause");
+        super.onPause();
+        getActivity().unregisterReceiver(mCursorFinishedReceiver);
+        getActivity().unregisterReceiver(mPlaceButtonClickedReceiver);
+        getActivity().unregisterReceiver(mRecordFinishedReceiver);
     }
 
     @Override

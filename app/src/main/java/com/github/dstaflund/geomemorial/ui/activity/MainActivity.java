@@ -43,13 +43,10 @@ import com.github.dstaflund.geomemorial.ui.activity.favorites.FavoritesActivity;
 import com.github.dstaflund.geomemorial.ui.activity.preferences.PreferencesActivity;
 import com.github.dstaflund.geomemorial.ui.fragment.MapFragment;
 import com.github.dstaflund.geomemorial.ui.fragment.SearchResultFragment;
-import com.github.dstaflund.geomemorial.ui.fragment.SearchResultItemFragment;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import static com.github.dstaflund.geomemorial.GeomemorialApplication.setVisibleMapType;
 import static com.github.dstaflund.geomemorial.common.util.PreferencesManager.isDefaultMapType;
@@ -65,9 +62,7 @@ public class MainActivity
     LoaderManager.LoaderCallbacks<Cursor>,
     NavigationView.OnNavigationItemSelectedListener,
     GoogleApiClient.ConnectionCallbacks,
-    GoogleApiClient.OnConnectionFailedListener,
-    SearchResultItemFragment.OnPlaceButtonClickedListener,
-    SearchResultFragment.OnChangeCursorListener{
+    GoogleApiClient.OnConnectionFailedListener{
 
     public static final int EMPTY_SEARCH = -1;
     public static final int RESIDENT_LOADER_ID = 0;
@@ -500,26 +495,6 @@ public class MainActivity
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-    }
-
-    @Override
-    public void placeButtonClicked(@NonNull LatLng position){
-        mMapFragment.zoomInOn(position);
-    }
-
-    @Override
-    public void recordFinished(@NonNull SearchResultItemFragment.DataFormatter record){
-        MarkerOptions options = new MarkerOptions();
-        options.position(record.getLatLng());
-        options.title(record.getGeomemorial());
-        options.snippet(record.getResident());
-
-        mMapFragment.addMarker(options);
-    }
-
-    @Override
-    public void cursorFinished(){
-        mMapFragment.updateCamera();
     }
 
     public static class SearchRequest implements Parcelable {

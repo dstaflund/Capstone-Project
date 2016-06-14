@@ -19,6 +19,7 @@ import com.github.dstaflund.geomemorial.common.util.DateUtil;
 import com.github.dstaflund.geomemorial.common.util.SharedIntentManager;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.MarkerInfo;
+import com.github.dstaflund.geomemorial.receiver.PlaceButtonClickedReceiver;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.text.DecimalFormat;
@@ -34,8 +35,6 @@ public class SearchResultItemFragment extends Fragment {
     private static final String COUNT_KEY = "count_key";
     private static final DecimalFormat sDecimalFormat = new DecimalFormat("#.##");
 
-    private OnPlaceButtonClickedListener mOnPlaceButtonClickedListener;
-
     public SearchResultItemFragment(){
         super();
     }
@@ -43,8 +42,6 @@ public class SearchResultItemFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
-        mOnPlaceButtonClickedListener = (OnPlaceButtonClickedListener) context;
     }
 
     @Override
@@ -152,7 +149,7 @@ public class SearchResultItemFragment extends Fragment {
                         Double.valueOf(c.getString(GeomemorialInfo.IDX_LATITUDE)),
                         Double.valueOf(c.getString(GeomemorialInfo.IDX_LONGITUDE))
                     );
-                    mOnPlaceButtonClickedListener.placeButtonClicked(latLng);
+                    PlaceButtonClickedReceiver.sendBroadcast(getContext(), latLng);
                     c.close();
                 }
             }
@@ -364,9 +361,5 @@ public class SearchResultItemFragment extends Fragment {
             String distanceString = sDecimalFormat.format(distanceInKilometers);
             return distanceString + " km away";
         }
-    }
-
-    public interface OnPlaceButtonClickedListener {
-        void placeButtonClicked(@NonNull LatLng position);
     }
 }

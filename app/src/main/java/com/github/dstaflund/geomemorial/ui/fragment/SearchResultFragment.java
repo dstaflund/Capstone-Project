@@ -14,15 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.dstaflund.geomemorial.R;
-import com.google.android.gms.maps.model.LatLng;
+import com.github.dstaflund.geomemorial.receiver.CursorFinishedReceiver;
+import com.github.dstaflund.geomemorial.receiver.RecordFinishedReceiver;
 
-public class SearchResultFragment extends Fragment
-    implements SearchResultItemFragment.OnPlaceButtonClickedListener{
+public class SearchResultFragment extends Fragment{
     private static final String sCurrentItemKey = "currentItem";
 
     private SearchResultPagerAdapter mSearchResultPagerAdapter;
-    private SearchResultFragment.OnChangeCursorListener mOnChangeCursorListener;
-    private SearchResultItemFragment.OnPlaceButtonClickedListener mOnPlaceButtonClickedListener;
     private ViewPager mViewPager;
     private int mLastCurrentItem;
 
@@ -33,9 +31,6 @@ public class SearchResultFragment extends Fragment
     @Override
     public void onAttach(@NonNull Context context){
         super.onAttach(context);
-
-        mOnChangeCursorListener = (SearchResultFragment.OnChangeCursorListener) context;
-        mOnPlaceButtonClickedListener = (SearchResultItemFragment.OnPlaceButtonClickedListener) context;
     }
 
     @Override
@@ -94,11 +89,6 @@ public class SearchResultFragment extends Fragment
         mLastCurrentItem = 0;
     }
 
-    @Override
-    public void placeButtonClicked(@NonNull LatLng position) {
-        mOnPlaceButtonClickedListener.placeButtonClicked(position);
-    }
-
     //  Adaptation of http://tumble.mlcastle.net/post/25875136857/bridging-cursorloaders-and-viewpagers-on-android
     public class SearchResultPagerAdapter extends FragmentStatePagerAdapter {
         private Cursor mCursor;
@@ -153,18 +143,13 @@ public class SearchResultFragment extends Fragment
                         mCursor.getPosition(),
                         mCursor.getCount()
                     );
-                    mOnChangeCursorListener.recordFinished(dataFormatter);
+                    RecordFinishedReceiver.sendBroadcast(getContext(), dataFormatter);
                 }
                 mCursor.moveToFirst();
                 mCursor.moveToPrevious();
             }
-            mOnChangeCursorListener.cursorFinished();
+            CursorFinishedReceiver.sendBroadcast(getContext());
             notifyDataSetChanged();
         }
-    }
-
-    public interface OnChangeCursorListener {
-        void recordFinished(@NonNull SearchResultItemFragment.DataFormatter record);
-        void cursorFinished();
     }
 }
