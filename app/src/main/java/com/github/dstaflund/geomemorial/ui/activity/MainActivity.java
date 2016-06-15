@@ -29,6 +29,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -82,6 +83,7 @@ public class MainActivity
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.d("** MainActivity **", "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -147,10 +149,12 @@ public class MainActivity
 
     @Override
     protected void onStart() {
+        Log.d("** MainActivity **", "onStart");
         super.onStart();
         mGoogleApiClient.connect();
 
-        if (mSavedInstanceState != null && mLastSearchRequest != null){
+        if (mLastSearchRequest != null){
+            mMapFragment.ignoreCameraZoom(mLastSearchRequest != null);
             mSearchResultFragment.clearPager();
             handleIntent(mLastSearchRequest.toIntent());
         }
@@ -161,11 +165,13 @@ public class MainActivity
 
     @Override
     protected void onResume() {
+        Log.d("** MainActivity **", "onResume");
         super.onResume();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        Log.d("** MainActivity **", "onSaveInstanceState");
         super.onSaveInstanceState(outState);
 
         if (mSearchView != null) {
@@ -176,11 +182,13 @@ public class MainActivity
 
     @Override
     protected void onPause() {
+        Log.d("** MainActivity **", "onPause");
         super.onPause();
     }
 
     @Override
     protected void onStop() {
+        Log.d("** MainActivity **", "onStop");
         super.onStop();
         mGoogleApiClient.disconnect();
     }
@@ -207,6 +215,7 @@ public class MainActivity
 
     @Override
     protected void onNewIntent(@NonNull Intent intent) {
+        Log.d("** MainActivity **", "onNewIntent");
         handleIntent(intent);
     }
 
@@ -248,6 +257,7 @@ public class MainActivity
 
     @Override
     public boolean onCreateOptionsMenu(@NonNull Menu menu) {
+        Log.d("** MainActivity **", "onCreateOptionsMenu");
         getMenuInflater().inflate(R.menu.menu_activity_main, menu);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -367,6 +377,7 @@ public class MainActivity
     @Override
     @Nullable
     public Loader<Cursor> onCreateLoader(int loaderId, @Nullable Bundle args) {
+        Log.d("** MainActivity **", "onCreateLoader");
         switch (loaderId) {
             case EMPTY_SEARCH:
                 return null;
@@ -423,6 +434,7 @@ public class MainActivity
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, @Nullable Cursor data) {
+        Log.d("** MainActivity **", "onLoadFinished");
         switch (loader.getId()) {
             case EMPTY_SEARCH:
                 mMapFragment.clearMap();
@@ -472,6 +484,7 @@ public class MainActivity
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
+        Log.d("** MainActivity **", "onLoaderReset");
         try {
             mMapFragment.clearMap();
             mSearchResultFragment.swapCursor(null);
@@ -484,6 +497,7 @@ public class MainActivity
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
+        Log.d("** MainActivity **", "onConnected");
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED
          || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -497,10 +511,12 @@ public class MainActivity
 
     @Override
     public void onConnectionSuspended(int i) {
+        Log.d("** MainActivity **", "onConnectionSuspended");
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.d("** MainActivity **", "onConnectionFailed");
     }
 
     public static class SearchRequest implements Parcelable {

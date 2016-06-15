@@ -217,9 +217,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, OnMapLo
      * IGNORE ZOOM CANDIDATE
      */
     public void zoomInOn(@NonNull LatLng latLng){
-        if (! mIgnoreCameraZoom){
-            CameraUpdateStrategy.zoomTo( mMap, mVisibleMarkers, latLng);
-        }
+        mIgnoreCameraZoom = false;
+        CameraUpdateStrategy.zoomTo( mMap, mVisibleMarkers, latLng);
     }
 
     public void setMapType(int mapTypeId) {
