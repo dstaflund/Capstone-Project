@@ -9,20 +9,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import com.github.dstaflund.geomemorial.R;
-import com.github.dstaflund.geomemorial.common.util.SharedIntentManager;
-import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.MarkerInfo;
-import com.github.dstaflund.geomemorial.receiver.PlaceButtonClickedReceiver;
-import com.google.android.gms.maps.model.LatLng;
+import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.listener.FavoriteButtonClickListener;
+import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.listener.PlaceButtonClickListener;
+import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.listener.ShareButtonClickListener;
 
-import static com.github.dstaflund.geomemorial.common.util.FavoritesManager.addFavorite;
 import static com.github.dstaflund.geomemorial.common.util.FavoritesManager.isFavorite;
-import static com.github.dstaflund.geomemorial.common.util.FavoritesManager.removeFavorite;
-import static com.github.dstaflund.geomemorial.common.util.SharedIntentManager.shareGeomemorial;
-import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo.buildFor;
 
 public class SearchResultItemFragment extends Fragment {
     private static final String POSITION_KEY = "position_key";
@@ -51,8 +45,8 @@ public class SearchResultItemFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.list_item_search, container, false);
 
-        DataObject dataObject = new DataObject(getArguments());
-        final DataFormatter formatter = new DataFormatter(
+        SearchResultItem dataObject = new SearchResultItem(getArguments());
+        final SearchResultItemFormatter formatter = new SearchResultItemFormatter(
             getContext(),
             dataObject,
             getArguments().getInt(POSITION_KEY),
@@ -75,78 +69,9 @@ public class SearchResultItemFragment extends Fragment {
                 ? getContext().getDrawable(R.drawable.ic_favorite_accent_24dp)
                 : getContext().getDrawable(R.drawable.ic_favorite_border_accent_24dp)
         );
-        holder.favoriteButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(@NonNull View v) {
-                ImageButton button = (ImageButton) v;
-                String id = formatter.getGeomemorialId();
-                boolean isChecked = ! isFavorite(getContext(), id);
-
-                if (isChecked){
-                    button.setImageResource(R.drawable.ic_favorite_accent_24dp);
-                    addFavorite(getContext(), id);
-                }
-                else {
-                    button.setImageResource(R.drawable.ic_favorite_border_accent_24dp);
-                    removeFavorite(getContext(), id);
-                }
-            }
-        });
-        holder.shareButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(@NonNull View v) {
-                String geomemorialId = formatter.getGeomemorialId();
-                Cursor c = getContext().getContentResolver().query(
-                    buildFor(geomemorialId),
-                    null,
-                    null,
-                    null,
-                    null
-                );
-
-                if (c != null && c.getCount() > 0) {
-                    c.moveToFirst();
-                    SharedIntentManager.Payload payload = new SharedIntentManager.Payload
-                        .Builder(getContext())
-                        .geomemorial(c.getString(GeomemorialInfo.IDX_GEOMEMORIAL))
-                        .latitude(c.getString(GeomemorialInfo.IDX_LATITUDE))
-                        .longitude(c.getString(GeomemorialInfo.IDX_LONGITUDE))
-                        .resident(c.getString(GeomemorialInfo.IDX_RESIDENT))
-                        .hometown(c.getString(GeomemorialInfo.IDX_HOMETOWN))
-                        .rank(c.getString(GeomemorialInfo.IDX_RANK))
-                        .obit(c.getString(GeomemorialInfo.IDX_OBIT))
-                        .build();
-                    shareGeomemorial(payload);
-                    c.close();
-                }
-            }
-        });
-        holder.placeButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(@NonNull View v) {
-                String id = formatter.getGeomemorialId();
-
-                Cursor c = getContext().getContentResolver().query(
-                    buildFor(id),
-                    null,
-                    null,
-                    null,
-                    null
-                );
-
-                if (c != null && c.getCount() > 0) {
-                    c.moveToFirst();
-                    LatLng latLng = new LatLng(
-                        Double.valueOf(c.getString(GeomemorialInfo.IDX_LATITUDE)),
-                        Double.valueOf(c.getString(GeomemorialInfo.IDX_LONGITUDE))
-                    );
-                    PlaceButtonClickedReceiver.sendBroadcast(getContext(), latLng);
-                    c.close();
-                }
-            }
-        });
+        holder.favoriteButton.setOnClickListener(new FavoriteButtonClickListener(getContext(), formatter));
+        holder.shareButton.setOnClickListener(new ShareButtonClickListener(getContext(), formatter));
+        holder.placeButton.setOnClickListener(new PlaceButtonClickListener(getContext(), formatter));
 
         return rootView;
     }

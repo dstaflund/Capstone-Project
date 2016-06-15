@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.dstaflund.geomemorial.R;
+import com.github.dstaflund.geomemorial.ui.fragment.preferences.listener.MapTypeOnCheckChangeListener;
 
 public class PreferencesFragmentPresenterImpl implements PreferencesFragmentPresenter {
     private static final String sXPosKey = "X_POS";

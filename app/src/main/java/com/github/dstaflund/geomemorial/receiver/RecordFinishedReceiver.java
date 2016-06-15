@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import android.support.annotation.NonNull;
 
 import com.github.dstaflund.geomemorial.ui.fragment.map.MapFragment;
-import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.DataFormatter;
+import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.SearchResultItemFormatter;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -50,7 +50,7 @@ public class RecordFinishedReceiver extends BroadcastReceiver {
 
     public static void sendBroadcast(
         @NonNull Context context,
-        @NonNull DataFormatter record
+        @NonNull SearchResultItemFormatter record
     ){
         Intent i = new Intent(ACTION);
         i.putExtra(sPositionKey, record.getLatLng());

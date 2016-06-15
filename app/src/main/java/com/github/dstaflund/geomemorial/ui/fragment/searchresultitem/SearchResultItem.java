@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract;
 
-public class DataObject {
+public class SearchResultItem {
 
     @NonNull
     public String geomemorial;
@@ -36,7 +36,7 @@ public class DataObject {
     public String latitude;
     public String longitude;
 
-    public DataObject(@NonNull Bundle b) {
+    public SearchResultItem(@NonNull Bundle b) {
         geomemorial = b.getString(GeomemorialDbContract.MarkerInfo.COL_GEOMEMORIAL, "");
         geomemorialId = b.getString(GeomemorialDbContract.MarkerInfo._ID, "");
         hometown = b.getString(GeomemorialDbContract.MarkerInfo.COL_HOMETOWN, "");
@@ -49,7 +49,7 @@ public class DataObject {
         rank = b.getString(GeomemorialDbContract.MarkerInfo.COL_RANK, "");
     }
 
-    public DataObject(@NonNull Cursor c) {
+    public SearchResultItem(@NonNull Cursor c) {
         geomemorial = c.getString(GeomemorialDbContract.MarkerInfo.DEFAULT_GEOMEMORIAL_IDX);
         geomemorialId = c.getString(GeomemorialDbContract.MarkerInfo.DEFAULT_ID_IDX);
         hometown = c.getString(GeomemorialDbContract.MarkerInfo.DEFAULT_HOMETOWN_IDX);

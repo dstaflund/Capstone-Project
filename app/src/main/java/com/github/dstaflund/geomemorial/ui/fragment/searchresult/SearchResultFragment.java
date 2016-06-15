@@ -16,8 +16,8 @@ import android.view.ViewGroup;
 import com.github.dstaflund.geomemorial.R;
 import com.github.dstaflund.geomemorial.receiver.CursorFinishedReceiver;
 import com.github.dstaflund.geomemorial.receiver.RecordFinishedReceiver;
-import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.DataFormatter;
-import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.DataObject;
+import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.SearchResultItemFormatter;
+import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.SearchResultItem;
 import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.SearchResultItemFragment;
 
 public class SearchResultFragment extends Fragment{
@@ -139,8 +139,8 @@ public class SearchResultFragment extends Fragment{
                 mCursor.moveToFirst();
                 mCursor.moveToPrevious();
                 while (mCursor.moveToNext() && mCursor.getPosition() < getContext().getResources().getInteger(R.integer.max_visible_memorials)) {
-                    DataObject dataObject = new DataObject(mCursor);
-                    DataFormatter dataFormatter = new DataFormatter(
+                    SearchResultItem dataObject = new SearchResultItem(mCursor);
+                    SearchResultItemFormatter dataFormatter = new SearchResultItemFormatter(
                         getActivity(),
                         dataObject,
                         mCursor.getPosition(),

@@ -12,10 +12,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.text.DecimalFormat;
 
-/**
- * Created by Darryl on 2016-06-13.
- */
-public class DataFormatter {
+public class SearchResultItemFormatter {
     private static final DecimalFormat sDecimalFormat = new DecimalFormat("#.##");
 
     private int mPosition;
@@ -25,11 +22,11 @@ public class DataFormatter {
     private Context mContext;
 
     @NonNull
-    private DataObject mDataObject;
+    private SearchResultItem mDataObject;
 
-    public DataFormatter(
+    public SearchResultItemFormatter(
         @NonNull Context context,
-        @NonNull DataObject dataObject,
+        @NonNull SearchResultItem dataObject,
         int position,
         int count
     ) {

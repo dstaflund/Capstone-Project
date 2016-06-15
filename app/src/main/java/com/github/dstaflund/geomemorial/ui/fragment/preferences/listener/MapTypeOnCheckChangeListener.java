@@ -1,4 +1,4 @@
-package com.github.dstaflund.geomemorial.ui.fragment.preferences;
+package com.github.dstaflund.geomemorial.ui.fragment.preferences.listener;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -6,6 +6,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.github.dstaflund.geomemorial.R;
+import com.github.dstaflund.geomemorial.ui.fragment.preferences.PreferencesFragmentView;
 
 import static android.widget.Toast.LENGTH_SHORT;
 import static com.github.dstaflund.geomemorial.common.util.PreferencesManager.setMapType;
@@ -15,11 +16,11 @@ import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_NORMAL;
 import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_SATELLITE;
 import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_TERRAIN;
 
-class MapTypeOnCheckChangeListener implements RadioGroup.OnCheckedChangeListener {
+public class MapTypeOnCheckChangeListener implements RadioGroup.OnCheckedChangeListener {
     private Toast mToast;
     private PreferencesFragmentView mView;
 
-    MapTypeOnCheckChangeListener(@NonNull PreferencesFragmentView view){
+    public MapTypeOnCheckChangeListener(@NonNull PreferencesFragmentView view){
         super();
         mView = view;
     }
