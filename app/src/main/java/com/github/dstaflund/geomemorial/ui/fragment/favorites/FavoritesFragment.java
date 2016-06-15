@@ -55,55 +55,8 @@ public class FavoritesFragment extends Fragment{
             ? -1
             : savedState.getInt("first_visible_position");
 
-        new AsyncTask<Void, Void, List<FavoritesMarkerInfo>>() {
+        new FavoritesFragmentAsyncTask().execute();
 
-            @Override
-            @NonNull
-            protected List<FavoritesMarkerInfo> doInBackground(@Nullable Void... params) {
-                Set<String> ids = getFavorites(getContext());
-                if (ids.isEmpty()) {
-                    return Collections.emptyList();
-                }
-                Cursor favorites = getContext().getContentResolver().query(
-                    Geomemorial.CONTENT_URI,
-                    Geomemorial.DEFAULT_PROJECTION,
-                    Geomemorial.getSelection(ids),
-                    Geomemorial.getSelectionArgs(ids),
-                    Geomemorial.FAVORITES_SORT_ORDER
-                );
-                return getDataFormatters(favorites);
-            }
-
-            @Override
-            protected void onPostExecute(@Nullable List<FavoritesMarkerInfo> data) {
-                mAdapter = new FavoritesFragmentViewAdapter(getContext(), getLayoutInflater(null), data);
-
-                if (mList == null) {
-                    mList = (GridView) mRoot.findViewById(android.R.id.list);
-                    mList.setAdapter(mAdapter);
-                    mList.setEmptyView(mRoot.findViewById(R.id.empty_favorites));
-                    mList.setRecyclerListener(new AbsListView.RecyclerListener() {
-
-                        @Override
-                        public void onMovedToScrapHeap(@NonNull View view) {
-                            FavoritesFragmentViewHolder holder = (FavoritesFragmentViewHolder) view.getTag();
-                            if (holder != null && holder.map != null) {
-                                holder.map.clear();
-                                holder.map.setMapType(MAP_TYPE_NONE);
-                            }
-                        }
-                    });
-                }
-                else {
-                    mList.setAdapter(null);
-                    mList.setAdapter(mAdapter);
-                }
-
-                if (mFirstVisiblePosition != -1){
-                    mList.setSelection(mFirstVisiblePosition);
-                }
-            }
-        }.execute();
         return mRoot;
     }
 
@@ -121,4 +74,53 @@ public class FavoritesFragment extends Fragment{
         }
     }
 
+    public class FavoritesFragmentAsyncTask extends AsyncTask<Void, Void, List<FavoritesMarkerInfo>> {
+
+        @Override
+        @NonNull
+        protected List<FavoritesMarkerInfo> doInBackground(@Nullable Void... params) {
+            Set<String> ids = getFavorites(getContext());
+            if (ids.isEmpty()) {
+                return Collections.emptyList();
+            }
+            Cursor favorites = getContext().getContentResolver().query(
+                Geomemorial.CONTENT_URI,
+                Geomemorial.DEFAULT_PROJECTION,
+                Geomemorial.getSelection(ids),
+                Geomemorial.getSelectionArgs(ids),
+                Geomemorial.FAVORITES_SORT_ORDER
+            );
+            return getDataFormatters(favorites);
+        }
+
+        @Override
+        protected void onPostExecute(@Nullable List<FavoritesMarkerInfo> data) {
+            mAdapter = new FavoritesFragmentViewAdapter(getContext(), getLayoutInflater(null), data);
+
+            if (mList == null) {
+                mList = (GridView) mRoot.findViewById(android.R.id.list);
+                mList.setAdapter(mAdapter);
+                mList.setEmptyView(mRoot.findViewById(R.id.empty_favorites));
+                mList.setRecyclerListener(new AbsListView.RecyclerListener() {
+
+                    @Override
+                    public void onMovedToScrapHeap(@NonNull View view) {
+                        FavoritesFragmentViewHolder holder = (FavoritesFragmentViewHolder) view.getTag();
+                        if (holder != null && holder.map != null) {
+                            holder.map.clear();
+                            holder.map.setMapType(MAP_TYPE_NONE);
+                        }
+                    }
+                });
+            }
+            else {
+                mList.setAdapter(null);
+                mList.setAdapter(mAdapter);
+            }
+
+            if (mFirstVisiblePosition != -1){
+                mList.setSelection(mFirstVisiblePosition);
+            }
+        }
+    }
 }
