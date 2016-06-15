@@ -1,6 +1,5 @@
 package com.github.dstaflund.geomemorial.ui.fragment.searchresult;
 
-import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,15 +8,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.dstaflund.geomemorial.R;
+import com.github.dstaflund.geomemorial.common.util.PreferencesManager;
 import com.github.dstaflund.geomemorial.receiver.CursorFinishedReceiver;
 import com.github.dstaflund.geomemorial.receiver.RecordFinishedReceiver;
-import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.SearchResultItemFormatter;
 import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.SearchResultItem;
+import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.SearchResultItemFormatter;
 import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.SearchResultItemFragment;
 
 public class SearchResultFragment extends Fragment{
@@ -32,12 +33,8 @@ public class SearchResultFragment extends Fragment{
     }
 
     @Override
-    public void onAttach(@NonNull Context context){
-        super.onAttach(context);
-    }
-
-    @Override
     public void onCreate(@Nullable Bundle savedState) {
+        Log.d("SearchResultFragment", "onCreate");
         super.onCreate(savedState);
         setRetainInstance(false);
         setHasOptionsMenu(false);
@@ -50,6 +47,7 @@ public class SearchResultFragment extends Fragment{
         @Nullable ViewGroup container,
         @Nullable Bundle savedState
     ) {
+        Log.d("SearchResultFragment", "onCreateView");
         View mRoot = inflater.inflate(R.layout.fragment_search_result, container, false);
         mSearchResultPagerAdapter = new SearchResultPagerAdapter(getChildFragmentManager(), null);
 
@@ -65,18 +63,16 @@ public class SearchResultFragment extends Fragment{
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
+        Log.d("SearchResultFragment", "onSaveInstanceState");
         super.onSaveInstanceState(outState);
         outState.putInt(sCurrentItemKey, mViewPager.getCurrentItem());
+        PreferencesManager.setLastViewPageItem(getContext(), mViewPager.getCurrentItem());
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    public void onStop(){
-        super.onStop();
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        Log.d("SearchResultFragment", "onViewStateRestored");
+        super.onViewStateRestored(savedInstanceState);
     }
 
     public void clearPager(){
@@ -88,8 +84,9 @@ public class SearchResultFragment extends Fragment{
         mSearchResultPagerAdapter = new SearchResultPagerAdapter(getChildFragmentManager(), value);
         mViewPager.setAdapter(mSearchResultPagerAdapter);
         mSearchResultPagerAdapter.refreshUi();
-        mViewPager.setCurrentItem(mLastCurrentItem);
+        mViewPager.setCurrentItem(mLastCurrentItem == 0 ? PreferencesManager.getLastViewPageItem(getContext()) : mLastCurrentItem);
         mLastCurrentItem = 0;
+        PreferencesManager.setLastViewPageItem(getContext(), 0);
     }
 
     //  Adaptation of http://tumble.mlcastle.net/post/25875136857/bridging-cursorloaders-and-viewpagers-on-android

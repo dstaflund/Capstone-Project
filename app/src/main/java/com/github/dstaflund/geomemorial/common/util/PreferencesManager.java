@@ -40,4 +40,15 @@ public final class PreferencesManager {
             .putInt(sMapTypeKey, mapType)
             .commit();
     }
+
+    public static boolean setLastViewPageItem(@NonNull Context context, int lastViewPageItem) {
+        return getSharedPreferences(context)
+            .edit()
+            .putInt("last_view_page_item", lastViewPageItem)
+            .commit();
+    }
+
+    public static int getLastViewPageItem(@NonNull Context context){
+        return getSharedPreferences(context).getInt("last_view_page_item", 0);
+    }
 }
