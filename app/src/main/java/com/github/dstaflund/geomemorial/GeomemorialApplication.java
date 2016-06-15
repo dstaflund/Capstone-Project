@@ -40,5 +40,11 @@ public class GeomemorialApplication extends Application {
         super.onCreate();
         sVisibleMapType = PreferencesManager.getMapType(this);
         sMapLoaded = false;
+        PreferencesManager.setLastViewPageItem(getApplicationContext(), 0);
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
     }
 }

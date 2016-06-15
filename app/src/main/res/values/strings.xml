@@ -26,9 +26,9 @@
     <string name="about_name_label">Name</string>
     <string name="about_name_value">Sask. Geo-Memorial</string>
     <string name="about_version_label">Version</string>
-    <string name="about_version_value" translatable="false">v1.0.6</string>
+    <string name="about_version_value" translatable="false">v1.0.7</string>
     <string name="about_date_label">Date</string>
-    <string name="about_date_value" translatable="false">2016&#8211;06&#8211;12</string>
+    <string name="about_date_value" translatable="false">2016&#8211;06&#8211;15</string>
     <string name="about_by_label">By</string>
     <string name="about_by_value">Darryl Staflund</string>
     <string name="about_description_1">The Saskatchewan Geo&#8211;Memorial Project is a Government of Saskatchewan initiative that names landmarks after residents who have died in service of Saskatchewan or Canada.  Although the program originally concerned itself with casualties from World War II (1938 &#8211; 1945), it has been extended to include casualties from World War I (1914 &#8211; 1918), Merchant Conflicts, The Korean War (1950 &#8211; 1953), Sanctioned United Nations Missions, The War in Afghanistan (2001 &#8211; 2014), and Incidents involving Police Officers and Emergency Responders.  Geo&#8211;memorials are also used to honour those who have made important contributions to the Province of Saskatchewan.  The initiative honours almost 4000 residents at the present time.</string>
@@ -67,7 +67,7 @@
 
     <!-- History -->
     <string name="history_header">VERSION HISTORY</string>
-    <string name="history_release1">v1.0.6 - Initial Release</string>
+    <string name="history_release1">v1.0.7 - Initial Release</string>
 
     <!-- Map Type -->
     <string name="map_type_label">MAP TYPE</string>
@@ -90,7 +90,7 @@
 
     <!-- Drawer Header -->
     <string name="drawer_header_title">Sask. Geo-Memorial</string>
-    <string name="drawer_header_version" translatable="false">v1.0.6</string>
+    <string name="drawer_header_version" translatable="false">v1.0.7</string>
 
     <!-- Widget -->
     <string name="widget_header">On This Day</string>
