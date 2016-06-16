@@ -1,5 +1,6 @@
 package com.github.dstaflund.geomemorial.ui.fragment.about;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.NestedScrollView;
 
@@ -8,7 +9,7 @@ public interface AboutFragmentView {
     void setNestedScrollView(@NonNull NestedScrollView v);
     void setRetainInstance(boolean b);
 
-    @NonNull
+    Context getContext();
     NestedScrollView getNestedScrollView();
 
 }
