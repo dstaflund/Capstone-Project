@@ -26,7 +26,7 @@
     <string name="about_name_label">Name</string>
     <string name="about_name_value">Sask. Geo-Memorial</string>
     <string name="about_version_label">Version</string>
-    <string name="about_version_value" translatable="false">v1.0.9</string>
+    <string name="about_version_value" translatable="false">v1.0.10</string>
     <string name="about_date_label">Date</string>
     <string name="about_date_value" translatable="false">2016&#8211;06&#8211;15</string>
     <string name="about_by_label">By</string>
@@ -67,7 +67,7 @@
 
     <!-- History -->
     <string name="history_header">VERSION HISTORY</string>
-    <string name="history_release1">v1.0.9 - Initial Release</string>
+    <string name="history_release1">v1.0.10 - Initial Release</string>
 
     <!-- Map Type -->
     <string name="map_type_label">MAP TYPE</string>
@@ -90,7 +90,7 @@
 
     <!-- Drawer Header -->
     <string name="drawer_header_title">Sask. Geo-Memorial</string>
-    <string name="drawer_header_version" translatable="false">v1.0.9</string>
+    <string name="drawer_header_version" translatable="false">v1.0.10</string>
 
     <!-- Widget -->
     <string name="widget_header">On This Day</string>
