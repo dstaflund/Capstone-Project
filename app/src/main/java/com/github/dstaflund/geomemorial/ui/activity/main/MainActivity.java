@@ -1,12 +1,10 @@
 package com.github.dstaflund.geomemorial.ui.activity.main;
 
-import android.Manifest;
 import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
@@ -16,7 +14,6 @@ import android.provider.SearchRecentSuggestions;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -36,6 +33,7 @@ import com.github.dstaflund.geomemorial.GeomemorialApplication;
 import com.github.dstaflund.geomemorial.R;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.MarkerInfo;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbProvider;
+import com.github.dstaflund.geomemorial.ui.activity.main.callback.MainConnectionCallbacks;
 import com.github.dstaflund.geomemorial.ui.activity.main.listener.NavigationItemSelectedListener;
 import com.github.dstaflund.geomemorial.ui.fragment.map.MapFragment;
 import com.github.dstaflund.geomemorial.ui.fragment.searchresult.SearchResultFragment;
@@ -50,7 +48,6 @@ public class MainActivity
     extends AppCompatActivity
     implements
     LoaderManager.LoaderCallbacks<Cursor>,
-    GoogleApiClient.ConnectionCallbacks,
     GoogleApiClient.OnConnectionFailedListener,
     MainActivityView{
 
@@ -94,7 +91,7 @@ public class MainActivity
         // Create an instance of GoogleAPIClient.
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
+                .addConnectionCallbacks(new MainConnectionCallbacks(this))
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
                 .build();
@@ -138,7 +135,6 @@ public class MainActivity
 
     @Override
     protected void onStart() {
-        Log.d("** MainActivity **", "onStart");
         super.onStart();
         mGoogleApiClient.connect();
 
@@ -154,13 +150,11 @@ public class MainActivity
 
     @Override
     protected void onResume() {
-        Log.d("** MainActivity **", "onResume");
         super.onResume();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        Log.d("** MainActivity **", "onSaveInstanceState");
         super.onSaveInstanceState(outState);
 
         if (mSearchView != null) {
@@ -171,13 +165,11 @@ public class MainActivity
 
     @Override
     protected void onPause() {
-        Log.d("** MainActivity **", "onPause");
         super.onPause();
     }
 
     @Override
     protected void onStop() {
-        Log.d("** MainActivity **", "onStop");
         super.onStop();
         mGoogleApiClient.disconnect();
     }
@@ -204,7 +196,6 @@ public class MainActivity
 
     @Override
     protected void onNewIntent(@NonNull Intent intent) {
-        Log.d("** MainActivity **", "onNewIntent");
         handleIntent(intent);
     }
 
@@ -246,7 +237,6 @@ public class MainActivity
 
     @Override
     public boolean onCreateOptionsMenu(@NonNull Menu menu) {
-        Log.d("** MainActivity **", "onCreateOptionsMenu");
         getMenuInflater().inflate(R.menu.menu_activity_main, menu);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -304,9 +294,13 @@ public class MainActivity
     }
 
     @Override
+    public GoogleApiClient getGoogleApiClient() {
+        return mGoogleApiClient;
+    }
+
+    @Override
     @Nullable
     public Loader<Cursor> onCreateLoader(int loaderId, @Nullable Bundle args) {
-        Log.d("** MainActivity **", "onCreateLoader");
         switch (loaderId) {
             case EMPTY_SEARCH:
                 return null;
@@ -363,7 +357,6 @@ public class MainActivity
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, @Nullable Cursor data) {
-        Log.d("** MainActivity **", "onLoadFinished");
         switch (loader.getId()) {
             case EMPTY_SEARCH:
                 mMapFragment.clearMap();
@@ -413,7 +406,6 @@ public class MainActivity
 
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        Log.d("** MainActivity **", "onLoaderReset");
         try {
             mMapFragment.clearMap();
             mSearchResultFragment.swapCursor(null);
@@ -425,27 +417,6 @@ public class MainActivity
     }
 
     @Override
-    public void onConnected(@Nullable Bundle bundle) {
-        Log.d("** MainActivity **", "onConnected");
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-            == PackageManager.PERMISSION_GRANTED
-         || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
-            == PackageManager.PERMISSION_GRANTED) {
-
-            GeomemorialApplication.setLastLocation(
-                LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient)
-            );
-        }
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-        Log.d("** MainActivity **", "onConnectionSuspended");
-    }
-
-    @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.d("** MainActivity **", "onConnectionFailed");
     }
-
 }
