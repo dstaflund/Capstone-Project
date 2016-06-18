@@ -34,10 +34,10 @@ import com.github.dstaflund.geomemorial.R;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.MarkerInfo;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbProvider;
 import com.github.dstaflund.geomemorial.ui.activity.main.callback.MainConnectionCallbacks;
+import com.github.dstaflund.geomemorial.ui.activity.main.listener.MainConnectionFailedListener;
 import com.github.dstaflund.geomemorial.ui.activity.main.listener.NavigationItemSelectedListener;
 import com.github.dstaflund.geomemorial.ui.fragment.map.MapFragment;
 import com.github.dstaflund.geomemorial.ui.fragment.searchresult.SearchResultFragment;
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
@@ -48,7 +48,6 @@ public class MainActivity
     extends AppCompatActivity
     implements
     LoaderManager.LoaderCallbacks<Cursor>,
-    GoogleApiClient.OnConnectionFailedListener,
     MainActivityView{
 
     public static final int EMPTY_SEARCH = -1;
@@ -92,7 +91,7 @@ public class MainActivity
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(new MainConnectionCallbacks(this))
-                .addOnConnectionFailedListener(this)
+                .addOnConnectionFailedListener(new MainConnectionFailedListener())
                 .addApi(LocationServices.API)
                 .build();
         }
@@ -414,9 +413,5 @@ public class MainActivity
         catch(IllegalStateException e){
             // Eat it for now
         }
-    }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
     }
 }
