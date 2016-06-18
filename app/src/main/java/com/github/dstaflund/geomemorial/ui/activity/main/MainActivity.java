@@ -5,9 +5,7 @@ import android.app.SearchableInfo;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
@@ -15,7 +13,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
@@ -27,13 +24,12 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.github.dstaflund.geomemorial.GeomemorialApplication;
 import com.github.dstaflund.geomemorial.R;
-import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.MarkerInfo;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbProvider;
 import com.github.dstaflund.geomemorial.ui.activity.main.callback.MainConnectionCallbacks;
+import com.github.dstaflund.geomemorial.ui.activity.main.callback.MainLoaderManagerCallbacks;
 import com.github.dstaflund.geomemorial.ui.activity.main.listener.MainConnectionFailedListener;
 import com.github.dstaflund.geomemorial.ui.activity.main.listener.NavigationItemSelectedListener;
 import com.github.dstaflund.geomemorial.ui.fragment.map.MapFragment;
@@ -42,12 +38,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 
-import static com.github.dstaflund.geomemorial.common.util.ToastManager.newToast;
-
 public class MainActivity
     extends AppCompatActivity
     implements
-    LoaderManager.LoaderCallbacks<Cursor>,
     MainActivityView{
 
     public static final int EMPTY_SEARCH = -1;
@@ -65,6 +58,7 @@ public class MainActivity
     private String mSavedSearchString;
     private boolean mDisplayToast;
     private Bundle mSavedInstanceState;
+    private MainLoaderManagerCallbacks mLoaderCallbacks;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -109,12 +103,13 @@ public class MainActivity
             GeomemorialDbProvider.MODE
         );
 
+        mLoaderCallbacks = new MainLoaderManagerCallbacks(this);
         LoaderManager loaderManager = getSupportLoaderManager();
         Loader<Cursor> loader = loaderManager.getLoader(EMPTY_SEARCH);
         if (loader != null && !loader.isReset()) {
-            loaderManager.restartLoader(EMPTY_SEARCH, null, this);
+            loaderManager.restartLoader(EMPTY_SEARCH, null, mLoaderCallbacks);
         } else {
-            loaderManager.initLoader(EMPTY_SEARCH, null, this);
+            loaderManager.initLoader(EMPTY_SEARCH, null, mLoaderCallbacks);
         }
 
         // Restore the last search if present
@@ -228,9 +223,9 @@ public class MainActivity
         Loader<Cursor> loader = loaderManager.getLoader(RESIDENT_LOADER_ID);
 
         if (loader != null && !loader.isReset()) {
-            loaderManager.restartLoader(RESIDENT_LOADER_ID, args, this);
+            loaderManager.restartLoader(RESIDENT_LOADER_ID, args, mLoaderCallbacks);
         } else {
-            loaderManager.initLoader(RESIDENT_LOADER_ID, args, this);
+            loaderManager.initLoader(RESIDENT_LOADER_ID, args, mLoaderCallbacks);
         }
     }
 
@@ -268,6 +263,26 @@ public class MainActivity
         }
     }
 
+    @Override
+    public void clearMap() {
+        mMapFragment.clearMap();
+    }
+
+    @Override
+    public void setDisplayToast(boolean value) {
+        mDisplayToast = value;
+    }
+
+    @Override
+    public void swapCursor(Cursor cursor){
+        mSearchResultFragment.swapCursor(cursor);
+    }
+
+    @Override
+    public boolean isDisplayToast() {
+        return mDisplayToast;
+    }
+
     public void setMapType(int mapTypeId) {
         mMapFragment.setMapType(mapTypeId);
     }
@@ -295,123 +310,5 @@ public class MainActivity
     @Override
     public GoogleApiClient getGoogleApiClient() {
         return mGoogleApiClient;
-    }
-
-    @Override
-    @Nullable
-    public Loader<Cursor> onCreateLoader(int loaderId, @Nullable Bundle args) {
-        switch (loaderId) {
-            case EMPTY_SEARCH:
-                return null;
-            default:
-                if (args == null) {
-                    return null;
-                }
-
-                SearchRequest searchRequest = new SearchRequest(args);
-                Uri uri = searchRequest.getUri();
-                String query = searchRequest.getQuery();
-                String extraDataKey = searchRequest.getExtraDataKey();
-
-                //  Free-form search
-                if (uri == null && query != null && extraDataKey == null){
-                    return new CursorLoader(
-                        getApplicationContext(),
-                        MarkerInfo.CONTENT_URI,
-                        MarkerInfo.DEFAULT_PROJECTION,
-                        MarkerInfo.CONSTRAINT_BY_SEARCH_CRITERIA,
-                        MarkerInfo.getSelectionArgsFor(query),
-                        MarkerInfo.SORT_ORDER_RESIDENT
-                    );
-                }
-
-                //  Suggestion Search
-                else if (uri != null && query != null && extraDataKey != null){
-                    return new CursorLoader(
-                        getApplicationContext(),
-                        uri,
-                        MarkerInfo.DEFAULT_PROJECTION,
-                        query,
-                        MarkerInfo.getSelectionArgsFor(extraDataKey),
-                        MarkerInfo.SORT_ORDER_RESIDENT
-                    );
-                }
-
-                //  Previous Search
-                else if (uri == null && query == null && extraDataKey != null){
-                    return new CursorLoader(
-                        getApplicationContext(),
-                        MarkerInfo.CONTENT_URI,
-                        MarkerInfo.DEFAULT_PROJECTION,
-                        MarkerInfo.CONSTRAINT_BY_SEARCH_CRITERIA,
-                        MarkerInfo.getSelectionArgsFor(extraDataKey),
-                        MarkerInfo.SORT_ORDER_RESIDENT
-                    );
-                }
-                else {
-                    return null;
-                }
-        }
-    }
-
-    @Override
-    public void onLoadFinished(@NonNull Loader<Cursor> loader, @Nullable Cursor data) {
-        switch (loader.getId()) {
-            case EMPTY_SEARCH:
-                mMapFragment.clearMap();
-                mSearchResultFragment.swapCursor(null);
-                break;
-            default:
-                Resources r = getResources();
-                if (data == null || data.getCount() == 0) {
-                    if (mDisplayToast) {
-                        newToast(
-                            this,
-                            null,
-                            getString(R.string.toast_search_results_empty),
-                            Toast.LENGTH_SHORT
-                        );
-                    }
-                } else if (data.getCount() <= r.getInteger(R.integer.max_visible_memorials)) {
-                    if (mDisplayToast) {
-                        newToast(
-                            this,
-                            null,
-                            getString(
-                                R.string.toast_search_results_normal,
-                                data.getCount()
-                            ),
-                            Toast.LENGTH_SHORT
-                        );
-                    }
-                } else {
-                    if (mDisplayToast) {
-                        newToast(
-                            this,
-                            null,
-                            getString(
-                                R.string.toast_search_results_too_many,
-                                r.getInteger(R.integer.max_visible_memorials)
-                            ),
-                            Toast.LENGTH_SHORT
-                        );
-                    }
-                }
-                mMapFragment.clearMap();
-                mSearchResultFragment.swapCursor(data);
-                mDisplayToast= true;
-        }
-    }
-
-    @Override
-    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-        try {
-            mMapFragment.clearMap();
-            mSearchResultFragment.swapCursor(null);
-        }
-
-        catch(IllegalStateException e){
-            // Eat it for now
-        }
     }
 }
