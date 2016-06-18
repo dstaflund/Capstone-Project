@@ -1,4 +1,4 @@
-package com.github.dstaflund.geomemorial.ui.activity;
+package com.github.dstaflund.geomemorial.ui.activity.main;
 
 import android.app.SearchManager;
 import android.content.Intent;

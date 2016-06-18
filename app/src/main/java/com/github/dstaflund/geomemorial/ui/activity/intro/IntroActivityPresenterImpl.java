@@ -9,7 +9,7 @@ import android.support.annotation.Nullable;
 import com.github.dstaflund.geomemorial.R;
 import com.github.dstaflund.geomemorial.common.util.IntentManager;
 import com.github.dstaflund.geomemorial.common.util.PreferencesManager;
-import com.github.dstaflund.geomemorial.ui.activity.MainActivity;
+import com.github.dstaflund.geomemorial.ui.activity.main.MainActivity;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 
 public class IntroActivityPresenterImpl implements IntroActivityPresenter {

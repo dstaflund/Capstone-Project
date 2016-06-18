@@ -1,4 +1,4 @@
-package com.github.dstaflund.geomemorial.ui.activity;
+package com.github.dstaflund.geomemorial.ui.activity.main;
 
 import android.Manifest;
 import android.app.SearchManager;
@@ -34,12 +34,9 @@ import android.widget.Toast;
 
 import com.github.dstaflund.geomemorial.GeomemorialApplication;
 import com.github.dstaflund.geomemorial.R;
-import com.github.dstaflund.geomemorial.common.util.IntentManager;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.MarkerInfo;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbProvider;
-import com.github.dstaflund.geomemorial.ui.activity.about.AboutActivity;
-import com.github.dstaflund.geomemorial.ui.activity.favorites.FavoritesActivity;
-import com.github.dstaflund.geomemorial.ui.activity.preferences.PreferencesActivity;
+import com.github.dstaflund.geomemorial.ui.activity.main.listener.NavigationItemSelectedListener;
 import com.github.dstaflund.geomemorial.ui.fragment.map.MapFragment;
 import com.github.dstaflund.geomemorial.ui.fragment.searchresult.SearchResultFragment;
 import com.google.android.gms.common.ConnectionResult;
@@ -47,21 +44,15 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 
-import static com.github.dstaflund.geomemorial.GeomemorialApplication.setVisibleMapType;
-import static com.github.dstaflund.geomemorial.common.util.PreferencesManager.isDefaultMapType;
 import static com.github.dstaflund.geomemorial.common.util.ToastManager.newToast;
-import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_HYBRID;
-import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_NORMAL;
-import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_SATELLITE;
-import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_TERRAIN;
 
 public class MainActivity
     extends AppCompatActivity
     implements
     LoaderManager.LoaderCallbacks<Cursor>,
-    NavigationView.OnNavigationItemSelectedListener,
     GoogleApiClient.ConnectionCallbacks,
-    GoogleApiClient.OnConnectionFailedListener{
+    GoogleApiClient.OnConnectionFailedListener,
+    MainActivityView{
 
     public static final int EMPTY_SEARCH = -1;
     public static final int RESIDENT_LOADER_ID = 0;
@@ -111,7 +102,7 @@ public class MainActivity
 
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         if (mNavigationView != null) {
-            mNavigationView.setNavigationItemSelectedListener(this);
+            mNavigationView.setNavigationItemSelectedListener(new NavigationItemSelectedListener(this));
         }
 
         checkInitialMapType();
@@ -292,84 +283,24 @@ public class MainActivity
         mMapFragment.setMapType(mapTypeId);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        boolean result;
+    public Context getContext() {
+        return this;
+    }
 
-        switch (item.getItemId()) {
-            case R.id.nav_camera:
-                IntentManager.startActivity(this, FavoritesActivity.class);
-                result = true;
-                break;
+    @Override
+    public DrawerLayout getDrawerLayout() {
+        return (DrawerLayout) findViewById(R.id.drawer_layout);
+    }
 
-            case R.id.nav_layer_normal:
-                setMapType(MAP_TYPE_NORMAL);
-                item.setChecked(isDefaultMapType(this, MAP_TYPE_NORMAL));
-                mNavigationView.getMenu().findItem(R.id.nav_layer_terrain).setChecked(false);
-                mNavigationView.getMenu().findItem(R.id.nav_layer_satellite).setChecked(false);
-                mNavigationView.getMenu().findItem(R.id.nav_layer_hybrid).setChecked(false);
-                setVisibleMapType(MAP_TYPE_NORMAL);
-                result = true;
-                break;
+    @Override
+    public NavigationView getNavigationView() {
+        return mNavigationView;
+    }
 
-            case R.id.nav_layer_hybrid:
-                setMapType(MAP_TYPE_HYBRID);
-                item.setChecked(isDefaultMapType(this, MAP_TYPE_HYBRID));
-                mNavigationView.getMenu().findItem(R.id.nav_layer_normal).setChecked(false);
-                mNavigationView.getMenu().findItem(R.id.nav_layer_terrain).setChecked(false);
-                mNavigationView.getMenu().findItem(R.id.nav_layer_satellite).setChecked(false);
-                setVisibleMapType(MAP_TYPE_HYBRID);
-                result = true;
-                break;
-
-            case R.id.nav_layer_terrain:
-                setMapType(MAP_TYPE_TERRAIN);
-                item.setChecked(isDefaultMapType(this, MAP_TYPE_TERRAIN));
-                mNavigationView.getMenu().findItem(R.id.nav_layer_normal).setChecked(false);
-                mNavigationView.getMenu().findItem(R.id.nav_layer_satellite).setChecked(false);
-                mNavigationView.getMenu().findItem(R.id.nav_layer_hybrid).setChecked(false);
-                setVisibleMapType(MAP_TYPE_TERRAIN);
-                result = true;
-                break;
-
-            case R.id.nav_layer_satellite:
-                setMapType(MAP_TYPE_SATELLITE);
-                item.setChecked(isDefaultMapType(this, MAP_TYPE_SATELLITE));
-                mNavigationView.getMenu().findItem(R.id.nav_layer_normal).setChecked(false);
-                mNavigationView.getMenu().findItem(R.id.nav_layer_terrain).setChecked(false);
-                mNavigationView.getMenu().findItem(R.id.nav_layer_hybrid).setChecked(false);
-                setVisibleMapType(MAP_TYPE_SATELLITE);
-                result = true;
-                break;
-
-            case R.id.nav_clear_search_history:
-                mSearchRecentSuggestions.clearHistory();
-                newToast(this, null, getString(R.string.toast_search_history_cleared), Toast.LENGTH_SHORT);
-                result = true;
-                break;
-
-
-            case R.id.nav_manage:
-                IntentManager.startActivity(this, PreferencesActivity.class);
-                result = true;
-                break;
-
-            case R.id.nav_send:
-                IntentManager.startActivity(this, AboutActivity.class);
-                result = true;
-                break;
-
-            default:
-                result = false;
-        }
-
-        DrawerLayout dl = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (dl != null) {
-            dl.closeDrawer(GravityCompat.START);
-        }
-
-        return result;
+    @Override
+    public SearchRecentSuggestions getSearchRecentSuggestions() {
+        return mSearchRecentSuggestions;
     }
 
     @Override
