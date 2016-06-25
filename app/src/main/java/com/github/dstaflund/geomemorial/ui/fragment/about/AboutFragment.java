@@ -9,9 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.dstaflund.geomemorial.R;
+
 public class AboutFragment extends Fragment implements AboutFragmentView {
     private AboutFragmentPresenter mPresenter;
-    private NestedScrollView mScrollView;
+    private NestedScrollView mNestedScrollView;
+    private View mRootView;
 
     public AboutFragment(){
         super();
@@ -49,11 +52,22 @@ public class AboutFragment extends Fragment implements AboutFragmentView {
     @Nullable
     @Override
     public NestedScrollView getNestedScrollView() {
-        return mScrollView;
+        if (mRootView != null) {
+            if (mNestedScrollView == null) {
+                mNestedScrollView = (NestedScrollView) mRootView.findViewById(R.id.fragment_about_nested_scroll_view);
+            }
+            return mNestedScrollView;
+        }
+        return null;
     }
 
     @Override
-    public void setNestedScrollView(@NonNull NestedScrollView v) {
-        mScrollView = v;
+    public View getRootView(){
+        return mRootView;
+    }
+
+    @Override
+    public void setRootView(@NonNull View value){
+        mRootView = value;
     }
 }
