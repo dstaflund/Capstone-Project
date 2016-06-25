@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.github.dstaflund.geomemorial.R;
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract;
-import com.github.dstaflund.geomemorial.ui.activity.main.MainActivity;
+import com.github.dstaflund.geomemorial.ui.activity.main.MainActivityPresenterImpl;
 import com.github.dstaflund.geomemorial.ui.activity.main.MainActivityView;
 import com.github.dstaflund.geomemorial.ui.activity.main.SearchRequest;
 
@@ -31,7 +31,7 @@ public class MainLoaderManagerCallbacks implements LoaderCallbacks<Cursor>{
     @Nullable
     public Loader<Cursor> onCreateLoader(int loaderId, @Nullable Bundle args) {
         switch (loaderId) {
-            case MainActivity.EMPTY_SEARCH:
+            case MainActivityPresenterImpl.EMPTY_SEARCH:
                 return null;
             default:
                 if (args == null) {
@@ -87,7 +87,7 @@ public class MainLoaderManagerCallbacks implements LoaderCallbacks<Cursor>{
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, @Nullable Cursor data) {
         switch (loader.getId()) {
-            case MainActivity.EMPTY_SEARCH:
+            case MainActivityPresenterImpl.EMPTY_SEARCH:
                 mView.clearMap();
                 mView.swapCursor(null);
                 break;
