@@ -10,13 +10,13 @@ android {
         }
     }
 
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.github.dstaflund.geomemorial"
         minSdkVersion 21
-        targetSdkVersion 23
+        targetSdkVersion 29
         versionCode 10
         versionName "1.0.10"
         multiDexEnabled true
@@ -37,17 +37,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.android.support:design:23.4.0'
-    compile 'com.android.support:multidex:1.0.1'
-    compile 'com.android.support:support-v4:23.4.0'
-    compile 'com.github.paolorotolo:appintro:3.3.0'
-    compile 'com.google.android.gms:play-services-maps:9.0.2'
-    compile 'com.google.android.gms:play-services-location:9.0.2'
-    compile 'com.google.maps.android:android-maps-utils:0.4'
-    testCompile 'junit:junit:4.12'
-    androidTestCompile 'org.jmockit:jmockit:1.23'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:23.4.0'
+    implementation 'com.android.support:design:23.4.0'
+    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'com.android.support:support-v4:23.4.0'
+    implementation 'com.github.paolorotolo:appintro:3.3.0'
+    implementation 'com.google.android.gms:play-services-maps:9.0.2'
+    implementation 'com.google.android.gms:play-services-location:9.0.2'
+    implementation 'com.google.maps.android:android-maps-utils:0.4'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'org.jmockit:jmockit:1.23'
 }
 
 apply plugin: 'com.google.gms.google-services'
