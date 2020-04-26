@@ -2,7 +2,7 @@ package com.github.dstaflund.geomemorial.ui.fragment.favorites;
 
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;

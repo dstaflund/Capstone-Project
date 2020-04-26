@@ -8,11 +8,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.navigation.NavigationView;
+import androidx.loader.app.LoaderManager;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuInflater;
 
 import com.github.dstaflund.geomemorial.ui.activity.main.callback.MainLoaderManagerCallbacks;

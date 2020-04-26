@@ -2,7 +2,7 @@ package com.github.dstaflund.geomemorial.ui.activity.intro;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.github.paolorotolo.appintro.AppIntro;
 

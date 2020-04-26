@@ -1,8 +1,8 @@
 package com.github.dstaflund.geomemorial.common.util;
 
 import android.database.Cursor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.Geomemorial;
 import com.google.android.gms.maps.model.LatLng;

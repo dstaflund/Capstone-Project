@@ -4,7 +4,7 @@ import android.app.SearchManager;
 import android.content.ContentResolver;
 import android.net.Uri;
 import android.provider.BaseColumns;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.util.Set;
 

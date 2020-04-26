@@ -1,8 +1,8 @@
 package com.github.dstaflund.geomemorial.ui.activity.intro;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 public interface IntroActivityView {
     void addSlide(@NonNull Fragment fragment);

@@ -2,7 +2,7 @@ package com.github.dstaflund.geomemorial;
 
 import android.app.Application;
 import android.location.Location;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.github.dstaflund.geomemorial.common.util.PreferencesManager;
 

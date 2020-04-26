@@ -1,7 +1,7 @@
 package com.github.dstaflund.geomemorial.ui.activity.intro;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 public interface IntroActivityPresenter {
     void init(@Nullable Bundle savedInstanceState);

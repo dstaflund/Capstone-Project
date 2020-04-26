@@ -1,8 +1,8 @@
 package com.github.dstaflund.geomemorial.ui.fragment.searchresult;
 
 import android.content.Context;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 
 import com.github.dstaflund.geomemorial.ui.fragment.searchresult.adapter.SearchResultFragmentAdapter;
 

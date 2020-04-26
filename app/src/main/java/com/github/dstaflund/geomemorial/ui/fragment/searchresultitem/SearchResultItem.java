@@ -3,7 +3,7 @@ package com.github.dstaflund.geomemorial.ui.fragment.searchresultitem;
 import android.database.Cursor;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract;
 
