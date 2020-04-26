@@ -13,7 +13,7 @@
 
     <string name="search_hint">Search Sask Geo-Memorial</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">
-        android.support.design.widget.AppBarLayout$ScrollingViewBehavior
+        com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior
     </string>
 
     <!-- TODO: Remove or change this placeholder text -->

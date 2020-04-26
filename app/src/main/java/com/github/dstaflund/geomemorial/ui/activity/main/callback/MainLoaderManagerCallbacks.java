@@ -32,10 +32,25 @@ public class MainLoaderManagerCallbacks implements LoaderCallbacks<Cursor>{
     public Loader<Cursor> onCreateLoader(int loaderId, @Nullable Bundle args) {
         switch (loaderId) {
             case MainActivityPresenterImpl.EMPTY_SEARCH:
-                return null;
+                return new CursorLoader(
+                        mView.getContext(),
+                        GeomemorialDbContract.MarkerInfo.CONTENT_URI,
+                        GeomemorialDbContract.MarkerInfo.DEFAULT_PROJECTION,
+                        GeomemorialDbContract.MarkerInfo.CONSTRAINT_BY_SEARCH_CRITERIA,
+                        GeomemorialDbContract.MarkerInfo.getSelectionArgsFor("1234567890"),
+                        GeomemorialDbContract.MarkerInfo.SORT_ORDER_RESIDENT
+                );
             default:
                 if (args == null) {
-                    return null;
+                    return new CursorLoader(
+                            mView.getContext(),
+                            GeomemorialDbContract.MarkerInfo.CONTENT_URI,
+                            GeomemorialDbContract.MarkerInfo.DEFAULT_PROJECTION,
+                            GeomemorialDbContract.MarkerInfo.CONSTRAINT_BY_SEARCH_CRITERIA,
+                            GeomemorialDbContract.MarkerInfo.getSelectionArgsFor("1234567890"),
+                            GeomemorialDbContract.MarkerInfo.SORT_ORDER_RESIDENT
+                    );
+
                 }
 
                 SearchRequest searchRequest = new SearchRequest(args);
