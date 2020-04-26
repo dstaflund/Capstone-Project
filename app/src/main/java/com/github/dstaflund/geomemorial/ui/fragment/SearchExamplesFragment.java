@@ -1,4 +1,4 @@
-package com.github.dstaflund.geomemorial.ui.fragment.searchexamples;
+package com.github.dstaflund.geomemorial.ui.fragment;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -8,8 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class SearchExamplesFragment extends Fragment implements SearchExamplesFragmentView {
-    private SearchExamplesFragmentPresenter mPresenter;
+import com.github.dstaflund.geomemorial.R;
+
+public class SearchExamplesFragment extends Fragment {
 
     public SearchExamplesFragment(){
         super();
@@ -18,16 +19,12 @@ public class SearchExamplesFragment extends Fragment implements SearchExamplesFr
     @Override
     public void onCreate(@Nullable Bundle savedState) {
         super.onCreate(savedState);
-        mPresenter = new SearchExamplesFragmentPresenterImpl(this);
-        mPresenter.onCreate(savedState);
+        setRetainInstance(true);
+        setHasOptionsMenu(false);
     }
 
     @Override
-    @Nullable
     public View onCreateView(@NonNull LayoutInflater i, @Nullable ViewGroup c, @Nullable Bundle b) {
-        if (mPresenter != null) {
-            return mPresenter.onCreateView(i, c, b);
-        }
-        return null;
+        return i.inflate(R.layout.fragment_search_examples, c, false);
     }
 }
