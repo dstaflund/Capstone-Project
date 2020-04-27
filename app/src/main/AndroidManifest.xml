@@ -25,7 +25,7 @@
             android:value="@integer/google_play_services_version"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="TO_BE_SUPPLIED"/>
+            android:value="AIzaSyCTdWQeH2Xg-kGVL2Oi3n85C0UZpbb0H9M"/>
         <activity
             android:name=".ui.activity.intro.IntroActivity"
             android:label="@string/intro_label"

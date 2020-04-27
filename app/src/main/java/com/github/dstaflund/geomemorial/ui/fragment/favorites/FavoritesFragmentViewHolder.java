@@ -30,10 +30,10 @@ public class FavoritesFragmentViewHolder implements OnMapReadyCallback {
     public FavoritesFragmentViewHolder(@NonNull Context context, @NonNull View view){
         super();
         mContext = context;
-        mapView = (MapView) view.findViewById(R.id.lite_listrow_map);
-        title = (TextView) view.findViewById(R.id.lite_listrow_text);
-        favoritesButton = (ImageButton) view.findViewById(R.id.list_item_favorite_favorite_button);
-        shareButton = (ImageButton) view.findViewById(R.id.list_item_favorite_share_button);
+        mapView = view.findViewById(R.id.lite_listrow_map);
+        title = view.findViewById(R.id.lite_listrow_text);
+        favoritesButton = view.findViewById(R.id.list_item_favorite_favorite_button);
+        shareButton = view.findViewById(R.id.list_item_favorite_share_button);
     }
 
     public void initializeMapView() {
