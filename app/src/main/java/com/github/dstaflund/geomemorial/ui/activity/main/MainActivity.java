@@ -1,5 +1,6 @@
 package com.github.dstaflund.geomemorial.ui.activity.main;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
@@ -68,6 +69,7 @@ public class MainActivity
         mGoogleApiClient.disconnect();
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     protected void onNewIntent(@NonNull Intent intent) {
         if (mPresenter != null){

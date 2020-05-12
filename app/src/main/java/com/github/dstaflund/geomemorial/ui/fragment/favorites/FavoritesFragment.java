@@ -1,5 +1,6 @@
 package com.github.dstaflund.geomemorial.ui.fragment.favorites;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
@@ -129,7 +130,7 @@ public class FavoritesFragment extends Fragment {
         protected void onPostExecute(@Nullable List<FavoritesMarkerInfo> data) {
             Context context = mView.getContext();
             if (context != null) {
-                ArrayAdapter<FavoritesMarkerInfo> adapter = new FavoritesFragmentViewAdapter(context, mView.getLayoutInflater(null), data);
+                @SuppressLint("RestrictedApi") ArrayAdapter<FavoritesMarkerInfo> adapter = new FavoritesFragmentViewAdapter(context, mView.getLayoutInflater(null), data);
                 mView.setAdapter(adapter);
 
                 GridView gridView = mView.getGridView();

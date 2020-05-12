@@ -12,10 +12,6 @@ import com.github.dstaflund.geomemorial.R;
 
 public class AboutFragment extends Fragment {
 
-    public AboutFragment(){
-        super();
-    }
-
     @Override
     public void onCreate(@Nullable Bundle savedState) {
         super.onCreate(savedState);

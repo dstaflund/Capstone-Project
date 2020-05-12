@@ -1,5 +1,6 @@
 package com.github.dstaflund.geomemorial.ui.fragment.map;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -175,6 +176,7 @@ public class MapFragment extends Fragment implements MapFragmentView {
         mIgnoreCameraZoom = value;
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public LayoutInflater getLayoutInflater(Bundle b){
         return super.getLayoutInflater(b);

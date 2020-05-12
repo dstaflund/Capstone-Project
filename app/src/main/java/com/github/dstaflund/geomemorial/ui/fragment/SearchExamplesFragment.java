@@ -12,10 +12,6 @@ import com.github.dstaflund.geomemorial.R;
 
 public class SearchExamplesFragment extends Fragment {
 
-    public SearchExamplesFragment(){
-        super();
-    }
-
     @Override
     public void onCreate(@Nullable Bundle savedState) {
         super.onCreate(savedState);
