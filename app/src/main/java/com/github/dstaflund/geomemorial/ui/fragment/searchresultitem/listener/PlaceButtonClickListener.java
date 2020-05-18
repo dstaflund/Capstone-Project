@@ -9,9 +9,10 @@ import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.Geomem
 import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.SearchResultItemFormatter;
 import com.google.android.gms.maps.model.LatLng;
 
+import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo.IDX_LATITUDE;
+import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo.IDX_LONGITUDE;
 import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo.buildFor;
 import static com.github.dstaflund.geomemorial.receiver.PlaceButtonClickedReceiver.sendBroadcast;
-import static java.lang.Double.valueOf;
 
 public class PlaceButtonClickListener implements View.OnClickListener {
 
@@ -45,8 +46,8 @@ public class PlaceButtonClickListener implements View.OnClickListener {
         if (c != null && c.getCount() > 0) {
             c.moveToFirst();
             LatLng latLng = new LatLng(
-                valueOf(c.getString(GeomemorialInfo.IDX_LATITUDE)),
-                valueOf(c.getString(GeomemorialInfo.IDX_LONGITUDE))
+                Double.parseDouble(c.getString(IDX_LATITUDE)),
+                Double.parseDouble(c.getString(IDX_LONGITUDE))
             );
             sendBroadcast(mContext, latLng);
             c.close();

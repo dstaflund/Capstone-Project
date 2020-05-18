@@ -27,13 +27,13 @@ public class SearchResultItemFormatter {
     public SearchResultItemFormatter(
         @NonNull Context context,
         @NonNull SearchResultItem dataObject,
-        int position,
+        @Nullable Integer position,
         int count
     ) {
         super();
         mContext = context;
         mDataObject = dataObject;
-        mPosition = position;
+        mPosition = position == null ? 0 : position;
         mCount = count;
     }
 
@@ -66,7 +66,7 @@ public class SearchResultItemFormatter {
     }
 
     @NonNull
-    public String getNtsSheet() {
+    String getNtsSheet() {
         return String.format(
             mContext.getString(R.string.string_format_nts_sheet_pattern),
             mDataObject.ntsSheet,
@@ -97,9 +97,9 @@ public class SearchResultItemFormatter {
     }
 
     @NonNull
-    public String getRecordCount() {
+    String getRecordCount() {
         int maxVisible = mContext.getResources().getInteger(R.integer.max_visible_memorials);
-        int countval = mCount <= maxVisible ? mCount : maxVisible;
+        int countval = Math.min(mCount, maxVisible);
         return (mPosition + 1) + " of " + countval + " memorials";
     }
 

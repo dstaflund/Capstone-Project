@@ -6,10 +6,16 @@ import androidx.annotation.NonNull;
 import android.view.View;
 
 import com.github.dstaflund.geomemorial.common.util.SharedIntentManager;
-import com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo;
 import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.SearchResultItemFormatter;
 
 import static com.github.dstaflund.geomemorial.common.util.SharedIntentManager.shareGeomemorial;
+import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo.IDX_GEOMEMORIAL;
+import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo.IDX_HOMETOWN;
+import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo.IDX_LATITUDE;
+import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo.IDX_LONGITUDE;
+import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo.IDX_OBIT;
+import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo.IDX_RANK;
+import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo.IDX_RESIDENT;
 import static com.github.dstaflund.geomemorial.integration.GeomemorialDbContract.GeomemorialInfo.buildFor;
 
 public class ShareButtonClickListener implements View.OnClickListener {
@@ -44,13 +50,13 @@ public class ShareButtonClickListener implements View.OnClickListener {
             c.moveToFirst();
             SharedIntentManager.Payload payload = new SharedIntentManager.Payload
                 .Builder(mContext)
-                .geomemorial(c.getString(GeomemorialInfo.IDX_GEOMEMORIAL))
-                .latitude(c.getString(GeomemorialInfo.IDX_LATITUDE))
-                .longitude(c.getString(GeomemorialInfo.IDX_LONGITUDE))
-                .resident(c.getString(GeomemorialInfo.IDX_RESIDENT))
-                .hometown(c.getString(GeomemorialInfo.IDX_HOMETOWN))
-                .rank(c.getString(GeomemorialInfo.IDX_RANK))
-                .obit(c.getString(GeomemorialInfo.IDX_OBIT))
+                .geomemorial(c.getString(IDX_GEOMEMORIAL))
+                .latitude(c.getString(IDX_LATITUDE))
+                .longitude(c.getString(IDX_LONGITUDE))
+                .resident(c.getString(IDX_RESIDENT))
+                .hometown(c.getString(IDX_HOMETOWN))
+                .rank(c.getString(IDX_RANK))
+                .obit(c.getString(IDX_OBIT))
                 .build();
             shareGeomemorial(payload);
             c.close();
