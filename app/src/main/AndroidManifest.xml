@@ -27,7 +27,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCTdWQeH2Xg-kGVL2Oi3n85C0UZpbb0H9M"/>
         <activity
-            android:name=".ui.activity.intro.IntroActivity"
+            android:name=".ui.activity.IntroActivity"
             android:label="@string/intro_label"
             android:launchMode="singleTop">
             <intent-filter>
