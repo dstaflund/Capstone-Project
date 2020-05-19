@@ -18,12 +18,12 @@ import com.github.dstaflund.geomemorial.ui.fragment.searchresultitem.SearchResul
 
 //  Adaptation of http://tumble.mlcastle.net/post/25875136857/bridging-cursorloaders-and-viewpagers-on-android
 public class SearchResultFragmentAdapter extends FragmentStatePagerAdapter {
-    private Context mContext;
-    private Cursor mCursor;
+    @Nullable private Context mContext;
+    @Nullable private Cursor mCursor;
 
     public SearchResultFragmentAdapter(
         @NonNull FragmentManager fm,
-        @NonNull Context context,
+        @Nullable Context context,
         @Nullable Cursor cursor
     ) {
         super(fm);
@@ -31,33 +31,34 @@ public class SearchResultFragmentAdapter extends FragmentStatePagerAdapter {
         mCursor = cursor;
     }
 
+    @NonNull
     @Override
     public SearchResultItemFragment getItem(int position) {
-        if (mCursor == null) {
-            return null;
+        if (mCursor != null) {
+            mCursor.moveToPosition(position);
         }
-
-        mCursor.moveToPosition(position);
-        return SearchResultItemFragment.newInstance(mCursor, position, mCursor.getCount());
+        return SearchResultItemFragment.newInstance(mCursor, position, mCursor != null ? mCursor.getCount() : 0);
     }
 
     @Override
     public int getCount() {
-        if (mCursor == null) {
-            return 0;
+        int maxVisible = 0;
+        if (mContext != null) {
+            maxVisible = mContext.getResources().getInteger(R.integer.max_visible_memorials);
         }
-
-        int maxVisible = mContext.getResources().getInteger(R.integer.max_visible_memorials);
-        return mCursor.getCount() <= maxVisible ? mCursor.getCount() : maxVisible;
+        if (mCursor != null) {
+            return Math.min(mCursor.getCount(), maxVisible);
+        }
+        return 0;
     }
 
     @Override
-    public void startUpdate(ViewGroup container) {
+    public void startUpdate(@NonNull ViewGroup container) {
         super.startUpdate(container);
     }
 
     @Override
-    public void finishUpdate(ViewGroup container) {
+    public void finishUpdate(@NonNull ViewGroup container) {
         super.finishUpdate(container);
     }
 
@@ -65,20 +66,25 @@ public class SearchResultFragmentAdapter extends FragmentStatePagerAdapter {
         if (mCursor != null) {
             mCursor.moveToFirst();
             mCursor.moveToPrevious();
-            while (mCursor.moveToNext() && mCursor.getPosition() < mContext.getResources().getInteger(R.integer.max_visible_memorials)) {
-                SearchResultItem dataObject = new SearchResultItem(mCursor);
-                SearchResultItemFormatter dataFormatter = new SearchResultItemFormatter(
-                    mContext,
-                    dataObject,
-                    mCursor.getPosition(),
-                    mCursor.getCount()
-                );
-                RecordFinishedReceiver.sendBroadcast(mContext, dataFormatter);
+            if (mContext != null) {
+                while (mCursor.moveToNext() && mCursor.getPosition() < mContext.getResources().getInteger(R.integer.max_visible_memorials)) {
+                    SearchResultItem dataObject = new SearchResultItem(mCursor);
+                    SearchResultItemFormatter dataFormatter = new SearchResultItemFormatter(
+                        mContext,
+                        dataObject,
+                        mCursor.getPosition(),
+                        mCursor.getCount()
+                    );
+                    RecordFinishedReceiver.sendBroadcast(mContext, dataFormatter);
+                }
             }
             mCursor.moveToFirst();
             mCursor.moveToPrevious();
         }
-        CursorFinishedReceiver.sendBroadcast(mContext);
+
+        if (mContext != null) {
+            CursorFinishedReceiver.sendBroadcast(mContext);
+        }
         notifyDataSetChanged();
     }
 }

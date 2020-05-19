@@ -3,6 +3,7 @@ package com.github.dstaflund.geomemorial.common.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.gms.maps.GoogleMap;
 
@@ -11,8 +12,11 @@ public final class PreferencesManager {
     private static final String sMapTypeKey = "map_type";
     private static final String sFirstTimeKey = "first_time";
 
-    public static SharedPreferences getSharedPreferences(@NonNull Context context){
-        return context.getSharedPreferences(sFavoritesFilename, Context.MODE_PRIVATE);
+    static SharedPreferences getSharedPreferences(@Nullable Context context){
+        if (context != null) {
+            return context.getSharedPreferences(sFavoritesFilename, Context.MODE_PRIVATE);
+        }
+        return null;
     }
 
     public static boolean isFirstTime(@NonNull Context context){
@@ -23,7 +27,7 @@ public final class PreferencesManager {
         getSharedPreferences(context)
             .edit()
             .putBoolean(sFirstTimeKey, value)
-            .commit();
+            .apply();
     }
 
     public static boolean isDefaultMapType(@NonNull Context context, int mapTypeId){
@@ -41,11 +45,13 @@ public final class PreferencesManager {
             .commit();
     }
 
-    public static boolean setLastViewPageItem(@NonNull Context context, int lastViewPageItem) {
-        return getSharedPreferences(context)
-            .edit()
-            .putInt("last_view_page_item", lastViewPageItem)
-            .commit();
+    public static void setLastViewPageItem(@Nullable Context context, int lastViewPageItem) {
+        if (context != null) {
+            getSharedPreferences(context)
+                    .edit()
+                    .putInt("last_view_page_item", lastViewPageItem)
+                    .apply();
+        }
     }
 
     public static int getLastViewPageItem(@NonNull Context context){

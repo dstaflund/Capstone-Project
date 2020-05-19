@@ -97,19 +97,21 @@ public class SearchResultItemFragment extends Fragment {
     }
 
     @NonNull
-    public static SearchResultItemFragment newInstance(@NonNull Cursor c, int position, int count){
+    public static SearchResultItemFragment newInstance(@Nullable Cursor c, int position, int count){
         Bundle b = new Bundle();
-        b.putString(_ID, c.getString(DEFAULT_ID_IDX));
-        b.putString(COL_GEOMEMORIAL, c.getString(DEFAULT_GEOMEMORIAL_IDX));
-        b.putString(COL_LATITUDE, c.getString(DEFAULT_LATITUDE_IDX));
-        b.putString(COL_LONGITUDE, c.getString(DEFAULT_LONGITUDE_IDX));
-        b.putString(COL_RESIDENT, c.getString(DEFAULT_RESIDENT_IDX));
-        b.putString(COL_HOMETOWN, c.getString(DEFAULT_HOMETOWN_IDX));
-        b.putString(COL_RANK, c.getString(DEFAULT_RANK_IDX));
-        b.putString(COL_OBIT, c.getString(DEFAULT_OBIT_IDX));
-        b.putString(COL_LETTER, c.getString(DEFAULT_LETTER_ID_IDX));
-        b.putString(COL_NTS_SHEET, c.getString(DEFAULT_NTS_SHEET_IDX));
-        b.putString(COL_NTS_SHEET_NAME, c.getString(DEFAULT_NTS_SHEET_NAME_IDX));
+        if (c != null) {
+            b.putString(_ID, c.getString(DEFAULT_ID_IDX));
+            b.putString(COL_GEOMEMORIAL, c.getString(DEFAULT_GEOMEMORIAL_IDX));
+            b.putString(COL_LATITUDE, c.getString(DEFAULT_LATITUDE_IDX));
+            b.putString(COL_LONGITUDE, c.getString(DEFAULT_LONGITUDE_IDX));
+            b.putString(COL_RESIDENT, c.getString(DEFAULT_RESIDENT_IDX));
+            b.putString(COL_HOMETOWN, c.getString(DEFAULT_HOMETOWN_IDX));
+            b.putString(COL_RANK, c.getString(DEFAULT_RANK_IDX));
+            b.putString(COL_OBIT, c.getString(DEFAULT_OBIT_IDX));
+            b.putString(COL_LETTER, c.getString(DEFAULT_LETTER_ID_IDX));
+            b.putString(COL_NTS_SHEET, c.getString(DEFAULT_NTS_SHEET_IDX));
+            b.putString(COL_NTS_SHEET_NAME, c.getString(DEFAULT_NTS_SHEET_NAME_IDX));
+        }
         b.putInt(sPositionKey, position);
         b.putInt(sCountKey, count);
 
