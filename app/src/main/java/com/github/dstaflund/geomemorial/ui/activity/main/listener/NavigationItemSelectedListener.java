@@ -14,7 +14,7 @@ import com.github.dstaflund.geomemorial.common.util.IntentManager;
 import com.github.dstaflund.geomemorial.ui.activity.AboutActivity;
 import com.github.dstaflund.geomemorial.ui.activity.favorites.FavoritesActivity;
 import com.github.dstaflund.geomemorial.ui.activity.main.MainActivityView;
-import com.github.dstaflund.geomemorial.ui.activity.preferences.PreferencesActivity;
+import com.github.dstaflund.geomemorial.ui.activity.PreferencesActivity;
 
 import static com.github.dstaflund.geomemorial.GeomemorialApplication.setVisibleMapType;
 import static com.github.dstaflund.geomemorial.common.util.PreferencesManager.isDefaultMapType;

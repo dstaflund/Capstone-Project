@@ -52,9 +52,9 @@
             android:label="@string/label_activity_favorites"
             android:parentActivityName=".ui.activity.main.MainActivity" />
         <activity
-            android:name=".ui.activity.preferences.PreferencesActivity"
+            android:name=".ui.activity.PreferencesActivity"
             android:label="@string/label_activity_preferences"
-            android:parentActivityName=".ui.activity.preferences.PreferencesActivity"/>
+            android:parentActivityName=".ui.activity.PreferencesActivity"/>
         <activity
             android:name=".ui.activity.AboutActivity"
             android:label="@string/label_activity_about"
