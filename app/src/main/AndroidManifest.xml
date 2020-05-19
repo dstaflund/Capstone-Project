@@ -48,7 +48,7 @@
                 android:resource="@xml/searchable"/>
         </activity>
         <activity
-            android:name=".ui.activity.favorites.FavoritesActivity"
+            android:name=".ui.activity.FavoritesActivity"
             android:label="@string/label_activity_favorites"
             android:parentActivityName=".ui.activity.main.MainActivity" />
         <activity

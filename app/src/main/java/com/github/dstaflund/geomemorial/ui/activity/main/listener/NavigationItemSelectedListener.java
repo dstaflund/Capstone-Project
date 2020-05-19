@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.github.dstaflund.geomemorial.R;
 import com.github.dstaflund.geomemorial.common.util.IntentManager;
 import com.github.dstaflund.geomemorial.ui.activity.AboutActivity;
-import com.github.dstaflund.geomemorial.ui.activity.favorites.FavoritesActivity;
+import com.github.dstaflund.geomemorial.ui.activity.FavoritesActivity;
 import com.github.dstaflund.geomemorial.ui.activity.main.MainActivityView;
 import com.github.dstaflund.geomemorial.ui.activity.PreferencesActivity;
 
