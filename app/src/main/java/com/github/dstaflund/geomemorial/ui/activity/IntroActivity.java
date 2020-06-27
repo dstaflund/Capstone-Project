@@ -3,97 +3,111 @@ package com.github.dstaflund.geomemorial.ui.activity;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 
+import androidx.fragment.app.Fragment;
+
+import com.github.appintro.AppIntro;
+import com.github.appintro.AppIntroFragment;
 import com.github.dstaflund.geomemorial.R;
 import com.github.dstaflund.geomemorial.common.util.IntentManager;
 import com.github.dstaflund.geomemorial.common.util.PreferencesManager;
 import com.github.dstaflund.geomemorial.ui.activity.main.MainActivity;
-import com.github.paolorotolo.appintro.AppIntro;
-import com.github.paolorotolo.appintro.AppIntroFragment;
 
 public class IntroActivity extends AppIntro {
-    private static final Integer[] sTitleIds = new Integer[]{
-            R.string.intro_project_title,
-            R.string.intro_app_title,
-            R.string.intro_map_title,
-            R.string.intro_search_title,
-            R.string.intro_favorites_title,
-            R.string.intro_share_title,
-            R.string.intro_settings_title,
-            R.string.intro_widget_title
-    };
-    private static final Integer[] sDescriptionIds = new Integer[]{
-            R.string.intro_project_description,
-            R.string.intro_app_description,
-            R.string.intro_map_description,
-            R.string.intro_search_description,
-            R.string.intro_favorites_description,
-            R.string.intro_share_description,
-            R.string.intro_settings_description,
-            R.string.intro_widget_description
-    };
-    private static final Integer[] sDrawableIds = new Integer[]{
-            R.drawable.intro_1_image,           // CC0, https://commons.wikimedia.org/w/index.php?curid=435678
-            R.drawable.intro_2_screenshot,
-            R.drawable.intro_3_screenshot,
-            R.drawable.intro_4_screenshot,
-            R.drawable.intro_5_screenshot,
-            R.drawable.intro_6_screenshot,
-            R.drawable.intro_7_screenshot,
-            R.drawable.intro_8_screenshot
-    };
-    private static final Integer[] sColorIds = new Integer[]{
-            R.color.colorAccent1VeryLight,
-            R.color.colorAccent1VeryLight,
-            R.color.colorAccent1VeryLight,
-            R.color.colorAccent1VeryLight,
-            R.color.colorAccent1VeryLight,
-            R.color.colorAccent1VeryLight,
-            R.color.colorAccent1VeryLight,
-            R.color.colorAccent1VeryLight
-    };
 
     @Override
-    public void init(@Nullable Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         Context c = getApplicationContext();
         c.getResources().getConfiguration();
 
         if (! PreferencesManager.isFirstTime(c)){
             endActivity();
+            return;
         }
 
-        for(int i = 0;  i < sTitleIds.length;  i++){
-            addSlide(AppIntroFragment.newInstance(
-                    c.getString(sTitleIds[i]),
-                    c.getString(sDescriptionIds[i]),
-                    sDrawableIds[i],
-                    sColorIds[i]
-            ));
-        }
+        addSlide(
+            AppIntroFragment.newInstance(
+                getString(R.string.intro_project_title),
+                getString(R.string.intro_project_description),
+                R.drawable.intro_1_image,           // CC0, https://commons.wikimedia.org/w/index.php?curid=435678
+                R.color.colorAccent1VeryLight
+            )
+        );
+        addSlide(
+            AppIntroFragment.newInstance(
+                getString(R.string.intro_app_title),
+                getString(R.string.intro_app_description),
+                R.drawable.intro_2_screenshot,
+                R.color.colorAccent1VeryLight
+            )
+        );
+        addSlide(
+            AppIntroFragment.newInstance(
+                getString(R.string.intro_map_title),
+                getString(R.string.intro_map_description),
+                R.drawable.intro_3_screenshot,
+                R.color.colorAccent1VeryLight
+            )
+        );
+        addSlide(
+            AppIntroFragment.newInstance(
+                getString(R.string.intro_search_title),
+                getString(R.string.intro_search_description),
+                R.drawable.intro_4_screenshot,
+                R.color.colorAccent1VeryLight
+            )
+        );
+        addSlide(
+            AppIntroFragment.newInstance(
+                getString(R.string.intro_favorites_title),
+                getString(R.string.intro_favorites_description),
+                R.drawable.intro_5_screenshot,
+                R.color.colorAccent1VeryLight
+            )
+        );
+        addSlide(
+            AppIntroFragment.newInstance(
+                getString(R.string.intro_share_title),
+                getString(R.string.intro_share_description),
+                R.drawable.intro_6_screenshot,
+                R.color.colorAccent1VeryLight
+            )
+        );
+        addSlide(
+            AppIntroFragment.newInstance(
+                getString(R.string.intro_settings_title),
+                getString(R.string.intro_settings_description),
+                R.drawable.intro_7_screenshot,
+                R.color.colorAccent1VeryLight
+            )
+        );
+        addSlide(
+            AppIntroFragment.newInstance(
+                getString(R.string.intro_widget_title),
+                getString(R.string.intro_widget_description),
+                R.drawable.intro_8_screenshot,
+                R.color.colorAccent1VeryLight
+            )
+        );
 
         setBarColor();
-        showSkipButton(true);
-        setProgressButtonEnabled(true);
+        setSkipButtonEnabled(true);
+        setProgressIndicator();
         setTitle(R.string.app_name);
     }
 
     @Override
-    public void onSkipPressed() {
+    protected void onSkipPressed(Fragment currentFragment) {
+        super.onSkipPressed(currentFragment);
         endActivity();
     }
 
     @Override
-    public void onDonePressed() {
+    protected void onDonePressed(Fragment currentFragment) {
+        super.onDonePressed(currentFragment);
         endActivity();
-    }
-
-    @Override
-    public void onSlideChanged() {
-    }
-
-    @Override
-    public void onNextPressed() {
     }
 
     private void endActivity(){
